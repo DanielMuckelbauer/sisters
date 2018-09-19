@@ -8,7 +8,7 @@ namespace Tests
 
         [Test]
         public void MovementTestsSimplePasses() {
-            // Use the Assert class to test conditions.
+
         }
 
         // A UnityTest behaves like a coroutine in PlayMode
