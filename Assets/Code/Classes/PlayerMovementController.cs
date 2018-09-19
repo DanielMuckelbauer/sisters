@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 
-namespace Classes
+namespace Code.Classes
 {
     public class PlayerMovementController : IMovementController
     {
-        private bool lookingRight = true;
+        public bool LookingRight { get; set; }
+
         private const float MoveForce = 5;
         private const float MaxSpeed = 10;
         private readonly Rigidbody2D rigidBody;
         private readonly SpriteRenderer spriteRenderer;
 
+
         public PlayerMovementController(GameObject player)
         {
             rigidBody = player.GetComponent<Rigidbody2D>();
             spriteRenderer = player.GetComponent<SpriteRenderer>();
+            LookingRight = true;
         }
 
         public void Move(float horizontal)
@@ -25,14 +28,14 @@ namespace Classes
 
         private void TryFlip(float horizontal)
         {
-            if (lookingRight && horizontal < 0)
+            if (LookingRight && horizontal < 0)
             {
-                lookingRight = false;
+                LookingRight = false;
                 spriteRenderer.flipX = true;
             }
-            else if (!lookingRight && horizontal > 0)
+            else if (!LookingRight && horizontal > 0)
             {
-                lookingRight = true;
+                LookingRight = true;
                 spriteRenderer.flipX = false;
             }
         }

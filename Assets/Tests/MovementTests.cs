@@ -1,23 +1,36 @@
-﻿using System.Collections;
+﻿using Code.Classes;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+using UnityEngine;
 
 namespace Tests
 {
-    public class MovementTests {
-
+    public class MovementTests
+    {
         [Test]
-        public void MovementTestsSimplePasses() {
-
+        public void PlayerFlipsLeftOnHorizontalLesserThanZero()
+        {
+            GameObject player = CreatePlayer();
+            IMovementController movementController = new PlayerMovementController(player);
+            movementController.Move(-5);
+            Assert.IsFalse(movementController.LookingRight);
         }
 
-        // A UnityTest behaves like a coroutine in PlayMode
-        // and allows you to yield null to skip a frame in EditMode
-        [UnityTest]
-        public IEnumerator MovementTestsWithEnumeratorPasses() {
-            // Use the Assert class to test conditions.
-            // yield to skip a frame
-            yield return null;
+        [Test]
+        public void PlayerFlipsRightIfHorizontalGreaterThanZero()
+        {
+            GameObject player = CreatePlayer();
+            IMovementController movementController = new PlayerMovementController(player);
+            movementController.LookingRight = true;
+            movementController.Move(5);
+            Assert.IsTrue(movementController.LookingRight);
+        }
+
+        private static GameObject CreatePlayer()
+        {
+            GameObject player = new GameObject();
+            player.AddComponent<Rigidbody2D>();
+            player.AddComponent<SpriteRenderer>();
+            return player;
         }
     }
 }

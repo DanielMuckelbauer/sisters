@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-
-namespace Classes
+﻿namespace Code.Classes
 {
-    interface IMovementController
+    public interface IMovementController
     {
         void Move(float horizontal);
+        bool LookingRight { get; set; }
     }
 }

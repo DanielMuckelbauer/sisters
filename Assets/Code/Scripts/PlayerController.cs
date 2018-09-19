@@ -1,17 +1,20 @@
-﻿using Classes;
+﻿using Code.Classes;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Code.Scripts
 {
-    private PlayerMovementController movementController;
-    private void Start()
+    public class PlayerController : MonoBehaviour
     {
-        movementController = new PlayerMovementController(gameObject);
-    }
+        private IMovementController movementController;
+        private void Start()
+        {
+            movementController = new PlayerMovementController(gameObject);
+        }
 
-    private void FixedUpdate()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        movementController.Move(horizontal);
+        private void FixedUpdate()
+        {
+            float horizontal = Input.GetAxis("Horizontal");
+            movementController.Move(horizontal);
+        }
     }
 }
