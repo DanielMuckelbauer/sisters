@@ -8,6 +8,7 @@ namespace Code.Classes
 
         private const float MoveForce = 5;
         private const float MaxSpeed = 10;
+        private const float JumpForce = 200;
         private readonly Rigidbody2D rigidBody;
         private readonly SpriteRenderer spriteRenderer;
 
@@ -38,6 +39,11 @@ namespace Code.Classes
                 LookingRight = true;
                 spriteRenderer.flipX = false;
             }
+        }
+
+        public void Jump()
+        {
+            rigidBody.AddForce(Vector2.up * JumpForce);
         }
     }
 }

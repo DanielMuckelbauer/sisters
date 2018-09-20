@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Tests
 {
-    public class MovementTests
+    public class PlayerMovementTests
     {
         [Test]
-        public void PlayerFlipsLeftOnHorizontalLesserThanZero()
+        public void PlayerFlipsLeft()
         {
             GameObject player = CreatePlayer();
             IMovementController movementController = new PlayerMovementController(player);
@@ -16,11 +16,10 @@ namespace Tests
         }
 
         [Test]
-        public void PlayerFlipsRightIfHorizontalGreaterThanZero()
+        public void PlayerFlipsRight()
         {
             GameObject player = CreatePlayer();
-            IMovementController movementController = new PlayerMovementController(player);
-            movementController.LookingRight = true;
+            IMovementController movementController = new PlayerMovementController(player) {LookingRight = true};
             movementController.Move(5);
             Assert.IsTrue(movementController.LookingRight);
         }

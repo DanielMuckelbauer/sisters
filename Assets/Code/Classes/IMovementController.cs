@@ -4,5 +4,6 @@
     {
         void Move(float horizontal);
         bool LookingRight { get; set; }
+        void Jump();
     }
 }
