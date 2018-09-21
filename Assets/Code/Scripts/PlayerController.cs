@@ -6,6 +6,8 @@ namespace Code.Scripts
     public class PlayerController : MonoBehaviour
     {
         public Transform GroundCheck;
+        public Animator Animator;
+        public bool AttackPressed;
 
         private IMovementController movementController;
 
@@ -17,13 +19,21 @@ namespace Code.Scripts
         private void Update()
         {
             int layerMask = 1 << LayerMask.NameToLayer("Ground");
-            movementController.Grounded = Physics2D.Linecast(gameObject.transform.position, GroundCheck.position, layerMask);
+            movementController.Grounded =
+                Physics2D.Linecast(gameObject.transform.position, GroundCheck.position, layerMask);
         }
 
         private void FixedUpdate()
         {
             CheckMove();
             CheckJump();
+            CheckFire();
+        }
+
+        private void CheckFire()
+        {
+            if (Input.GetButtonDown("Fire1"))
+                Animator.SetTrigger("OnAttackDown");
         }
 
         private void CheckMove()
