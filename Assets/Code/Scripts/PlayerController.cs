@@ -5,14 +5,19 @@ namespace Code.Scripts
 {
     public class PlayerController : MonoBehaviour
     {
-        public LayerMask GroundMask;
+        public Transform GroundCheck;
 
         private IMovementController movementController;
-        private bool grounded;
 
         private void Start()
         {
             movementController = new PlayerMovementController(gameObject);
+        }
+
+        private void Update()
+        {
+            int layerMask = 1 << LayerMask.NameToLayer("Ground");
+            movementController.Grounded = Physics2D.Linecast(gameObject.transform.position, GroundCheck.position, layerMask);
         }
 
         private void FixedUpdate()
@@ -29,22 +34,8 @@ namespace Code.Scripts
 
         private void CheckJump()
         {
-            if (Input.GetButtonDown("Jump") && grounded)
+            if (Input.GetButtonDown("Jump"))
                 movementController.Jump();
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            if (1 << other.gameObject.layer == GroundMask.value )
-                grounded = true;
-            Debug.Log(grounded);
-        }
-
-        private void OnCollisionExit2D(Collision2D other)
-        {
-            if (1 << other.gameObject.layer == GroundMask.value)
-                grounded = false;
-            Debug.Log(grounded);
         }
     }
 }

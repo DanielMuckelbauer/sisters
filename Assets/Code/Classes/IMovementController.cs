@@ -3,7 +3,8 @@
     public interface IMovementController
     {
         void Move(float horizontal);
-        bool LookingRight { get; set; }
         void Jump();
+        bool LookingRight { get; set; }
+        bool Grounded { get; set; }
     }
 }

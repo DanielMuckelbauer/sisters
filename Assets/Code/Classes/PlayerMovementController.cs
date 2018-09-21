@@ -5,6 +5,7 @@ namespace Code.Classes
     public class PlayerMovementController : IMovementController
     {
         public bool LookingRight { get; set; }
+        public bool Grounded { get; set; }
 
         private const float MoveForce = 5;
         private const float MaxSpeed = 10;
@@ -43,7 +44,8 @@ namespace Code.Classes
 
         public void Jump()
         {
-            rigidBody.AddForce(Vector2.up * JumpForce);
+            if (Grounded)
+                rigidBody.AddForce(Vector2.up * JumpForce);
         }
     }
 }
