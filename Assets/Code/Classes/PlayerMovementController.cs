@@ -10,14 +10,15 @@ namespace Code.Classes
         private const float MoveForce = 5;
         private const float MaxSpeed = 10;
         private const float JumpForce = 200;
+        private readonly Transform transform;
         private readonly Rigidbody2D rigidBody;
         private readonly SpriteRenderer spriteRenderer;
-
 
         public PlayerMovementController(GameObject player)
         {
             rigidBody = player.GetComponent<Rigidbody2D>();
             spriteRenderer = player.GetComponent<SpriteRenderer>();
+            transform = player.GetComponent<Transform>();
             LookingRight = true;
         }
 
@@ -33,12 +34,16 @@ namespace Code.Classes
             if (LookingRight && horizontal < 0)
             {
                 LookingRight = false;
-                spriteRenderer.flipX = true;
+                Vector3 theScale = transform.localScale;
+                theScale.x *= -1;
+                transform.localScale = theScale;
             }
             else if (!LookingRight && horizontal > 0)
             {
                 LookingRight = true;
-                spriteRenderer.flipX = false;
+                Vector3 theScale = transform.localScale;
+                theScale.x *= -1;
+                transform.localScale = theScale;
             }
         }
 
