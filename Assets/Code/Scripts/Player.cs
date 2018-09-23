@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Scripts
 {
-    public class PlayerController : MonoBehaviour
+    public class Player : MonoBehaviour
     {
         public Transform GroundCheck;
         public Animator Animator;

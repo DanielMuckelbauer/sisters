@@ -4,13 +4,8 @@ namespace Code.Scripts
 {
     public class MeleeWeapon : MonoBehaviour
     {
-        private Collider collider;
-
-        private void Start()
+        public void OnCollisionEnter2D(Collision2D collision)
         {
-            collider = GetComponent<Collider>();
         }
-
-        
     }
 }
