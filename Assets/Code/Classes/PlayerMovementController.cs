@@ -9,7 +9,7 @@ namespace Code.Classes
 
         private const float MoveForce = 5;
         private const float MaxSpeed = 10;
-        private const float JumpForce = 200;
+        private const float JumpForce = 350;
         private readonly Transform transform;
         private readonly Rigidbody2D rigidBody;
 
@@ -50,8 +50,9 @@ namespace Code.Classes
 
         public void Jump()
         {
-            if (Grounded)
-                rigidBody.AddForce(Vector2.up * JumpForce);
+            if (!Grounded) return;
+            rigidBody.AddForce(Vector2.up * JumpForce);
+            Grounded = false;
         }
     }
 }
