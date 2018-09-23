@@ -7,20 +7,16 @@ using TMPro;
 
 namespace Code.Scripts
 {
-    public class HospitalScene : MonoBehaviour
+    public class HospitalSceneController : SceneController
     {
         public GameObject Chicken;
         public GameObject UiCanvas;
         public GameObject Background;
         public Vector3 BirthPosition;
         public AudioSource Beep;
-        public TextAsset TextAsset;
-        public TMP_Text Text;
 
         private GameObject chicken;
         private const float MoveForce = 250;
-        private List<string> cutSceneStrings;
-        private int cutSceneStringCounter = 0;
 
         private void Start()
         {
@@ -33,16 +29,6 @@ namespace Code.Scripts
             yield return ActivateBackground();
             yield return GiveBirth();
             yield return AfterBirth();
-        }
-
-        private void SetNextCutSceneString()
-        {
-            Text.text = cutSceneStrings[cutSceneStringCounter++];
-        }
-        private void InitializeCutsceneStrings()
-        {
-            string completeString = TextAsset.text;
-            cutSceneStrings = completeString.Split('\n').ToList();
         }
 
         private IEnumerator ActivateBackground()
