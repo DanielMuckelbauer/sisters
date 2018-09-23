@@ -4,6 +4,6 @@ namespace Code.Classes
 {
     public interface ICombatController
     {
-        void ReceiveHit();
+        IEnumerator ReceiveHit();
     }
 }

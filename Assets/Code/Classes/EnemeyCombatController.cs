@@ -11,11 +11,12 @@ namespace Code.Classes
 
         public EnemeyCombatController(GameObject go)
         {
-            this.gameObject = go;
+            gameObject = go;
         }
 
-        public void ReceiveHit()
+        public IEnumerator ReceiveHit()
         {
+            yield return new WaitForSeconds(0.5f);
             Object.Destroy(gameObject);
         }
     }
