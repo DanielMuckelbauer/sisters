@@ -18,16 +18,17 @@ namespace Code.Scripts
 
         private void Update()
         {
-            int layerMask = 1 << LayerMask.NameToLayer("Ground");
-            movementController.Grounded =
-                Physics2D.Linecast(gameObject.transform.position, GroundCheck.position, layerMask);
-        }
-
-        private void FixedUpdate()
-        {
+            CheckGrounded();
             CheckMove();
             CheckJump();
             CheckFire();
+        }
+
+        private void CheckGrounded()
+        {
+            int layerMask = 1 << LayerMask.NameToLayer("Ground");
+            movementController.Grounded =
+                Physics2D.Linecast(gameObject.transform.position, GroundCheck.position, layerMask);
         }
 
         private void CheckFire()
