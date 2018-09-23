@@ -7,7 +7,7 @@ namespace Code.Scripts
     {
         public Transform GroundCheck;
         public Animator Animator;
-        public bool AttackPressed;
+        public AudioSource Swing;
 
         private IMovementController movementController;
 
@@ -32,8 +32,9 @@ namespace Code.Scripts
 
         private void CheckFire()
         {
-            if (Input.GetButtonDown("Fire1"))
-                Animator.SetTrigger("OnAttackDown");
+            if (!Input.GetButtonDown("Fire1")) return;
+            Animator.SetTrigger("OnAttackDown");
+            Swing.Play();
         }
 
         private void CheckMove()
