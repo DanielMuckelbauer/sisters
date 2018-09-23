@@ -6,7 +6,7 @@ namespace Code.Scripts
 {
     public class Enemy : MonoBehaviour
     {
-        public GameObject Explosion;
+        public Animator ExplosionAnimator;
 
         private ICombatController combatController;
 
@@ -17,15 +17,8 @@ namespace Code.Scripts
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            StartCoroutine(CreateAndDestroyExplosion(collision));
+            ExplosionAnimator.SetTrigger("Explosion");
             StartCoroutine(combatController.ReceiveHit());
-        }
-
-        private IEnumerator CreateAndDestroyExplosion(Collision2D collision)
-        {
-            GameObject explosion = Instantiate(Explosion, collision.transform.position, new Quaternion());
-            yield return new WaitForSeconds(2);
-            Destroy(explosion);
         }
     }
 }
