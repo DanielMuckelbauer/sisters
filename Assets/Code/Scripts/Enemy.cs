@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using Code.Classes;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace Code.Scripts
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = true);
             ExplosionAnimator.SetTrigger("Explosion");
             StartCoroutine(combatController.ReceiveHit());
         }
