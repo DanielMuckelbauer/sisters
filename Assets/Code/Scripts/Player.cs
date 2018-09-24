@@ -19,9 +19,13 @@ namespace Code.Scripts
         private void Update()
         {
             CheckGrounded();
-            CheckMove();
             CheckJump();
             CheckFire();
+        }
+
+        private void FixedUpdate()
+        {
+            CheckMove();
         }
 
         private void CheckGrounded()
