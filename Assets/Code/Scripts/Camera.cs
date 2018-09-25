@@ -1,16 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Camera : MonoBehaviour {
+namespace Code.Scripts
+{
+    public class Camera : MonoBehaviour
+    {
+        public Transform Player;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        private void FixedUpdate()
+        {
+            FollowPlayer();
+        }
+
+        private void FollowPlayer()
+        {
+            gameObject.transform.position = new Vector3(Player.position.x, Player.position.y,
+                gameObject.transform.position.z);
+        }
+    }
 }

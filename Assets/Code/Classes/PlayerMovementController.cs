@@ -7,7 +7,7 @@ namespace Code.Classes
         public bool LookingRight { get; set; }
         public bool Grounded { get; set; }
 
-        private const float MoveForce = 5;
+        private const float MoveForce = 10;
         private const float MaxSpeed = 10;
         private const float JumpForce = 350;
         private readonly Transform transform;
