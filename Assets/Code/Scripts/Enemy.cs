@@ -18,11 +18,12 @@ namespace Code.Scripts
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!collision.gameObject.tag.Contains("Weapon")) 
-                return;
-            GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = true);
-            ExplosionAnimator.SetTrigger("Explosion");
-            StartCoroutine(combatController.ReceiveHit());
+            if (collision.gameObject.tag.Contains("Weapon"))
+            {
+                GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = true);
+                ExplosionAnimator.SetTrigger("Explosion");
+                StartCoroutine(combatController.ReceiveHit());
+            }
         }
     }
 }

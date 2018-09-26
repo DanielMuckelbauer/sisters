@@ -1,4 +1,5 @@
-﻿using Code.Classes;
+﻿using System.Collections;
+using Code.Classes;
 using UnityEngine;
 
 namespace Code.Scripts
@@ -26,6 +27,18 @@ namespace Code.Scripts
         private void FixedUpdate()
         {
             CheckMove();
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (!collision.gameObject.tag.Contains("Enemy"))
+                return;
+            Die();
+        }
+
+        private void Die()
+        {
+            Destroy(gameObject);
         }
 
         private void CheckGrounded()
