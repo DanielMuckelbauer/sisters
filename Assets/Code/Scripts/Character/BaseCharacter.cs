@@ -1,4 +1,5 @@
-﻿using Code.Classes.MovementController;
+﻿using Code.Classes;
+using Code.Classes.MovementController;
 using UnityEngine;
 
 namespace Code.Scripts.Character
@@ -7,5 +8,6 @@ namespace Code.Scripts.Character
     {
         public Transform GroundCheck;
         protected IMovementController MovementController;
+        protected ICombatController CombatController;
     }
 }

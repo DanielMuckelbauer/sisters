@@ -1,20 +1,18 @@
-﻿using Code.Classes;
-using System.Linq;
+﻿using System.Linq;
+using Code.Classes;
 using Code.Classes.MovementController;
 using UnityEngine;
 
-namespace Code.Scripts
+namespace Code.Scripts.Character
 {
-    public class Spider : MonoBehaviour
+    public class Spider : BaseCharacter
     {
         public Animator ExplosionAnimator;
 
-        private ICombatController combatController;
-        private IMovementController movementController;
-
         private void Start()
         {
-            combatController = new SpiderCombatController(gameObject);
+            CombatController = new SpiderCombatController(gameObject);
+            MovementController = new SpiderMovementController(gameObject);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -23,7 +21,7 @@ namespace Code.Scripts
                 return;
             GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = true);
             ExplosionAnimator.SetTrigger("Explosion");
-            StartCoroutine(combatController.ReceiveHit());
+            StartCoroutine(CombatController.ReceiveHit());
         }
     }
 }

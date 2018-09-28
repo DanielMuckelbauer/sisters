@@ -6,10 +6,14 @@ namespace Code.Classes.MovementController
     {
         private const float Speed = 4;
         private const float JumpForce = 400;
+        private readonly Transform groundCheck;
 
-        public PlayerMovementController(GameObject gameObject, Transform groundCheck) : base(gameObject, groundCheck)
+
+        public PlayerMovementController(GameObject gameObject, Transform groundCheck) : base(gameObject)
         {
+            this.groundCheck = groundCheck;
         }
+
 
         public override void Move(float horizontal)
         {
@@ -48,7 +52,7 @@ namespace Code.Classes.MovementController
         public override void Jump()
         {
             bool grounded =
-                Physics2D.Linecast(Transform.position, GroundCheck.position, LayerMask);
+                Physics2D.Linecast(Transform.position, groundCheck.position, LayerMask);
             if (grounded)
                 RigidBody.AddForce(Vector2.up * JumpForce);
         }
