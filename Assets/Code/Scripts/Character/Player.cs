@@ -8,6 +8,7 @@ namespace Code.Scripts.Character
         public Animator Animator;
         public AudioSource Swing;
         public PolygonCollider2D SwordCollider;
+        public Transform GroundCheck;
 
         private void Start()
         {

@@ -4,7 +4,6 @@ namespace Code.Classes.MovementController
 {
     public class PlayerMovementController : BaseMovementController
     {
-        private const float Speed = 4;
         private const float JumpForce = 400;
         private readonly Transform groundCheck;
 
@@ -12,6 +11,7 @@ namespace Code.Classes.MovementController
         public PlayerMovementController(GameObject gameObject, Transform groundCheck) : base(gameObject)
         {
             this.groundCheck = groundCheck;
+            Speed = 4;
         }
 
 

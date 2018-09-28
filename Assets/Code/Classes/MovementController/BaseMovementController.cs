@@ -9,7 +9,7 @@ namespace Code.Classes.MovementController
         protected readonly Transform Transform;
         protected readonly Rigidbody2D RigidBody;
         protected readonly int LayerMask;
-
+        protected float Speed = 4;
 
         protected BaseMovementController(GameObject gameObject)
         {
