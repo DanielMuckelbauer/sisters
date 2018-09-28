@@ -1,18 +1,20 @@
 ﻿using Code.Classes;
 using System.Linq;
+using Code.Classes.MovementController;
 using UnityEngine;
 
 namespace Code.Scripts
 {
-    public class Enemy : MonoBehaviour
+    public class Spider : MonoBehaviour
     {
         public Animator ExplosionAnimator;
 
         private ICombatController combatController;
+        private IMovementController movementController;
 
         private void Start()
         {
-            combatController = new EnemyCombatController(gameObject);
+            combatController = new SpiderCombatController(gameObject);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

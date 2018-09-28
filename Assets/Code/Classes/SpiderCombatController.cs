@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Code.Classes
 {
-    public class EnemyCombatController : ICombatController
+    public class SpiderCombatController : ICombatController
     {
         private readonly GameObject gameObject;
 
-        public EnemyCombatController(GameObject go)
+        public SpiderCombatController(GameObject go)
         {
             gameObject = go;
         }

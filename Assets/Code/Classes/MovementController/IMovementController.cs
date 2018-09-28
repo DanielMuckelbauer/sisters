@@ -1,4 +1,4 @@
-﻿namespace Code.Classes
+﻿namespace Code.Classes.MovementController
 {
     public interface IMovementController
     {

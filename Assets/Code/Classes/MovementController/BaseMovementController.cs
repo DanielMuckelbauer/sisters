@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Classes
+namespace Code.Classes.MovementController
 {
     public abstract class BaseMovementController : IMovementController
     {

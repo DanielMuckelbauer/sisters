@@ -1,21 +1,17 @@
-﻿using System.Collections;
-using Code.Classes;
+﻿using Code.Classes.MovementController;
 using UnityEngine;
 
-namespace Code.Scripts
+namespace Code.Scripts.Character
 {
-    public class Player : MonoBehaviour
+    public class Player : BaseCharacter
     {
-        public Transform GroundCheck;
         public Animator Animator;
         public AudioSource Swing;
         public PolygonCollider2D SwordCollider;
 
-        private IMovementController movementController;
-
         private void Start()
         {
-            movementController = new PlayerMovementController(gameObject, GroundCheck);
+            MovementController = new PlayerMovementController(gameObject, GroundCheck);
         }
 
         private void Update()
@@ -52,13 +48,13 @@ namespace Code.Scripts
         private void CheckMove()
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
-            movementController.Move(horizontal);
+            MovementController.Move(horizontal);
         }
 
         private void CheckJump()
         {
             if (Input.GetButtonDown("Jump"))
-                movementController.Jump();
+                MovementController.Jump();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Code.Classes;
+using Code.Classes.MovementController;
 using NUnit.Framework;
 using UnityEngine;
 
