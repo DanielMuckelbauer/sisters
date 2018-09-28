@@ -2,27 +2,16 @@
 
 namespace Code.Classes
 {
-    public class PlayerMovementController : IMovementController
+    public class PlayerMovementController : BaseMovementController
     {
-        public bool LookingRight { get; set; }
-
-        private readonly int layerMask;
         private const float Speed = 4;
         private const float JumpForce = 400;
-        private readonly Transform transform;
-        private readonly Rigidbody2D rigidBody;
-        private readonly Transform groundCheck;
 
-        public PlayerMovementController(GameObject player, Transform groundCheck)
+        public PlayerMovementController(GameObject gameObject, Transform groundCheck) : base(gameObject, groundCheck)
         {
-            rigidBody = player.GetComponent<Rigidbody2D>();
-            transform = player.GetComponent<Transform>();
-            layerMask = 1 << LayerMask.NameToLayer("Ground");
-            this.groundCheck = groundCheck;
-            LookingRight = true;
         }
 
-        public void Move(float horizontal)
+        public override void Move(float horizontal)
         {
             ApplyMovement(horizontal);
             TryFlip(horizontal);
@@ -30,9 +19,9 @@ namespace Code.Classes
 
         private void ApplyMovement(float horizontal)
         {
-            Vector2 currentVelocity = rigidBody.velocity;
+            Vector2 currentVelocity = RigidBody.velocity;
             currentVelocity.x = horizontal * Speed;
-            rigidBody.velocity = currentVelocity;
+            RigidBody.velocity = currentVelocity;
         }
 
         private void TryFlip(float horizontal)
@@ -51,19 +40,17 @@ namespace Code.Classes
 
         private void Flip()
         {
-            Vector3 theScale = transform.localScale;
+            Vector3 theScale = Transform.localScale;
             theScale.x *= -1;
-            transform.localScale = theScale;
+            Transform.localScale = theScale;
         }
 
-        public void Jump()
+        public override void Jump()
         {
             bool grounded =
-                Physics2D.Linecast(transform.position, groundCheck.position, layerMask);
-            Debug.Log(grounded);
-            if (!grounded)
-                return;
-            rigidBody.AddForce(Vector2.up * JumpForce);
+                Physics2D.Linecast(Transform.position, GroundCheck.position, LayerMask);
+            if (grounded)
+                RigidBody.AddForce(Vector2.up * JumpForce);
         }
     }
 }
