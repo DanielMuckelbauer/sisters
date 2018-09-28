@@ -15,12 +15,11 @@ namespace Code.Scripts
 
         private void Start()
         {
-            movementController = new PlayerMovementController(gameObject);
+            movementController = new PlayerMovementController(gameObject, GroundCheck);
         }
 
         private void Update()
         {
-            CheckGrounded();
             CheckJump();
             CheckFire();
         }
@@ -42,16 +41,10 @@ namespace Code.Scripts
             Destroy(gameObject);
         }
 
-        private void CheckGrounded()
-        {
-            int layerMask = 1 << LayerMask.NameToLayer("Ground");
-            movementController.Grounded =
-                Physics2D.Linecast(gameObject.transform.position, GroundCheck.position, layerMask);
-        }
-
         private void CheckFire()
         {
-            if (!Input.GetButtonDown("Fire1")) return;
+            if (!Input.GetButtonDown("Fire1"))
+                return;
             Animator.SetTrigger("OnAttackDown");
             Swing.Play();
         }

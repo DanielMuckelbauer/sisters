@@ -10,7 +10,7 @@ namespace Tests
         public void PlayerFlipsLeft()
         {
             GameObject player = CreatePlayer();
-            IMovementController movementController = new PlayerMovementController(player);
+            IMovementController movementController = new PlayerMovementController(player, new RectTransform());
             movementController.Move(-5);
             Assert.IsFalse(movementController.LookingRight);
         }
@@ -19,7 +19,8 @@ namespace Tests
         public void PlayerFlipsRight()
         {
             GameObject player = CreatePlayer();
-            IMovementController movementController = new PlayerMovementController(player) {LookingRight = true};
+            IMovementController movementController =
+                new PlayerMovementController(player, new RectTransform()) {LookingRight = true};
             movementController.Move(5);
             Assert.IsTrue(movementController.LookingRight);
         }
