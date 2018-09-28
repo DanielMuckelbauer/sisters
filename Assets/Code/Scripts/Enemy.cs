@@ -12,7 +12,7 @@ namespace Code.Scripts
 
         private void Start()
         {
-            combatController = new EnemeyCombatController(gameObject);
+            combatController = new EnemyCombatController(gameObject);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
