@@ -9,12 +9,14 @@ namespace Code.Scripts
         public Transform GroundCheck;
         public Animator Animator;
         public AudioSource Swing;
+        public PolygonCollider2D SwordCollider;
 
         private IMovementController movementController;
 
         private void Start()
         {
             movementController = new PlayerMovementController(gameObject);
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), SwordCollider);
         }
 
         private void Update()
@@ -57,7 +59,7 @@ namespace Code.Scripts
 
         private void CheckMove()
         {
-            float horizontal = Input.GetAxis("Horizontal");
+            float horizontal = Input.GetAxisRaw("Horizontal");
             movementController.Move(horizontal);
         }
 

@@ -7,9 +7,8 @@ namespace Code.Classes
         public bool LookingRight { get; set; }
         public bool Grounded { get; set; }
 
-        private const float MoveForce = 10;
-        private const float MaxSpeed = 10;
-        private const float JumpForce = 350;
+        private const float Speed = 4;
+        private const float JumpForce = 400;
         private readonly Transform transform;
         private readonly Rigidbody2D rigidBody;
 
@@ -22,9 +21,15 @@ namespace Code.Classes
 
         public void Move(float horizontal)
         {
-            if (Mathf.Abs(horizontal) < MaxSpeed)
-                rigidBody.AddForce(Vector2.right * horizontal * MoveForce);
+            ApplyMovement(horizontal);
             TryFlip(horizontal);
+        }
+
+        private void ApplyMovement(float horizontal)
+        {
+            Vector2 currentVelocity = rigidBody.velocity;
+            currentVelocity.x = horizontal * Speed;
+            rigidBody.velocity = currentVelocity;
         }
 
         private void TryFlip(float horizontal)
