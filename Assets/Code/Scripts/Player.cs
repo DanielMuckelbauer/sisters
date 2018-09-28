@@ -16,7 +16,6 @@ namespace Code.Scripts
         private void Start()
         {
             movementController = new PlayerMovementController(gameObject);
-            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), SwordCollider);
         }
 
         private void Update()
