@@ -4,8 +4,6 @@ namespace Code.Classes.MovementController
 {
     public class SpiderMovementController : BaseMovementController
     {
-
-
         public SpiderMovementController(GameObject gameObject) : base(gameObject)
         {
             Speed = 2;
@@ -20,7 +18,7 @@ namespace Code.Classes.MovementController
 
         public override void Jump()
         {
-            throw new System.NotImplementedException();
+            RigidBody.AddForce(Vector2.up * JumpForce);
         }
     }
 }

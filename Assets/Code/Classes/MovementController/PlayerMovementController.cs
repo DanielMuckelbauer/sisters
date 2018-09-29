@@ -4,9 +4,7 @@ namespace Code.Classes.MovementController
 {
     public class PlayerMovementController : BaseMovementController
     {
-        private const float JumpForce = 400;
         private readonly Transform groundCheck;
-
 
         public PlayerMovementController(GameObject gameObject, Transform groundCheck) : base(gameObject)
         {

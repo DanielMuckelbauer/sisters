@@ -4,6 +4,12 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: FloorTileSprite_0
     21300002: FloorTileSprite_1
+    21300004: FloorTiles_0
+    21300006: FloorTiles_1
+    21300008: FloorTiles_2
+    21300010: FloorTiles_3
+    21300012: FloorTiles_4
+    21300014: FloorTiles_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -86,7 +92,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FloorTileSprite_0
+      name: FloorTiles_0
       rect:
         serializedVersion: 2
         x: 0
@@ -94,19 +100,19 @@ TextureImporter:
         width: 270
         height: 270
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 965453b9b2a0c1840b860cc6d012e795
+      spriteID: 42bbf48efb19ed942a8aeb8a1381f23c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorTileSprite_1
+      name: FloorTiles_1
       rect:
         serializedVersion: 2
         x: 0
@@ -114,13 +120,13 @@ TextureImporter:
         width: 270
         height: 270
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ac9cbd490f175b429036982bdbe1efd
+      spriteID: 7880c2f666aaefd4ea01a1b489d875f8
       vertices: []
       indices: 
       edges: []

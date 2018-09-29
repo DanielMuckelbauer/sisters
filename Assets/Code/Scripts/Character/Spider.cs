@@ -9,12 +9,24 @@ namespace Code.Scripts.Character
     public class Spider : BaseCharacter
     {
         public Animator ExplosionAnimator;
+        public bool Patroling;
 
         private void Start()
         {
             CombatController = new SpiderCombatController(gameObject);
             MovementController = new SpiderMovementController(gameObject);
-            StartCoroutine(Patrol());
+            if (Patroling)
+                StartCoroutine(Patrol());
+            StartCoroutine(JumpRandomly());
+        }
+        
+        private IEnumerator JumpRandomly()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(2 + Random.value * 3);
+                MovementController.Jump();
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -35,7 +47,6 @@ namespace Code.Scripts.Character
                 MovementController.Move(-1);
                 yield return new WaitForSeconds(1);
             }
-
         }
     }
 }
