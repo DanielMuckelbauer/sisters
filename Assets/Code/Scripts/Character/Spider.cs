@@ -28,9 +28,14 @@ namespace Code.Scripts.Character
 
         private IEnumerator Patrol()
         {
-            MovementController.Move(1);
-            yield return new WaitForSeconds(2);
-            MovementController.Move(-1);
+            while (true)
+            {
+                MovementController.Move(1);
+                yield return new WaitForSeconds(1);
+                MovementController.Move(-1);
+                yield return new WaitForSeconds(1);
+            }
+
         }
     }
 }

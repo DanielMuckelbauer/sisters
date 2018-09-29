@@ -52,8 +52,8 @@ GameObject:
   - component: {fileID: 4410406953603094}
   - component: {fileID: 212903933108921672}
   - component: {fileID: 50270344708306876}
-  - component: {fileID: 61598587147249086}
   - component: {fileID: 114372692744206866}
+  - component: {fileID: 58905527448140282}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Enemy
@@ -237,36 +237,26 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0604535f1a03c314287bf90793eaeb66, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &61598587147249086
-BoxCollider2D:
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!58 &58905527448140282
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062200720564140}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0604535f1a03c314287bf90793eaeb66, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2638855, y: 0.72568536}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 12}
-    newSize: {x: 16, y: 12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -0.5051618, y: 0}
   serializedVersion: 2
-  m_Size: {x: 9.402859, y: 7.645904}
-  m_EdgeRadius: 0
+  m_Radius: 5.137417
 --- !u!95 &95088816578127962
 Animator:
   serializedVersion: 3
