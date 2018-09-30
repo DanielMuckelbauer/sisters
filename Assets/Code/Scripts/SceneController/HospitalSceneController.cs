@@ -1,11 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using TMPro;
 
-
-namespace Code.Scripts
+namespace Code.Scripts.SceneController
 {
     public class HospitalSceneController : SceneController
     {

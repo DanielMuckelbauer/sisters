@@ -2,11 +2,11 @@
 
 namespace Code.Classes.MovementController
 {
-    public class SpiderMovementController : BaseMovementController
+    public class PatrolingEnemyMovementController : BaseMovementController
     {
-        public SpiderMovementController(GameObject gameObject) : base(gameObject)
+        public PatrolingEnemyMovementController(GameObject gameObject, float speed) : base(gameObject)
         {
-            Speed = 2;
+            Speed = speed;
         }
 
         public override void Move(float horizontal)

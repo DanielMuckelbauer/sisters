@@ -1,18 +1,18 @@
 ﻿using Code.Classes.MovementController;
 using UnityEngine;
 
-namespace Code.Scripts.Character
+namespace Code.Scripts.Entity
 {
-    public class Player : BaseCharacter
+    public class Player : BaseEntity
     {
-        public Animator Animator;
         public AudioSource Swing;
         public PolygonCollider2D SwordCollider;
         public Transform GroundCheck;
 
         private void Start()
         {
-            MovementController = new PlayerMovementController(gameObject, GroundCheck);
+            WalkingSpeed = 4;
+            MovementController = new PlayerMovementController(gameObject, WalkingSpeed, GroundCheck);
         }
 
         private void Update()

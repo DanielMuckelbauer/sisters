@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Code.Classes
+namespace Code.Classes.CombatController
 {
     public interface ICombatController
     {

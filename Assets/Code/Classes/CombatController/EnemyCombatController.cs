@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Code.Classes
+namespace Code.Classes.CombatController
 {
-    public class SpiderCombatController : ICombatController
+    public class EnemyCombatController : ICombatController
     {
         private readonly GameObject gameObject;
 
-        public SpiderCombatController(GameObject go)
+        public EnemyCombatController(GameObject go)
         {
             gameObject = go;
         }

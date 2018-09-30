@@ -1,25 +1,25 @@
 ﻿using System.Collections;
 using System.Linq;
-using Code.Classes;
+using Code.Classes.CombatController;
 using Code.Classes.MovementController;
 using UnityEngine;
 
-namespace Code.Scripts.Character
+namespace Code.Scripts.Entity
 {
-    public class Spider : BaseCharacter
+    public class Spider : BaseEnemy
     {
-        public Animator ExplosionAnimator;
         public bool Patroling;
 
         private void Start()
         {
-            CombatController = new SpiderCombatController(gameObject);
-            MovementController = new SpiderMovementController(gameObject);
+            WalkingSpeed = 2;
+            CombatController = new EnemyCombatController(gameObject);
+            MovementController = new PatrolingEnemyMovementController(gameObject, WalkingSpeed);
             if (Patroling)
-                StartCoroutine(Patrol());
+                StartPatroling();
             StartCoroutine(JumpRandomly());
         }
-        
+
         private IEnumerator JumpRandomly()
         {
             while (true)
@@ -34,11 +34,11 @@ namespace Code.Scripts.Character
             if (!collision.gameObject.tag.Contains("Weapon"))
                 return;
             GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = true);
-            ExplosionAnimator.SetTrigger("Explosion");
+            Animator.SetTrigger("Explosion");
             StartCoroutine(CombatController.ReceiveHit());
         }
 
-        private IEnumerator Patrol()
+        protected override IEnumerator Patrol()
         {
             while (true)
             {

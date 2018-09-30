@@ -3,7 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-namespace Code.Scripts
+namespace Code.Scripts.SceneController
 {
     public class SceneController : MonoBehaviour
     {

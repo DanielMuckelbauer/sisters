@@ -6,10 +6,10 @@ namespace Code.Classes.MovementController
     {
         private readonly Transform groundCheck;
 
-        public PlayerMovementController(GameObject gameObject, Transform groundCheck) : base(gameObject)
+        public PlayerMovementController(GameObject gameObject, float speed, Transform groundCheck) : base(gameObject)
         {
             this.groundCheck = groundCheck;
-            Speed = 4;
+            Speed = speed;
         }
 
 
