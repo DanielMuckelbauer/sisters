@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Scripts.SceneController
 {
-    public class HospitalSceneController : SceneController
+    public class HospitalBaseSceneController : BaseSceneController
     {
         public GameObject Chicken;
         public GameObject UiCanvas;

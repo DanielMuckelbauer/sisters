@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Scripts.SceneController
 {
-    public class SceneController : MonoBehaviour
+    public class BaseSceneController : MonoBehaviour
     {
         public TextAsset TextAsset;
         public TMP_Text Text;

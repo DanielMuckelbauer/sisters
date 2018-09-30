@@ -9,9 +9,11 @@ namespace Code.Scripts.Entity
         public PolygonCollider2D SwordCollider;
         public Transform GroundCheck;
 
+        private Vector3 originalPisition;
         private void Start()
         {
             WalkingSpeed = 4;
+            originalPisition = transform.position;
             MovementController = new PlayerMovementController(gameObject, WalkingSpeed, GroundCheck);
         }
 
@@ -35,7 +37,7 @@ namespace Code.Scripts.Entity
 
         private void Die()
         {
-            Destroy(gameObject);
+            transform.position = originalPisition;
         }
 
         private void CheckFire()

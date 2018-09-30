@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Scripts.Entity
 {
-    public class Clown : BaseEnemy
+    public class Clown : BossEnemy
     {
         public GameObject Player;
         public GameObject EnergyBall;
@@ -15,8 +15,12 @@ namespace Code.Scripts.Entity
         {
             CombatController = new EnemyCombatController(gameObject, 3);
             MovementController = new PatrolingEnemyMovementController(gameObject, WalkingSpeed);
-            StartCoroutine(Attack());
             //StartPatroling();
+        }
+
+        public override void StartBossFight()
+        {
+            StartCoroutine(Attack());
         }
 
         private IEnumerator Attack()
