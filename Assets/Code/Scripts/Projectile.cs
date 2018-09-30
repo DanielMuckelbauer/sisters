@@ -20,5 +20,11 @@ namespace Code.Scripts
             rigidBody.AddForce(force);
             rigidBody.AddTorque(RotationForce, ForceMode2D.Impulse);
         }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag.Equals("Enemy"))
+                Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
     }
 }

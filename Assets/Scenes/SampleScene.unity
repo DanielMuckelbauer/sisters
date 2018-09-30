@@ -161,6 +161,34 @@ Prefab:
       propertyPath: m_Name
       value: EnergyBallSource
       objectReference: {fileID: 0}
+    - target: {fileID: 1359331900692200, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058413666206888, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741919836700324, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949155544302612, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597656634393592, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254853440135916, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873271585845406, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
   m_IsPrefabAsset: 0
