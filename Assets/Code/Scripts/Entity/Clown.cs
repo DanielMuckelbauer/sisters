@@ -23,10 +23,10 @@ namespace Code.Scripts.Entity
         {
             while (true)
             {
-                yield return new WaitForSeconds(2 + Random.value * 3);
+                yield return new WaitForSeconds(3);
                 GameObject energyBall = Instantiate(EnergyBall, EnergyBallSource.position, new Quaternion());
-                Vector2 force = (Player.transform.position - EnergyBallSource.transform.position) * 50;
-                energyBall.GetComponent<Rigidbody2D>().AddForce(force);
+                Projectile projectile = energyBall.GetComponent<Projectile>();
+                projectile.Shoot(Player.transform.position);
             }
         }
 
