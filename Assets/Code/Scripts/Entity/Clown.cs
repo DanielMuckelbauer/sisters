@@ -13,7 +13,7 @@ namespace Code.Scripts.Entity
 
         private void Start()
         {
-            CombatController = new EnemyCombatController(gameObject);
+            CombatController = new EnemyCombatController(gameObject, 3);
             MovementController = new PatrolingEnemyMovementController(gameObject, WalkingSpeed);
             StartCoroutine(Attack());
             //StartPatroling();
@@ -39,6 +39,12 @@ namespace Code.Scripts.Entity
                 MovementController.Move(-1);
                 yield return new WaitForSeconds(1);
             }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if(other.gameObject.tag.Contains("Weapon"))
+                CombatController.ReceiveHit();
         }
     }
 }

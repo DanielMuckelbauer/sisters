@@ -6,16 +6,19 @@ namespace Code.Classes.CombatController
     public class EnemyCombatController : ICombatController
     {
         private readonly GameObject gameObject;
+        private int maxLife;
 
-        public EnemyCombatController(GameObject go)
+        public EnemyCombatController(GameObject go, int maxLife)
         {
             gameObject = go;
+            this.maxLife = maxLife;
         }
 
-        public IEnumerator ReceiveHit()
+        public void ReceiveHit()
         {
-            yield return new WaitForSeconds(0.5f);
-            Object.Destroy(gameObject);
+            maxLife -= 1;
+            if (maxLife <= 0)
+                Object.Destroy(gameObject);
         }
     }
 }

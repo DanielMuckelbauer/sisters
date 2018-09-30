@@ -13,7 +13,7 @@ namespace Code.Scripts.Entity
         private void Start()
         {
             WalkingSpeed = 2;
-            CombatController = new EnemyCombatController(gameObject);
+            CombatController = new EnemyCombatController(gameObject, 1);
             MovementController = new PatrolingEnemyMovementController(gameObject, WalkingSpeed);
             if (Patroling)
                 StartPatroling();
@@ -35,7 +35,7 @@ namespace Code.Scripts.Entity
                 return;
             GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = true);
             Animator.SetTrigger("Explosion");
-            StartCoroutine(CombatController.ReceiveHit());
+            CombatController.ReceiveHit();
         }
 
         protected override IEnumerator Patrol()
