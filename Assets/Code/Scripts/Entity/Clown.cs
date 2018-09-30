@@ -7,13 +7,28 @@ namespace Code.Scripts.Entity
 {
     public class Clown : BaseEnemy
     {
+        public GameObject Player;
+        public GameObject EnergyBall;
+        public Transform EnergyBallSource;
+
         private void Start()
         {
             CombatController = new EnemyCombatController(gameObject);
             MovementController = new PatrolingEnemyMovementController(gameObject, WalkingSpeed);
-            StartPatroling();
+            StartCoroutine(Attack());
+            //StartPatroling();
         }
 
+        private IEnumerator Attack()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(2 + Random.value * 3);
+                GameObject energyBall = Instantiate(EnergyBall, EnergyBallSource.position, new Quaternion());
+                Vector2 force = (Player.transform.position - EnergyBallSource.transform.position) * 50;
+                energyBall.GetComponent<Rigidbody2D>().AddForce(force);
+            }
+        }
 
         protected override IEnumerator Patrol()
         {
@@ -27,4 +42,3 @@ namespace Code.Scripts.Entity
         }
     }
 }
-

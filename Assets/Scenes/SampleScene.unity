@@ -152,9 +152,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 1840121047531236, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
-      propertyPath: m_TagString
-      value: Enemy
+    - target: {fileID: 114782345292172670, guid: 90513ca2206db5c4086e59330f1e6fd9,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 857135730}
+    - target: {fileID: 1770168602574402, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
+      propertyPath: m_Name
+      value: EnergyBallSource
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
@@ -1150,28 +1155,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa61d6d5e25cb34e99cd03253e524ba, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1443036968 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1840121047531236, guid: 90513ca2206db5c4086e59330f1e6fd9,
-    type: 2}
-  m_PrefabInternal: {fileID: 7509800}
---- !u!114 &1443036969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1443036968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461ea1eb33e8f524c8c7b4b91d2ee629, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Animator: {fileID: 1443036972}
---- !u!95 &1443036972 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95878339632607970, guid: 90513ca2206db5c4086e59330f1e6fd9,
-    type: 2}
-  m_PrefabInternal: {fileID: 7509800}
 --- !u!1 &1464926503
 GameObject:
   m_ObjectHideFlags: 0
