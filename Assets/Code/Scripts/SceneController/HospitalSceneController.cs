@@ -8,8 +8,9 @@ namespace Code.Scripts.SceneController
         public GameObject Chicken;
         public GameObject UiCanvas;
         public GameObject Background;
-        public Vector3 BirthPosition;
+        public Sprite SwordRoom;
         public AudioSource AudioPlayer;
+        public Vector3 BirthPosition;
 
         private GameObject chicken;
         private const float BirthForce = 250;
@@ -22,22 +23,23 @@ namespace Code.Scripts.SceneController
         private IEnumerator PlayCutScene()
         {
             InitializeCutsceneStrings();
+            yield return ShowNextTextSection(5);
+            yield return ShowNextTextSection(5);
             yield return ActivateBackground();
+            AudioPlayer.Play();
+            yield return new WaitForSeconds(3);
             yield return GiveBirth();
-            yield return AfterBirth();
+            DeactivateBackground();
+            yield return ShowNextTextSection(5);
+            Background.GetComponent<SpriteRenderer>().sprite = SwordRoom;
+            yield return ActivateBackground();
         }
 
         private IEnumerator ActivateBackground()
         {
-            SetNextCutSceneString();
-            yield return new WaitForSeconds(5);
-            SetNextCutSceneString();
-            yield return new WaitForSeconds(5);
             UiCanvas.SetActive(false);
             yield return new WaitForSeconds(1);
             Background.SetActive(true);
-            AudioPlayer.Play();
-            yield return new WaitForSeconds(3);
         }
 
         private IEnumerator GiveBirth()
@@ -48,14 +50,12 @@ namespace Code.Scripts.SceneController
             yield return new WaitForSeconds(5);
         }
 
-        private IEnumerator AfterBirth()
+        private void DeactivateBackground()
         {
-            SetNextCutSceneString();
             Destroy(chicken);
             AudioPlayer.Stop();
             Background.SetActive(false);
             UiCanvas.SetActive(true);
-            yield return new WaitForSeconds(5);
         }
     }
 }

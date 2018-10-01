@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -22,6 +23,12 @@ namespace Code.Scripts.SceneController
         {
             string completeString = TextAsset.text;
             cutsceneStrings = completeString.Split('\n').ToList();
+        }
+
+        protected IEnumerator ShowNextTextSection(int time)
+        {
+            SetNextCutSceneString();
+            yield return new WaitForSeconds(time);
         }
     }
 }
