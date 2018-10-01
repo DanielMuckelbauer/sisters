@@ -313,13 +313,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab754c3ed3a75946ac065fda55b552a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TextAsset: {fileID: 4900000, guid: 82e8ea1c0c1d6424cae3743502192791, type: 3}
+  Text: {fileID: 1103249860}
   Chicken: {fileID: 1913611555060396, guid: 01fdb8c400458934fbde75db13ab1bfd, type: 2}
   UiCanvas: {fileID: 760374560}
   Background: {fileID: 35516094}
   BirthPosition: {x: 6.7, y: 1.3, z: 0}
-  Beep: {fileID: 2101569439}
-  TextAsset: {fileID: 4900000, guid: 82e8ea1c0c1d6424cae3743502192791, type: 3}
-  Text: {fileID: 1103249860}
+  AudioPlayer: {fileID: 2101569439}
 --- !u!4 &853476158
 Transform:
   m_ObjectHideFlags: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -112.64636, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
     characterCount: 30

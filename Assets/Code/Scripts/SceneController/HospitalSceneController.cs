@@ -9,10 +9,10 @@ namespace Code.Scripts.SceneController
         public GameObject UiCanvas;
         public GameObject Background;
         public Vector3 BirthPosition;
-        public AudioSource Beep;
+        public AudioSource AudioPlayer;
 
         private GameObject chicken;
-        private const float MoveForce = 250;
+        private const float BirthForce = 250;
 
         private void Start()
         {
@@ -31,10 +31,12 @@ namespace Code.Scripts.SceneController
         {
             SetNextCutSceneString();
             yield return new WaitForSeconds(5);
+            SetNextCutSceneString();
+            yield return new WaitForSeconds(5);
             UiCanvas.SetActive(false);
             yield return new WaitForSeconds(1);
             Background.SetActive(true);
-            Beep.Play();
+            AudioPlayer.Play();
             yield return new WaitForSeconds(3);
         }
 
@@ -42,7 +44,7 @@ namespace Code.Scripts.SceneController
         {
             chicken = Instantiate(Chicken, BirthPosition, new Quaternion());
             Rigidbody2D rigidBody = chicken.GetComponent<Rigidbody2D>();
-            rigidBody.AddForce((Vector2.up + Vector2.left) * MoveForce);
+            rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
             yield return new WaitForSeconds(5);
         }
 
@@ -50,7 +52,7 @@ namespace Code.Scripts.SceneController
         {
             SetNextCutSceneString();
             Destroy(chicken);
-            Beep.Stop();
+            AudioPlayer.Stop();
             Background.SetActive(false);
             UiCanvas.SetActive(true);
             yield return new WaitForSeconds(5);
