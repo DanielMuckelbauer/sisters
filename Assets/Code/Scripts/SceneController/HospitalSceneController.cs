@@ -14,9 +14,10 @@ namespace Code.Scripts.SceneController
         public GameObject SpeechBubble;
         public SpriteRenderer Stars;
         public Sprite SwordRoom;
-        public List<SpriteRenderer> SwordAndStars;
         public AudioSource AudioPlayer;
         public Vector3 BirthPosition;
+        public List<SpriteRenderer> SwordAndStars;
+        public List<AudioClip> AudioClips;
 
         private GameObject chicken;
         private const float BirthForce = 250;
@@ -32,15 +33,20 @@ namespace Code.Scripts.SceneController
             yield return ShowNextTextSection(5);
             yield return ShowNextTextSection(6);
             yield return HospitalCutscene();
-            DeactivateBackground();
-            yield return ShowNextTextSection(5);
+            ReactivateTextAndPlayIntroMusic();
+            yield return ShowNextTextSection(4);
             yield return SwordRoomCutscene();
+            yield return BubbleSpeek();
+            SpawnSwords();
+        }
+
+        private IEnumerator BubbleSpeek()
+        {
             SetUpSpeechBubble();
             yield return FillSpeechbubble();
             yield return new WaitForSeconds(2);
             yield return FillSpeechbubble();
             yield return new WaitForSeconds(2);
-            SpawnSwords();
         }
 
         private void SpawnSwords()
@@ -56,7 +62,7 @@ namespace Code.Scripts.SceneController
             foreach (char c in charArray)
             {
                 Text.text += c;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.08f);
             }
         }
 
@@ -97,10 +103,12 @@ namespace Code.Scripts.SceneController
             Background.SetActive(true);
         }
 
-        private void DeactivateBackground()
+        private void ReactivateTextAndPlayIntroMusic()
         {
             Destroy(chicken);
             AudioPlayer.Stop();
+            AudioPlayer.clip = AudioClips[0];
+            AudioPlayer.Play();
             Background.SetActive(false);
             UiCanvas.SetActive(true);
         }
