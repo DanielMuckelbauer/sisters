@@ -12,8 +12,9 @@ namespace Code.Scripts.SceneController
         public GameObject UiCanvas;
         public GameObject Background;
         public GameObject SpeechBubble;
+        public SpriteRenderer Stars;
         public Sprite SwordRoom;
-        public List<SpriteRenderer> Swords;
+        public List<SpriteRenderer> SwordAndStars;
         public AudioSource AudioPlayer;
         public Vector3 BirthPosition;
 
@@ -38,6 +39,13 @@ namespace Code.Scripts.SceneController
             yield return FillSpeechbubble();
             yield return new WaitForSeconds(2);
             yield return FillSpeechbubble();
+            yield return new WaitForSeconds(2);
+            SpawnSwords();
+        }
+
+        private void SpawnSwords()
+        {
+            SwordAndStars.ForEach(s => s.enabled = true);
         }
 
         private IEnumerator FillSpeechbubble()
@@ -78,6 +86,7 @@ namespace Code.Scripts.SceneController
         {
             Background.GetComponent<SpriteRenderer>().sprite = SwordRoom;
             yield return ActivateBackground();
+            Stars.enabled = true;
             yield return new WaitForSeconds(2);
         }
 
