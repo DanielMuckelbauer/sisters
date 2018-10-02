@@ -24,15 +24,25 @@ namespace Code.Scripts.SceneController
         {
             InitializeCutsceneStrings();
             yield return ShowNextTextSection(5);
+            yield return ShowNextTextSection(6);
+            yield return HospitalCutscene();
+            DeactivateBackground();
             yield return ShowNextTextSection(5);
+            yield return SwordRoomCutscene();
+        }
+
+        private IEnumerator SwordRoomCutscene()
+        {
+            Background.GetComponent<SpriteRenderer>().sprite = SwordRoom;
+            yield return ActivateBackground();
+        }
+
+        private IEnumerator HospitalCutscene()
+        {
             yield return ActivateBackground();
             AudioPlayer.Play();
             yield return new WaitForSeconds(3);
             yield return GiveBirth();
-            DeactivateBackground();
-            yield return ShowNextTextSection(5);
-            Background.GetComponent<SpriteRenderer>().sprite = SwordRoom;
-            yield return ActivateBackground();
         }
 
         private IEnumerator ActivateBackground()
