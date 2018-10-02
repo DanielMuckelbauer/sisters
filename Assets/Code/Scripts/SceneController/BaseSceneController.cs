@@ -10,19 +10,18 @@ namespace Code.Scripts.SceneController
     {
         public TextAsset TextAsset;
         public TMP_Text Text;
-
-        private List<string> cutsceneStrings;
-        private int cutsceneStringCounter;
+        protected List<string> CutsceneStrings;
+        protected int CutsceneStringCounter;
 
         protected void SetNextCutSceneString()
         {
-            Text.text = cutsceneStrings[cutsceneStringCounter++];
+            Text.text = CutsceneStrings[CutsceneStringCounter++];
         }
 
         protected void InitializeCutsceneStrings()
         {
             string completeString = TextAsset.text;
-            cutsceneStrings = completeString.Split('\n').ToList();
+            CutsceneStrings = completeString.Split('\n').ToList();
         }
 
         protected IEnumerator ShowNextTextSection(int time)

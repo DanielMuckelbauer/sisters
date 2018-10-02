@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace Code.Scripts.SceneController
@@ -8,7 +11,9 @@ namespace Code.Scripts.SceneController
         public GameObject Chicken;
         public GameObject UiCanvas;
         public GameObject Background;
+        public GameObject SpeechBubble;
         public Sprite SwordRoom;
+        public List<SpriteRenderer> Swords;
         public AudioSource AudioPlayer;
         public Vector3 BirthPosition;
 
@@ -29,12 +34,28 @@ namespace Code.Scripts.SceneController
             DeactivateBackground();
             yield return ShowNextTextSection(5);
             yield return SwordRoomCutscene();
+            SetUpSpeechBubble();
+            yield return FillSpeechbubble();
+            yield return new WaitForSeconds(2);
+            yield return FillSpeechbubble();
         }
 
-        private IEnumerator SwordRoomCutscene()
+        private IEnumerator FillSpeechbubble()
         {
-            Background.GetComponent<SpriteRenderer>().sprite = SwordRoom;
-            yield return ActivateBackground();
+            Text.text = string.Empty;
+            string bubbleText = CutsceneStrings[CutsceneStringCounter++];
+            char[] charArray = bubbleText.ToCharArray();
+            foreach (char c in charArray)
+            {
+                Text.text += c;
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
+        private void SetUpSpeechBubble()
+        {
+            SpeechBubble.GetComponent<SpriteRenderer>().enabled = true;
+            Text = SpeechBubble.GetComponentInChildren<TMP_Text>();
         }
 
         private IEnumerator HospitalCutscene()
@@ -45,19 +66,26 @@ namespace Code.Scripts.SceneController
             yield return GiveBirth();
         }
 
-        private IEnumerator ActivateBackground()
-        {
-            UiCanvas.SetActive(false);
-            yield return new WaitForSeconds(1);
-            Background.SetActive(true);
-        }
-
         private IEnumerator GiveBirth()
         {
             chicken = Instantiate(Chicken, BirthPosition, new Quaternion());
             Rigidbody2D rigidBody = chicken.GetComponent<Rigidbody2D>();
             rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
             yield return new WaitForSeconds(5);
+        }
+
+        private IEnumerator SwordRoomCutscene()
+        {
+            Background.GetComponent<SpriteRenderer>().sprite = SwordRoom;
+            yield return ActivateBackground();
+            yield return new WaitForSeconds(2);
+        }
+
+        private IEnumerator ActivateBackground()
+        {
+            UiCanvas.SetActive(false);
+            yield return new WaitForSeconds(1);
+            Background.SetActive(true);
         }
 
         private void DeactivateBackground()
