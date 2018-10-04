@@ -9,6 +9,7 @@ namespace Code.Scripts.SceneController
     public class HospitalSceneController : BaseSceneController
     {
         public GameObject Chicken;
+        public GameObject Fetus;
         public GameObject UiCanvas;
         public GameObject Background;
         public GameObject SpeechBubble;
@@ -19,12 +20,13 @@ namespace Code.Scripts.SceneController
         public List<SpriteRenderer> SwordAndStars;
         public List<AudioClip> AudioClips;
 
-        private GameObject chicken;
+        private List<GameObject> birthedObjects;
         private const float BirthForce = 250;
 
         private void Start()
         {
             StartCoroutine(PlayCutScene());
+            birthedObjects = new List<GameObject>();
         }
 
         private IEnumerator PlayCutScene()
@@ -82,8 +84,12 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator GiveBirth()
         {
-            chicken = Instantiate(Chicken, BirthPosition, new Quaternion());
-            Rigidbody2D rigidBody = chicken.GetComponent<Rigidbody2D>();
+            birthedObjects.Add(Instantiate(Fetus, BirthPosition, new Quaternion()));
+            Rigidbody2D rigidBody = birthedObjects[0].GetComponent<Rigidbody2D>();
+            rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
+            yield return new WaitForSeconds(1);
+            birthedObjects.Add(Instantiate(Chicken, BirthPosition, new Quaternion()));
+            rigidBody = birthedObjects[1].GetComponent<Rigidbody2D>();
             rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
             yield return new WaitForSeconds(5);
         }
@@ -100,12 +106,12 @@ namespace Code.Scripts.SceneController
         {
             UiCanvas.SetActive(false);
             yield return new WaitForSeconds(1);
-            Background.SetActive(true);
+            Background.GetComponent<SpriteRenderer>().enabled = true;
         }
 
         private void ReactivateTextAndPlayIntroMusic()
         {
-            Destroy(chicken);
+            birthedObjects.ForEach(Destroy);
             AudioPlayer.Stop();
             AudioPlayer.clip = AudioClips[0];
             AudioPlayer.Play();
