@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Code.Scripts.SceneController
 {
+
     public class HospitalSceneController : BaseSceneController
     {
         public GameObject Chicken;
@@ -13,11 +14,12 @@ namespace Code.Scripts.SceneController
         public GameObject UiCanvas;
         public GameObject Background;
         public GameObject SpeechBubble;
+        public GameObject Dani;
         public SpriteRenderer Stars;
         public Sprite SwordRoom;
         public AudioSource AudioPlayer;
         public Vector3 BirthPosition;
-        public List<SpriteRenderer> SwordAndStars;
+        public List<SpriteRenderer> Swords;
         public List<AudioClip> AudioClips;
 
         private List<GameObject> birthedObjects;
@@ -32,11 +34,11 @@ namespace Code.Scripts.SceneController
         private IEnumerator PlayCutScene()
         {
             InitializeCutsceneStrings();
-            yield return ShowNextTextSection(5);
-            yield return ShowNextTextSection(6);
+            yield return ShowNextTextSection(1);
+            yield return ShowNextTextSection(1);
             yield return HospitalCutscene();
             ReactivateTextAndPlayIntroMusic();
-            yield return ShowNextTextSection(4);
+            yield return ShowNextTextSection(1);
             yield return SwordRoomCutscene();
             yield return BubbleSpeek();
             SpawnSwords();
@@ -53,7 +55,7 @@ namespace Code.Scripts.SceneController
 
         private void SpawnSwords()
         {
-            SwordAndStars.ForEach(s => s.enabled = true);
+            Swords.ForEach(s => s.enabled = true);
         }
 
         private IEnumerator FillSpeechbubble()
@@ -77,21 +79,26 @@ namespace Code.Scripts.SceneController
         private IEnumerator HospitalCutscene()
         {
             yield return ActivateBackground();
-            AudioPlayer.Play();
+            //AudioPlayer.Play();
             yield return new WaitForSeconds(3);
             yield return GiveBirth();
         }
 
         private IEnumerator GiveBirth()
         {
-            birthedObjects.Add(Instantiate(Fetus, BirthPosition, new Quaternion()));
-            Rigidbody2D rigidBody = birthedObjects[0].GetComponent<Rigidbody2D>();
-            rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
-            yield return new WaitForSeconds(1);
-            birthedObjects.Add(Instantiate(Chicken, BirthPosition, new Quaternion()));
-            rigidBody = birthedObjects[1].GetComponent<Rigidbody2D>();
-            rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
+            yield return ThrowObject(Fetus);
+            yield return ThrowObject(Chicken);
             yield return new WaitForSeconds(5);
+        }
+
+        private IEnumerator ThrowObject(GameObject objectToThrow)
+        {
+            GameObject spawnedObject = Instantiate(objectToThrow, BirthPosition, new Quaternion());
+            birthedObjects.Add(spawnedObject);
+            Rigidbody2D rigidBody = spawnedObject.GetComponent<Rigidbody2D>();
+            rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
+            rigidBody.AddTorque(2, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(1.5f);
         }
 
         private IEnumerator SwordRoomCutscene()
@@ -99,6 +106,7 @@ namespace Code.Scripts.SceneController
             Background.GetComponent<SpriteRenderer>().sprite = SwordRoom;
             yield return ActivateBackground();
             Stars.enabled = true;
+            Dani.SetActive(true);
             yield return new WaitForSeconds(2);
         }
 
@@ -115,7 +123,7 @@ namespace Code.Scripts.SceneController
             AudioPlayer.Stop();
             AudioPlayer.clip = AudioClips[0];
             AudioPlayer.Play();
-            Background.SetActive(false);
+            Background.GetComponent<SpriteRenderer>().enabled = false;
             UiCanvas.SetActive(true);
         }
     }

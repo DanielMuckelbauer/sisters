@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4900026586805092}
   - component: {fileID: 212515373860854146}
   - component: {fileID: 50055958578698596}
-  - component: {fileID: 61865859313380056}
+  - component: {fileID: 61810014209462050}
   m_Layer: 0
   m_Name: Fetus
   m_TagString: Untagged
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1708184573478882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.0998745, y: 1.2074621, z: 0}
+  m_LocalPosition: {x: -9.39686, y: 10.85322, z: 0}
   m_LocalScale: {x: 0.10415914, y: 0.10415914, z: 0.10415914}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61865859313380056
+--- !u!61 &61810014209462050
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -4.715583, y: 6.5148983}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -85,7 +85,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 39.95, y: 43.1}
+  m_Size: {x: 15.627613, y: 19.149975}
   m_EdgeRadius: 0
 --- !u!212 &212515373860854146
 SpriteRenderer:
