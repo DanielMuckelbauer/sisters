@@ -20,6 +20,7 @@ namespace Code.Scripts.SceneController
         public Vector3 BirthPosition;
         public SpriteRenderer Stars;
         public Sprite SwordRoom;
+        public Animator CameraAnimator;
         public Animator DaniAnimator;
 
         private List<GameObject> birthedObjects;
@@ -85,6 +86,8 @@ namespace Code.Scripts.SceneController
             yield return SwordRoomCutscene();
             yield return BubbleSpeek();
             DaniAnimator.SetTrigger("GiveSword");
+            yield return new WaitForSeconds(5);
+            CameraAnimator.SetTrigger("MoveCameraUp");
         }
 
         private void ReactivateTextAndPlayIntroMusic()

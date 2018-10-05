@@ -518,6 +518,7 @@ MonoBehaviour:
   BirthPosition: {x: 6.7, y: 1.3, z: 0}
   Stars: {fileID: 1048648182}
   SwordRoom: {fileID: 21300000, guid: f185d9f07a99b4146bec8d807ed3e20a, type: 3}
+  CameraAnimator: {fileID: 2101569440}
   DaniAnimator: {fileID: 1053103040}
 --- !u!4 &853476158
 Transform:
