@@ -18,10 +18,10 @@ namespace Code.Scripts.SceneController
         public GameObject SpeechBubble;
         public SpriteRenderer Stars;
         public Sprite SwordRoom;
-        public List<SpriteRenderer> Swords;
         public GameObject UiCanvas;
-        private const float BirthForce = 250;
+        public Animator DaniAnimator;
         private List<GameObject> birthedObjects;
+        private const float BirthForce = 250;
 
         private void Start()
         {
@@ -67,7 +67,7 @@ namespace Code.Scripts.SceneController
         private IEnumerator HospitalCutscene()
         {
             yield return ActivateBackground();
-            //AudioPlayer.Play();
+            AudioPlayer.Play();
             yield return new WaitForSeconds(3);
             yield return GiveBirth();
         }
@@ -82,7 +82,7 @@ namespace Code.Scripts.SceneController
             yield return ShowNextTextSection(1);
             yield return SwordRoomCutscene();
             yield return BubbleSpeek();
-            SpawnSwords();
+            DaniAnimator.SetTrigger("GiveSword");
         }
 
         private void ReactivateTextAndPlayIntroMusic()
@@ -99,11 +99,6 @@ namespace Code.Scripts.SceneController
         {
             SpeechBubble.GetComponent<SpriteRenderer>().enabled = true;
             Text = SpeechBubble.GetComponentInChildren<TMP_Text>();
-        }
-
-        private void SpawnSwords()
-        {
-            Swords.ForEach(s => s.enabled = true);
         }
 
         private IEnumerator SwordRoomCutscene()
