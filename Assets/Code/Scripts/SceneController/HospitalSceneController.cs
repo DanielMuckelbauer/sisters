@@ -8,18 +8,20 @@ namespace Code.Scripts.SceneController
 {
     public class HospitalSceneController : BaseSceneController
     {
+        public GameObject Background;
+        public GameObject Chicken;
+        public GameObject Fetus;
+        public GameObject Dani;
+        public GameObject Girls;
+        public GameObject SpeechBubble;
+        public GameObject UiCanvas;
         public List<AudioClip> AudioClips;
         public AudioSource AudioPlayer;
-        public GameObject Background;
         public Vector3 BirthPosition;
-        public GameObject Chicken;
-        public GameObject Dani;
-        public GameObject Fetus;
-        public GameObject SpeechBubble;
         public SpriteRenderer Stars;
         public Sprite SwordRoom;
-        public GameObject UiCanvas;
         public Animator DaniAnimator;
+
         private List<GameObject> birthedObjects;
         private const float BirthForce = 250;
 
@@ -107,6 +109,7 @@ namespace Code.Scripts.SceneController
             yield return ActivateBackground();
             Stars.enabled = true;
             Dani.SetActive(true);
+            Girls.SetActive(true);
             yield return new WaitForSeconds(2);
         }
 
