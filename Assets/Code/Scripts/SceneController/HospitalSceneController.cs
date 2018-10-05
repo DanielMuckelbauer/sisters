@@ -6,29 +6,70 @@ using UnityEngine;
 
 namespace Code.Scripts.SceneController
 {
-
     public class HospitalSceneController : BaseSceneController
     {
-        public GameObject Chicken;
-        public GameObject Fetus;
-        public GameObject UiCanvas;
+        public List<AudioClip> AudioClips;
+        public AudioSource AudioPlayer;
         public GameObject Background;
-        public GameObject SpeechBubble;
+        public Vector3 BirthPosition;
+        public GameObject Chicken;
         public GameObject Dani;
+        public GameObject Fetus;
+        public GameObject SpeechBubble;
         public SpriteRenderer Stars;
         public Sprite SwordRoom;
-        public AudioSource AudioPlayer;
-        public Vector3 BirthPosition;
         public List<SpriteRenderer> Swords;
-        public List<AudioClip> AudioClips;
-
-        private List<GameObject> birthedObjects;
+        public GameObject UiCanvas;
         private const float BirthForce = 250;
+        private List<GameObject> birthedObjects;
 
         private void Start()
         {
             StartCoroutine(PlayCutScene());
             birthedObjects = new List<GameObject>();
+        }
+
+        private IEnumerator ActivateBackground()
+        {
+            UiCanvas.SetActive(false);
+            yield return new WaitForSeconds(1);
+            Background.GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        private IEnumerator BubbleSpeek()
+        {
+            SetUpSpeechBubble();
+            yield return FillSpeechbubble();
+            yield return new WaitForSeconds(2);
+            yield return FillSpeechbubble();
+            yield return new WaitForSeconds(2);
+        }
+
+        private IEnumerator FillSpeechbubble()
+        {
+            Text.text = string.Empty;
+            string bubbleText = CutsceneStrings[CutsceneStringCounter++];
+            char[] charArray = bubbleText.ToCharArray();
+            foreach (char c in charArray)
+            {
+                Text.text += c;
+                yield return new WaitForSeconds(0.08f);
+            }
+        }
+
+        private IEnumerator GiveBirth()
+        {
+            yield return ThrowObject(Fetus);
+            yield return ThrowObject(Chicken);
+            yield return new WaitForSeconds(5);
+        }
+
+        private IEnumerator HospitalCutscene()
+        {
+            yield return ActivateBackground();
+            //AudioPlayer.Play();
+            yield return new WaitForSeconds(3);
+            yield return GiveBirth();
         }
 
         private IEnumerator PlayCutScene()
@@ -44,30 +85,14 @@ namespace Code.Scripts.SceneController
             SpawnSwords();
         }
 
-        private IEnumerator BubbleSpeek()
+        private void ReactivateTextAndPlayIntroMusic()
         {
-            SetUpSpeechBubble();
-            yield return FillSpeechbubble();
-            yield return new WaitForSeconds(2);
-            yield return FillSpeechbubble();
-            yield return new WaitForSeconds(2);
-        }
-
-        private void SpawnSwords()
-        {
-            Swords.ForEach(s => s.enabled = true);
-        }
-
-        private IEnumerator FillSpeechbubble()
-        {
-            Text.text = string.Empty;
-            string bubbleText = CutsceneStrings[CutsceneStringCounter++];
-            char[] charArray = bubbleText.ToCharArray();
-            foreach (char c in charArray)
-            {
-                Text.text += c;
-                yield return new WaitForSeconds(0.08f);
-            }
+            birthedObjects.ForEach(Destroy);
+            AudioPlayer.Stop();
+            AudioPlayer.clip = AudioClips[0];
+            AudioPlayer.Play();
+            Background.GetComponent<SpriteRenderer>().enabled = false;
+            UiCanvas.SetActive(true);
         }
 
         private void SetUpSpeechBubble()
@@ -76,29 +101,9 @@ namespace Code.Scripts.SceneController
             Text = SpeechBubble.GetComponentInChildren<TMP_Text>();
         }
 
-        private IEnumerator HospitalCutscene()
+        private void SpawnSwords()
         {
-            yield return ActivateBackground();
-            //AudioPlayer.Play();
-            yield return new WaitForSeconds(3);
-            yield return GiveBirth();
-        }
-
-        private IEnumerator GiveBirth()
-        {
-            yield return ThrowObject(Fetus);
-            yield return ThrowObject(Chicken);
-            yield return new WaitForSeconds(5);
-        }
-
-        private IEnumerator ThrowObject(GameObject objectToThrow)
-        {
-            GameObject spawnedObject = Instantiate(objectToThrow, BirthPosition, new Quaternion());
-            birthedObjects.Add(spawnedObject);
-            Rigidbody2D rigidBody = spawnedObject.GetComponent<Rigidbody2D>();
-            rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
-            rigidBody.AddTorque(2, ForceMode2D.Impulse);
-            yield return new WaitForSeconds(1.5f);
+            Swords.ForEach(s => s.enabled = true);
         }
 
         private IEnumerator SwordRoomCutscene()
@@ -110,21 +115,14 @@ namespace Code.Scripts.SceneController
             yield return new WaitForSeconds(2);
         }
 
-        private IEnumerator ActivateBackground()
+        private IEnumerator ThrowObject(GameObject objectToThrow)
         {
-            UiCanvas.SetActive(false);
-            yield return new WaitForSeconds(1);
-            Background.GetComponent<SpriteRenderer>().enabled = true;
-        }
-
-        private void ReactivateTextAndPlayIntroMusic()
-        {
-            birthedObjects.ForEach(Destroy);
-            AudioPlayer.Stop();
-            AudioPlayer.clip = AudioClips[0];
-            AudioPlayer.Play();
-            Background.GetComponent<SpriteRenderer>().enabled = false;
-            UiCanvas.SetActive(true);
+            GameObject spawnedObject = Instantiate(objectToThrow, BirthPosition, new Quaternion());
+            birthedObjects.Add(spawnedObject);
+            Rigidbody2D rigidBody = spawnedObject.GetComponent<Rigidbody2D>();
+            rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
+            rigidBody.AddTorque(2, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(1.5f);
         }
     }
 }
