@@ -1,4 +1,5 @@
-﻿using Code.Classes.MovementController;
+﻿using Code.Classes.CombatController;
+using Code.Classes.MovementController;
 using UnityEngine;
 
 namespace Code.Scripts.Entity
@@ -6,16 +7,13 @@ namespace Code.Scripts.Entity
     public class Player : BaseEntity
     {
         public AudioSource Swing;
-        public PolygonCollider2D SwordCollider;
         public Transform GroundCheck;
-
-        private Vector3 originalPisition;
 
         private void Start()
         {
             WalkingSpeed = 4;
-            originalPisition = transform.position;
             MovementController = new PlayerMovementController(gameObject, WalkingSpeed, GroundCheck);
+            CombatController = new PlayerCombatController(gameObject, 5);
         }
 
         private void Update()
@@ -33,12 +31,7 @@ namespace Code.Scripts.Entity
         {
             if (!collision.gameObject.tag.Contains("Enemy"))
                 return;
-            Die();
-        }
-
-        private void Die()
-        {
-            transform.position = originalPisition;
+            CombatController.ReceiveHit(collision);
         }
 
         private void CheckStrike()

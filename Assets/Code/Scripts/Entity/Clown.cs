@@ -45,10 +45,10 @@ namespace Code.Scripts.Entity
             }
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            if(other.gameObject.tag.Contains("Weapon"))
-                CombatController.ReceiveHit();
+            if(collision.gameObject.tag.Contains("Weapon"))
+                CombatController.ReceiveHit(collision);
         }
     }
 }

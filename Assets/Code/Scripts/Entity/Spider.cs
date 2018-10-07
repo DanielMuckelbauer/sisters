@@ -35,7 +35,7 @@ namespace Code.Scripts.Entity
                 return;
             GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = true);
             Animator.SetTrigger("Explosion");
-            CombatController.ReceiveHit();
+            CombatController.ReceiveHit(collision);
         }
 
         protected override IEnumerator Patrol()
