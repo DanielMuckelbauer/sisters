@@ -52,7 +52,6 @@ namespace Code.Scripts.Entity
         private void CheckMove()
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
-            Animator.SetInteger("Walking", (int) horizontal);
             MovementController.Move(horizontal);
         }
 
@@ -61,7 +60,6 @@ namespace Code.Scripts.Entity
             if (!Input.GetButtonDown("Jump"))
                 return;
             MovementController.Jump();
-            Animator.SetTrigger("Jump");
         }
     }
 }

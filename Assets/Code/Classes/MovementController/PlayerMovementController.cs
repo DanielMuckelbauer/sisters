@@ -16,6 +16,7 @@ namespace Code.Classes.MovementController
         public override void Move(float horizontal)
         {
             ApplyMovement(horizontal);
+            Animator.SetInteger("Walking", (int) horizontal);
             TryFlip(horizontal);
         }
 
@@ -51,8 +52,10 @@ namespace Code.Classes.MovementController
         {
             bool grounded =
                 Physics2D.Linecast(Transform.position, groundCheck.position, LayerMask);
-            if (grounded)
-                RigidBody.AddForce(Vector2.up * JumpForce);
+            if (!grounded) 
+                return;
+            Animator.SetTrigger("Jump");
+            RigidBody.AddForce(Vector2.up * JumpForce);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Code.Classes.MovementController
 
         protected readonly Transform Transform;
         protected readonly Rigidbody2D RigidBody;
+        protected readonly Animator Animator;
         protected readonly int LayerMask;
         protected float Speed = 4;
         protected const float JumpForce = 400;
@@ -16,6 +17,7 @@ namespace Code.Classes.MovementController
         {
             RigidBody = gameObject.GetComponent<Rigidbody2D>();
             Transform = gameObject.GetComponent<Transform>();
+            Animator = gameObject.GetComponent<Animator>();
             LayerMask = 1 << UnityEngine.LayerMask.NameToLayer("Ground");
             LookingRight = true;
         }
