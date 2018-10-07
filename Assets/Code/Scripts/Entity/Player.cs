@@ -10,6 +10,7 @@ namespace Code.Scripts.Entity
         public Transform GroundCheck;
 
         private Vector3 originalPisition;
+
         private void Start()
         {
             WalkingSpeed = 4;
@@ -20,7 +21,7 @@ namespace Code.Scripts.Entity
         private void Update()
         {
             CheckJump();
-            CheckFire();
+            CheckStrike();
         }
 
         private void FixedUpdate()
@@ -40,7 +41,7 @@ namespace Code.Scripts.Entity
             transform.position = originalPisition;
         }
 
-        private void CheckFire()
+        private void CheckStrike()
         {
             if (!Input.GetButtonDown("Fire1"))
                 return;
@@ -51,6 +52,7 @@ namespace Code.Scripts.Entity
         private void CheckMove()
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
+            Animator.SetInteger("Walking", (int)horizontal);
             MovementController.Move(horizontal);
         }
 

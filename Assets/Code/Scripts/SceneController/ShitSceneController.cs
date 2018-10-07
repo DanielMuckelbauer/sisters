@@ -6,7 +6,7 @@ namespace Code.Scripts.SceneController
     public class ShitSceneController : BaseSceneController
     {
         public BossEnemy Boss;
-        private bool fightStarted = false;
+        private bool fightStarted;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
