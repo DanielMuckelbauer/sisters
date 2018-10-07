@@ -3,6 +3,9 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+Plugins/
+.idea/
+Assets/Plugins.meta
 Assets/AssetStoreTools*
 
 # Visual Studio cache directory
@@ -21,6 +24,7 @@ ExportedObj/
 *.pidb
 *.booproj
 *.svd
+
 *.pdb
 *.opendb
 
