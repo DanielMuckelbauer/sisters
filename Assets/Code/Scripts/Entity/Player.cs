@@ -1,4 +1,6 @@
-﻿using Code.Classes.CombatController;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Code.Classes.CombatController;
 using Code.Classes.MovementController;
 using UnityEngine;
 
@@ -6,14 +8,17 @@ namespace Code.Scripts.Entity
 {
     public class Player : BaseEntity
     {
+        private const int Life = 5;
+        private int heartCounter = Life - 1;
         public AudioSource Swing;
         public Transform GroundCheck;
+        public List<GameObject> Hearts;
 
         private void Start()
         {
             WalkingSpeed = 4;
             MovementController = new PlayerMovementController(gameObject, WalkingSpeed, GroundCheck);
-            CombatController = new PlayerCombatController(gameObject, 5);
+            CombatController = new PlayerCombatController(gameObject, Life);
         }
 
         private void Update()
@@ -37,7 +42,14 @@ namespace Code.Scripts.Entity
         {
             if (!collision.gameObject.tag.Contains("Enemy"))
                 return;
+            RemoveHeart();
             CombatController.ReceiveHit(collision);
+        }
+
+        private void RemoveHeart()
+        {
+            GameObject currentHeart = Hearts[heartCounter--];
+            currentHeart.GetComponent<SpriteRenderer>().enabled = false;
         }
 
         private void CheckStrike()
