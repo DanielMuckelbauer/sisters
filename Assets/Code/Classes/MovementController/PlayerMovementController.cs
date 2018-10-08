@@ -12,7 +12,6 @@ namespace Code.Classes.MovementController
             Speed = speed;
         }
 
-
         public override void Move(float horizontal)
         {
             ApplyMovement(horizontal);
@@ -50,12 +49,15 @@ namespace Code.Classes.MovementController
 
         public override void Jump()
         {
-            bool grounded =
-                Physics2D.Linecast(Transform.position, groundCheck.position, LayerMask);
-            if (!grounded) 
+            if (!CheckGrounded())
                 return;
             Animator.SetTrigger("Jump");
             RigidBody.AddForce(Vector2.up * JumpForce);
+        }
+
+        public override bool CheckGrounded()
+        {
+            return Physics2D.Linecast(Transform.position, groundCheck.position, LayerMask);
         }
     }
 }

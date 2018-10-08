@@ -5,5 +5,6 @@
         void Move(float horizontal);
         void Jump();
         bool LookingRight { get; set; }
+        bool CheckGrounded();
     }
 }

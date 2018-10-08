@@ -20,6 +20,12 @@ namespace Code.Scripts.Entity
         {
             CheckJump();
             CheckStrike();
+            CheckGroundedForJumpAnimation();
+        }
+
+        private void CheckGroundedForJumpAnimation()
+        {
+            Animator.SetBool("Grounded", MovementController.CheckGrounded());
         }
 
         private void FixedUpdate()

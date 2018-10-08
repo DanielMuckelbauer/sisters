@@ -6,6 +6,11 @@ namespace Code.Classes.MovementController
     {
         public bool LookingRight { get; set; }
 
+        public virtual bool CheckGrounded()
+        {
+            return true;
+        }
+
         protected readonly Transform Transform;
         protected readonly Rigidbody2D RigidBody;
         protected readonly Animator Animator;
