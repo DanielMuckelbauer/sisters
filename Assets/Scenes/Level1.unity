@@ -6204,7 +6204,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1809998152}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0604535f1a03c314287bf90793eaeb66, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -6400,11 +6400,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4410406953603094, guid: 1fa61d6d5e25cb34e99cd03253e524ba, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -9.100008
+      value: -12.83
       objectReference: {fileID: 0}
     - target: {fileID: 4410406953603094, guid: 1fa61d6d5e25cb34e99cd03253e524ba, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.5123365
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 4410406953603094, guid: 1fa61d6d5e25cb34e99cd03253e524ba, type: 2}
       propertyPath: m_LocalPosition.z

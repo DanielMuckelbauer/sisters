@@ -185,7 +185,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062200720564140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.51, y: 2.36, z: 0}
+  m_LocalPosition: {x: -13.05, y: 1.62, z: 0}
   m_LocalScale: {x: 0.22, y: 0.22, z: 0.22}
   m_Children:
   - {fileID: 4408926334782442}
@@ -229,9 +229,9 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062200720564140}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -288,7 +288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 95088816578127962}
   Patroling: 0
-  WalkingSpeed: 2
 --- !u!212 &212063740684459154
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -42,14 +42,7 @@ namespace Code.Scripts.Entity
         {
             if (!collision.gameObject.tag.Contains("Enemy"))
                 return;
-            RemoveHeart();
             CombatController.ReceiveHit(collision);
-        }
-
-        private void RemoveHeart()
-        {
-            GameObject currentHeart = Hearts[heartCounter--];
-            currentHeart.GetComponent<SpriteRenderer>().enabled = false;
         }
 
         private void CheckStrike()
