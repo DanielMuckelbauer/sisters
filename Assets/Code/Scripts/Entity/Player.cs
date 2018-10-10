@@ -8,9 +8,17 @@ namespace Code.Scripts.Entity
 {
     public class Player : BaseEntity
     {
+        protected enum Control
+        {
+            Horizonal,
+            Jump,
+            Strike
+        }
+
         public AudioSource Swing;
         public Transform GroundCheck;
         public List<GameObject> Hearts;
+        protected Dictionary<Control, string> Controls;
 
         private const int Life = 5;
         private Vector3 originalPosition;
@@ -20,7 +28,7 @@ namespace Code.Scripts.Entity
             transform.position = originalPosition;
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             WalkingSpeed = 4;
             MovementController = new PlayerMovementController(gameObject, WalkingSpeed, GroundCheck);
