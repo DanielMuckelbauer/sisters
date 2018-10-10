@@ -1729,11 +1729,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114013279623752596, guid: be956fa908d6bd7479a94f994585409e,
-        type: 2}
-      propertyPath: Hearts.Array.size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.x
       value: -12.74
@@ -1919,31 +1914,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4963650752940230, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
     type: 2}
   m_PrefabInternal: {fileID: 70244812}
---- !u!1 &1259646566 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1061069945433942, guid: be956fa908d6bd7479a94f994585409e,
-    type: 2}
-  m_PrefabInternal: {fileID: 934492182}
---- !u!50 &1259646567
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1259646566}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1.2
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 0604535f1a03c314287bf90793eaeb66, type: 2}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!1 &1273581696
 GameObject:
   m_ObjectHideFlags: 0
