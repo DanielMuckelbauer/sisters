@@ -13,7 +13,7 @@ namespace Code.Scripts.Entity
 
         private void Start()
         {
-            CombatController = new EnemyCombatController(gameObject, 3);
+            CombatController = new EnemyCombatController(gameObject, 6);
             MovementController = new PatrolingEnemyMovementController(gameObject, WalkingSpeed);
         }
 
@@ -22,9 +22,10 @@ namespace Code.Scripts.Entity
             StartCoroutine(Attack());
         }
 
-        public override void ProjectileEntered(GameObject projectile)
+        public override void HitByProjectile(GameObject projectile)
         {
-            Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            base.HitByProjectile(projectile);
+            CombatController.ReceiveHit(new Collision2D());
         }
 
         private IEnumerator Attack()

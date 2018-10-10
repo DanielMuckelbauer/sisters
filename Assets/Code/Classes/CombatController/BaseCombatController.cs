@@ -14,7 +14,7 @@ namespace Code.Classes.CombatController
         }
 
         public virtual void ReceiveHit(Collision2D collision)
-        {
+        {   
             MaxLife -= 1;
             if (MaxLife <= 0)
                 Object.Destroy(GameObject);

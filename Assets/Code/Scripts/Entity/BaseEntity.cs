@@ -11,7 +11,7 @@ namespace Code.Scripts.Entity
         protected IMovementController MovementController;
         protected ICombatController CombatController;
 
-        public virtual void ProjectileEntered(GameObject projectile)
+        public virtual void HitByProjectile(GameObject projectile)
         {
             Destroy(projectile);
         }

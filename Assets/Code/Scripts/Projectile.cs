@@ -6,7 +6,7 @@ namespace Code.Scripts
 {
     public class Projectile : MonoBehaviour
     {
-        private const float ShootForce = 50;
+        private const float ShootForce = 0.5f;
         private const float RotationForce = 10;
         private Rigidbody2D rigidBody;
 
@@ -33,7 +33,7 @@ namespace Code.Scripts
         {
             BaseEntity baseEntity = collision.gameObject.GetComponent<BaseEntity>();
             if (baseEntity != null)
-                baseEntity.ProjectileEntered(gameObject);
+                baseEntity.HitByProjectile(gameObject);
         }
     }
 }
