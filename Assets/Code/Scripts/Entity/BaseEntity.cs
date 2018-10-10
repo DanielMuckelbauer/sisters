@@ -15,5 +15,10 @@ namespace Code.Scripts.Entity
         {
             Destroy(projectile);
         }
+
+        public virtual void Die()
+        {
+            Destroy(gameObject);
+        }
     }
 }

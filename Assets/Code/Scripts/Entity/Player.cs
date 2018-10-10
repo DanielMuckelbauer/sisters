@@ -8,16 +8,24 @@ namespace Code.Scripts.Entity
 {
     public class Player : BaseEntity
     {
-        private const int Life = 5;
         public AudioSource Swing;
         public Transform GroundCheck;
         public List<GameObject> Hearts;
+
+        private const int Life = 5;
+        private Vector3 originalPosition;
+
+        public override void Die()
+        {
+            transform.position = originalPosition;
+        }
 
         private void Start()
         {
             WalkingSpeed = 4;
             MovementController = new PlayerMovementController(gameObject, WalkingSpeed, GroundCheck);
             CombatController = new PlayerCombatController(gameObject, Life);
+            originalPosition = transform.position;
         }
 
         private void Update()

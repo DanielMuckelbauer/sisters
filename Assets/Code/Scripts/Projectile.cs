@@ -32,8 +32,7 @@ namespace Code.Scripts
         private void OnCollisionEnter2D(Collision2D collision)
         {
             BaseEntity baseEntity = collision.gameObject.GetComponent<BaseEntity>();
-            if (baseEntity != null)
-                baseEntity.HitByProjectile(gameObject);
+            baseEntity?.HitByProjectile(gameObject);
         }
     }
 }
