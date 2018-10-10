@@ -18,15 +18,16 @@ namespace Code.Classes.CombatController
         public override void ReceiveHit(Collision2D collision)
         {
             base.ReceiveHit(collision);
-            PropellBackward(collision);
+            PushBackward(collision);
             RemoveHeart();
         }
 
-        private void PropellBackward(Collision2D collision)
+        private void PushBackward(Collision2D collision)
         {
-            Vector3 force = ((GameObject.transform.position - collision.transform.position).normalized
-                             + Vector3.up) * 250;
-            GameObject.GetComponent<Rigidbody2D>().AddForce(force);
+            const int magnitude = 400;
+            Vector3 force = GameObject.transform.position - collision.transform.position;
+            force.Normalize();
+            GameObject.GetComponent<Rigidbody2D>().AddForce(force * magnitude);
         }
 
         private void RemoveHeart()

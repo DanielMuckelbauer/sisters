@@ -15,12 +15,16 @@ namespace Code.Scripts.Entity
         {
             CombatController = new EnemyCombatController(gameObject, 3);
             MovementController = new PatrolingEnemyMovementController(gameObject, WalkingSpeed);
-            //StartPatroling();
         }
 
         public override void StartBossFight()
         {
             StartCoroutine(Attack());
+        }
+
+        public override void ProjectileEntered(GameObject projectile)
+        {
+            Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
 
         private IEnumerator Attack()

@@ -10,5 +10,10 @@ namespace Code.Scripts.Entity
         protected float WalkingSpeed = 5;
         protected IMovementController MovementController;
         protected ICombatController CombatController;
+
+        public virtual void ProjectileEntered(GameObject projectile)
+        {
+            Destroy(projectile);
+        }
     }
 }

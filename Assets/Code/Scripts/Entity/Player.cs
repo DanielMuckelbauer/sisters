@@ -9,7 +9,6 @@ namespace Code.Scripts.Entity
     public class Player : BaseEntity
     {
         private const int Life = 5;
-        private int heartCounter = Life - 1;
         public AudioSource Swing;
         public Transform GroundCheck;
         public List<GameObject> Hearts;

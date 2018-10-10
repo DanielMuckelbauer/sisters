@@ -31,8 +31,9 @@ namespace Code.Scripts
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag.Contains("Enemy"))
-                Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            BaseEntity baseEntity = collision.gameObject.GetComponent<BaseEntity>();
+            if (baseEntity != null)
+                baseEntity.ProjectileEntered(gameObject);
         }
     }
 }
