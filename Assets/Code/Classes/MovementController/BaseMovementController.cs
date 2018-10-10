@@ -16,7 +16,7 @@ namespace Code.Classes.MovementController
         protected readonly Animator Animator;
         protected readonly int LayerMask;
         protected float Speed = 4;
-        protected const float JumpForce = 400;
+        protected const float JumpForce = 470;
 
         protected BaseMovementController(GameObject gameObject)
         {
