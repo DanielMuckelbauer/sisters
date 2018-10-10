@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4274150424694688}
   - component: {fileID: 212094515541984904}
   - component: {fileID: 95056032637839234}
-  - component: {fileID: 114204625862873232}
   - component: {fileID: 82577863500537674}
   - component: {fileID: 50372761033579710}
   - component: {fileID: 70001396130370076}
+  - component: {fileID: 114006233071530352}
   m_Layer: 9
   m_Name: Pollin
   m_TagString: Player
@@ -646,7 +646,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114204625862873232
+--- !u!114 &114006233071530352
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1041184827798590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f4c5446aa40ec645ac57c7b2c8661ac, type: 3}
+  m_Script: {fileID: 11500000, guid: b77fc821a5f04aed95faca9d858e533c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95056032637839234}
