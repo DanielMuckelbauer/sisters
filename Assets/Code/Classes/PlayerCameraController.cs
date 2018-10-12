@@ -12,12 +12,13 @@ namespace Code.Classes
             this.camera = camera;
         }
 
-        public void FixOn(Transform player)
+        public void FixBetween(Transform player1, Transform player2)
         {
-            if (player == null)
+            if (player1 == null || player2 == null)
                 return;
-            camera.transform.position = new Vector3(player.position.x, player.position.y,
-                camera.transform.position.z);
+            float cameraX = (player1.position.x + player2.position.x) / 2;
+            float cameraY = (player1.position.y + player2.position.y) / 2;
+            camera.transform.position = new Vector3(cameraX, cameraY, camera.transform.position.z);
         }
     }
 }

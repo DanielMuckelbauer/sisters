@@ -1,11 +1,13 @@
 ﻿using Code.Classes;
+using Code.Scripts.Entity;
 using UnityEngine;
 
 namespace Code.Scripts
 {
-    public class PlayerCamera : MonoBehaviour
+    public class FollowingCamera : MonoBehaviour
     {
-        public Transform Player;
+        public Transform Player1;
+        public Transform Player2;
 
         private PlayerCameraController playerCameraController;
 
@@ -16,7 +18,7 @@ namespace Code.Scripts
 
         private void FixedUpdate()
         {
-            playerCameraController.FixOn(Player);
+            playerCameraController.FixBetween(Player1, Player2);
         }
     }
 }
