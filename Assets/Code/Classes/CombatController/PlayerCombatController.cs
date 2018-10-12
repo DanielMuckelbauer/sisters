@@ -24,10 +24,9 @@ namespace Code.Classes.CombatController
 
         private void PushBackward(Collision2D collision)
         {
-            const int magnitude = 400;
-            Vector3 force = GameObject.transform.position - collision.transform.position;
-            force.Normalize();
-            GameObject.GetComponent<Rigidbody2D>().AddForce(force * magnitude);
+            Debug.Log("Collision triffered");
+            const int magnitude = 1000;
+            GameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * magnitude);
         }
 
         private void RemoveHeart()

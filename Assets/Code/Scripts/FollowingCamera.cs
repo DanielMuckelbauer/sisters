@@ -16,7 +16,7 @@ namespace Code.Scripts
             playerCameraController = new PlayerCameraController(gameObject.transform);
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             playerCameraController.FixBetween(Player1, Player2);
         }
