@@ -1,4 +1,6 @@
-﻿namespace Code.Scripts.Entity
+﻿using System.Collections.Generic;
+
+namespace Code.Scripts.Entity
 {
     public class Muni : Player
     {
@@ -10,7 +12,12 @@
 
         private void InitializeControls()
         {
-            throw new System.NotImplementedException();
+            Controls = new Dictionary<Control, string>
+            {
+                {Control.Horizonal, "HorizontalMuni"},
+                {Control.Jump, "JumpMuni"},
+                {Control.Strike, "StrikeMuni"}
+            };
         }
     }
 }

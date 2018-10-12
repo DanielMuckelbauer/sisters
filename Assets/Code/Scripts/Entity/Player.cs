@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Scripts.Entity
 {
-    public class Player : BaseEntity
+    public abstract class Player : BaseEntity
     {
         protected enum Control
         {
@@ -62,7 +62,7 @@ namespace Code.Scripts.Entity
 
         private void CheckStrike()
         {
-            if (!Input.GetButtonDown("Fire1"))
+            if (!Input.GetButtonDown(Controls[Control.Strike]))
                 return;
             Animator.SetTrigger("OnAttackDown");
             Swing.Play();
@@ -70,13 +70,13 @@ namespace Code.Scripts.Entity
 
         private void CheckMove()
         {
-            float horizontal = Input.GetAxisRaw("Horizontal");
+            float horizontal = Input.GetAxisRaw(Controls[Control.Horizonal]);
             MovementController.Move(horizontal);
         }
 
         private void CheckJump()
         {
-            if (!Input.GetButtonDown("Jump"))
+            if (!Input.GetButtonDown(Controls[Control.Jump]))
                 return;
             MovementController.Jump();
         }
