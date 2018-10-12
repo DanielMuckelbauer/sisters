@@ -24,9 +24,10 @@ GameObject:
   - component: {fileID: 114013279623752596}
   - component: {fileID: 82370614910397214}
   - component: {fileID: 50008567706623240}
-  m_Layer: 0
+  - component: {fileID: 70567506769165622}
+  m_Layer: 9
   m_Name: Muni
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,9 +74,10 @@ GameObject:
   - component: {fileID: 4518996114487682}
   - component: {fileID: 212613817809690160}
   - component: {fileID: 60380537751564518}
-  m_Layer: 0
+  - component: {fileID: 50976507468461302}
+  m_Layer: 10
   m_Name: Sword
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,6 +306,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!50 &50976507468461302
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510971779569726}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!60 &60380537751564518
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -437,6 +459,21 @@ PolygonCollider2D:
       - {x: 5.6318164, y: -6.103457}
       - {x: 5.6318164, y: -6.043457}
       - {x: 5.6118164, y: -6.013457}
+--- !u!70 &70567506769165622
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061069945433942}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 12.170002, y: 48.730007}
+  m_Direction: 0
 --- !u!82 &82370614910397214
 AudioSource:
   m_ObjectHideFlags: 1
