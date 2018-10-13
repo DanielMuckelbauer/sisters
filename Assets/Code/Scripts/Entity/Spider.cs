@@ -33,8 +33,6 @@ namespace Code.Scripts.Entity
         {
             if (!collision.gameObject.tag.Contains("Weapon"))
                 return;
-            GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = true);
-            Animator.SetTrigger("Explosion");
             CombatController.ReceiveHit(collision);
         }
 
