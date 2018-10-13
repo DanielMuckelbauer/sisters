@@ -34,7 +34,7 @@ namespace Code.Scripts.Entity
             {
                 yield return new WaitForSeconds(3);
                 GameObject energyBall = Instantiate(EnergyBall, EnergyBallSource.position, new Quaternion());
-                Projectile projectile = energyBall.GetComponent<Projectile>();
+                BaseProjectile projectile = energyBall.GetComponent<BaseProjectile>();
                 projectile.Shoot(Player.transform.position);
             }
         }

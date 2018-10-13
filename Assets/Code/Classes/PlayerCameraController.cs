@@ -14,11 +14,11 @@ namespace Code.Classes
 
         public void FixBetween(Transform player1, Transform player2)
         {
-            if (player1 == null || player2 == null)
-                return;
-            float cameraX = (player1.position.x + player2.position.x) / 2;
-            float cameraY = (player1.position.y + player2.position.y) / 2;
-            camera.transform.position = new Vector3(cameraX, cameraY, camera.transform.position.z);
+            camera.transform.position = new Vector3(player1.transform.position.x, player2.transform.position.y,
+                camera.transform.position.z);
+            //float cameraX = (player1.position.x + player2.position.x) / 2;
+            //float cameraY = (player1.position.y + player2.position.y) / 2;
+            //camera.transform.position = new Vector3(cameraX, cameraY, camera.transform.position.z);
         }
     }
 }

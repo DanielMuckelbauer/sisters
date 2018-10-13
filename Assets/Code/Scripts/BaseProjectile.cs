@@ -4,22 +4,16 @@ using UnityEngine;
 
 namespace Code.Scripts
 {
-    public class Projectile : MonoBehaviour
+    public abstract class BaseProjectile : MonoBehaviour
     {
-        private const float ShootForce = 0.5f;
+        protected float ShootForce = 0.5f;
         private const float RotationForce = 10;
         private Rigidbody2D rigidBody;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             rigidBody = GetComponent<Rigidbody2D>();
             StartCoroutine(DelayedDestroy());
-        }
-
-        private IEnumerator DelayedDestroy()
-        {
-            yield return new WaitForSeconds(7);
-            Destroy(gameObject);
         }
 
         public void Shoot(Vector3 target)
@@ -29,10 +23,17 @@ namespace Code.Scripts
             rigidBody.AddTorque(RotationForce, ForceMode2D.Impulse);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
             BaseEntity baseEntity = collision.gameObject.GetComponent<BaseEntity>();
-            baseEntity?.HitByProjectile(gameObject);
+            if (baseEntity != null)
+                baseEntity.HitByProjectile(gameObject);
+        }
+
+        private IEnumerator DelayedDestroy()
+        {
+            yield return new WaitForSeconds(7);
+            Destroy(gameObject);
         }
     }
 }
