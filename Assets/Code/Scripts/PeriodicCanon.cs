@@ -16,7 +16,7 @@ namespace Code.Scripts
         {
             while (true)
             {
-                yield return new WaitForSeconds(4);
+                yield return new WaitForSeconds(2);
                 ShootProjectile(Target.position);
             }
         }
