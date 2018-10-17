@@ -5,23 +5,36 @@ namespace Code.Scripts
 {
     public abstract class BaseMovingPlatform : MonoBehaviour
     {
-        public Rigidbody2D RigidBody;
+        public float MoveTime;
+        public float Pause;
+        public float Step;
 
-        protected IEnumerator ToggleMoveHorizontally(int moveTime, int pauseTime = 0)
+        private Vector3 direction;
+
+        private void Start()
         {
-            Vector3 direction = Vector3.right;
+            StartCoroutine(ChangeDirection());
+            direction = Vector3.right;
+        }
+
+        private IEnumerator ChangeDirection()
+        {
             while (true)
             {
-                SetVelocityInDirection(direction);
-                yield return new WaitForSeconds(moveTime);
-                yield return new WaitForSeconds(pauseTime);
+                yield return new WaitForSeconds(MoveTime);
+                yield return new WaitForSeconds(Pause);
                 direction = direction == Vector3.right ? Vector3.left : Vector3.right;
             }
         }
 
-        private void SetVelocityInDirection(Vector3 direction, float velocity = 3)
+        private void Update()
         {
-            RigidBody.velocity = direction * velocity;
+            Move();
+        }
+
+        private void Move()
+        {
+            transform.position += direction * Step;
         }
     }
 }
