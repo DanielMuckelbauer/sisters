@@ -192,6 +192,7 @@ MonoBehaviour:
   MoveTime: 2
   Pause: 0
   Step: 1.5
+  Delay: 0
 --- !u!212 &212812107901623150
 SpriteRenderer:
   m_ObjectHideFlags: 1
