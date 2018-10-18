@@ -9,13 +9,14 @@ namespace Code.Scripts
         public float MoveTime;
         public float Pause;
         public float Step;
+        public float Delay;
 
         protected Vector3 Direction;
         private HashSet<GameObject> childList;
 
-        private void Start()
+
+        protected virtual void Start()
         {
-            Direction = Vector3.right;
             StartCoroutine(DirectionChangeLoop());
             childList = new HashSet<GameObject>();
         }
@@ -27,6 +28,7 @@ namespace Code.Scripts
 
         private IEnumerator DirectionChangeLoop()
         {
+            yield return new WaitForSeconds(Delay);
             while (true)
             {
                 yield return new WaitForSeconds(MoveTime);
@@ -54,6 +56,11 @@ namespace Code.Scripts
         {
             childList.Remove(col.gameObject);
             col.gameObject.transform.parent = null;
+        }
+
+        protected Vector3 ChangeBetweenTwoDirections(Vector3 first, Vector3 second)
+        {
+            return Direction == first ? second : first;
         }
     }
 }
