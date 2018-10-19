@@ -2,9 +2,9 @@
 
 namespace Code.Classes.MovementController
 {
-    public class PatrolingEnemyMovementController : BaseMovementController
+    public class PatrollingEnemyMovementController : BaseMovementController
     {
-        public PatrolingEnemyMovementController(GameObject gameObject, float speed) : base(gameObject)
+        public PatrollingEnemyMovementController(GameObject gameObject, float speed) : base(gameObject)
         {
             Speed = speed;
         }

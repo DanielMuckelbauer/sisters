@@ -14,7 +14,7 @@ namespace Code.Scripts.Entity
         private void Start()
         {
             CombatController = new EnemyCombatController(gameObject, 6);
-            MovementController = new PatrolingEnemyMovementController(gameObject, WalkingSpeed);
+            MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
         }
 
         public override void StartBossFight()

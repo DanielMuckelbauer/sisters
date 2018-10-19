@@ -6,7 +6,7 @@ namespace Code.Scripts
 {
     public abstract class BaseProjectile : MonoBehaviour
     {
-        protected float ShootForce = 0.5f;
+        protected float ShootForce = 2f;
         private const float RotationForce = 10;
         private Rigidbody2D rigidBody;
 
@@ -18,9 +18,14 @@ namespace Code.Scripts
 
         public void Shoot(Vector3 target)
         {
-            Vector2 force = (target - gameObject.transform.position) * ShootForce;
+            Vector2 force = (target - gameObject.transform.position).normalized * ShootForce;
             rigidBody.AddForce(force);
             rigidBody.AddTorque(RotationForce, ForceMode2D.Impulse);
+        }
+
+        public void SetShootForce(float force)
+        {
+            ShootForce = force;
         }
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)

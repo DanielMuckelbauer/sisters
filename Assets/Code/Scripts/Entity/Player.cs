@@ -9,7 +9,7 @@ namespace Code.Scripts.Entity
     {
         protected enum Control
         {
-            Horizonal,
+            Horizontal,
             Jump,
             Strike
         }
@@ -69,7 +69,7 @@ namespace Code.Scripts.Entity
 
         private void CheckMove()
         {
-            float horizontal = Input.GetAxisRaw(Controls[Control.Horizonal]);
+            float horizontal = Input.GetAxisRaw(Controls[Control.Horizontal]);
             MovementController.Move(horizontal);
         }
 

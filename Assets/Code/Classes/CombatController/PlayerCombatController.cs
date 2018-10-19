@@ -24,7 +24,6 @@ namespace Code.Classes.CombatController
 
         private void PushBackward(Collision2D collision)
         {
-            Debug.Log("Collision triffered");
             const int magnitude = 1000;
             GameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * magnitude);
         }

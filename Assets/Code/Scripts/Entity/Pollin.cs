@@ -14,7 +14,7 @@ namespace Code.Scripts.Entity
         {
             Controls = new Dictionary<Control, string>
             {
-                {Control.Horizonal, "HorizontalPollin"},
+                {Control.Horizontal, "HorizontalPollin"},
                 {Control.Jump, "JumpPollin"},
                 {Control.Strike, "StrikePollin"}
             };

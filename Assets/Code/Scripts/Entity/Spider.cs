@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Linq;
 using Code.Classes.CombatController;
 using Code.Classes.MovementController;
 using UnityEngine;
@@ -8,15 +7,15 @@ namespace Code.Scripts.Entity
 {
     public class Spider : BaseEnemy
     {
-        public bool Patroling;
+        public bool Patrolling;
 
         private void Start()
         {
             WalkingSpeed = 2;
             CombatController = new EnemyCombatController(gameObject, 1);
-            MovementController = new PatrolingEnemyMovementController(gameObject, WalkingSpeed);
-            if (Patroling)
-                StartPatroling();
+            MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
+            if (Patrolling)
+                StartPatrolling();
             StartCoroutine(JumpRandomly());
         }
 

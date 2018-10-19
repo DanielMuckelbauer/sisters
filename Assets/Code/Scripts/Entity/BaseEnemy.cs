@@ -6,7 +6,7 @@ namespace Code.Scripts.Entity
     {
         protected abstract IEnumerator Patrol();
 
-        public void StartPatroling()
+        public void StartPatrolling()
         {
             StartCoroutine(Patrol());
         }
