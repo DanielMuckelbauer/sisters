@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4997638207581788}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4690352477692168}
   - component: {fileID: 58964760718471796}
   - component: {fileID: 114071341027856544}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ProximityShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
