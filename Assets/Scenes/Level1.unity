@@ -872,7 +872,7 @@ GameObject:
   - component: {fileID: 373498337}
   - component: {fileID: 373498338}
   - component: {fileID: 373498339}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Background eingang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2219,7 +2219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 928169086}
   - component: {fileID: 928169085}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Background wohnzimmer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3061,7 +3061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1158821807}
   - component: {fileID: 1158821806}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Background zimmer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96983,7 +96983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2071433886}
   - component: {fileID: 2071433885}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Background bad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97231,7 +97231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2141874069
 Transform:
   m_ObjectHideFlags: 0
