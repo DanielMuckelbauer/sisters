@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Code.Scripts.SceneController
 {
@@ -88,12 +89,12 @@ namespace Code.Scripts.SceneController
         private IEnumerator PlayCutScene()
         {
             InitializeCutsceneStrings();
-            yield return ShowNextTextSection(5);
-            yield return ShowNextTextSection(5);
+            yield return ShowNextTextSection(1);
+            yield return ShowNextTextSection(1);
             yield return HospitalCutscene();
             AudioPlayer.Stop();
             ReactivateText();
-            yield return ShowNextTextSection(5);
+            yield return ShowNextTextSection(1);
             PlayIntroMusic();
             yield return SwordRoomCutscene();
             yield return BubbleSpeek();
@@ -166,6 +167,8 @@ namespace Code.Scripts.SceneController
                 Title.color = new Color(1f, 1f, 1f, Mathf.SmoothStep(0, 1, t));
                 yield return new WaitForSeconds(0.2f);
             }
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene("Level1");
         }
     }
 }
