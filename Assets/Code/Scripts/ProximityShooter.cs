@@ -17,7 +17,6 @@ namespace Code.Scripts
                 return;
             player = other.transform;
             shooting = StartCoroutine(ToggleShooting());
-            Debug.Log("In Proximity");
         }
 
         private void OnTriggerExit2D(Collider2D other)
