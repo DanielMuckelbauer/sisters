@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.Scripts.Entity;
+using UnityEngine;
 
 namespace Code.Classes.CombatController
 {
@@ -17,7 +18,7 @@ namespace Code.Classes.CombatController
         {   
             MaxLife -= 1;
             if (MaxLife <= 0)
-                Object.Destroy(GameObject);
+                GameObject.GetComponent<BaseEntity>().Die();
         }
     }
 }
