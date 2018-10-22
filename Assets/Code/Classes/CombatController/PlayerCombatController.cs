@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Code.Scripts;
 using Code.Scripts.Entity;
 using UnityEngine;
 
@@ -13,6 +15,7 @@ namespace Code.Classes.CombatController
         {
             hearts = go.GetComponent<Player>().Hearts;
             heartCounter = hearts.Count - 1;
+            Healer.OnHealingConsumed += Refillhearts;
         }
 
         public override void ReceiveHit(Collision2D collision)
@@ -20,6 +23,12 @@ namespace Code.Classes.CombatController
             base.ReceiveHit(collision);
             PushBackward(collision);
             RemoveHeart();
+        }
+
+        private void Refillhearts()
+        {
+            heartCounter = 4;
+            hearts.ForEach(h => h.GetComponent<SpriteRenderer>().enabled = true);
         }
 
         private void PushBackward(Collision2D collision)
