@@ -15,7 +15,7 @@ namespace Code.Classes.CombatController
         {
             hearts = go.GetComponent<Player>().Hearts;
             heartCounter = hearts.Count - 1;
-            Healer.OnHealingConsumed += Refillhearts;
+            Healer.OnHealingConsumed += RefillHearts;
         }
 
         public override void ReceiveHit(Collision2D collision)
@@ -25,7 +25,7 @@ namespace Code.Classes.CombatController
             RemoveHeart();
         }
 
-        private void Refillhearts()
+        private void RefillHearts()
         {
             heartCounter = 4;
             hearts.ForEach(h => h.GetComponent<SpriteRenderer>().enabled = true);
