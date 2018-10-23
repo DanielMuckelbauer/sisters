@@ -10,6 +10,9 @@ namespace Code.Scripts.SceneController
     {
         public TextAsset TextAsset;
         public TMP_Text Text;
+        public GameObject UiCanvas;
+        public GameObject GameElements;
+
         protected List<string> CutsceneStrings;
         protected int CutsceneStringCounter;
 

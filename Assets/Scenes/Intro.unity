@@ -505,13 +505,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextAsset: {fileID: 4900000, guid: 82e8ea1c0c1d6424cae3743502192791, type: 3}
   Text: {fileID: 1103249860}
-  Background: {fileID: 35516094}
+  UiCanvas: {fileID: 760374560}
+  GameElements: {fileID: 0}
   Chicken: {fileID: 1913611555060396, guid: 01fdb8c400458934fbde75db13ab1bfd, type: 2}
   Fetus: {fileID: 1708184573478882, guid: f0ede3fcb234afa4f9764e0b25e0aef8, type: 2}
   Dani: {fileID: 1053103039}
   Girls: {fileID: 659052988}
   SpeechBubble: {fileID: 1215877716}
-  UiCanvas: {fileID: 760374560}
   AudioClips:
   - {fileID: 8300000, guid: 138822b149a88a647b07df478cabe0c7, type: 3}
   AudioPlayer: {fileID: 2101569439}
@@ -1565,7 +1565,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.0754717, g: 0.065859735, b: 0.065859735, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}

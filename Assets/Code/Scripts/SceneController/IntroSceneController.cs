@@ -8,13 +8,11 @@ namespace Code.Scripts.SceneController
 {
     public class IntroSceneController : BaseSceneController
     {
-        public GameObject Background;
         public GameObject Chicken;
         public GameObject Fetus;
         public GameObject Dani;
         public GameObject Girls;
         public GameObject SpeechBubble;
-        public GameObject UiCanvas;
         public List<AudioClip> AudioClips;
         public AudioSource AudioPlayer;
         public Vector3 BirthPosition;
@@ -46,7 +44,7 @@ namespace Code.Scripts.SceneController
         {
             UiCanvas.SetActive(false);
             yield return new WaitForSeconds(1);
-            Background.GetComponent<SpriteRenderer>().enabled = true;
+            GameElements.GetComponent<SpriteRenderer>().enabled = true;
         }
 
         private IEnumerator BubbleSpeek()
@@ -118,7 +116,7 @@ namespace Code.Scripts.SceneController
         private void ReactivateText()
         {
             birthedObjects.ForEach(Destroy);
-            Background.GetComponent<SpriteRenderer>().enabled = false;
+            GameElements.GetComponent<SpriteRenderer>().enabled = false;
             UiCanvas.SetActive(true);
         }
 
@@ -136,7 +134,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator SwordRoomCutscene()
         {
-            Background.GetComponent<SpriteRenderer>().sprite = SwordRoom;
+            GameElements.GetComponent<SpriteRenderer>().sprite = SwordRoom;
             yield return ActivateBackground();
             Stars.enabled = true;
             Dani.SetActive(true);
