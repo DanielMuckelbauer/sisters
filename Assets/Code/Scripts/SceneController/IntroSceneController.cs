@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Code.Scripts.SceneController
 {
-    public class HospitalSceneController : BaseSceneController
+    public class IntroSceneController : BaseSceneController
     {
         public GameObject Background;
         public GameObject Chicken;
@@ -37,8 +35,9 @@ namespace Code.Scripts.SceneController
             MoveSwordDown();
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             StartCoroutine(PlayCutScene());
             birthedObjects = new List<GameObject>();
         }
@@ -88,7 +87,6 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator PlayCutScene()
         {
-            InitializeCutsceneStrings();
             yield return ShowNextTextSection(1);
             yield return ShowNextTextSection(1);
             yield return HospitalCutscene();

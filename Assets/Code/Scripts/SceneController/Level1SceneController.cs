@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Scripts.SceneController
 {
-    public class ShitSceneController : BaseSceneController
+    public class Level1SceneController : BaseSceneController
     {
         public BossEnemy Boss;
         private bool fightStarted;

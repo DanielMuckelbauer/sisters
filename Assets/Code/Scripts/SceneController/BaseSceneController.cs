@@ -13,12 +13,17 @@ namespace Code.Scripts.SceneController
         protected List<string> CutsceneStrings;
         protected int CutsceneStringCounter;
 
+        protected virtual void Start()
+        {
+            InitializeCutsceneStrings();
+        }
+
         protected void SetNextCutSceneString()
         {
             Text.text = CutsceneStrings[CutsceneStringCounter++];
         }
 
-        protected void InitializeCutsceneStrings()
+        private void InitializeCutsceneStrings()
         {
             string completeString = TextAsset.text;
             CutsceneStrings = completeString.Split('\n').ToList();
