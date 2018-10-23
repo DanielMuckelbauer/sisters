@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 35516095}
   - component: {fileID: 35516097}
   m_Layer: 0
-  m_Name: Background
+  m_Name: GameElements
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,7 +506,7 @@ MonoBehaviour:
   TextAsset: {fileID: 4900000, guid: 82e8ea1c0c1d6424cae3743502192791, type: 3}
   Text: {fileID: 1103249860}
   UiCanvas: {fileID: 760374560}
-  GameElements: {fileID: 0}
+  GameElements: {fileID: 35516094}
   Chicken: {fileID: 1913611555060396, guid: 01fdb8c400458934fbde75db13ab1bfd, type: 2}
   Fetus: {fileID: 1708184573478882, guid: f0ede3fcb234afa4f9764e0b25e0aef8, type: 2}
   Dani: {fileID: 1053103039}
