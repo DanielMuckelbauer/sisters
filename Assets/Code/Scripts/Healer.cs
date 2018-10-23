@@ -6,22 +6,25 @@ namespace Code.Scripts
 {
     public class Healer : MonoBehaviour
     {
-        public AudioSource AudioSource;
+        public AudioSource AnpanAudioSource;
+        public AudioSource MainAudioSource;
         public delegate void HealingEventHandler();
         public static event HealingEventHandler OnHealingConsumed;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.gameObject.tag.Contains("PLayer"))
+            if (!other.gameObject.tag.Contains("Player"))
                 return;
             OnHealingConsumed?.Invoke();
             StartCoroutine(DelayedDestroy());
-            AudioSource.Play();
+            MainAudioSource.volume = 0.1f;
+            AnpanAudioSource.Play();
         }
 
         private IEnumerator DelayedDestroy()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(4.5f);
+            MainAudioSource.volume = 1;
             Destroy(gameObject);
         }
     }
