@@ -39,6 +39,18 @@ namespace Code.Scripts.SceneController
             SetUpSpeechBubble();
             yield return ShowNextBubbleText(2);
             yield return GoToDiaperChanger();
+            yield return JumpUpToDiaperChanger();
+        }
+
+        private IEnumerator JumpUpToDiaperChanger()
+        {
+            Transform pollin = Players[Character.Pollin].transform;
+            while (pollin.position != JumpTarget.position)
+            {
+                float step = 1 * Time.deltaTime;
+                pollin.position = Vector3.MoveTowards(pollin.position, JumpTarget.position, step);
+                yield return null;
+            }
         }
 
         private IEnumerator GoToDiaperChanger()
