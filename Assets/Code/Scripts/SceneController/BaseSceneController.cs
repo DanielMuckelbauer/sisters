@@ -34,9 +34,7 @@ namespace Code.Scripts.SceneController
         protected void DisablePlayerMovement()
         {
             foreach (Player player in Players.Values)
-            {
-                player.DisableMovement = true;
-            }
+                player.DisableMovement();
         }
 
         protected void DisableFollowingCamera()

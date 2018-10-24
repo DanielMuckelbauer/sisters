@@ -1,4 +1,6 @@
-﻿namespace Code.Classes.MovementController
+﻿using UnityEngine;
+
+namespace Code.Classes.MovementController
 {
     public interface IMovementController
     {

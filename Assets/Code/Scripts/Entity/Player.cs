@@ -17,15 +17,21 @@ namespace Code.Scripts.Entity
         public AudioSource Swing;
         public Transform GroundCheck;
         public List<GameObject> Hearts;
-        public bool DisableMovement { get; set; }
         protected Dictionary<Control, string> Controls;
 
         private const int Life = 5;
         private Vector3 originalPosition;
+        private bool movementDisabled = false;
 
         public override void Die()
         {
             transform.position = originalPosition;
+        }
+
+        public void DisableMovement()
+        {
+            MovementController.Move(0);
+            movementDisabled = true;
         }
 
         protected virtual void Start()
@@ -38,7 +44,7 @@ namespace Code.Scripts.Entity
 
         private void Update()
         {
-            if (DisableMovement)
+            if (movementDisabled)
                 return;
             CheckJump();
             CheckStrike();
@@ -52,11 +58,8 @@ namespace Code.Scripts.Entity
 
         private void FixedUpdate()
         {
-            if (DisableMovement)
-            {
-                MovementController.Move(0);
+            if (movementDisabled)
                 return;
-            }
             CheckMove();
         }
 

@@ -1,14 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using Code.Classes;
-using Code.Scripts.Entity;
 using UnityEngine;
 
 namespace Code.Scripts.SceneController
 {
     public class Level1SceneController : BaseSceneController
     {
-        public Transform CutsceneTarget;
+        public Transform CameraTarget;
+        public Transform WalkTarget;
+        public Transform JumpTarget;
 
         protected override void Start()
         {
@@ -32,12 +32,19 @@ namespace Code.Scripts.SceneController
         {
             DisablePlayerMovement();
             DisableFollowingCamera();
-            Vector3 targetPosition = new Vector3(CutsceneTarget.position.x, CutsceneTarget.position.y,
+            Vector3 targetPosition = new Vector3(CameraTarget.position.x, CameraTarget.position.y,
                 MainCamera.transform.position.z);
             StartCoroutine(MoveCamera(targetPosition));
             yield return new WaitForSeconds(6);
             SetUpSpeechBubble();
             yield return ShowNextBubbleText(2);
+            yield return GoToDiaperChanger();
+        }
+
+        private IEnumerator GoToDiaperChanger()
+        {
+            Players[Character.Pollin].GoTo(WalkTarget.position, 1.2f);
+            yield return new WaitForSeconds(4);
         }
     }
 }
