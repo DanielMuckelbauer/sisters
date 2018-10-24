@@ -5,6 +5,8 @@ namespace Code.Scripts.SceneController
 {
     public class Level1SceneController : BaseSceneController
     {
+        public Transform CutsceneTarget;
+
         protected override void Start()
         {
             base.Start();
@@ -13,22 +15,23 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator PlayOpeningCutscene()
         {
-            yield return ShowNextTextSection(1);
-            yield return ShowNextTextSection(1);
-            yield return ShowNextTextSection(1);
-            yield return ShowNextTextSection(1);
+            yield return ShowNextTextSection(1, 4);
             UiCanvas.SetActive(false);
             GameElements.SetActive(true);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            
-            StartCoroutine(BubbleSpeak());
+            StartCoroutine(PlayEndingCutscene());
         }
 
-        private IEnumerator BubbleSpeak()
+        private IEnumerator PlayEndingCutscene()
         {
+            MainCamera.GetComponent<FollowingCamera>().Following = false;
+            Vector3 targetPosition = new Vector3(CutsceneTarget.position.x, CutsceneTarget.position.y,
+                MainCamera.transform.position.z);
+            StartCoroutine(MoveCamera(targetPosition));
+            yield return new WaitForSeconds(6);
             SetUpSpeechBubble();
             yield return ShowNextBubbleText(2);
         }

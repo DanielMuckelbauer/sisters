@@ -17,11 +17,11 @@ namespace Code.Scripts.SceneController
         public SpriteRenderer Stars;
         public Sprite SwordRoom;
         public SpriteRenderer Title;
-        public Animator CameraAnimator;
         public Animator DaniAnimator;
         public Transform Sword;
         public Transform SwordTarget;
 
+        private Animator cameraAnimator;
         private List<GameObject> birthedObjects;
         private const float BirthForce = 250;
         private bool moveSword;
@@ -34,6 +34,7 @@ namespace Code.Scripts.SceneController
         protected override void Start()
         {
             base.Start();
+            cameraAnimator = MainCamera.GetComponent<Animator>();
             StartCoroutine(PlayCutScene());
             birthedObjects = new List<GameObject>();
         }
@@ -62,8 +63,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator PlayCutScene()
         {
-            yield return ShowNextTextSection(1);
-            yield return ShowNextTextSection(1);
+            yield return ShowNextTextSection(1, 2);
             yield return HospitalCutscene();
             AudioPlayer.Stop();
             ReactivateText();
@@ -74,7 +74,7 @@ namespace Code.Scripts.SceneController
             yield return ShowNextBubbleText(2);
             DaniAnimator.SetTrigger("GiveSword");
             yield return new WaitForSeconds(5);
-            CameraAnimator.SetTrigger("MoveCameraUp");
+            cameraAnimator.SetTrigger("MoveCameraUp");
             yield return new WaitForSeconds(5);
             StartCoroutine(MakeTitleAppear());
             moveSword = true;

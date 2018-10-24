@@ -9,16 +9,19 @@ namespace Code.Scripts
         public Transform Player1;
         public Transform Player2;
 
+        public bool Following { get; set; }
         private PlayerCameraController playerCameraController;
 
         private void Start()
         {
+            Following = true;
             playerCameraController = new PlayerCameraController(gameObject.transform);
         }
 
         private void Update()
         {
-            playerCameraController.FixBetween(Player1, Player2);
+            if (Following)
+                playerCameraController.FixBetween(Player1, Player2);
         }
     }
 }

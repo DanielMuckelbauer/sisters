@@ -13,6 +13,7 @@ namespace Code.Scripts.SceneController
         public GameObject UiCanvas;
         public GameObject GameElements;
         public GameObject SpeechBubble;
+        public GameObject MainCamera;
 
         protected List<string> CutsceneStrings;
         protected int CutsceneStringCounter;
@@ -36,10 +37,26 @@ namespace Code.Scripts.SceneController
             CutsceneStrings = completeString.Split('\n').ToList();
         }
 
-        protected IEnumerator ShowNextTextSection(int time)
+        protected IEnumerator ShowNextTextSection(int time, int times = 1)
         {
-            SetNextCutSceneString();
-            yield return new WaitForSeconds(time);
+            for (int i = 0; i < times; i++)
+            {
+                SetNextCutSceneString();
+                yield return new WaitForSeconds(time);
+            }
+        }
+
+        protected IEnumerator MoveCamera(Vector3 targetPosition)
+        {
+            Transform cameraTransform = MainCamera.transform;
+            const float smoothTime = 4;
+            Vector3 velocity = Vector3.zero;
+            while (cameraTransform.position != targetPosition)
+            {
+                cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, targetPosition,
+                    ref velocity, smoothTime);
+                yield return null;
+            }
         }
 
         protected IEnumerator FillSpeechbubble()
