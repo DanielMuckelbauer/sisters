@@ -45,18 +45,21 @@ namespace Code.Scripts.SceneController
         private IEnumerator JumpUpToDiaperChanger()
         {
             Transform pollin = Players[Character.Pollin].transform;
+            pollin.GetComponent<Rigidbody2D>().isKinematic = true;
             while (pollin.position != JumpTarget.position)
             {
-                float step = 1 * Time.deltaTime;
+                float step = 1.7f * Time.deltaTime;
                 pollin.position = Vector3.MoveTowards(pollin.position, JumpTarget.position, step);
                 yield return null;
             }
+
+            pollin.transform.Rotate(0, 0, 90);
         }
 
         private IEnumerator GoToDiaperChanger()
         {
             Players[Character.Pollin].GoTo(WalkTarget.position, 1.2f);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(2);
         }
     }
 }
