@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +11,6 @@ namespace Code.Scripts.SceneController
         public GameObject Fetus;
         public GameObject Dani;
         public GameObject Girls;
-        public GameObject SpeechBubble;
         public List<AudioClip> AudioClips;
         public AudioSource AudioPlayer;
         public Vector3 BirthPosition;
@@ -47,27 +45,6 @@ namespace Code.Scripts.SceneController
             GameElements.GetComponent<SpriteRenderer>().enabled = true;
         }
 
-        private IEnumerator BubbleSpeek()
-        {
-            SetUpSpeechBubble();
-            yield return FillSpeechbubble();
-            yield return new WaitForSeconds(2);
-            yield return FillSpeechbubble();
-            yield return new WaitForSeconds(2);
-        }
-
-        private IEnumerator FillSpeechbubble()
-        {
-            Text.text = string.Empty;
-            string bubbleText = CutsceneStrings[CutsceneStringCounter++];
-            char[] charArray = bubbleText.ToCharArray();
-            foreach (char c in charArray)
-            {
-                Text.text += c;
-                yield return new WaitForSeconds(0.08f);
-            }
-        }
-
         private IEnumerator GiveBirth()
         {
             yield return ThrowObject(Fetus);
@@ -93,7 +70,8 @@ namespace Code.Scripts.SceneController
             yield return ShowNextTextSection(1);
             PlayIntroMusic();
             yield return SwordRoomCutscene();
-            yield return BubbleSpeek();
+            SetUpSpeechBubble();
+            yield return ShowNextBubbleText(2);
             DaniAnimator.SetTrigger("GiveSword");
             yield return new WaitForSeconds(5);
             CameraAnimator.SetTrigger("MoveCameraUp");
@@ -124,12 +102,6 @@ namespace Code.Scripts.SceneController
         {
             AudioPlayer.clip = AudioClips[0];
             AudioPlayer.Play();
-        }
-
-        private void SetUpSpeechBubble()
-        {
-            SpeechBubble.GetComponent<SpriteRenderer>().enabled = true;
-            Text = SpeechBubble.GetComponentInChildren<TMP_Text>();
         }
 
         private IEnumerator SwordRoomCutscene()

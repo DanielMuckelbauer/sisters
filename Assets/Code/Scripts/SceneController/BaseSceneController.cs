@@ -12,10 +12,14 @@ namespace Code.Scripts.SceneController
         public TMP_Text Text;
         public GameObject UiCanvas;
         public GameObject GameElements;
+        public GameObject SpeechBubble;
 
         protected List<string> CutsceneStrings;
         protected int CutsceneStringCounter;
 
+        /// <summary>
+        /// Initializes the cutscene strings from the provided textfile
+        /// </summary>
         protected virtual void Start()
         {
             InitializeCutsceneStrings();
@@ -36,6 +40,35 @@ namespace Code.Scripts.SceneController
         {
             SetNextCutSceneString();
             yield return new WaitForSeconds(time);
+        }
+
+        protected IEnumerator FillSpeechbubble()
+        {
+            Text.text = string.Empty;
+            string bubbleText = CutsceneStrings[CutsceneStringCounter++];
+            char[] charArray = bubbleText.ToCharArray();
+            foreach (char c in charArray)
+            {
+                Text.text += c;
+                yield return new WaitForSeconds(0.08f);
+            }
+        }
+
+        protected void SetUpSpeechBubble()
+        {
+            if (SpeechBubble == null)
+                return;
+            SpeechBubble.GetComponent<SpriteRenderer>().enabled = true;
+            Text = SpeechBubble.GetComponentInChildren<TMP_Text>();
+        }
+
+        protected IEnumerator ShowNextBubbleText(int times = 1)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                yield return FillSpeechbubble();
+                yield return new WaitForSeconds(2);
+            }
         }
     }
 }
