@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using Code.Classes;
+using Code.Scripts.Entity;
 using UnityEngine;
 
 namespace Code.Scripts.SceneController
@@ -27,7 +30,8 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator PlayEndingCutscene()
         {
-            MainCamera.GetComponent<FollowingCamera>().Following = false;
+            DisablePlayerMovement();
+            DisableFollowingCamera();
             Vector3 targetPosition = new Vector3(CutsceneTarget.position.x, CutsceneTarget.position.y,
                 MainCamera.transform.position.z);
             StartCoroutine(MoveCamera(targetPosition));

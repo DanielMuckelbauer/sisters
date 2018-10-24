@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Code.Classes;
+using Code.Scripts.Entity;
 using TMPro;
 using UnityEngine;
 
@@ -14,9 +16,11 @@ namespace Code.Scripts.SceneController
         public GameObject GameElements;
         public GameObject SpeechBubble;
         public GameObject MainCamera;
+        public List<Player> PlayersGoList;
 
         protected List<string> CutsceneStrings;
         protected int CutsceneStringCounter;
+        protected Dictionary<Character, Player> Players;
 
         /// <summary>
         /// Initializes the cutscene strings from the provided textfile
@@ -24,6 +28,31 @@ namespace Code.Scripts.SceneController
         protected virtual void Start()
         {
             InitializeCutsceneStrings();
+            InitializePlayerDictionary();
+        }
+
+        protected void DisablePlayerMovement()
+        {
+            foreach (Player player in Players.Values)
+            {
+                player.DisableMovement = true;
+            }
+        }
+
+        protected void DisableFollowingCamera()
+        {
+            MainCamera.GetComponent<FollowingCamera>().Following = false;
+        }
+
+        private void InitializePlayerDictionary()
+        {
+            Players = new Dictionary<Character, Player>();
+            if (PlayersGoList == null || PlayersGoList.Count == 0)
+                return;
+            Player muni = PlayersGoList.First(p => p.gameObject.name.Contains("Muni"));
+            Players.Add(Character.Muni, muni);
+            Player pollin = PlayersGoList.First(p => p.gameObject.name.Contains("Pollin"));
+            Players.Add(Character.Pollin, pollin);
         }
 
         protected void SetNextCutSceneString()

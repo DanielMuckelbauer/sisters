@@ -17,6 +17,7 @@ namespace Code.Scripts.Entity
         public AudioSource Swing;
         public Transform GroundCheck;
         public List<GameObject> Hearts;
+        public bool DisableMovement { get; set; }
         protected Dictionary<Control, string> Controls;
 
         private const int Life = 5;
@@ -37,6 +38,8 @@ namespace Code.Scripts.Entity
 
         private void Update()
         {
+            if (DisableMovement)
+                return;
             CheckJump();
             CheckStrike();
             CheckGroundedForJumpAnimation();
@@ -49,6 +52,11 @@ namespace Code.Scripts.Entity
 
         private void FixedUpdate()
         {
+            if (DisableMovement)
+            {
+                MovementController.Move(0);
+                return;
+            }
             CheckMove();
         }
 
