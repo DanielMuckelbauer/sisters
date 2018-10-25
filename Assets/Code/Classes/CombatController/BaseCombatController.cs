@@ -7,17 +7,18 @@ namespace Code.Classes.CombatController
     {
         protected readonly GameObject GameObject;
         protected int MaxLife;
+        protected int CurrentLife;
 
         protected BaseCombatController(GameObject go, int maxLife)
         {
             GameObject = go;
-            MaxLife = maxLife;
+            CurrentLife = MaxLife = maxLife;
         }
 
         public virtual void ReceiveHit(Collision2D collision)
         {
-            MaxLife -= 1;
-            if (MaxLife <= 0)
+            CurrentLife -= 1;
+            if (CurrentLife <= 0)
                 GameObject.GetComponent<BaseEntity>().Die();
         }
     }

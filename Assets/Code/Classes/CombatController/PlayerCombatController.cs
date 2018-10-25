@@ -8,12 +8,12 @@ namespace Code.Classes.CombatController
     public class PlayerCombatController : BaseCombatController
     {
         private readonly List<GameObject> hearts;
-        private int heartCounter;
+        private int heartIndex;
 
         public PlayerCombatController(GameObject go, int maxLife) : base(go, maxLife)
         {
             hearts = go.GetComponent<Player>().Hearts;
-            heartCounter = hearts.Count - 1;
+            heartIndex = hearts.Count - 1;
             Healer.OnHealingConsumed += RefillHearts;
         }
 
@@ -32,12 +32,14 @@ namespace Code.Classes.CombatController
 
         private void RefillHearts()
         {
-            heartCounter = 4;
+            CurrentLife = MaxLife;
+            heartIndex = 4;
             hearts.ForEach(h => h.GetComponent<SpriteRenderer>().enabled = true);
         }
+
         private void RemoveHeart()
         {
-            GameObject currentHeart = hearts[heartCounter--];
+            GameObject currentHeart = hearts[heartIndex--];
             currentHeart.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
