@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Code.Scripts.SceneController
 {
@@ -187,7 +188,7 @@ namespace Code.Scripts.SceneController
             CanvasText.text = "You Died";
             UiCanvas.SetActive(true);
             yield return new WaitForSeconds(7);
-            Application.Quit();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
