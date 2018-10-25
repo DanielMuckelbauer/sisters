@@ -135,10 +135,18 @@ namespace Code.Scripts.SceneController
 
         private Vector3 FindClosestSpawnPoint()
         {
-            Vector3 middlePoint =
-                (Players[Character.Pollin].transform.position + Players[Character.Muni].transform.position) / 2;
-            float minDistance = respawnPoints.Min(rp => Vector3.Distance(middlePoint, rp.position));
-            Vector3 closest = respawnPoints.First(rp => Vector3.Distance(middlePoint, rp.position) == minDistance)
+            var leftRespawnPoints = respawnPoints
+                .FindAll(rp => rp.position.x <= Players[Character.Pollin].transform.position.x);
+            //Vector3 middlePoint =
+            //    (Players[Character.Pollin].transform.position + Players[Character.Muni].transform.position) / 2;
+            //float minDistance = respawnPoints.Min(rp => Vector3.Distance(middlePoint, rp.position));
+            //Vector3 closest = respawnPoints.First(rp => Vector3.Distance(middlePoint, rp.position) == minDistance)
+            //    .position;
+            //return closest;
+            float minDistance = leftRespawnPoints.Min(rp =>
+                Vector3.Distance(Players[Character.Pollin].transform.position, rp.position));
+            Vector3 closest = leftRespawnPoints.First(rp =>
+                    Vector3.Distance(Players[Character.Pollin].transform.position, rp.position) == minDistance)
                 .position;
             return closest;
         }

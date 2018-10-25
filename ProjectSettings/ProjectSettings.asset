@@ -618,7 +618,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 28eb2c41-5cfc-4f41-abff-defbbe690593
   projectName: Sisters
   organizationId: daniel-muckelbauer
