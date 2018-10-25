@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Scripts
 {
-    public class ProximityShooter : MonoBehaviour
+    public class SingleTargetProximityShooter : MonoBehaviour
     {
         public GameObject Projectile;
         public Transform SpawnPoint;
@@ -13,7 +13,7 @@ namespace Code.Scripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.gameObject.tag.Contains("Player"))
+            if (!other.gameObject.tag.Contains("Player") || shooting != null)
                 return;
             player = other.gameObject;
             shooting = StartCoroutine(ToggleShooting());
@@ -24,6 +24,7 @@ namespace Code.Scripts
             if (!other.gameObject.tag.Contains("Player") || shooting == null)
                 return;
             StopCoroutine(shooting);
+            shooting = null;
         }
 
         private IEnumerator ToggleShooting()
