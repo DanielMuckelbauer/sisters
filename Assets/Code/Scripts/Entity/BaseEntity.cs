@@ -34,7 +34,6 @@ namespace Code.Scripts.Entity
             Vector3 currentPosition = transform.position;
             while (Vector3.Distance(currentPosition, target) > tolerance)
             {
-                Debug.Log(Vector3.Distance(transform.position, target));
                 MovementController.Move(horizontal);
                 currentPosition = transform.position;
                 yield return null;

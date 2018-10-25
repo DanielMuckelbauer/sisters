@@ -48,11 +48,10 @@ namespace Code.Scripts.SceneController
             pollin.GetComponent<Rigidbody2D>().isKinematic = true;
             while (pollin.position != JumpTarget.position)
             {
-                float step = 1.7f * Time.deltaTime;
+                float step = 2f * Time.deltaTime;
                 pollin.position = Vector3.MoveTowards(pollin.position, JumpTarget.position, step);
                 yield return null;
             }
-
             pollin.transform.Rotate(0, 0, 90);
         }
 

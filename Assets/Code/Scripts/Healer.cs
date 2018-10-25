@@ -11,10 +11,13 @@ namespace Code.Scripts
         public delegate void HealingEventHandler();
         public static event HealingEventHandler OnHealingConsumed;
 
+        private bool collisionTriggered;
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.gameObject.tag.Contains("Player"))
+            if (!other.gameObject.tag.Contains("Player") || collisionTriggered)
                 return;
+            collisionTriggered = true;
             OnHealingConsumed?.Invoke();
             StartCoroutine(DelayedDestroy());
             MainAudioSource.volume = 0.1f;
