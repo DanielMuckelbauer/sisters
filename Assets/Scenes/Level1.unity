@@ -1629,11 +1629,21 @@ Prefab:
     - target: {fileID: 114200585446722812, guid: d46158ea0ff711448b022b47d5cd3175,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114200585446722812, guid: d46158ea0ff711448b022b47d5cd3175,
         type: 2}
       propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212044942219824304, guid: d46158ea0ff711448b022b47d5cd3175,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114200585446722812, guid: d46158ea0ff711448b022b47d5cd3175,
+        type: 2}
+      propertyPath: m_overflowMode
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
