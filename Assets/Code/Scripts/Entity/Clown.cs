@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using Code.Classes.CombatController;
+﻿using Code.Classes.CombatController;
 using Code.Classes.MovementController;
+using System.Collections;
 using UnityEngine;
 
 namespace Code.Scripts.Entity
@@ -15,7 +15,6 @@ namespace Code.Scripts.Entity
 
         public override void StartBossFight()
         {
-            
         }
 
         public override void HitByProjectile(GameObject projectile)
@@ -37,7 +36,7 @@ namespace Code.Scripts.Entity
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if(collision.gameObject.tag.Contains("Weapon"))
+            if (collision.gameObject.tag.Contains("Weapon"))
                 CombatController.ReceiveHit(collision);
         }
     }

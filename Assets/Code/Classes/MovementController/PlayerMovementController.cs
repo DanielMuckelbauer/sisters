@@ -15,7 +15,7 @@ namespace Code.Classes.MovementController
         public override void Move(float horizontal)
         {
             ApplyMovement(horizontal);
-            Animator.SetInteger("Walking", (int) horizontal);
+            Animator.SetInteger("Walking", (int)horizontal);
             TryFlip(horizontal);
         }
 

@@ -7,7 +7,7 @@ namespace Code.Scripts
     {
         public Transform Target;
 
-        void Start()
+        private void Start()
         {
             StartCoroutine(ShootPeriodically());
         }

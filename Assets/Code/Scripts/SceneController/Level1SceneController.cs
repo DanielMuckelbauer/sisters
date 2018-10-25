@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using Code.Classes;
+﻿using Code.Classes;
+using System.Collections;
 using UnityEngine;
 
 namespace Code.Scripts.SceneController

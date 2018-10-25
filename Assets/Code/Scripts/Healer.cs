@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Code.Scripts
@@ -8,7 +7,9 @@ namespace Code.Scripts
     {
         public AudioSource AnpanAudioSource;
         public AudioSource MainAudioSource;
+
         public delegate void HealingEventHandler();
+
         public static event HealingEventHandler OnHealingConsumed;
 
         private bool collisionTriggered;

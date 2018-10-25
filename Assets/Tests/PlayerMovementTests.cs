@@ -1,5 +1,4 @@
-﻿using Code.Classes;
-using Code.Classes.MovementController;
+﻿using Code.Classes.MovementController;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -21,7 +20,7 @@ namespace Tests
         {
             GameObject player = CreatePlayer();
             IMovementController movementController =
-                new PlayerMovementController(player, 4, new RectTransform()) {LookingRight = true};
+                new PlayerMovementController(player, 4, new RectTransform()) { LookingRight = true };
             movementController.Move(5);
             Assert.IsTrue(movementController.LookingRight);
         }

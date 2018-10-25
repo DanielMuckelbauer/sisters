@@ -1,5 +1,4 @@
-﻿using Code.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Code.Classes
 {

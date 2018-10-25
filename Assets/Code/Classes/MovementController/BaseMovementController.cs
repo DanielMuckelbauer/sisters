@@ -28,6 +28,7 @@ namespace Code.Classes.MovementController
         }
 
         public abstract void Move(float horizontal);
+
         public abstract void Jump();
     }
 }

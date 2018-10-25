@@ -14,7 +14,6 @@ namespace Code.Scripts
         protected Vector3 Direction;
         private HashSet<GameObject> childList;
 
-
         protected virtual void Start()
         {
             StartCoroutine(DirectionChangeLoop());

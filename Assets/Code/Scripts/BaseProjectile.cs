@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using Code.Scripts.Entity;
+﻿using Code.Scripts.Entity;
+using System.Collections;
 using UnityEngine;
 
 namespace Code.Scripts

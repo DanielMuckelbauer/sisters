@@ -20,13 +20,7 @@ namespace Code.Scripts.Entity
         protected Dictionary<Control, string> Controls;
 
         private const int Life = 5;
-        private Vector3 originalPosition;
-        private bool movementDisabled = false;
-
-        public override void Die()
-        {
-            transform.position = originalPosition;
-        }
+        private bool movementDisabled;
 
         public void DisableMovement()
         {
@@ -39,7 +33,6 @@ namespace Code.Scripts.Entity
             WalkingSpeed = 4;
             MovementController = new PlayerMovementController(gameObject, WalkingSpeed, GroundCheck);
             CombatController = new PlayerCombatController(gameObject, Life);
-            originalPosition = transform.position;
         }
 
         private void Update()

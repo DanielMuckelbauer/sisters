@@ -1,13 +1,16 @@
 ﻿using Code.Scripts.Entity;
+using Code.Scripts.SceneController;
 using UnityEngine;
 
 namespace Code.Scripts
 {
-    public class Hazard : MonoBehaviour {
+    public class Hazard : MonoBehaviour
+    {
+
         private void OnCollisionEnter2D(Collision2D other)
         {
-            BaseEntity baseEntity = other.gameObject.GetComponent<BaseEntity>();
-            baseEntity?.Die();
+            if (other.gameObject.tag.Contains("Player"))
+                BaseSceneController.InvokeRespawnBoth();
         }
     }
 }
