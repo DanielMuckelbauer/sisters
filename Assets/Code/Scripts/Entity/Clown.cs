@@ -7,20 +7,14 @@ namespace Code.Scripts.Entity
 {
     public class Clown : BossEnemy
     {
-        private void Start()
-        {
-            CombatController = new EnemyCombatController(gameObject, 6);
-            MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
-        }
-
-        public override void StartBossFight()
-        {
-        }
-
         public override void HitByProjectile(GameObject projectile)
         {
             base.HitByProjectile(projectile);
             CombatController.ReceiveHit(new Collision2D());
+        }
+
+        public override void StartBossFight()
+        {
         }
 
         protected override IEnumerator Patrol()
@@ -38,6 +32,12 @@ namespace Code.Scripts.Entity
         {
             if (collision.gameObject.tag.Contains("Weapon"))
                 CombatController.ReceiveHit(collision);
+        }
+
+        private void Start()
+        {
+            CombatController = new EnemyCombatController(gameObject, 6);
+            MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
         }
     }
 }

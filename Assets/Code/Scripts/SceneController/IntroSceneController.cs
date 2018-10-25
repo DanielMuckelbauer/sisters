@@ -7,29 +7,23 @@ namespace Code.Scripts.SceneController
 {
     public class IntroSceneController : BaseSceneController
     {
-        public GameObject Chicken;
-        public GameObject Fetus;
-        public GameObject Dani;
-        public GameObject Girls;
         public List<AudioClip> AudioClips;
         public AudioSource AudioPlayer;
         public Vector3 BirthPosition;
-        public SpriteRenderer Stars;
-        public Sprite SwordRoom;
-        public SpriteRenderer Title;
+        public GameObject Chicken;
+        public GameObject Dani;
         public Animator DaniAnimator;
+        public GameObject Fetus;
+        public GameObject Girls;
+        public SpriteRenderer Stars;
         public Transform Sword;
+        public Sprite SwordRoom;
         public Transform SwordTarget;
-
-        private Animator cameraAnimator;
-        private List<GameObject> birthedObjects;
+        public SpriteRenderer Title;
         private const float BirthForce = 250;
+        private List<GameObject> birthedObjects;
+        private Animator cameraAnimator;
         private bool moveSword;
-
-        private void Update()
-        {
-            MoveSwordDown();
-        }
 
         protected override void Start()
         {
@@ -61,6 +55,17 @@ namespace Code.Scripts.SceneController
             yield return GiveBirth();
         }
 
+        private void MoveSwordDown()
+        {
+            if (!moveSword)
+                return;
+            const float speed = 4.5f;
+            if (Sword.position.y <= SwordTarget.position.y)
+                moveSword = false;
+            float step = speed * Time.deltaTime;
+            Sword.position = Vector3.MoveTowards(Sword.position, SwordTarget.position, step);
+        }
+
         private IEnumerator PlayCutScene()
         {
             yield return ShowNextTextSection(1, 2);
@@ -82,15 +87,10 @@ namespace Code.Scripts.SceneController
             SceneManager.LoadScene("Level1");
         }
 
-        private void MoveSwordDown()
+        private void PlayIntroMusic()
         {
-            if (!moveSword)
-                return;
-            const float speed = 4.5f;
-            if (Sword.position.y <= SwordTarget.position.y)
-                moveSword = false;
-            float step = speed * Time.deltaTime;
-            Sword.position = Vector3.MoveTowards(Sword.position, SwordTarget.position, step);
+            AudioPlayer.clip = AudioClips[0];
+            AudioPlayer.Play();
         }
 
         private void ReactivateText()
@@ -98,12 +98,6 @@ namespace Code.Scripts.SceneController
             birthedObjects.ForEach(Destroy);
             GameElements.GetComponent<SpriteRenderer>().enabled = false;
             UiCanvas.SetActive(true);
-        }
-
-        private void PlayIntroMusic()
-        {
-            AudioPlayer.clip = AudioClips[0];
-            AudioPlayer.Play();
         }
 
         private IEnumerator SwordRoomCutscene()
@@ -124,6 +118,11 @@ namespace Code.Scripts.SceneController
             rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
             rigidBody.AddTorque(2, ForceMode2D.Impulse);
             yield return new WaitForSeconds(1.5f);
+        }
+
+        private void Update()
+        {
+            MoveSwordDown();
         }
     }
 }

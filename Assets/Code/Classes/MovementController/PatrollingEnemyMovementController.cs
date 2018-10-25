@@ -9,16 +9,16 @@ namespace Code.Classes.MovementController
             Speed = speed;
         }
 
+        public override void Jump()
+        {
+            RigidBody.AddForce(Vector2.up * JumpForce);
+        }
+
         public override void Move(float horizontal)
         {
             Vector2 currentVelocity = Vector2.zero;
             currentVelocity.x = horizontal * Speed;
             RigidBody.velocity = currentVelocity;
-        }
-
-        public override void Jump()
-        {
-            RigidBody.AddForce(Vector2.up * JumpForce);
         }
     }
 }

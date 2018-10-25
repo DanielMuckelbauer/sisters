@@ -1,24 +1,23 @@
-﻿using System;
-using Code.Classes;
+﻿using Code.Classes;
 using Code.Scripts.Entity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace Code.Scripts.SceneController
 {
     public class BaseSceneController : MonoBehaviour
     {
+        public TMP_Text BubbleText;
+        public TMP_Text CanvasText;
         public GameObject GameElements;
         public GameObject MainCamera;
         public List<Player> PlayersGoList;
         public GameObject RespawnPointParent;
         public GameObject SpeechBubble;
-        public TMP_Text BubbleText;
-        public TMP_Text CanvasText;
         public TextAsset TextAsset;
         public GameObject UiCanvas;
         protected int CutsceneStringCounter;
@@ -50,6 +49,8 @@ namespace Code.Scripts.SceneController
             float startTime = Time.time;
             while (t < 1)
             {
+                if (sprite == null)
+                    yield break;
                 t = (Time.time - startTime) / duration;
                 sprite.color = new Color(1f, 1f, 1f, Mathf.SmoothStep(from, to, t));
                 yield return new WaitForSeconds(0.2f);
@@ -131,24 +132,6 @@ namespace Code.Scripts.SceneController
             InitializePlayerDictionary();
         }
 
-        private void GameOverScreen()
-        {   
-            DisableFollowingCamera();
-            DisablePlayerMovement();
-            StartCoroutine(ShowDied());
-        }
-
-        private IEnumerator ShowDied()
-        {
-            FadeSceneOut();
-            yield return new WaitForSeconds(3);
-            CanvasText.color = Color.red;
-            CanvasText.text = "You Died";
-            UiCanvas.SetActive(true);
-            yield return new WaitForSeconds(7);
-            Application.Quit();
-        }
-
         private Vector3 FindClosestSpawnPoint()
         {
             Vector3 middlePoint =
@@ -157,6 +140,13 @@ namespace Code.Scripts.SceneController
             Vector3 closest = respawnPoints.First(rp => Vector3.Distance(middlePoint, rp.position) == minDistance)
                 .position;
             return closest;
+        }
+
+        private void GameOverScreen()
+        {
+            DisableFollowingCamera();
+            DisablePlayerMovement();
+            StartCoroutine(ShowDied());
         }
 
         private void InitializeCutsceneStrings()
@@ -187,6 +177,17 @@ namespace Code.Scripts.SceneController
             Vector3 offset = new Vector3(1, 0, 0);
             Players[Character.Pollin].transform.position = closest + offset;
             Players[Character.Muni].transform.position = closest - offset;
+        }
+
+        private IEnumerator ShowDied()
+        {
+            FadeSceneOut();
+            yield return new WaitForSeconds(3);
+            CanvasText.color = Color.red;
+            CanvasText.text = "You Died";
+            UiCanvas.SetActive(true);
+            yield return new WaitForSeconds(7);
+            Application.Quit();
         }
     }
 }

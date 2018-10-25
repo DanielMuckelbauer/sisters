@@ -24,18 +24,17 @@ namespace Code.Classes.CombatController
             RemoveHeart();
         }
 
-        private void RefillHearts()
-        {
-            heartCounter = 4;
-            hearts.ForEach(h => h.GetComponent<SpriteRenderer>().enabled = true);
-        }
-
         private void PushBackward(Collision2D collision)
         {
             const int magnitude = 1000;
             GameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * magnitude);
         }
 
+        private void RefillHearts()
+        {
+            heartCounter = 4;
+            hearts.ForEach(h => h.GetComponent<SpriteRenderer>().enabled = true);
+        }
         private void RemoveHeart()
         {
             GameObject currentHeart = hearts[heartCounter--];

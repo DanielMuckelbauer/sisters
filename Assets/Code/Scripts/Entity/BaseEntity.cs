@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections;
-using Code.Classes.CombatController;
+﻿using Code.Classes.CombatController;
 using Code.Classes.MovementController;
+using System.Collections;
 using UnityEngine;
 
 namespace Code.Scripts.Entity
@@ -9,15 +8,9 @@ namespace Code.Scripts.Entity
     public abstract class BaseEntity : MonoBehaviour
     {
         public Animator Animator;
-        protected float WalkingSpeed = 5;
-        protected IMovementController MovementController;
         protected ICombatController CombatController;
-
-        public virtual void HitByProjectile(GameObject projectile)
-        {
-            Destroy(projectile);
-        }
-
+        protected IMovementController MovementController;
+        protected float WalkingSpeed = 5;
         public virtual void Die()
         {
             Destroy(gameObject);
@@ -28,6 +21,10 @@ namespace Code.Scripts.Entity
             StartCoroutine(MoveToTarget(target, tolerance));
         }
 
+        public virtual void HitByProjectile(GameObject projectile)
+        {
+            Destroy(projectile);
+        }
         private IEnumerator MoveToTarget(Vector3 target, float tolerance)
         {
             int horizontal = (target.x < transform.position.x) ? -1 : 1;

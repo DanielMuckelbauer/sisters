@@ -7,20 +7,31 @@ namespace Code.Scripts.SceneController
     public class Level1SceneController : BaseSceneController
     {
         public Transform CameraTarget;
-        public Transform WalkTarget;
         public Transform JumpTarget;
-
+        public Transform WalkTarget;
         protected override void Start()
         {
             base.Start();
             StartCoroutine(PlayOpeningCutscene());
         }
 
-        private IEnumerator PlayOpeningCutscene()
+        private IEnumerator GoToDiaperChanger()
         {
-            yield return ShowNextTextSection(1, 4);
-            UiCanvas.SetActive(false);
-            GameElements.SetActive(true);
+            Players[Character.Pollin].GoTo(WalkTarget.position, 1.2f);
+            yield return new WaitForSeconds(2);
+        }
+
+        private IEnumerator JumpUpToDiaperChanger()
+        {
+            Transform pollin = Players[Character.Pollin].transform;
+            pollin.GetComponent<Rigidbody2D>().isKinematic = true;
+            while (pollin.position != JumpTarget.position)
+            {
+                float step = 3f * Time.deltaTime;
+                pollin.position = Vector3.MoveTowards(pollin.position, JumpTarget.position, step);
+                yield return null;
+            }
+            pollin.transform.Rotate(0, 0, 90);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -46,23 +57,11 @@ namespace Code.Scripts.SceneController
             Application.Quit();
         }
 
-        private IEnumerator JumpUpToDiaperChanger()
+        private IEnumerator PlayOpeningCutscene()
         {
-            Transform pollin = Players[Character.Pollin].transform;
-            pollin.GetComponent<Rigidbody2D>().isKinematic = true;
-            while (pollin.position != JumpTarget.position)
-            {
-                float step = 3f * Time.deltaTime;
-                pollin.position = Vector3.MoveTowards(pollin.position, JumpTarget.position, step);
-                yield return null;
-            }
-            pollin.transform.Rotate(0, 0, 90);
-        }
-
-        private IEnumerator GoToDiaperChanger()
-        {
-            Players[Character.Pollin].GoTo(WalkTarget.position, 1.2f);
-            yield return new WaitForSeconds(2);
+            yield return ShowNextTextSection(1, 4);
+            UiCanvas.SetActive(false);
+            GameElements.SetActive(true);
         }
     }
 }

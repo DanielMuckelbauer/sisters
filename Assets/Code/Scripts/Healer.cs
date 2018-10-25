@@ -8,12 +8,19 @@ namespace Code.Scripts
         public AudioSource AnpanAudioSource;
         public AudioSource MainAudioSource;
 
+        private bool collisionTriggered;
+
+        private float originalVolume;
+
         public delegate void HealingEventHandler();
 
         public static event HealingEventHandler OnHealingConsumed;
-
-        private bool collisionTriggered;
-        private float originalVolume;
+        private IEnumerator DelayedDestroy()
+        {
+            yield return new WaitForSeconds(4.5f);
+            MainAudioSource.volume = originalVolume;
+            Destroy(gameObject);
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -30,13 +37,6 @@ namespace Code.Scripts
             originalVolume = MainAudioSource.volume;
             MainAudioSource.volume = 0.1f;
             AnpanAudioSource.Play();
-        }
-
-        private IEnumerator DelayedDestroy()
-        {
-            yield return new WaitForSeconds(4.5f);
-            MainAudioSource.volume = originalVolume;
-            Destroy(gameObject);
         }
     }
 }

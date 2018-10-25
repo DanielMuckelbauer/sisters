@@ -12,6 +12,19 @@ namespace Code.Classes.MovementController
             Speed = speed;
         }
 
+        public override bool CheckGrounded()
+        {
+            return Physics2D.Linecast(Transform.position, groundCheck.position, LayerMask);
+        }
+
+        public override void Jump()
+        {
+            if (!CheckGrounded())
+                return;
+            Animator.SetTrigger("Jump");
+            RigidBody.AddForce(Vector2.up * JumpForce);
+        }
+
         public override void Move(float horizontal)
         {
             ApplyMovement(horizontal);
@@ -26,6 +39,13 @@ namespace Code.Classes.MovementController
             RigidBody.velocity = currentVelocity;
         }
 
+        private void Flip()
+        {
+            Vector3 theScale = Transform.localScale;
+            theScale.x *= -1;
+            Transform.localScale = theScale;
+        }
+
         private void TryFlip(float horizontal)
         {
             if (LookingRight && horizontal < 0)
@@ -38,26 +58,6 @@ namespace Code.Classes.MovementController
                 LookingRight = true;
                 Flip();
             }
-        }
-
-        private void Flip()
-        {
-            Vector3 theScale = Transform.localScale;
-            theScale.x *= -1;
-            Transform.localScale = theScale;
-        }
-
-        public override void Jump()
-        {
-            if (!CheckGrounded())
-                return;
-            Animator.SetTrigger("Jump");
-            RigidBody.AddForce(Vector2.up * JumpForce);
-        }
-
-        public override bool CheckGrounded()
-        {
-            return Physics2D.Linecast(Transform.position, groundCheck.position, LayerMask);
         }
     }
 }

@@ -9,14 +9,15 @@ namespace Code.Scripts.Entity
     {
         public bool Patrolling;
 
-        private void Start()
+        protected override IEnumerator Patrol()
         {
-            WalkingSpeed = 2;
-            CombatController = new EnemyCombatController(gameObject, 1);
-            MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
-            if (Patrolling)
-                StartPatrolling();
-            StartCoroutine(JumpRandomly());
+            while (true)
+            {
+                MovementController.Move(1);
+                yield return new WaitForSeconds(1);
+                MovementController.Move(-1);
+                yield return new WaitForSeconds(1);
+            }
         }
 
         private IEnumerator JumpRandomly()
@@ -35,15 +36,14 @@ namespace Code.Scripts.Entity
             CombatController.ReceiveHit(collision);
         }
 
-        protected override IEnumerator Patrol()
+        private void Start()
         {
-            while (true)
-            {
-                MovementController.Move(1);
-                yield return new WaitForSeconds(1);
-                MovementController.Move(-1);
-                yield return new WaitForSeconds(1);
-            }
+            WalkingSpeed = 2;
+            CombatController = new EnemyCombatController(gameObject, 1);
+            MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
+            if (Patrolling)
+                StartPatrolling();
+            StartCoroutine(JumpRandomly());
         }
     }
 }

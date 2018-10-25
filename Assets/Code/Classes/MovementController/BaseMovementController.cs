@@ -4,19 +4,13 @@ namespace Code.Classes.MovementController
 {
     public abstract class BaseMovementController : IMovementController
     {
-        public bool LookingRight { get; set; }
-
-        public virtual bool CheckGrounded()
-        {
-            return true;
-        }
-
-        protected readonly Transform Transform;
-        protected readonly Rigidbody2D RigidBody;
+        protected const float JumpForce = 470;
         protected readonly Animator Animator;
         protected readonly int LayerMask;
+        protected readonly Rigidbody2D RigidBody;
+        protected readonly Transform Transform;
         protected float Speed = 4;
-        protected const float JumpForce = 470;
+        public bool LookingRight { get; set; }
 
         protected BaseMovementController(GameObject gameObject)
         {
@@ -27,8 +21,12 @@ namespace Code.Classes.MovementController
             LookingRight = true;
         }
 
-        public abstract void Move(float horizontal);
-
+        public virtual bool CheckGrounded()
+        {
+            return true;
+        }
         public abstract void Jump();
+
+        public abstract void Move(float horizontal);
     }
 }
