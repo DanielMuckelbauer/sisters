@@ -1,6 +1,8 @@
-﻿using Code.Classes.CombatController;
+﻿using System;
+using Code.Classes.CombatController;
 using Code.Classes.MovementController;
 using System.Collections.Generic;
+using Code.Scripts.SceneController;
 using UnityEngine;
 
 namespace Code.Scripts.Entity
@@ -21,6 +23,15 @@ namespace Code.Scripts.Entity
 
         private const int Life = 5;
         private bool movementDisabled;
+
+        public static event Action OnDie;
+
+
+        public override void Die()
+        {
+            base.Die();
+            OnDie?.Invoke();
+        }
 
         public void DisableMovement()
         {

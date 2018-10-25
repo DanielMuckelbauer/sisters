@@ -1805,6 +1805,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4963650752940230, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
     type: 2}
   m_PrefabInternal: {fileID: 804331243}
+--- !u!114 &809867426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114200585446722812, guid: d46158ea0ff711448b022b47d5cd3175,
+    type: 2}
+  m_PrefabInternal: {fileID: 780471214}
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
 --- !u!1001 &825317419
 Prefab:
   m_ObjectHideFlags: 0
@@ -2572,7 +2578,7 @@ Prefab:
     - target: {fileID: 224848988390109092, guid: 7a41169db5b9a47de92d0f444681886c,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 45
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a41169db5b9a47de92d0f444681886c, type: 2}
@@ -45664,7 +45670,8 @@ MonoBehaviour:
   - {fileID: 868452995}
   RespawnPointParent: {fileID: 693643190}
   SpeechBubble: {fileID: 1004239336}
-  Text: {fileID: 579961739}
+  BubbleText: {fileID: 809867426}
+  CanvasText: {fileID: 579961739}
   TextAsset: {fileID: 4900000, guid: 0d40720350b5895428dc047baccd4e74, type: 3}
   UiCanvas: {fileID: 2047405984}
   CameraTarget: {fileID: 1850352708}

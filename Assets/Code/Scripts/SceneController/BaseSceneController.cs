@@ -1,10 +1,12 @@
-﻿using Code.Classes;
+﻿using System;
+using Code.Classes;
 using Code.Scripts.Entity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Code.Scripts.SceneController
 {
@@ -15,7 +17,8 @@ namespace Code.Scripts.SceneController
         public List<Player> PlayersGoList;
         public GameObject RespawnPointParent;
         public GameObject SpeechBubble;
-        public TMP_Text Text;
+        public TMP_Text BubbleText;
+        public TMP_Text CanvasText;
         public TextAsset TextAsset;
         public GameObject UiCanvas;
         protected int CutsceneStringCounter;
@@ -23,9 +26,7 @@ namespace Code.Scripts.SceneController
         protected Dictionary<Character, Player> Players;
         private List<Transform> respawnPoints;
 
-        public delegate void RespawnEventhandler();
-
-        public static event RespawnEventhandler OnRespawn;
+        public static event Action OnRespawn;
 
         public static void InvokeRespawnBoth()
         {
@@ -65,12 +66,12 @@ namespace Code.Scripts.SceneController
 
         protected IEnumerator FillSpeechbubble()
         {
-            Text.text = string.Empty;
+            BubbleText.text = string.Empty;
             string bubbleText = CutsceneStrings[CutsceneStringCounter++];
             char[] charArray = bubbleText.ToCharArray();
             foreach (char c in charArray)
             {
-                Text.text += c;
+                BubbleText.text += c;
                 yield return new WaitForSeconds(0.08f);
             }
         }
@@ -90,7 +91,7 @@ namespace Code.Scripts.SceneController
 
         protected void SetNextCutSceneString()
         {
-            Text.text = CutsceneStrings[CutsceneStringCounter++];
+            CanvasText.text = CutsceneStrings[CutsceneStringCounter++];
         }
 
         protected void SetUpSpeechBubble()
@@ -98,7 +99,6 @@ namespace Code.Scripts.SceneController
             if (SpeechBubble == null)
                 return;
             SpeechBubble.GetComponent<SpriteRenderer>().enabled = true;
-            Text = SpeechBubble.GetComponentInChildren<TMP_Text>();
         }
 
         protected IEnumerator ShowNextBubbleText(int times = 1)
@@ -126,8 +126,27 @@ namespace Code.Scripts.SceneController
         {
             respawnPoints = InitializeRespawnPoints();
             OnRespawn += RespawnBoth;
+            Player.OnDie += GameOverScreen;
             InitializeCutsceneStrings();
             InitializePlayerDictionary();
+        }
+
+        private void GameOverScreen()
+        {   
+            DisableFollowingCamera();
+            DisablePlayerMovement();
+            StartCoroutine(ShowDied());
+        }
+
+        private IEnumerator ShowDied()
+        {
+            FadeSceneOut();
+            yield return new WaitForSeconds(3);
+            CanvasText.color = Color.red;
+            CanvasText.text = "You Died";
+            UiCanvas.SetActive(true);
+            yield return new WaitForSeconds(7);
+            Application.Quit();
         }
 
         private Vector3 FindClosestSpawnPoint()
