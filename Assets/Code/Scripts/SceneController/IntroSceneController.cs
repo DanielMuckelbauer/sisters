@@ -76,8 +76,10 @@ namespace Code.Scripts.SceneController
             yield return new WaitForSeconds(5);
             cameraAnimator.SetTrigger("MoveCameraUp");
             yield return new WaitForSeconds(5);
-            StartCoroutine(MakeTitleAppear());
+            StartCoroutine(Fade(Title, 0, 1));
             moveSword = true;
+            yield return new WaitForSeconds(8);
+            SceneManager.LoadScene("Level1");
         }
 
         private void MoveSwordDown()
@@ -122,21 +124,6 @@ namespace Code.Scripts.SceneController
             rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
             rigidBody.AddTorque(2, ForceMode2D.Impulse);
             yield return new WaitForSeconds(1.5f);
-        }
-
-        private IEnumerator MakeTitleAppear()
-        {
-            const float duration = 5.0f;
-            float t = 0;
-            float startTime = Time.time;
-            while (t < 1)
-            {
-                t = (Time.time - startTime) / duration;
-                Title.color = new Color(1f, 1f, 1f, Mathf.SmoothStep(0, 1, t));
-                yield return new WaitForSeconds(0.2f);
-            }
-            yield return new WaitForSeconds(3);
-            SceneManager.LoadScene("Level1");
         }
     }
 }

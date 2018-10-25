@@ -39,7 +39,11 @@ namespace Code.Scripts.SceneController
             SetUpSpeechBubble();
             yield return ShowNextBubbleText(2);
             yield return GoToDiaperChanger();
+            SpeechBubble.SetActive(false);
             yield return JumpUpToDiaperChanger();
+            FadeSceneOut();
+            yield return new WaitForSeconds(10);
+            Application.Quit();
         }
 
         private IEnumerator JumpUpToDiaperChanger()
@@ -48,7 +52,7 @@ namespace Code.Scripts.SceneController
             pollin.GetComponent<Rigidbody2D>().isKinematic = true;
             while (pollin.position != JumpTarget.position)
             {
-                float step = 2f * Time.deltaTime;
+                float step = 3f * Time.deltaTime;
                 pollin.position = Vector3.MoveTowards(pollin.position, JumpTarget.position, step);
                 yield return null;
             }

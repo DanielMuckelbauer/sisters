@@ -114,5 +114,25 @@ namespace Code.Scripts.SceneController
                 yield return new WaitForSeconds(2);
             }
         }
+
+        protected void FadeSceneOut()
+        {
+            GameElements.GetComponentsInChildren<SpriteRenderer>().ToList()
+                .ForEach(s => { StartCoroutine(Fade(s, 1, 0)); });
+        }
+
+        protected IEnumerator Fade(SpriteRenderer sprite,int from, int to, float duration = 5)
+        {
+            float t = 0;
+            float startTime = Time.time;
+            while (t < 1)
+            {
+                t = (Time.time - startTime) / duration;
+                sprite.color = new Color(1f, 1f, 1f, Mathf.SmoothStep(from, to, t));
+                yield return new WaitForSeconds(0.2f);
+            }
+
+            yield return new WaitForSeconds(3);
+        }
     }
 }
