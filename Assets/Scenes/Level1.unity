@@ -1554,7 +1554,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 693643190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.142029, y: -0.7715199, z: 51.167896}
+  m_LocalPosition: {x: 15.142029, y: -0.7715199, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 455820010}
@@ -3012,7 +3012,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4410406953603094, guid: 1fa61d6d5e25cb34e99cd03253e524ba, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -28.22
+      value: -18.16
       objectReference: {fileID: 0}
     - target: {fileID: 4410406953603094, guid: 1fa61d6d5e25cb34e99cd03253e524ba, type: 2}
       propertyPath: m_LocalPosition.y
@@ -45657,16 +45657,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b519f8c16cb99646960c476d4b9b731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextAsset: {fileID: 4900000, guid: 0d40720350b5895428dc047baccd4e74, type: 3}
-  Text: {fileID: 579961739}
-  UiCanvas: {fileID: 2047405984}
   GameElements: {fileID: 1478660781}
-  SpeechBubble: {fileID: 1004239336}
   MainCamera: {fileID: 519420028}
   PlayersGoList:
   - {fileID: 844711015}
   - {fileID: 868452995}
   RespawnPointParent: {fileID: 693643190}
+  SpeechBubble: {fileID: 1004239336}
+  Text: {fileID: 579961739}
+  TextAsset: {fileID: 4900000, guid: 0d40720350b5895428dc047baccd4e74, type: 3}
+  UiCanvas: {fileID: 2047405984}
   CameraTarget: {fileID: 1850352708}
   WalkTarget: {fileID: 1309495320}
   JumpTarget: {fileID: 647259375}

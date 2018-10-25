@@ -9,13 +9,13 @@ namespace Code.Scripts
         public Transform SpawnPoint;
 
         private Coroutine shooting;
-        private Transform player;
+        private GameObject player;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.gameObject.tag.Contains("Player"))
                 return;
-            player = other.transform;
+            player = other.gameObject;
             shooting = StartCoroutine(ToggleShooting());
         }
 
@@ -32,7 +32,7 @@ namespace Code.Scripts
             {
                 BaseProjectile projectile =
                     Instantiate(Projectile, SpawnPoint.position, new Quaternion()).GetComponent<BaseProjectile>();
-                projectile.Shoot(player.position);
+                projectile.Shoot(player.transform.position);
                 yield return new WaitForSeconds(4);
             }
         }

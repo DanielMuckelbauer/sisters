@@ -23,11 +23,6 @@ namespace Code.Scripts
             rigidBody.AddTorque(RotationForce, ForceMode2D.Impulse);
         }
 
-        public void SetShootForce(float force)
-        {
-            ShootForce = force;
-        }
-
         protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
             BaseEntity baseEntity = collision.gameObject.GetComponent<BaseEntity>();

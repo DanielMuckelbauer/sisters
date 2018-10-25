@@ -26,6 +26,7 @@ namespace Code.Scripts.SceneController
         public delegate void RespawnEventhandler();
 
         public static event RespawnEventhandler OnRespawn;
+
         public static void InvokeRespawnBoth()
         {
             OnRespawn?.Invoke();
@@ -160,13 +161,13 @@ namespace Code.Scripts.SceneController
         {
             return RespawnPointParent.GetComponentsInChildren<Transform>().ToList();
         }
+
         private void RespawnBoth()
         {
             Vector3 closest = FindClosestSpawnPoint();
-            foreach (Player player in Players.Values)
-            {
-                player.GetComponent<Transform>().position = closest;
-            }
+            Vector3 offset = new Vector3(1, 0, 0);
+            Players[Character.Pollin].transform.position = closest + offset;
+            Players[Character.Muni].transform.position = closest - offset;
         }
     }
 }

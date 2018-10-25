@@ -13,6 +13,7 @@ namespace Code.Scripts
         public static event HealingEventHandler OnHealingConsumed;
 
         private bool collisionTriggered;
+        private float originalVolume;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -21,6 +22,12 @@ namespace Code.Scripts
             collisionTriggered = true;
             OnHealingConsumed?.Invoke();
             StartCoroutine(DelayedDestroy());
+            PlayMusic();
+        }
+
+        private void PlayMusic()
+        {
+            originalVolume = MainAudioSource.volume;
             MainAudioSource.volume = 0.1f;
             AnpanAudioSource.Play();
         }
@@ -28,7 +35,7 @@ namespace Code.Scripts
         private IEnumerator DelayedDestroy()
         {
             yield return new WaitForSeconds(4.5f);
-            MainAudioSource.volume = 1;
+            MainAudioSource.volume = originalVolume;
             Destroy(gameObject);
         }
     }
