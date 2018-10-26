@@ -19,9 +19,9 @@ namespace Code.Classes.CombatController
 
         public override void ReceiveHit(Collision2D collision)
         {
-            base.ReceiveHit(collision);
             PushBackward(collision);
             RemoveHeart();
+            base.ReceiveHit(collision);
         }
 
         private void PushBackward(Collision2D collision)

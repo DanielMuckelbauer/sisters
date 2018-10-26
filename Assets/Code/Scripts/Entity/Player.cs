@@ -28,8 +28,8 @@ namespace Code.Scripts.Entity
 
         public override void Die()
         {
-            base.Die();
             OnDie?.Invoke();
+            base.Die();
         }
 
         public void DisableMovement()
