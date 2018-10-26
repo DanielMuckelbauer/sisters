@@ -15,6 +15,12 @@ namespace Code.Scripts
         public delegate void HealingEventHandler();
 
         public static event HealingEventHandler OnHealingConsumed;
+
+        private void Awake()
+        {
+            OnHealingConsumed = null;
+        }
+
         private IEnumerator DelayedDestroy()
         {
             yield return new WaitForSeconds(4.5f);

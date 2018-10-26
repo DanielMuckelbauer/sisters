@@ -225,7 +225,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1041184827798590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 161.14, y: 1.6927221, z: 1.1562067}
+  m_LocalPosition: {x: -40.6, y: 1.6927221, z: 1.1562067}
   m_LocalScale: {x: 0.036255725, y: 0.036255725, z: 0.036255725}
   m_Children:
   - {fileID: 4266354394515548}
@@ -669,9 +669,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95056032637839234}
-  Swing: {fileID: 82577863500537674}
   GroundCheck: {fileID: 4915815358622968}
-  Hearts: []
+  Hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Swing: {fileID: 82577863500537674}
 --- !u!212 &212094515541984904
 SpriteRenderer:
   m_ObjectHideFlags: 1

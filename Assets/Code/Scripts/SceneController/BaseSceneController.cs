@@ -33,6 +33,11 @@ namespace Code.Scripts.SceneController
             OnRespawn?.Invoke();
         }
 
+        private void Awake()
+        {
+            OnRespawn = null;
+        }
+
         protected void DisableFollowingCamera()
         {
             MainCamera.GetComponent<FollowingCamera>().Following = false;
@@ -195,7 +200,7 @@ namespace Code.Scripts.SceneController
             CanvasText.color = Color.red;
             CanvasText.text = "You Died";
             UiCanvas.SetActive(true);
-            yield return new WaitForSeconds(7);
+            yield return new WaitForSeconds(5);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

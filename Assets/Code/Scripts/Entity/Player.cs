@@ -42,6 +42,7 @@ namespace Code.Scripts.Entity
 
         protected virtual void Start()
         {
+            Debug.Log("Start called");
             WalkingSpeed = 4;
             MovementController = new PlayerMovementController(gameObject, WalkingSpeed, GroundCheck);
             CombatController = new PlayerCombatController(gameObject, Life);

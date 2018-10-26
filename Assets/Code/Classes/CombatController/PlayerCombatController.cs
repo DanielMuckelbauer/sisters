@@ -34,6 +34,7 @@ namespace Code.Classes.CombatController
         {
             CurrentLife = MaxLife;
             heartIndex = 4;
+            Debug.Log(hearts.Count);
             hearts.ForEach(h => h.GetComponent<SpriteRenderer>().enabled = true);
         }
 
