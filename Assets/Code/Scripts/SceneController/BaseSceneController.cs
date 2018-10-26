@@ -142,8 +142,15 @@ namespace Code.Scripts.SceneController
             InitializePlayerDictionary();
         }
 
-        private void Awake()
+        private static void ResetScene()
         {
+            UnsubscribeAllDelegatesFromStaticEvents();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private static void UnsubscribeAllDelegatesFromStaticEvents()
+        {
+            Healer.ResetOnHealingConsumed();
             OnRespawn = null;
         }
 
@@ -218,7 +225,7 @@ namespace Code.Scripts.SceneController
             CanvasText.text = "You Died";
             UiCanvas.SetActive(true);
             yield return new WaitForSeconds(5);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ResetScene();
         }
     }
 }

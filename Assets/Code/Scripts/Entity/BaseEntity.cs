@@ -11,6 +11,7 @@ namespace Code.Scripts.Entity
         protected ICombatController CombatController;
         protected IMovementController MovementController;
         protected float WalkingSpeed = 5;
+
         public virtual void Die()
         {
             Destroy(gameObject);
