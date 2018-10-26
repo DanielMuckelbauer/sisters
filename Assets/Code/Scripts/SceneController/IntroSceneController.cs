@@ -68,11 +68,11 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator PlayCutScene()
         {
-            yield return ShowNextTextSection(1, 2);
+            yield return ShowNextTextSection(5, 2);
             yield return HospitalCutscene();
             AudioPlayer.Stop();
             ReactivateText();
-            yield return ShowNextTextSection(1);
+            yield return ShowNextTextSection(5);
             PlayIntroMusic();
             yield return SwordRoomCutscene();
             SetUpSpeechBubble();
