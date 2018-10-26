@@ -17,6 +17,7 @@ namespace Code.Scripts.SceneController
         public GameObject GameElements;
         public GameObject MainCamera;
         public List<Player> PlayersGoList;
+        public SpriteRenderer PressAnyKeySprite;
         public GameObject RespawnPointParent;
         public GameObject SpeechBubble;
         public TextAsset TextAsset;
@@ -28,14 +29,9 @@ namespace Code.Scripts.SceneController
 
         public static event Action OnRespawn;
 
-        public static void InvokeRespawnBoth()
+        public static void InvokeRespawnBoth()  
         {
             OnRespawn?.Invoke();
-        }
-
-        private void Awake()
-        {
-            OnRespawn = null;
         }
 
         protected void DisableFollowingCamera()
@@ -47,6 +43,14 @@ namespace Code.Scripts.SceneController
         {
             foreach (Player player in Players.Values)
                 player.DisableMovement();
+        }
+
+        protected void EnableNextScene()
+        {
+            StartCoroutine(LoadNextSceneOnInput());
+            CanvasText.text = string.Empty;
+            UiCanvas.SetActive(true);
+            PressAnyKeySprite.enabled = true;
         }
 
         protected IEnumerator Fade(SpriteRenderer sprite, int from, int to, float duration = 5)
@@ -138,6 +142,11 @@ namespace Code.Scripts.SceneController
             InitializePlayerDictionary();
         }
 
+        private void Awake()
+        {
+            OnRespawn = null;
+        }
+
         private Vector3 FindClosestSpawnPoint()
         {
             var leftRespawnPoints = respawnPoints
@@ -185,6 +194,14 @@ namespace Code.Scripts.SceneController
             return RespawnPointParent != null ? RespawnPointParent.GetComponentsInChildren<Transform>().ToList() : null;
         }
 
+        private IEnumerator LoadNextSceneOnInput()
+        {
+            while (!Input.anyKeyDown)
+            {
+                    yield return null;
+            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
         private void RespawnBoth()
         {
             Vector3 closest = FindClosestSpawnPoint();

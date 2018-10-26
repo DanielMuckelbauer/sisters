@@ -9,15 +9,12 @@ namespace Code.Scripts.Entity
     public abstract class Player : BaseEntity
     {
         public Transform GroundCheck;
-
         public List<GameObject> Hearts;
-
         public AudioSource Swing;
 
         protected Dictionary<Control, string> Controls;
 
         private const int Life = 5;
-
         private bool movementDisabled;
 
         public static event Action OnDie;
@@ -28,6 +25,7 @@ namespace Code.Scripts.Entity
             Jump,
             Strike
         }
+
         public override void Die()
         {
             base.Die();

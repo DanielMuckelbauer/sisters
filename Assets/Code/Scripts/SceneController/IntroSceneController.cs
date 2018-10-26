@@ -84,7 +84,7 @@ namespace Code.Scripts.SceneController
             StartCoroutine(Fade(Title, 0, 1));
             moveSword = true;
             yield return new WaitForSeconds(8);
-            SceneManager.LoadScene("Level1");
+            EnableNextScene();
         }
 
         private void PlayIntroMusic()
