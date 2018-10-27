@@ -8,12 +8,11 @@ namespace Code.Scripts.Entity
 {
     public abstract class Player : BaseEntity
     {
+        public AudioSource AudioSource;
         public Transform GroundCheck;
         public List<GameObject> Hearts;
-        public AudioSource AudioSource;
-        public AudioClip Swing;
         public AudioClip Jump;
-
+        public AudioClip Swing;
         protected Dictionary<Control, string> Controls;
 
         private const int Life = 5;
