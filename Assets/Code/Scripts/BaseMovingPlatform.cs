@@ -13,7 +13,7 @@ namespace Code.Scripts
 
         protected Vector3 Direction;
 
-        private HashSet<GameObject> entitiesStandingOnPlatform;
+        private Dictionary<GameObject, GameObject> entitiesStandingOnPlatformAndTheirParent;
 
 
         protected abstract void CalculateDirection();
@@ -26,7 +26,7 @@ namespace Code.Scripts
         protected virtual void Start()
         {
             StartCoroutine(DirectionChangeLoop());
-            entitiesStandingOnPlatform = new HashSet<GameObject>();
+            entitiesStandingOnPlatformAndTheirParent = new Dictionary<GameObject, GameObject>();
         }
 
         private IEnumerator DirectionChangeLoop()
@@ -47,15 +47,15 @@ namespace Code.Scripts
 
         private void OnTriggerExit2D(Collider2D col)
         {
-            entitiesStandingOnPlatform.Remove(col.gameObject);
-            col.gameObject.transform.parent = null;
+            col.gameObject.transform.parent = entitiesStandingOnPlatformAndTheirParent[col.gameObject].transform;
+            entitiesStandingOnPlatformAndTheirParent.Remove(col.gameObject);
         }
 
         private void OnTriggerStay2D(Collider2D col)
         {
-            if (entitiesStandingOnPlatform.Contains(col.gameObject))
+            if (entitiesStandingOnPlatformAndTheirParent.ContainsKey(col.gameObject))
                 return;
-            entitiesStandingOnPlatform.Add(col.gameObject);
+            entitiesStandingOnPlatformAndTheirParent.Add(col.gameObject, col.transform.parent.gameObject);
             col.gameObject.transform.parent = transform;
         }
 
