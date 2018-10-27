@@ -25,6 +25,7 @@ namespace Code.Classes.MovementController
         {
             return true;
         }
+
         public abstract void Jump();
 
         public abstract void Move(float horizontal);

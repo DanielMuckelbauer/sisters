@@ -20,5 +20,7 @@ namespace Code.Classes.MovementController
             currentVelocity.x = horizontal * Speed;
             RigidBody.velocity = currentVelocity;
         }
+
+
     }
 }

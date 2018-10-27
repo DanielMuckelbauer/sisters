@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.Scripts.Entity;
+using UnityEngine;
 
 namespace Code.Classes.MovementController
 {
@@ -7,11 +8,12 @@ namespace Code.Classes.MovementController
         private readonly AudioSource audioSource;
         private readonly Transform groundCheck;
         private readonly AudioClip jump;
-        private readonly AudioClip strike;
+
         public PlayerMovementController(GameObject gameObject, float speed, Transform groundCheck) : base(gameObject)
         {
             this.groundCheck = groundCheck;
             audioSource = gameObject.GetComponent<AudioSource>();
+            jump = gameObject.GetComponent<Player>().Jump;
             Speed = speed;
         }
 
