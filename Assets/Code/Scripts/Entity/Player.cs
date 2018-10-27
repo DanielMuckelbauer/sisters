@@ -10,7 +10,9 @@ namespace Code.Scripts.Entity
     {
         public Transform GroundCheck;
         public List<GameObject> Hearts;
-        public AudioSource Swing;
+        public AudioSource AudioSource;
+        public AudioClip Swing;
+        public AudioClip Jump;
 
         protected Dictionary<Control, string> Controls;
 
@@ -54,6 +56,8 @@ namespace Code.Scripts.Entity
         {
             if (!Input.GetButtonDown(Controls[Control.Jump]))
                 return;
+            AudioSource.clip = Jump;
+            AudioSource.Play();
             MovementController.Jump();
         }
 
@@ -68,7 +72,8 @@ namespace Code.Scripts.Entity
             if (!Input.GetButtonDown(Controls[Control.Strike]))
                 return;
             Animator.SetTrigger("OnAttackDown");
-            Swing.Play();
+            AudioSource.clip = Swing;
+            AudioSource.Play();
         }
 
         private void FixedUpdate()
