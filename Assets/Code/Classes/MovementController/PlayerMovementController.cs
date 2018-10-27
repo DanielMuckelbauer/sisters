@@ -4,11 +4,14 @@ namespace Code.Classes.MovementController
 {
     public class PlayerMovementController : BaseMovementController
     {
+        private readonly AudioSource audioSource;
         private readonly Transform groundCheck;
-
+        private readonly AudioClip jump;
+        private readonly AudioClip strike;
         public PlayerMovementController(GameObject gameObject, float speed, Transform groundCheck) : base(gameObject)
         {
             this.groundCheck = groundCheck;
+            audioSource = gameObject.GetComponent<AudioSource>();
             Speed = speed;
         }
 
@@ -22,6 +25,7 @@ namespace Code.Classes.MovementController
             if (!CheckGrounded())
                 return;
             Animator.SetTrigger("Jump");
+            PlaySound(jump);
             RigidBody.AddForce(Vector2.up * JumpForce);
         }
 
@@ -46,6 +50,11 @@ namespace Code.Classes.MovementController
             Transform.localScale = theScale;
         }
 
+        private void PlaySound(AudioClip sound)
+        {
+            audioSource.clip = sound;
+            audioSource.Play();
+        }
         private void TryFlip(float horizontal)
         {
             if (LookingRight && horizontal < 0)

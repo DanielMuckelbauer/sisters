@@ -56,8 +56,6 @@ namespace Code.Scripts.Entity
         {
             if (!Input.GetButtonDown(Controls[Control.Jump]))
                 return;
-            AudioSource.clip = Jump;
-            AudioSource.Play();
             MovementController.Jump();
         }
 
