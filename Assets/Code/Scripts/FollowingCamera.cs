@@ -8,9 +8,8 @@ namespace Code.Scripts
         public Transform Player1;
         public Transform Player2;
 
-        public bool Following { get; set; }
         private PlayerCameraController playerCameraController;
-
+        public bool Following { get; set; }
         private void Start()
         {
             Following = true;

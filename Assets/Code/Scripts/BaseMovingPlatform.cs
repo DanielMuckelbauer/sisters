@@ -47,6 +47,13 @@ namespace Code.Scripts
 
         private void OnTriggerExit2D(Collider2D col)
         {
+            if (!entitiesStandingOnPlatformAndTheirParent.ContainsKey(col.gameObject))
+                return;
+            ReturnToOriginalParent(col);
+        }
+
+        private void ReturnToOriginalParent(Collider2D col)
+        {
             col.gameObject.transform.parent = entitiesStandingOnPlatformAndTheirParent[col.gameObject].transform;
             entitiesStandingOnPlatformAndTheirParent.Remove(col.gameObject);
         }
@@ -55,6 +62,11 @@ namespace Code.Scripts
         {
             if (entitiesStandingOnPlatformAndTheirParent.ContainsKey(col.gameObject))
                 return;
+            MakePlatformParentOf(col);
+        }
+
+        private void MakePlatformParentOf(Collider2D col)
+        {
             entitiesStandingOnPlatformAndTheirParent.Add(col.gameObject, col.transform.parent.gameObject);
             col.gameObject.transform.parent = transform;
         }

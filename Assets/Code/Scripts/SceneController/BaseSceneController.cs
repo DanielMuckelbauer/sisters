@@ -29,7 +29,7 @@ namespace Code.Scripts.SceneController
 
         public static event Action OnRespawn;
 
-        public static void InvokeRespawnBoth()  
+        public static void InvokeRespawnBoth()
         {
             OnRespawn?.Invoke();
         }
@@ -140,6 +140,7 @@ namespace Code.Scripts.SceneController
             Player.OnDie += GameOverScreen;
             InitializeCutsceneStrings();
             InitializePlayerDictionary();
+            Debug.Log(MainCamera);
         }
 
         private static void ResetScene()
@@ -156,7 +157,7 @@ namespace Code.Scripts.SceneController
 
         private Vector3 FindClosestSpawnPoint()
         {
-            var leftRespawnPoints = respawnPoints
+            List<Transform> leftRespawnPoints = respawnPoints
                 .FindAll(rp => rp.position.x <= Players[Character.Pollin].transform.position.x);
             //Vector3 middlePoint =
             //    (Players[Character.Pollin].transform.position + Players[Character.Muni].transform.position) / 2;
@@ -205,10 +206,12 @@ namespace Code.Scripts.SceneController
         {
             while (!Input.anyKeyDown)
             {
-                    yield return null;
+                yield return null;
             }
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
         private void RespawnBoth()
         {
             Vector3 closest = FindClosestSpawnPoint();
