@@ -199,6 +199,7 @@ namespace Code.Scripts.SceneController
 
         private List<Transform> InitializeRespawnPoints()
         {
+            Debug.Log(RespawnPointParent);
             return RespawnPointParent != null ? RespawnPointParent.GetComponentsInChildren<Transform>().ToList() : null;
         }
 

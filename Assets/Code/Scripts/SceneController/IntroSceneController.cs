@@ -68,6 +68,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator PlayCutScene()
         {
+            EnableNextScene();
             yield return ShowNextTextSection(5, 2);
             yield return HospitalCutscene();
             AudioPlayer.Stop();
@@ -83,7 +84,7 @@ namespace Code.Scripts.SceneController
             yield return new WaitForSeconds(5);
             StartCoroutine(Fade(Title, 0, 1));
             moveSword = true;
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(6);
             EnableNextScene();
         }
 

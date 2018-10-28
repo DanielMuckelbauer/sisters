@@ -9,6 +9,7 @@ namespace Code.Scripts.SceneController
         public Transform CameraTarget;
         public Transform JumpTarget;
         public Transform WalkTarget;
+
         protected override void Start()
         {
             base.Start();
@@ -31,6 +32,7 @@ namespace Code.Scripts.SceneController
                 pollin.position = Vector3.MoveTowards(pollin.position, JumpTarget.position, step);
                 yield return null;
             }
+
             pollin.transform.Rotate(0, 0, 90);
         }
 
@@ -59,7 +61,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator PlayOpeningCutscene()
         {
-            yield return ShowNextTextSection(5, 4);
+            yield return ShowNextTextSection(1, 4);
             UiCanvas.SetActive(false);
             GameElements.SetActive(true);
         }
