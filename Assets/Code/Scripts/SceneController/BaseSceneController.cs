@@ -140,7 +140,6 @@ namespace Code.Scripts.SceneController
             Player.OnDie += GameOverScreen;
             InitializeCutsceneStrings();
             InitializePlayerDictionary();
-            Debug.Log(MainCamera);
         }
 
         private static void ResetScene()
@@ -151,6 +150,7 @@ namespace Code.Scripts.SceneController
 
         private static void UnsubscribeAllDelegatesFromStaticEvents()
         {
+            Player.ResetOnDie();
             Healer.ResetOnHealingConsumed();
             OnRespawn = null;
         }

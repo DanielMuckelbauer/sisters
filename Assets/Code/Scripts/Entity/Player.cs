@@ -95,5 +95,10 @@ namespace Code.Scripts.Entity
             CheckStrike();
             CheckGroundedForJumpAnimation();
         }
+
+        public static void ResetOnDie()
+        {
+            OnDie = null;
+        }
     }
 }
