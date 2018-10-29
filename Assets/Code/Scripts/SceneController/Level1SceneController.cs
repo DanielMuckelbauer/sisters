@@ -61,7 +61,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator PlayOpeningCutscene()
         {
-            yield return ShowNextTextSection(1, 4);
+            yield return ShowNextTextSection(5, 4);
             UiCanvas.SetActive(false);
             GameElements.SetActive(true);
         }
