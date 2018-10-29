@@ -15,7 +15,6 @@ namespace Code.Scripts
 
         private Dictionary<GameObject, GameObject> entitiesStandingOnPlatformAndTheirParent;
 
-
         protected abstract void CalculateDirection();
 
         protected Vector3 ChangeBetweenTwoDirections(Vector3 first, Vector3 second)
@@ -40,6 +39,12 @@ namespace Code.Scripts
             }
         }
 
+        private void MakePlatformParentOf(Collider2D col)
+        {
+            entitiesStandingOnPlatformAndTheirParent.Add(col.gameObject, col.transform.parent.gameObject);
+            col.gameObject.transform.parent = transform;
+        }
+
         private void Move()
         {
             transform.position += Direction * Step * Time.deltaTime;
@@ -52,12 +57,6 @@ namespace Code.Scripts
             ReturnToOriginalParent(col);
         }
 
-        private void ReturnToOriginalParent(Collider2D col)
-        {
-            col.gameObject.transform.parent = entitiesStandingOnPlatformAndTheirParent[col.gameObject].transform;
-            entitiesStandingOnPlatformAndTheirParent.Remove(col.gameObject);
-        }
-
         private void OnTriggerStay2D(Collider2D col)
         {
             if (entitiesStandingOnPlatformAndTheirParent.ContainsKey(col.gameObject))
@@ -65,12 +64,11 @@ namespace Code.Scripts
             MakePlatformParentOf(col);
         }
 
-        private void MakePlatformParentOf(Collider2D col)
+        private void ReturnToOriginalParent(Collider2D col)
         {
-            entitiesStandingOnPlatformAndTheirParent.Add(col.gameObject, col.transform.parent.gameObject);
-            col.gameObject.transform.parent = transform;
+            col.gameObject.transform.parent = entitiesStandingOnPlatformAndTheirParent[col.gameObject].transform;
+            entitiesStandingOnPlatformAndTheirParent.Remove(col.gameObject);
         }
-
         private void Update()
         {
             Move();
