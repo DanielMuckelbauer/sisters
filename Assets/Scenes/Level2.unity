@@ -215,6 +215,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223320363627194904, guid: 7a41169db5b9a47de92d0f444681886c,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1774390682}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a41169db5b9a47de92d0f444681886c, type: 2}
   m_IsPrefabAsset: 0
@@ -5189,6 +5194,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4058157291086638, guid: 8baf77b7ea7a5cc42afaa3bc3f50efb7,
     type: 2}
   m_PrefabInternal: {fileID: 244650313}
+--- !u!1 &265863746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1463908750660630, guid: 7a41169db5b9a47de92d0f444681886c,
+    type: 2}
+  m_PrefabInternal: {fileID: 21809379}
 --- !u!1 &282744512
 GameObject:
   m_ObjectHideFlags: 0
@@ -5219,6 +5229,11 @@ Transform:
   m_Father: {fileID: 1770195469}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &374942248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1195343299150404, guid: 7a41169db5b9a47de92d0f444681886c,
+    type: 2}
+  m_PrefabInternal: {fileID: 21809379}
 --- !u!4 &398491798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda,
@@ -5338,6 +5353,31 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: Hearts.Array.data[0]
+      value: 
+      objectReference: {fileID: 265863746}
+    - target: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: Hearts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1351596561}
+    - target: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: Hearts.Array.data[2]
+      value: 
+      objectReference: {fileID: 1289128183}
+    - target: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: Hearts.Array.data[3]
+      value: 
+      objectReference: {fileID: 1079872565}
+    - target: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: Hearts.Array.data[4]
+      value: 
+      objectReference: {fileID: 374942248}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
   m_IsPrefabAsset: 0
@@ -5378,6 +5418,11 @@ Transform:
   m_Father: {fileID: 1770195469}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1079872565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1521023048003232, guid: 7a41169db5b9a47de92d0f444681886c,
+    type: 2}
+  m_PrefabInternal: {fileID: 21809379}
 --- !u!1001 &1107157258
 Prefab:
   m_ObjectHideFlags: 0
@@ -5416,11 +5461,6 @@ Prefab:
     - target: {fileID: 4978011905196236, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 50401078861669722, guid: 454ca971e6ef49947853913f6bc66dd5,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
@@ -5588,6 +5628,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1289128183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1034326603263260, guid: 7a41169db5b9a47de92d0f444681886c,
+    type: 2}
+  m_PrefabInternal: {fileID: 21809379}
+--- !u!1 &1351596561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1348317166039586, guid: 7a41169db5b9a47de92d0f444681886c,
+    type: 2}
+  m_PrefabInternal: {fileID: 21809379}
 --- !u!4 &1357271725 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4637960756957512, guid: 94d0bfdaca8b63949bfdd1b1b5e35992,
@@ -5769,6 +5819,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1774390682 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20568980561024982, guid: de5f7ff9395841040ab83a002ce562e9,
+    type: 2}
+  m_PrefabInternal: {fileID: 2032816132}
 --- !u!1001 &1884423939
 Prefab:
   m_ObjectHideFlags: 0
@@ -5932,6 +5987,11 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 223311192045847604, guid: da938d5fb19d15c43b282ee9239d3735,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1774390682}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da938d5fb19d15c43b282ee9239d3735, type: 2}
   m_IsPrefabAsset: 0
