@@ -599,6 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95488669997492982}
+  AudioSource: {fileID: 82370614910397214}
   GroundCheck: {fileID: 4853369820929170}
   Hearts:
   - {fileID: 0}
@@ -606,9 +607,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  AudioSource: {fileID: 82370614910397214}
-  Swing: {fileID: 8300000, guid: da73651db96e31d4194a4ca83ce5e3f6, type: 3}
   Jump: {fileID: 8300000, guid: e8ebcc5bf26385b4d9c05926953411fb, type: 3}
+  Swing: {fileID: 8300000, guid: da73651db96e31d4194a4ca83ce5e3f6, type: 3}
+  ReceiveHit: {fileID: 8300000, guid: 02b0103463e878c4baba1149a890d258, type: 3}
 --- !u!212 &212111497551112130
 SpriteRenderer:
   m_ObjectHideFlags: 1

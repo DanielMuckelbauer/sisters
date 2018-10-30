@@ -12,6 +12,7 @@ namespace Code.Scripts.Entity
         public Transform GroundCheck;
         public List<GameObject> Hearts;
         public AudioClip Jump;
+        public AudioClip ReceiveHit;
         public AudioClip Swing;
         protected Dictionary<Control, string> Controls;
 
@@ -25,6 +26,11 @@ namespace Code.Scripts.Entity
             Horizontal,
             Jump,
             Strike
+        }
+
+        public static void ResetOnDie()
+        {
+            OnDie = null;
         }
 
         public override void Die()
@@ -69,8 +75,7 @@ namespace Code.Scripts.Entity
             if (!Input.GetButtonDown(Controls[Control.Strike]))
                 return;
             Animator.SetTrigger("OnAttackDown");
-            AudioSource.clip = Swing;
-            AudioSource.Play();
+            PlaySound(Swing);
         }
 
         private void FixedUpdate()
@@ -84,6 +89,7 @@ namespace Code.Scripts.Entity
         {
             if (!collision.gameObject.tag.Contains("Enemy"))
                 return;
+            PlaySound(ReceiveHit);
             CombatController.ReceiveHit(collision.collider);
         }
 
@@ -91,9 +97,15 @@ namespace Code.Scripts.Entity
         {
             if (!col.gameObject.tag.Contains("Enemy"))
                 return;
+            PlaySound(ReceiveHit);
             CombatController.ReceiveHit(col);
         }
 
+        private void PlaySound(AudioClip clip)
+        {
+            AudioSource.clip = clip;
+            AudioSource.Play();
+        }
         private void Update()
         {
             if (movementDisabled)
@@ -101,11 +113,6 @@ namespace Code.Scripts.Entity
             CheckJump();
             CheckStrike();
             CheckGroundedForJumpAnimation();
-        }
-
-        public static void ResetOnDie()
-        {
-            OnDie = null;
         }
     }
 }
