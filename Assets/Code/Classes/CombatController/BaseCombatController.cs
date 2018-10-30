@@ -15,7 +15,7 @@ namespace Code.Classes.CombatController
             CurrentLife = MaxLife = maxLife;
         }
 
-        public virtual void ReceiveHit(Collision2D collision)
+        public virtual void ReceiveHit(Collider2D col)
         {
             CurrentLife -= 1;
             if (CurrentLife <= 0)

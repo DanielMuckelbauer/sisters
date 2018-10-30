@@ -8,10 +8,10 @@ namespace Code.Classes.CombatController
         {
         }
 
-        public override void ReceiveHit(Collision2D collision)
+        public override void ReceiveHit(Collider2D col)
         {
             JumpUpAndDown();
-            base.ReceiveHit(collision);
+            base.ReceiveHit(col);
         }
 
         private void JumpUpAndDown()

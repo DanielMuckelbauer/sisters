@@ -36,7 +36,7 @@ namespace Code.Scripts.Entity
         {
             if (!collision.gameObject.tag.Contains("Weapon"))
                 return;
-            CombatController.ReceiveHit(collision);
+            CombatController.ReceiveHit(collision.collider);
         }
     }
 }

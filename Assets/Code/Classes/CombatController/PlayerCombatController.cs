@@ -17,14 +17,14 @@ namespace Code.Classes.CombatController
             Healer.OnHealingConsumed += RefillHearts;
         }
 
-        public override void ReceiveHit(Collision2D collision)
+        public override void ReceiveHit(Collider2D col)
         {
-            PushBackward(collision);
+            PushBackward(col);
             RemoveHeart();
-            base.ReceiveHit(collision);
+            base.ReceiveHit(col);
         }
 
-        private void PushBackward(Collision2D collision)
+        private void PushBackward(Collider2D collision)
         {
             const int magnitude = 1000;
             GameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * magnitude);
