@@ -236,6 +236,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1464284808013794, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212896831100787726, guid: 454ca971e6ef49947853913f6bc66dd5,
+        type: 2}
+      propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -335,7 +340,7 @@ GameObject:
   - component: {fileID: 1985201146}
   - component: {fileID: 1985201147}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
