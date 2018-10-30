@@ -7,6 +7,7 @@ namespace Code.Scripts
     {
         public GameObject Projectile;
         public Transform SpawnPoint;
+        public AudioSource AudioSource;
 
         private GameObject player;
         private Coroutine shooting;
@@ -30,6 +31,7 @@ namespace Code.Scripts
         {
             while (true)
             {
+                AudioSource.Play();
                 BaseProjectile projectile =
                     Instantiate(Projectile, SpawnPoint.position, new Quaternion()).GetComponent<BaseProjectile>();
                 if (player != null)

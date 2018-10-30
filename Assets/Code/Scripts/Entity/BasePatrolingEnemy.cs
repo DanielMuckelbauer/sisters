@@ -7,7 +7,6 @@ namespace Code.Scripts.Entity
     public abstract class BasePatrolingEnemy : BaseEntity
     {
         public bool Patrolling;
-        public AudioSource AudioSource;
 
         public void StartPatrolling()
         {

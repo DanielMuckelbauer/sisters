@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50270344708306876}
   - component: {fileID: 114372692744206866}
   - component: {fileID: 70289227167004614}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4755567176342188}
   - component: {fileID: 58748023280941726}
   - component: {fileID: 114365043074019946}
+  - component: {fileID: 82933715961294884}
   m_Layer: 12
   m_Name: ProximityShooter
   m_TagString: Untagged
@@ -69,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062200720564140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.8, y: 1.77, z: -0.3898353}
+  m_LocalPosition: {x: 17.204157, y: 4.0729504, z: -0.7796706}
   m_LocalScale: {x: 0.22, y: 0.22, z: 0.22}
   m_Children:
   - {fileID: 4755567176342188}
@@ -153,6 +154,101 @@ CapsuleCollider2D:
   m_Offset: {x: -0.119884565, y: -0.89900583}
   m_Size: {x: 9.447318, y: 7.1654587}
   m_Direction: 1
+--- !u!82 &82933715961294884
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457366223798222}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c44d30321ace92e438b597d64b3aea32, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114365043074019946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,6 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 1586494951206932, guid: efbd1902ccc2e0b43aebd0673302663e, type: 2}
   SpawnPoint: {fileID: 4742374832053014}
+  AudioSource: {fileID: 82933715961294884}
 --- !u!114 &114372692744206866
 MonoBehaviour:
   m_ObjectHideFlags: 1

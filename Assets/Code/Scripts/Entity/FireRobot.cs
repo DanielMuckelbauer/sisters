@@ -6,6 +6,8 @@ namespace Code.Scripts.Entity
 {
     public class FireRobot : BasePatrolingEnemy
     {
+        public AudioSource AudioSource;
+
         protected override void Start()
         {
             base.Start();
