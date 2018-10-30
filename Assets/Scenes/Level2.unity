@@ -113,6 +113,35 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &15394792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 15394793}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &15394793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 15394792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1107157259}
+  m_Father: {fileID: 1770195469}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &21809379
 Prefab:
   m_ObjectHideFlags: 0
@@ -5428,31 +5457,31 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 15394793}
     m_Modifications:
     - target: {fileID: 4978011905196236, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -74.577255
+      value: -75.24
       objectReference: {fileID: 0}
     - target: {fileID: 4978011905196236, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.0364033
+      value: -2.584169
       objectReference: {fileID: 0}
     - target: {fileID: 4978011905196236, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.14421055
+      value: -89.85579
       objectReference: {fileID: 0}
     - target: {fileID: 4978011905196236, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4978011905196236, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4978011905196236, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4978011905196236, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
       propertyPath: m_LocalRotation.w
@@ -5460,11 +5489,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4978011905196236, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &1107157259 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4978011905196236, guid: 454ca971e6ef49947853913f6bc66dd5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1107157258}
 --- !u!1 &1141202083
 GameObject:
   m_ObjectHideFlags: 0
@@ -5816,8 +5850,9 @@ Transform:
   - {fileID: 954011447}
   - {fileID: 1141202084}
   - {fileID: 398491798}
+  - {fileID: 15394793}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1774390682 stripped
 Camera:
@@ -5885,7 +5920,7 @@ Prefab:
     - target: {fileID: 224786535608713562, guid: da938d5fb19d15c43b282ee9239d3735,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224786535608713562, guid: da938d5fb19d15c43b282ee9239d3735,
         type: 2}
@@ -5925,7 +5960,7 @@ Prefab:
     - target: {fileID: 224786535608713562, guid: da938d5fb19d15c43b282ee9239d3735,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224786535608713562, guid: da938d5fb19d15c43b282ee9239d3735,
         type: 2}

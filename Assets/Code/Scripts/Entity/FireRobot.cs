@@ -9,7 +9,7 @@ namespace Code.Scripts.Entity
         protected override void Start()
         {
             base.Start();
-            CombatController = new EnemyCombatController(gameObject, 3);
+            CombatController = new EnemyCombatController(gameObject, 6);
             StartCoroutine(ShootPeriodically());
         }
 
