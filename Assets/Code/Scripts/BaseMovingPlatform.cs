@@ -41,6 +41,8 @@ namespace Code.Scripts
 
         private void MakePlatformParentOf(Collider2D col)
         {
+            if (col.transform.parent == null)
+                return;
             entitiesStandingOnPlatformAndTheirParent.Add(col.gameObject, col.transform.parent.gameObject);
             col.gameObject.transform.parent = transform;
         }
@@ -69,6 +71,7 @@ namespace Code.Scripts
             col.gameObject.transform.parent = entitiesStandingOnPlatformAndTheirParent[col.gameObject].transform;
             entitiesStandingOnPlatformAndTheirParent.Remove(col.gameObject);
         }
+
         private void Update()
         {
             Move();

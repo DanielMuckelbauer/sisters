@@ -5,19 +5,13 @@ using UnityEngine;
 
 namespace Code.Scripts.Entity
 {
-    public class Spider : BaseEnemy
+    public class Spider : BasePatrolingEnemy
     {
-        public bool Patrolling;
-
-        protected override IEnumerator Patrol()
+        protected override void Start()
         {
-            while (true)
-            {
-                MovementController.Move(1);
-                yield return new WaitForSeconds(1);
-                MovementController.Move(-1);
-                yield return new WaitForSeconds(1);
-            }
+            base.Start();
+            CombatController = new EnemyCombatController(gameObject, 1);
+            StartCoroutine(JumpRandomly());
         }
 
         private IEnumerator JumpRandomly()
@@ -27,23 +21,6 @@ namespace Code.Scripts.Entity
                 yield return new WaitForSeconds(2 + Random.value * 3);
                 MovementController.Jump();
             }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (!collision.gameObject.tag.Contains("Weapon"))
-                return;
-            CombatController.ReceiveHit(collision);
-        }
-
-        private void Start()
-        {
-            WalkingSpeed = 2;
-            CombatController = new EnemyCombatController(gameObject, 1);
-            MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
-            if (Patrolling)
-                StartPatrolling();
-            StartCoroutine(JumpRandomly());
         }
     }
 }
