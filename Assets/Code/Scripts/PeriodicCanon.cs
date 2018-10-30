@@ -6,6 +6,7 @@ namespace Code.Scripts
     public class PeriodicCanon : BaseCanon
     {
         public Transform Target;
+        public AudioSource AudioSource;
 
         private void Start()
         {
@@ -17,6 +18,7 @@ namespace Code.Scripts
             while (true)
             {
                 yield return new WaitForSeconds(2);
+                AudioSource.Play();
                 ShootProjectile(Target.position);
             }
         }

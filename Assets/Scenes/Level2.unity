@@ -11373,6 +11373,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4058157291086638, guid: 8baf77b7ea7a5cc42afaa3bc3f50efb7,
     type: 2}
   m_PrefabInternal: {fileID: 244650313}
+--- !u!82 &250322463 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 82020333564612880, guid: de5f7ff9395841040ab83a002ce562e9,
+    type: 2}
+  m_PrefabInternal: {fileID: 2032816132}
 --- !u!1 &265863746 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1463908750660630, guid: 7a41169db5b9a47de92d0f444681886c,
@@ -11520,6 +11525,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114666634954590258, guid: 1e5e581b0c050be4192ecc04f0b6d062,
+        type: 2}
+      propertyPath: MainAudioSource
+      value: 
+      objectReference: {fileID: 250322463}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e5e581b0c050be4192ecc04f0b6d062, type: 2}
   m_IsPrefabAsset: 0
@@ -12447,9 +12457,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1425038703646758, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
-      propertyPath: m_Name
-      value: FireRobot
+    - target: {fileID: 82609877886459890, guid: 454ca971e6ef49947853913f6bc66dd5,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 454ca971e6ef49947853913f6bc66dd5, type: 2}
@@ -12779,9 +12790,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4637960756957512, guid: 94d0bfdaca8b63949bfdd1b1b5e35992, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -40.348003
+    - target: {fileID: 82915866133501004, guid: 94d0bfdaca8b63949bfdd1b1b5e35992,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94d0bfdaca8b63949bfdd1b1b5e35992, type: 2}
