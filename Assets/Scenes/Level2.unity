@@ -11827,14 +11827,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1604199461455164, guid: 94d0bfdaca8b63949bfdd1b1b5e35992, type: 2}
-      propertyPath: m_Name
-      value: Canon
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637960756957512, guid: 94d0bfdaca8b63949bfdd1b1b5e35992, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -142.05
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94d0bfdaca8b63949bfdd1b1b5e35992, type: 2}
   m_IsPrefabAsset: 0
@@ -12789,11 +12781,6 @@ Prefab:
     - target: {fileID: 4637960756957512, guid: 94d0bfdaca8b63949bfdd1b1b5e35992, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 82915866133501004, guid: 94d0bfdaca8b63949bfdd1b1b5e35992,
-        type: 2}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94d0bfdaca8b63949bfdd1b1b5e35992, type: 2}
