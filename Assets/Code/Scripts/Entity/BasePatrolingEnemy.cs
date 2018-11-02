@@ -13,12 +13,12 @@ namespace Code.Scripts.Entity
             StartCoroutine(Patrol());
         }
 
-        protected virtual void Start()
+        protected void OnCollisionEnter2D(Collision2D collision)
         {
-            WalkingSpeed = 2;
-            MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
-            if (Patrolling)
-                StartPatrolling();
+            if (NotHitable(collision))
+                return;
+            StartCoroutine(BrieflyTurnInvincibleAndBlink());
+            CombatController.ReceiveHit(collision.collider);
         }
 
         protected virtual IEnumerator Patrol()
@@ -32,11 +32,16 @@ namespace Code.Scripts.Entity
             }
         }
 
-        protected void OnCollisionEnter2D(Collision2D collision)
+        protected virtual void Start()
         {
-            if (!collision.gameObject.tag.Contains("Weapon"))
-                return;
-            CombatController.ReceiveHit(collision.collider);
+            WalkingSpeed = 2;
+            MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
+            if (Patrolling)
+                StartPatrolling();
+        }
+        private bool NotHitable(Collision2D collision)
+        {
+            return !collision.gameObject.tag.Contains("Weapon") && !invincible;
         }
     }
 }
