@@ -14,7 +14,7 @@ namespace Code.Scripts.Entity
         protected ICombatController CombatController;
         protected IMovementController MovementController;
         protected float WalkingSpeed = 5;
-        protected bool invincible;
+        protected bool Invincible;
 
         public virtual void Die()
         {
@@ -33,9 +33,9 @@ namespace Code.Scripts.Entity
 
         protected IEnumerator BrieflyTurnInvincibleAndBlink()
         {
-            invincible = true;
+            Invincible = true;
             yield return StartCoroutine(Blink(10));
-            invincible = false;
+            Invincible = false;
         }
 
         private IEnumerator Blink(int times)

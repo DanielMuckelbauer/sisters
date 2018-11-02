@@ -41,7 +41,7 @@ namespace Code.Scripts.Entity
         }
         private bool NotHitable(Collision2D collision)
         {
-            return !collision.gameObject.tag.Contains("Weapon") && !invincible;
+            return !collision.gameObject.tag.Contains("Weapon") || Invincible;
         }
     }
 }

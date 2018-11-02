@@ -11362,6 +11362,11 @@ Prefab:
       propertyPath: Hearts.Array.data[4]
       value: 
       objectReference: {fileID: 374942248}
+    - target: {fileID: 50775645411987428, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
   m_IsPrefabAsset: 0
@@ -11589,7 +11594,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4058157291086638, guid: 8baf77b7ea7a5cc42afaa3bc3f50efb7, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1287052153514732, guid: 8baf77b7ea7a5cc42afaa3bc3f50efb7, type: 2}
       propertyPath: m_Name
@@ -12041,10 +12046,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1062200720564140, guid: 1fa61d6d5e25cb34e99cd03253e524ba, type: 2}
-      propertyPath: m_Name
-      value: Spider
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa61d6d5e25cb34e99cd03253e524ba, type: 2}
   m_IsPrefabAsset: 0
@@ -12371,7 +12372,7 @@ Prefab:
     - target: {fileID: 224786535608713562, guid: da938d5fb19d15c43b282ee9239d3735,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224786535608713562, guid: da938d5fb19d15c43b282ee9239d3735,
         type: 2}
@@ -12411,7 +12412,7 @@ Prefab:
     - target: {fileID: 224786535608713562, guid: da938d5fb19d15c43b282ee9239d3735,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224786535608713562, guid: da938d5fb19d15c43b282ee9239d3735,
         type: 2}
