@@ -3,7 +3,6 @@ using Code.Classes.MovementController;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using UnityEngine;
 
 namespace Code.Scripts.Entity

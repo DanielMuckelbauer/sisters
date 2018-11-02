@@ -13,6 +13,15 @@ namespace Code.Scripts.Entity
             StartCoroutine(Patrol());
         }
 
+        protected IEnumerator JumpRandomly()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(2 + Random.value * 3);
+                MovementController.Jump();
+            }
+        }
+
         protected void OnCollisionEnter2D(Collision2D collision)
         {
             DealWithCollision(collision.gameObject);
@@ -23,14 +32,14 @@ namespace Code.Scripts.Entity
             DealWithCollision(other.gameObject);
         }
 
-        protected virtual IEnumerator Patrol()
+        protected virtual IEnumerator Patrol(int interval = 1)
         {
             while (true)
             {
                 MovementController.Move(1);
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(interval);
                 MovementController.Move(-1);
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(interval);
             }
         }
 
