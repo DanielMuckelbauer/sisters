@@ -78,27 +78,28 @@ namespace Code.Scripts.Entity
             PlaySound(Swing);
         }
 
+        private void DealWithCollision(GameObject otherGameObject)
+        {
+            if (!otherGameObject.tag.Contains("Enemy"))
+                return;
+            PlaySound(ReceiveHit);
+            CombatController.ReceiveHit();
+        }
+
         private void FixedUpdate()
         {
             if (movementDisabled)
                 return;
             CheckMove();
         }
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!collision.gameObject.tag.Contains("Enemy"))
-                return;
-            PlaySound(ReceiveHit);
-            CombatController.ReceiveHit(collision.collider);
+            DealWithCollision(collision.gameObject);
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (!col.gameObject.tag.Contains("Enemy"))
-                return;
-            PlaySound(ReceiveHit);
-            CombatController.ReceiveHit(col);
+            DealWithCollision(col.gameObject);
         }
 
         private void PlaySound(AudioClip clip)

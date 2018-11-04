@@ -10,7 +10,7 @@ namespace Code.Scripts.Entity
         public override void HitByProjectile(GameObject projectile)
         {
             base.HitByProjectile(projectile);
-            CombatController.ReceiveHit(new Collider2D());
+            CombatController.ReceiveHit();
         }
 
         public override void StartBossFight()

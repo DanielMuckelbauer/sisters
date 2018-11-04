@@ -15,10 +15,12 @@ namespace Code.Scripts.Entity
 
         protected void OnCollisionEnter2D(Collision2D collision)
         {
-            if (NotHitable(collision))
-                return;
-            StartCoroutine(BrieflyTurnInvincibleAndBlink());
-            CombatController.ReceiveHit(collision.collider);
+            DealWithCollision(collision.gameObject);
+        }
+
+        protected void OnTriggerEnter2D(Collider2D other)
+        {
+            DealWithCollision(other.gameObject);
         }
 
         protected virtual IEnumerator Patrol()
@@ -39,9 +41,17 @@ namespace Code.Scripts.Entity
             if (Patrolling)
                 StartPatrolling();
         }
-        private bool NotHitable(Collision2D collision)
+
+        private void DealWithCollision(GameObject otherGameObject)
         {
-            return !collision.gameObject.tag.Contains("Weapon") || Invincible;
+            if (NotHitable(otherGameObject))
+                return;
+            StartCoroutine(BrieflyTurnInvincibleAndBlink());
+            CombatController.ReceiveHit();
+        }
+        private bool NotHitable(GameObject otherGameObject)
+        {
+            return !otherGameObject.tag.Contains("Weapon") || Invincible;
         }
     }
 }
