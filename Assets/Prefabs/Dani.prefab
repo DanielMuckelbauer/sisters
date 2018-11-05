@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4816683963252488}
   - component: {fileID: 212044942219824304}
+  - component: {fileID: 114032472480808516}
   m_Layer: 0
   m_Name: SpeechBubble
   m_TagString: Untagged
@@ -139,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1939532317621344
 GameObject:
   m_ObjectHideFlags: 1
@@ -261,8 +262,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1608555318784508}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 187.37834, y: 1.26, z: 1.1562067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.11, y: -1.91, z: 0}
   m_LocalScale: {x: 0.382, y: 0.382, z: 0.382}
   m_Children:
   - {fileID: 4763304055858742}
@@ -331,6 +332,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114032472480808516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048806427691660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89248f0fd9080214b8fe7e5e5f142f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BubbleText: {fileID: 114200585446722812}
 --- !u!114 &114200585446722812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,11 +439,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 23667546841262224}

@@ -3,6 +3,7 @@
     public enum Character
     {
         Muni,
-        Pollin
+        Pollin,
+        Dani
     }
 }

@@ -23,13 +23,13 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator GoToDiaperChanger()
         {
-            Players[Character.Pollin].GoTo(WalkTarget.position, 1.2f);
+            Characters[Character.Pollin].GoTo(WalkTarget.position, 1.2f);
             yield return new WaitForSeconds(2);
         }
 
         private IEnumerator JumpUpToDiaperChanger()
         {
-            Transform pollin = Players[Character.Pollin].transform;
+            Transform pollin = Characters[Character.Pollin].transform;
             pollin.GetComponent<Rigidbody2D>().isKinematic = true;
             while (pollin.position != JumpTarget.position)
             {
@@ -50,10 +50,10 @@ namespace Code.Scripts.SceneController
                 MainCamera.transform.position.z);
             StartCoroutine(MoveCamera(targetPosition));
             yield return new WaitForSeconds(6);
-            ShowSpeechBubble(ActiveSpeechBubble);
-            yield return ShowNextBubbleText(2);
+            SpeechBubbles[Character.Dani].ShowSpeechBubble();
+            yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
             yield return GoToDiaperChanger();
-            ActiveSpeechBubble.SetActive(false);
+            SpeechBubbles[Character.Dani].HideSpeechBubble();
             yield return JumpUpToDiaperChanger();
             FadeSceneOut();
             yield return new WaitForSeconds(10);

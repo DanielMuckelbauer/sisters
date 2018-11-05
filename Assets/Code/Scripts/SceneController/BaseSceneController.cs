@@ -12,20 +12,20 @@ namespace Code.Scripts.SceneController
 {
     public abstract class BaseSceneController : MonoBehaviour
     {
+        public static int CutsceneStringCounter;
+        public static List<string> CutsceneStrings;
         public TMP_Text CanvasText;
         public GameObject GameElements;
         public GameObject MainCamera;
-        public List<Player> PlayersGoList;
-        public SpriteRenderer PressAnyKeySprite;
-        public GameObject RespawnPointParent;
-        public GameObject ActiveSpeechBubble;
-        public TextAsset TextAsset;
         public GameObject UiCanvas;
-        protected int CutsceneStringCounter;
-        protected List<string> CutsceneStrings;
-        protected Dictionary<Character, Player> Players;
-        protected Dictionary<Character, TMP_Text> PlayerBubbles;
+        public GameObject RespawnPointParent;
+        public SpriteRenderer PressAnyKeySprite;
+        public TextAsset TextAsset;
+        public List<Player> PlayerList;
+        public List<GameObject> Npcs;
         private List<Transform> respawnPoints;
+        protected Dictionary<Character, Player> Characters;
+        protected Dictionary<Character, SpeechBubble> SpeechBubbles;
 
         public static event Action OnRespawn;
 
@@ -43,7 +43,7 @@ namespace Code.Scripts.SceneController
 
         protected void DisablePlayerMovement()
         {
-            foreach (Player player in Players.Values)
+            foreach (Player player in Characters.Values)
                 player.DisableMovement();
         }
 
@@ -77,23 +77,11 @@ namespace Code.Scripts.SceneController
                 .ForEach(s => { StartCoroutine(Fade(s, 1, 0)); });
         }
 
-        protected IEnumerator FillSpeechbubble()
-        {
-            TMP_Text activeBubbleText = ActiveSpeechBubble.GetComponent<TMP_Text>();
-            activeBubbleText.text = string.Empty;
-            string bubbleText = CutsceneStrings[CutsceneStringCounter++];
-            char[] charArray = bubbleText.ToCharArray();
-            foreach (char c in charArray)
-            {
-                activeBubbleText.text += c;
-                yield return new WaitForSeconds(0.06f);
-            }
-        }
 
         protected IEnumerator MoveCamera(Vector3 targetPosition)
         {
             Transform cameraTransform = MainCamera.transform;
-            const float smoothTime = 4;
+            const float smoothTime = 2;
             Vector3 velocity = Vector3.zero;
             while (cameraTransform.position != targetPosition)
             {
@@ -115,19 +103,6 @@ namespace Code.Scripts.SceneController
             CanvasText.text = CutsceneStrings[CutsceneStringCounter++];
         }
 
-        protected void ShowSpeechBubble(GameObject bubble)
-        {
-            bubble.GetComponent<SpriteRenderer>().enabled = true;
-        }
-
-        protected IEnumerator ShowNextBubbleText(int times = 1)
-        {
-            for (int i = 0; i < times; i++)
-            {
-                yield return FillSpeechbubble();
-                yield return new WaitForSeconds(2);
-            }
-        }
 
         protected IEnumerator ShowNextTextSection(int time, int times = 1)
         {
@@ -145,17 +120,9 @@ namespace Code.Scripts.SceneController
             Player.OnDie += GameOverScreen;
             InitializeCutsceneStrings();
             InitializePlayerDictionary();
-            InitializePlayerBubbles();
+            InitializeBubbles();
         }
 
-        private void InitializePlayerBubbles()
-        {
-            PlayerBubbles = new Dictionary<Character, TMP_Text>();
-            foreach (KeyValuePair<Character, Player> player in Players)
-            {
-                PlayerBubbles.Add(player.Key, player.Value.GetComponentInChildren<TMP_Text>());
-            }
-        }
 
         private static void ResetScene()
         {
@@ -174,7 +141,7 @@ namespace Code.Scripts.SceneController
         private Vector3 FindClosestSpawnPoint()
         {
             List<Transform> leftRespawnPoints = respawnPoints
-                .FindAll(rp => rp.position.x <= Players[Character.Pollin].transform.position.x);
+                .FindAll(rp => rp.position.x <= Characters[Character.Pollin].transform.position.x);
             //Vector3 middlePoint =
             //    (Players[Character.Pollin].transform.position + Players[Character.Muni].transform.position) / 2;
             //float minDistance = respawnPoints.Min(rp => Vector3.Distance(middlePoint, rp.position));
@@ -182,9 +149,9 @@ namespace Code.Scripts.SceneController
             //    .position;
             //return closest;
             float minDistance = leftRespawnPoints.Min(rp =>
-                Vector3.Distance(Players[Character.Pollin].transform.position, rp.position));
+                Vector3.Distance(Characters[Character.Pollin].transform.position, rp.position));
             Vector3 closest = leftRespawnPoints.First(rp =>
-                    Vector3.Distance(Players[Character.Pollin].transform.position, rp.position) == minDistance)
+                    Vector3.Distance(Characters[Character.Pollin].transform.position, rp.position) == minDistance)
                 .position;
             return closest;
         }
@@ -196,21 +163,44 @@ namespace Code.Scripts.SceneController
             StartCoroutine(ShowDied());
         }
 
+        private void InitializeBubbles()
+        {
+            SpeechBubbles = new Dictionary<Character, SpeechBubble>();
+            InitializePlayerBubbles();
+            InitializeNpcBubbles();
+        }
+
         private void InitializeCutsceneStrings()
         {
             string completeString = TextAsset.text;
             CutsceneStrings = completeString.Split('\n').ToList();
+            CutsceneStringCounter = 0;
+        }
+
+        private void InitializeNpcBubbles()
+        {
+            GameObject dani = Npcs.FirstOrDefault(npc => npc.name.Contains("Dani"));
+            if (dani != null)
+                SpeechBubbles.Add(Character.Dani, dani.GetComponentInChildren<SpeechBubble>());
+        }
+
+        private void InitializePlayerBubbles()
+        {
+            foreach (KeyValuePair<Character, Player> player in Characters)
+            {
+                SpeechBubbles.Add(player.Key, player.Value.GetComponentInChildren<SpeechBubble>()); 
+            }
         }
 
         private void InitializePlayerDictionary()
         {
-            Players = new Dictionary<Character, Player>();
-            if (PlayersGoList == null || PlayersGoList.Count == 0)
+            Characters = new Dictionary<Character, Player>();
+            if (PlayerList == null || PlayerList.Count == 0)
                 return;
-            Player muni = PlayersGoList.First(p => p.gameObject.name.Contains("Muni"));
-            Players.Add(Character.Muni, muni);
-            Player pollin = PlayersGoList.First(p => p.gameObject.name.Contains("Pollin"));
-            Players.Add(Character.Pollin, pollin);
+            Player muni = PlayerList.First(p => p.gameObject.name.Contains("Muni"));
+            Characters.Add(Character.Muni, muni);
+            Player pollin = PlayerList.First(p => p.gameObject.name.Contains("Pollin"));
+            Characters.Add(Character.Pollin, pollin);
         }
 
         private List<Transform> InitializeRespawnPoints()
@@ -233,8 +223,8 @@ namespace Code.Scripts.SceneController
         {
             Vector3 closest = FindClosestSpawnPoint();
             Vector3 offset = new Vector3(1, 0, 0);
-            Players[Character.Pollin].transform.position = closest + offset;
-            Players[Character.Muni].transform.position = closest - offset;
+            Characters[Character.Pollin].transform.position = closest + offset;
+            Characters[Character.Muni].transform.position = closest - offset;
         }
 
         private IEnumerator ShowDied()

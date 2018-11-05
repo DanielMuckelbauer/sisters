@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Code.Classes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -80,8 +81,8 @@ namespace Code.Scripts.SceneController
             yield return ShowNextTextSection(5);
             PlayIntroMusic();
             yield return SwordRoomCutscene();
-            ShowSpeechBubble(ActiveSpeechBubble);
-            yield return ShowNextBubbleText(2);
+            SpeechBubbles[Character.Dani].ShowSpeechBubble();
+            yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
             DaniAnimator.SetTrigger("GiveSword");
             yield return new WaitForSeconds(5);
             cameraAnimator.SetTrigger("MoveCameraUp");

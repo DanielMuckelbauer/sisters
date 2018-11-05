@@ -17,7 +17,7 @@ namespace Code.Scripts.SceneController
         {
 
 
-            foreach (Player player in Players.Values)
+            foreach (Player player in Characters.Values)
             {
                 player.transform.position = EndbossSpawnPoint.position;
             }

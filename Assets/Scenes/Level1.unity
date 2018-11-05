@@ -518,7 +518,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 181.12
+      value: 174.3
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1523,9 +1523,18 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1608555318784508, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &780471215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1608555318784508, guid: d46158ea0ff711448b022b47d5cd3175,
+    type: 2}
+  m_PrefabInternal: {fileID: 780471214}
 --- !u!1001 &825317419
 Prefab:
   m_ObjectHideFlags: 0
@@ -2957,6 +2966,26 @@ Prefab:
     - target: {fileID: 4266470159232762, guid: 16873ff9fed00a04cbd87d5e755d45ca, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 61169451442609924, guid: 16873ff9fed00a04cbd87d5e755d45ca,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 157.12946
+      objectReference: {fileID: 0}
+    - target: {fileID: 61169451442609924, guid: 16873ff9fed00a04cbd87d5e755d45ca,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 2.3482056
+      objectReference: {fileID: 0}
+    - target: {fileID: 61169451442609924, guid: 16873ff9fed00a04cbd87d5e755d45ca,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 1.7738829
+      objectReference: {fileID: 0}
+    - target: {fileID: 61169451442609924, guid: 16873ff9fed00a04cbd87d5e755d45ca,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 5.580679
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16873ff9fed00a04cbd87d5e755d45ca, type: 2}
@@ -45004,7 +45033,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1850352707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 160.63, y: 3.71, z: 0.6075908}
+  m_LocalPosition: {x: 160.69, y: 3.71, z: 0.6075908}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2004843163}
@@ -45097,18 +45126,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b519f8c16cb99646960c476d4b9b731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveBubbleText: {fileID: 0}
   CanvasText: {fileID: 579961739}
   GameElements: {fileID: 1478660781}
   MainCamera: {fileID: 519420028}
-  PlayersGoList:
-  - {fileID: 844711015}
-  - {fileID: 868452995}
-  PressAnyKeySprite: {fileID: 1703233994}
-  RespawnPointParent: {fileID: 693643190}
-  ActiveSpeechBubble: {fileID: 0}
-  TextAsset: {fileID: 4900000, guid: 0d40720350b5895428dc047baccd4e74, type: 3}
   UiCanvas: {fileID: 2047405984}
+  RespawnPointParent: {fileID: 693643190}
+  PressAnyKeySprite: {fileID: 1703233994}
+  TextAsset: {fileID: 4900000, guid: 0d40720350b5895428dc047baccd4e74, type: 3}
+  PlayerList:
+  - {fileID: 868452995}
+  - {fileID: 844711015}
+  Npcs:
+  - {fileID: 780471215}
   CameraTarget: {fileID: 1850352708}
   JumpTarget: {fileID: 647259375}
   WalkTarget: {fileID: 1309495320}
