@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Code.Scripts.Entity;
+﻿using Code.Scripts.Entity;
 using UnityEngine;
 
 namespace Code.Scripts.SceneController
@@ -7,7 +6,6 @@ namespace Code.Scripts.SceneController
     public class Level2SceneController : BaseSceneController
     {
         public Transform EndbossSpawnPoint;
-
 
         protected override void Start()
         {

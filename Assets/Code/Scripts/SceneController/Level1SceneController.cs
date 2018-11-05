@@ -49,10 +49,10 @@ namespace Code.Scripts.SceneController
                 MainCamera.transform.position.z);
             StartCoroutine(MoveCamera(targetPosition));
             yield return new WaitForSeconds(6);
-            SetUpSpeechBubble();
+            ShowSpeechBubble();
             yield return ShowNextBubbleText(2);
             yield return GoToDiaperChanger();
-            SpeechBubble.SetActive(false);
+            ActiveSpeechBubble.SetActive(false);
             yield return JumpUpToDiaperChanger();
             FadeSceneOut();
             yield return new WaitForSeconds(10);

@@ -12,19 +12,20 @@ namespace Code.Scripts.SceneController
 {
     public abstract class BaseSceneController : MonoBehaviour
     {
-        public TMP_Text BubbleText;
+        public TMP_Text ActiveBubbleText;
         public TMP_Text CanvasText;
         public GameObject GameElements;
         public GameObject MainCamera;
         public List<Player> PlayersGoList;
         public SpriteRenderer PressAnyKeySprite;
         public GameObject RespawnPointParent;
-        public GameObject SpeechBubble;
+        public GameObject ActiveSpeechBubble;
         public TextAsset TextAsset;
         public GameObject UiCanvas;
         protected int CutsceneStringCounter;
         protected List<string> CutsceneStrings;
         protected Dictionary<Character, Player> Players;
+        protected Dictionary<Character, TMP_Text> PlayerBubbles;
         private List<Transform> respawnPoints;
 
         public static event Action OnRespawn;
@@ -79,13 +80,13 @@ namespace Code.Scripts.SceneController
 
         protected IEnumerator FillSpeechbubble()
         {
-            BubbleText.text = string.Empty;
+            ActiveBubbleText.text = string.Empty;
             string bubbleText = CutsceneStrings[CutsceneStringCounter++];
             char[] charArray = bubbleText.ToCharArray();
             foreach (char c in charArray)
             {
-                BubbleText.text += c;
-                yield return new WaitForSeconds(0.08f);
+                ActiveBubbleText.text += c;
+                yield return new WaitForSeconds(0.06f);
             }
         }
 
@@ -114,11 +115,11 @@ namespace Code.Scripts.SceneController
             CanvasText.text = CutsceneStrings[CutsceneStringCounter++];
         }
 
-        protected void SetUpSpeechBubble()
+        protected void ShowSpeechBubble()
         {
-            if (SpeechBubble == null)
+            if (ActiveSpeechBubble == null)
                 return;
-            SpeechBubble.GetComponent<SpriteRenderer>().enabled = true;
+            ActiveSpeechBubble.GetComponent<SpriteRenderer>().enabled = true;
         }
 
         protected IEnumerator ShowNextBubbleText(int times = 1)
@@ -149,6 +150,16 @@ namespace Code.Scripts.SceneController
             Player.OnDie += GameOverScreen;
             InitializeCutsceneStrings();
             InitializePlayerDictionary();
+            InitializePlayerBubbles();
+        }
+
+        private void InitializePlayerBubbles()
+        {
+            PlayerBubbles = new Dictionary<Character, TMP_Text>();
+            foreach (KeyValuePair<Character, Player> player in Players)
+            {
+                PlayerBubbles.Add(player.Key, player.Value.GetComponentInChildren<TMP_Text>());
+            }
         }
 
         private static void ResetScene()
