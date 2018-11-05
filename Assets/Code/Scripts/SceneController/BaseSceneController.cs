@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 namespace Code.Scripts.SceneController
 {
-    public class BaseSceneController : MonoBehaviour
+    public abstract class BaseSceneController : MonoBehaviour
     {
         public TMP_Text BubbleText;
         public TMP_Text CanvasText;
@@ -33,6 +33,8 @@ namespace Code.Scripts.SceneController
         {
             OnRespawn?.Invoke();
         }
+
+        public abstract void SceneTriggerEntered();
 
         protected void DisableFollowingCamera()
         {
@@ -155,6 +157,7 @@ namespace Code.Scripts.SceneController
             OnRespawn = null;
         }
 
+        //TODO Change for two players
         private Vector3 FindClosestSpawnPoint()
         {
             List<Transform> leftRespawnPoints = respawnPoints

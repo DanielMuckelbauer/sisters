@@ -12,6 +12,7 @@ namespace Code.Classes
             this.camera = camera;
         }
 
+        //TODO Change for two players
         public void FixBetween(Transform player1, Transform player2)
         {
             camera.transform.position = new Vector3(player1.transform.position.x, player1.transform.position.y + Yoffset,

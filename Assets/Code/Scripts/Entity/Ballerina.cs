@@ -7,7 +7,7 @@ namespace Code.Scripts.Entity
     {
         public void StartFighting()
         {
-            StartCoroutine(Patrol(5));
+            StartCoroutine(Patrol(4));
             StartCoroutine(JumpRandomly());
         }
 

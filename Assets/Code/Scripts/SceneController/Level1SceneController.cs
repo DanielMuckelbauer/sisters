@@ -10,6 +10,11 @@ namespace Code.Scripts.SceneController
         public Transform JumpTarget;
         public Transform WalkTarget;
 
+        public override void SceneTriggerEntered()
+        {
+            StartCoroutine(PlayEndingCutscene());
+        }
+
         protected override void Start()
         {
             base.Start();
@@ -34,11 +39,6 @@ namespace Code.Scripts.SceneController
             }
 
             pollin.transform.Rotate(0, 0, 90);
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            StartCoroutine(PlayEndingCutscene());
         }
 
         private IEnumerator PlayEndingCutscene()

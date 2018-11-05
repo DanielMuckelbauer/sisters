@@ -25,6 +25,11 @@ namespace Code.Scripts.SceneController
         private Animator cameraAnimator;
         private bool moveSword;
 
+        public override void SceneTriggerEntered()
+        {
+           
+        }
+
         protected override void Start()
         {
             base.Start();
@@ -32,7 +37,6 @@ namespace Code.Scripts.SceneController
             StartCoroutine(PlayCutScene());
             birthedObjects = new List<GameObject>();
         }
-
         private IEnumerator ActivateBackground()
         {
             UiCanvas.SetActive(false);
