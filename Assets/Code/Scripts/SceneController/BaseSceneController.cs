@@ -12,7 +12,6 @@ namespace Code.Scripts.SceneController
 {
     public abstract class BaseSceneController : MonoBehaviour
     {
-        public TMP_Text ActiveBubbleText;
         public TMP_Text CanvasText;
         public GameObject GameElements;
         public GameObject MainCamera;
@@ -80,12 +79,13 @@ namespace Code.Scripts.SceneController
 
         protected IEnumerator FillSpeechbubble()
         {
-            ActiveBubbleText.text = string.Empty;
+            TMP_Text activeBubbleText = ActiveSpeechBubble.GetComponent<TMP_Text>();
+            activeBubbleText.text = string.Empty;
             string bubbleText = CutsceneStrings[CutsceneStringCounter++];
             char[] charArray = bubbleText.ToCharArray();
             foreach (char c in charArray)
             {
-                ActiveBubbleText.text += c;
+                activeBubbleText.text += c;
                 yield return new WaitForSeconds(0.06f);
             }
         }
@@ -138,9 +138,6 @@ namespace Code.Scripts.SceneController
             }
         }
 
-        /// <summary>
-        /// Initializes the cutscene strings from the provided textfile
-        /// </summary>
         protected virtual void Start()
         {
             respawnPoints = InitializeRespawnPoints();

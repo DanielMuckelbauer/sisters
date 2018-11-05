@@ -15,6 +15,8 @@ namespace Code.Scripts.SceneController
 
         public override void SceneTriggerEntered()
         {
+
+
             foreach (Player player in Players.Values)
             {
                 player.transform.position = EndbossSpawnPoint.position;
