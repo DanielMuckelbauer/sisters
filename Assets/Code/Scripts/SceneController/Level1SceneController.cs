@@ -18,7 +18,7 @@ namespace Code.Scripts.SceneController
         protected override void Start()
         {
             base.Start();
-            StartCoroutine(PlayOpeningCutscene());
+            StartCoroutine(PlayOpeningCutscene(5, 4));
         }
 
         private IEnumerator GoToDiaperChanger()
@@ -57,13 +57,6 @@ namespace Code.Scripts.SceneController
             FadeSceneOut();
             yield return new WaitForSeconds(10);
             Application.Quit();
-        }
-
-        private IEnumerator PlayOpeningCutscene()
-        {
-            yield return ShowNextTextSection(5, 4);
-            UiCanvas.SetActive(false);
-            GameElements.SetActive(true);
         }
     }
 }

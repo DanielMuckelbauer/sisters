@@ -102,6 +102,13 @@ namespace Code.Scripts.SceneController
             }
         }
 
+        protected IEnumerator PlayOpeningCutscene(int time, int times)
+        {
+            yield return ShowNextTextSection(time, times);
+            UiCanvas.SetActive(false);
+            GameElements.SetActive(true);
+        }
+
         protected void SetNextCutSceneString()
         {
             CanvasText.text = CutsceneStrings[CutsceneStringCounter++];
