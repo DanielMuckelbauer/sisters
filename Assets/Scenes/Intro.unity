@@ -472,14 +472,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab754c3ed3a75946ac065fda55b552a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BubbleText: {fileID: 1356816524}
+  ActiveBubbleText: {fileID: 1356816524}
   CanvasText: {fileID: 333715254}
   GameElements: {fileID: 35516094}
   MainCamera: {fileID: 2101569435}
   PlayersGoList: []
   PressAnyKeySprite: {fileID: 333715253}
   RespawnPointParent: {fileID: 0}
-  SpeechBubble: {fileID: 1215877716}
+  ActiveSpeechBubble: {fileID: 1215877716}
   TextAsset: {fileID: 4900000, guid: 82e8ea1c0c1d6424cae3743502192791, type: 3}
   UiCanvas: {fileID: 966603429}
   AudioClips:

@@ -80,7 +80,7 @@ namespace Code.Scripts.SceneController
             yield return ShowNextTextSection(5);
             PlayIntroMusic();
             yield return SwordRoomCutscene();
-            ShowSpeechBubble();
+            ShowSpeechBubble(ActiveSpeechBubble);
             yield return ShowNextBubbleText(2);
             DaniAnimator.SetTrigger("GiveSword");
             yield return new WaitForSeconds(5);

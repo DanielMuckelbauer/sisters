@@ -115,11 +115,9 @@ namespace Code.Scripts.SceneController
             CanvasText.text = CutsceneStrings[CutsceneStringCounter++];
         }
 
-        protected void ShowSpeechBubble()
+        protected void ShowSpeechBubble(GameObject bubble)
         {
-            if (ActiveSpeechBubble == null)
-                return;
-            ActiveSpeechBubble.GetComponent<SpriteRenderer>().enabled = true;
+            bubble.GetComponent<SpriteRenderer>().enabled = true;
         }
 
         protected IEnumerator ShowNextBubbleText(int times = 1)

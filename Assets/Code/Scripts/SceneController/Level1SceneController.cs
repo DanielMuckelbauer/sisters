@@ -44,19 +44,20 @@ namespace Code.Scripts.SceneController
         private IEnumerator PlayEndingCutscene()
         {
             DisablePlayerMovement();
+            DisablePlayerMovement();
             DisableFollowingCamera();
             Vector3 targetPosition = new Vector3(CameraTarget.position.x, CameraTarget.position.y,
                 MainCamera.transform.position.z);
             StartCoroutine(MoveCamera(targetPosition));
             yield return new WaitForSeconds(6);
-            ShowSpeechBubble();
+            ShowSpeechBubble(ActiveSpeechBubble);
             yield return ShowNextBubbleText(2);
             yield return GoToDiaperChanger();
             ActiveSpeechBubble.SetActive(false);
             yield return JumpUpToDiaperChanger();
             FadeSceneOut();
             yield return new WaitForSeconds(10);
-            Application.Quit();
+            EnableNextScene();
         }
     }
 }

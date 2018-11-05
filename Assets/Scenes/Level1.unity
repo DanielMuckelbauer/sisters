@@ -518,7 +518,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -40.3
+      value: 181.12
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.y
@@ -548,6 +548,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 33600965248762336, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
         type: 2}
       propertyPath: Hearts.Array.data[0]
@@ -573,6 +578,16 @@ Prefab:
       propertyPath: Hearts.Array.data[4]
       value: 
       objectReference: {fileID: 1776834031}
+    - target: {fileID: 114513021277704082, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513021277704082, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
   m_IsPrefabAsset: 0
@@ -1511,12 +1526,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &809867426 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114200585446722812, guid: d46158ea0ff711448b022b47d5cd3175,
-    type: 2}
-  m_PrefabInternal: {fileID: 780471214}
-  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
 --- !u!1001 &825317419
 Prefab:
   m_ObjectHideFlags: 0
@@ -2042,6 +2051,11 @@ Prefab:
       propertyPath: Hearts.Array.data[4]
       value: 
       objectReference: {fileID: 164868386}
+    - target: {fileID: 33369113527873652, guid: be956fa908d6bd7479a94f994585409e,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be956fa908d6bd7479a94f994585409e, type: 2}
   m_IsPrefabAsset: 0
@@ -2050,11 +2064,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e,
     type: 2}
   m_PrefabInternal: {fileID: 934492182}
---- !u!1 &1004239336 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1048806427691660, guid: d46158ea0ff711448b022b47d5cd3175,
-    type: 2}
-  m_PrefabInternal: {fileID: 780471214}
 --- !u!1001 &1042299458
 Prefab:
   m_ObjectHideFlags: 0
@@ -45088,7 +45097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b519f8c16cb99646960c476d4b9b731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BubbleText: {fileID: 809867426}
+  ActiveBubbleText: {fileID: 0}
   CanvasText: {fileID: 579961739}
   GameElements: {fileID: 1478660781}
   MainCamera: {fileID: 519420028}
@@ -45097,7 +45106,7 @@ MonoBehaviour:
   - {fileID: 868452995}
   PressAnyKeySprite: {fileID: 1703233994}
   RespawnPointParent: {fileID: 693643190}
-  SpeechBubble: {fileID: 1004239336}
+  ActiveSpeechBubble: {fileID: 0}
   TextAsset: {fileID: 4900000, guid: 0d40720350b5895428dc047baccd4e74, type: 3}
   UiCanvas: {fileID: 2047405984}
   CameraTarget: {fileID: 1850352708}
