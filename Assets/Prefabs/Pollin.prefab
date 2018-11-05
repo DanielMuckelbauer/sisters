@@ -225,7 +225,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1041184827798590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40.9, y: 1.6, z: 1.1562067}
+  m_LocalPosition: {x: 110.45, y: -4.2946906, z: -88.843796}
   m_LocalScale: {x: 0.036255725, y: 0.036255725, z: 0.036255725}
   m_Children:
   - {fileID: 4266354394515548}
@@ -366,7 +366,7 @@ PolygonCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -678,8 +678,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Jump: {fileID: 8300000, guid: e8ebcc5bf26385b4d9c05926953411fb, type: 3}
-  Swing: {fileID: 8300000, guid: da73651db96e31d4194a4ca83ce5e3f6, type: 3}
   ReceiveHit: {fileID: 8300000, guid: 02b0103463e878c4baba1149a890d258, type: 3}
+  Swing: {fileID: 8300000, guid: da73651db96e31d4194a4ca83ce5e3f6, type: 3}
 --- !u!212 &212094515541984904
 SpriteRenderer:
   m_ObjectHideFlags: 1
