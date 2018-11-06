@@ -11,8 +11,13 @@ namespace Code.Scripts.SceneController
         public AudioClip BalletMusic;
         public Transform EndbossSpawnPoint;
 
+        private bool endTriggerActivated;
+
         public override void SceneTriggerEntered()
         {
+            if (endTriggerActivated)
+                return;
+            endTriggerActivated = true;
             DisablePlayerMovement();
             StartCoroutine(TalkingCutScene());
         }
@@ -33,7 +38,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator SlowlyIncreaseVolume()
         {
-            while (AudioSource.volume < 0.1)
+            while (AudioSource.volume < 0.4)
             {
                 yield return new WaitForSeconds(2);
                 AudioSource.volume += 0.01f;
