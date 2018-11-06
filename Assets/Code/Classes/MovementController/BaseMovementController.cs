@@ -10,6 +10,7 @@ namespace Code.Classes.MovementController
         protected readonly Rigidbody2D RigidBody;
         protected readonly Transform Transform;
         protected float Speed = 4;
+
         public bool LookingRight { get; set; }
 
         protected BaseMovementController(GameObject gameObject)

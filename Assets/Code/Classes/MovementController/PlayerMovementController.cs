@@ -34,7 +34,7 @@ namespace Code.Classes.MovementController
         public override void Move(float horizontal)
         {
             ApplyMovement(horizontal);
-            Animator.SetInteger("Walking", (int)horizontal);
+            Animator.SetInteger("Walking", (int) horizontal);
             TryFlip(horizontal);
         }
 
@@ -47,9 +47,17 @@ namespace Code.Classes.MovementController
 
         private void Flip()
         {
-            Vector3 theScale = Transform.localScale;
+            FlipXAxis(Transform);
+            FlipXAxis(Transform.Find("SpeechBubble/BubbleText"));
+        }
+
+        public void FlipXAxis(Transform transformToFLip)
+        {
+            if (transformToFLip == null)
+                return;
+            Vector3 theScale = transformToFLip.localScale;
             theScale.x *= -1;
-            Transform.localScale = theScale;
+            transformToFLip.localScale = theScale;
         }
 
         private void PlaySound(AudioClip sound)
@@ -57,6 +65,7 @@ namespace Code.Classes.MovementController
             audioSource.clip = sound;
             audioSource.Play();
         }
+
         private void TryFlip(float horizontal)
         {
             if (LookingRight && horizontal < 0)
