@@ -57,6 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4768758790731730}
   - component: {fileID: 212916006040389672}
+  - component: {fileID: 114102252723192846}
   m_Layer: 0
   m_Name: SpeechBubble
   m_TagString: Untagged
@@ -260,7 +261,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1041184827798590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 181.12, y: 1.88, z: 1.1562067}
+  m_LocalPosition: {x: 84.52, y: -4.2946906, z: -88.843796}
   m_LocalScale: {x: 0.036255725, y: 0.036255725, z: 0.036255725}
   m_Children:
   - {fileID: 4266354394515548}
@@ -738,6 +739,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114102252723192846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155236595702248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89248f0fd9080214b8fe7e5e5f142f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BubbleText: {fileID: 114513021277704082}
 --- !u!114 &114437168963704272
 MonoBehaviour:
   m_ObjectHideFlags: 1

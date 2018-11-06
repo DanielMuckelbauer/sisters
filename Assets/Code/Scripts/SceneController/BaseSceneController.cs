@@ -17,16 +17,15 @@ namespace Code.Scripts.SceneController
         public TMP_Text CanvasText;
         public GameObject GameElements;
         public GameObject MainCamera;
-        public GameObject UiCanvas;
-        public GameObject RespawnPointParent;
-        public SpriteRenderer PressAnyKeySprite;
-        public TextAsset TextAsset;
-        public List<Player> PlayerList;
         public List<GameObject> Npcs;
-        private List<Transform> respawnPoints;
+        public List<Player> PlayerList;
+        public SpriteRenderer PressAnyKeySprite;
+        public GameObject RespawnPointParent;
+        public TextAsset TextAsset;
+        public GameObject UiCanvas;
         protected Dictionary<Character, Player> Characters;
         protected Dictionary<Character, SpeechBubble> SpeechBubbles;
-
+        private List<Transform> respawnPoints;
         public static event Action OnRespawn;
 
         public static void InvokeRespawnBoth()
@@ -44,7 +43,7 @@ namespace Code.Scripts.SceneController
         protected void DisablePlayerMovement()
         {
             foreach (Player player in Characters.Values)
-                player.DisableMovement();
+                player.SetMovement(false);
         }
 
         protected void EnableNextScene()
@@ -53,6 +52,12 @@ namespace Code.Scripts.SceneController
             CanvasText.text = string.Empty;
             UiCanvas.SetActive(true);
             PressAnyKeySprite.enabled = true;
+        }
+
+        protected void EnablePlayerMovement()
+        {
+            foreach (Player player in Characters.Values)
+                player.SetMovement(true);
         }
 
         protected IEnumerator Fade(SpriteRenderer sprite, int from, int to, float duration = 5)
@@ -76,7 +81,6 @@ namespace Code.Scripts.SceneController
             GameElements.GetComponentsInChildren<SpriteRenderer>().ToList()
                 .ForEach(s => { StartCoroutine(Fade(s, 1, 0)); });
         }
-
 
         protected IEnumerator MoveCamera(Vector3 targetPosition)
         {
@@ -103,7 +107,6 @@ namespace Code.Scripts.SceneController
             CanvasText.text = CutsceneStrings[CutsceneStringCounter++];
         }
 
-
         protected IEnumerator ShowNextTextSection(int time, int times = 1)
         {
             for (int i = 0; i < times; i++)
@@ -122,7 +125,6 @@ namespace Code.Scripts.SceneController
             InitializePlayerDictionary();
             InitializeBubbles();
         }
-
 
         private static void ResetScene()
         {
@@ -188,7 +190,7 @@ namespace Code.Scripts.SceneController
         {
             foreach (KeyValuePair<Character, Player> player in Characters)
             {
-                SpeechBubbles.Add(player.Key, player.Value.GetComponentInChildren<SpeechBubble>()); 
+                SpeechBubbles.Add(player.Key, player.Value.GetComponentInChildren<SpeechBubble>());
             }
         }
 

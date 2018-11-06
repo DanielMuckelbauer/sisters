@@ -30,6 +30,7 @@ namespace Code.Scripts.SceneController
             {
                 yield return FillSpeechbubble();
                 yield return new WaitForSeconds(2);
+                BubbleText.text = string.Empty;
             }
         }
 

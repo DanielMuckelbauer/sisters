@@ -39,10 +39,10 @@ namespace Code.Scripts.Entity
             base.Die();
         }
 
-        public void DisableMovement()
+        public void SetMovement(bool allowed)
         {
             MovementController.Move(0);
-            movementDisabled = true;
+            movementDisabled = !allowed;
         }
 
         protected virtual void Start()

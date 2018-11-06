@@ -11564,6 +11564,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 33600965248762336, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
         type: 2}
       propertyPath: Hearts.Array.data[0]
@@ -11589,11 +11594,6 @@ Prefab:
       propertyPath: Hearts.Array.data[4]
       value: 
       objectReference: {fileID: 374942248}
-    - target: {fileID: 33600965248762336, guid: 40f0c278916650549a4b753816fe6fda,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114513021277704082, guid: 40f0c278916650549a4b753816fe6fda,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -11603,10 +11603,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1155236595702248, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
@@ -11740,15 +11736,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212821143231939758, guid: be956fa908d6bd7479a94f994585409e,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1503644429324120, guid: be956fa908d6bd7479a94f994585409e, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be956fa908d6bd7479a94f994585409e, type: 2}
@@ -12663,16 +12650,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f2529e2d954b7b9da1ea16e30542fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BubbleText: {fileID: 0}
   CanvasText: {fileID: 1278451150}
   GameElements: {fileID: 1770195468}
   MainCamera: {fileID: 380056169}
-  PlayersGoList:
+  Npcs: []
+  PlayerList:
   - {fileID: 478700853}
   - {fileID: 843769141}
   PressAnyKeySprite: {fileID: 1596350135}
   RespawnPointParent: {fileID: 335052549}
-  SpeechBubble: {fileID: 0}
   TextAsset: {fileID: 4900000, guid: eae317a2138d9894ca266b7b6d96fd31, type: 3}
   UiCanvas: {fileID: 226619558}
   EndbossSpawnPoint: {fileID: 2071869462}
