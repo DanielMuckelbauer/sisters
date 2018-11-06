@@ -40,7 +40,7 @@ namespace Code.Scripts.SceneController
         }
         private IEnumerator ActivateBackground()
         {
-            UiCanvas.SetActive(false);
+            TextCanvas.SetActive(false);
             yield return new WaitForSeconds(1);
             GameElements.GetComponent<SpriteRenderer>().enabled = true;
         }
@@ -103,7 +103,7 @@ namespace Code.Scripts.SceneController
         {
             birthedObjects.ForEach(Destroy);
             GameElements.GetComponent<SpriteRenderer>().enabled = false;
-            UiCanvas.SetActive(true);
+            TextCanvas.SetActive(true);
         }
 
         private IEnumerator SwordRoomCutscene()

@@ -22,7 +22,7 @@ namespace Code.Scripts.SceneController
         public SpriteRenderer PressAnyKeySprite;
         public GameObject RespawnPointParent;
         public TextAsset TextAsset;
-        public GameObject UiCanvas;
+        public GameObject TextCanvas;
         protected Dictionary<Character, Player> Characters;
         protected Dictionary<Character, SpeechBubble> SpeechBubbles;
         private List<Transform> respawnPoints;
@@ -50,7 +50,7 @@ namespace Code.Scripts.SceneController
         {
             StartCoroutine(LoadNextSceneOnInput());
             CanvasText.text = string.Empty;
-            UiCanvas.SetActive(true);
+            TextCanvas.SetActive(true);
             PressAnyKeySprite.enabled = true;
         }
 
@@ -98,7 +98,7 @@ namespace Code.Scripts.SceneController
         protected IEnumerator PlayOpeningCutscene(int time, int times)
         {
             yield return ShowNextTextSection(time, times);
-            UiCanvas.SetActive(false);
+            TextCanvas.SetActive(false);
             GameElements.SetActive(true);
         }
 
@@ -235,7 +235,7 @@ namespace Code.Scripts.SceneController
             yield return new WaitForSeconds(3);
             CanvasText.color = Color.red;
             CanvasText.text = "You Died";
-            UiCanvas.SetActive(true);
+            TextCanvas.SetActive(true);
             yield return new WaitForSeconds(5);
             ResetScene();
         }

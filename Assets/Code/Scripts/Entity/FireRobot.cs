@@ -16,7 +16,7 @@ namespace Code.Scripts.Entity
         }
 
         private IEnumerator ShootPeriodically()
-        {   
+        {
             while (true)
             {
                 yield return new WaitForSeconds(7);
