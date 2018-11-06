@@ -12662,6 +12662,8 @@ MonoBehaviour:
   TextAsset: {fileID: 4900000, guid: eae317a2138d9894ca266b7b6d96fd31, type: 3}
   UiCanvas: {fileID: 226619558}
   EndbossSpawnPoint: {fileID: 2071869462}
+  AudioSource: {fileID: 250322463}
+  BalletMusic: {fileID: 8300000, guid: 8b75a0cfe261ba44d965b3ff29da7471, type: 3}
 --- !u!61 &1706514909
 BoxCollider2D:
   m_ObjectHideFlags: 0
