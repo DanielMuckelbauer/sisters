@@ -19,7 +19,7 @@ namespace Code.Scripts.SceneController
         public GameObject MainCamera;
         public List<GameObject> Npcs;
         public List<Player> PlayerList;
-        public SpriteRenderer PressAnyKeySprite;
+        public SpriteRenderer PressAnyKeySprite;    
         public GameObject RespawnPointParent;
         public TextAsset TextAsset;
         public GameObject TextCanvas;
@@ -37,8 +37,8 @@ namespace Code.Scripts.SceneController
 
         protected void BeamPlayersTo(Vector3 target)
         {
-            BeamPlayerTo(target, Character.Pollin, -0.5f);
-            BeamPlayerTo(target, Character.Muni, 0.5f);
+            BeamPlayerTo(target, PlayerList[0].transform, -0.5f);
+            BeamPlayerTo(target, PlayerList[1].transform, 0.5f);
         }
 
         protected void DisableFollowingCamera()
@@ -103,6 +103,7 @@ namespace Code.Scripts.SceneController
 
         protected IEnumerator MovePlayersToSpeakPosition(Transform point1, Transform point2)
         {
+            PlayerList.ForEach(p => MoveObjectToTargetIfToFarAway(p.transform, point1.position));
             Transform leftPoint = FindLeft(point1, point2);
             Transform rightPoint = FindRight(point1, point2);
             Transform leftPlayer = FindLeft(PlayerList[0].transform, PlayerList[1].transform);
@@ -165,6 +166,12 @@ namespace Code.Scripts.SceneController
             Player.ResetOnDie();
             Healer.ResetOnHealingConsumed();
             OnRespawn = null;
+        }
+
+        private void BeamPlayerTo(Vector3 target, Transform obj, float xOffset = 0.0f)
+        {
+            Vector3 offset = new Vector3(xOffset, 0, 0);
+            obj.transform.position = target + offset;
         }
 
         //TODO Change for two players
@@ -249,16 +256,16 @@ namespace Code.Scripts.SceneController
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
+        private void MoveObjectToTargetIfToFarAway(Transform obj, Vector3 target, float maxDistance = 20f)
+        {
+            if (Vector3.Distance(obj.position, target) > maxDistance)
+                BeamPlayerTo(target, obj, -3f);
+        }
+
         private void RespawnBoth()
         {
             Vector3 closest = FindClosestSpawnPoint();
             BeamPlayersTo(closest);
-        }
-
-        private void BeamPlayerTo(Vector3 closest, Character character, float xOffset)
-        {
-            Vector3 offset = new Vector3(xOffset, 0, 0);
-            Characters[character].transform.position = closest + offset;
         }
 
         private IEnumerator ShowDied()
