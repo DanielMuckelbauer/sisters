@@ -33,7 +33,7 @@ namespace Code.Scripts.Entity
         protected IEnumerator BrieflyTurnInvincibleAndBlink()
         {
             Invincible = true;
-            yield return StartCoroutine(Blink(10));
+            yield return StartCoroutine(Blink(7));
             Invincible = false;
         }
 
