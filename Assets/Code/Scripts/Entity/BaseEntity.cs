@@ -20,9 +20,34 @@ namespace Code.Scripts.Entity
             Destroy(gameObject);
         }
 
+        public IEnumerator GoTo(Vector3 target)
+        {
+            int horizontal = target.x < transform.position.x ? -1 : 1;
+            bool targetReached = false;
+            while (!targetReached)
+            {
+                MovementController.Move(horizontal);
+                if (horizontal == 1)
+                    targetReached = transform.position.x > target.x;
+                else
+                    targetReached = transform.position.x < target.x;
+                yield return null;
+            }
+
+            MovementController.Move(0);
+        }
+
         public virtual void HitByProjectile(GameObject projectile)
         {
             Destroy(projectile);
+        }
+
+        public IEnumerator TurnTo(Vector3 target)
+        {
+            int horizontal = target.x < transform.position.x ? -1 : 1;
+            MovementController.Move(horizontal);
+            yield return null;
+            MovementController.Move(0);
         }
 
         protected IEnumerator BrieflyTurnInvincibleAndBlink()
@@ -41,31 +66,6 @@ namespace Code.Scripts.Entity
                 allRenderers.ForEach(r => r.color = new Color(1f, 1f, 1f, opacity));
                 yield return new WaitForSeconds(0.1f);
             }
-        }
-
-        public IEnumerator GoTo(Vector3 target)
-        {
-            int horizontal = target.x < transform.position.x ? -1 : 1;
-            bool targetReached = false;
-            while (!targetReached)
-            {
-                MovementController.Move(horizontal);
-                if (horizontal == 1)
-                    targetReached = transform.position.x > target.x;
-                else
-                    targetReached = transform.position.x < target.x;
-                yield return null;
-            }
-
-            MovementController.Move(0);
-        }
-
-        public IEnumerator TurnTo(Vector3 target)
-        {
-            int horizontal = target.x < transform.position.x ? -1 : 1;
-            MovementController.Move(horizontal);
-            yield return null;
-            MovementController.Move(0);
         }
     }
 }
