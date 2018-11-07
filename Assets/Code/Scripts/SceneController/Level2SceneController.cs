@@ -70,7 +70,7 @@ namespace Code.Scripts.SceneController
             ChangeMusic();
             yield return MovePlayersToSpeakPosition(WalkTarget1, WalkTarget2);
             yield return Talk();
-            BeamPlayersTo(EndbossSpawnPoint);
+            BeamPlayersTo(EndbossSpawnPoint.position);
             EnablePlayerMovement();
         }
     }

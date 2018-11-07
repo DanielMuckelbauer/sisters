@@ -35,12 +35,10 @@ namespace Code.Scripts.SceneController
 
         public abstract void SceneTriggerEntered();
 
-        protected void BeamPlayersTo(Transform target)
+        protected void BeamPlayersTo(Vector3 target)
         {
-            foreach (Player player in Characters.Values)
-            {
-                player.transform.position = target.position;
-            }
+            BeamPlayerTo(target, Character.Pollin, -0.5f);
+            BeamPlayerTo(target, Character.Muni, 0.5f);
         }
 
         protected void DisableFollowingCamera()
@@ -254,9 +252,13 @@ namespace Code.Scripts.SceneController
         private void RespawnBoth()
         {
             Vector3 closest = FindClosestSpawnPoint();
-            Vector3 offset = new Vector3(1, 0, 0);
-            Characters[Character.Pollin].transform.position = closest + offset;
-            Characters[Character.Muni].transform.position = closest - offset;
+            BeamPlayersTo(closest);
+        }
+
+        private void BeamPlayerTo(Vector3 closest, Character character, float xOffset)
+        {
+            Vector3 offset = new Vector3(xOffset, 0, 0);
+            Characters[character].transform.position = closest + offset;
         }
 
         private IEnumerator ShowDied()
