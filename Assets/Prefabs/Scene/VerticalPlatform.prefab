@@ -189,10 +189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa99cd97d504a688e8a25620f433b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Delay: 0
   MoveTime: 2
   Pause: 0
   Step: 1.5
-  Delay: 0
 --- !u!212 &212539454934188430
 SpriteRenderer:
   m_ObjectHideFlags: 1

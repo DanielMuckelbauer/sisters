@@ -35,7 +35,7 @@ namespace Code.Scripts.SceneController
             AudioSource.Stop();
             PlayBalletMusic();
         }
-
+       
         private void PlayBalletMusic()
         {
             AudioSource.clip = BalletMusic;
