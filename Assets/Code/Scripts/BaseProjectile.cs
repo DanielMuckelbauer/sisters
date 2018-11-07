@@ -6,8 +6,9 @@ namespace Code.Scripts
 {
     public abstract class BaseProjectile : MonoBehaviour
     {
-        protected float ShootForce = 2f;
-        private const float RotationForce = 10;
+        public float ShootForce = 2f;
+
+        public float RotationForce = 10;
         private Rigidbody2D rigidBody;
 
         protected virtual void Awake()

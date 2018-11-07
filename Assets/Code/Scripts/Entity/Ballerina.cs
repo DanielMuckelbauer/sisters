@@ -57,8 +57,9 @@ namespace Code.Scripts.Entity
             {
                 pair.Value.ForEach(v =>
                 {
-                    Rigidbody2D rigidBody = Instantiate(Shoe, pair.Key).GetComponent<Rigidbody2D>();
-                    rigidBody.AddForce(v * ShootForce);
+                    BaseProjectile baseProjectile = Instantiate(Shoe, pair.Key).GetComponent<BaseProjectile>();
+                    baseProjectile.Shoot(v * 10);
+                    Debug.Log("Shoes");
                 });
             }
         }

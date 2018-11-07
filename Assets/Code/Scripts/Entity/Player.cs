@@ -107,6 +107,7 @@ namespace Code.Scripts.Entity
             AudioSource.clip = clip;
             AudioSource.Play();
         }
+
         private void Update()
         {
             if (movementDisabled)
