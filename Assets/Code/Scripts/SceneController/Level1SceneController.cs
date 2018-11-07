@@ -23,8 +23,8 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator GoToDiaperChanger()
         {
-            Characters[Character.Pollin].GoTo(WalkTarget.position);
-            yield return new WaitForSeconds(2);
+            yield return Characters[Character.Pollin].GoTo(WalkTarget.position);
+            yield return new WaitForSeconds(1);
         }
 
         private IEnumerator JumpUpToDiaperChanger()

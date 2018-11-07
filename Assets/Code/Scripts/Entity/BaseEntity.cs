@@ -20,11 +20,6 @@ namespace Code.Scripts.Entity
             Destroy(gameObject);
         }
 
-        public void GoTo(Vector3 target)
-        {
-            StartCoroutine(MoveToTarget(target));
-        }
-
         public virtual void HitByProjectile(GameObject projectile)
         {
             Destroy(projectile);
@@ -48,7 +43,7 @@ namespace Code.Scripts.Entity
             }
         }
 
-        private IEnumerator MoveToTarget(Vector3 target)
+        public IEnumerator GoTo(Vector3 target)
         {
             int horizontal = target.x < transform.position.x ? -1 : 1;
             bool targetReached = false;
@@ -62,7 +57,14 @@ namespace Code.Scripts.Entity
                 yield return null;
             }
 
-            Debug.Log(gameObject.name + "Target reached");
+            MovementController.Move(0);
+        }
+
+        public IEnumerator TurnTo(Vector3 target)
+        {
+            int horizontal = target.x < transform.position.x ? -1 : 1;
+            MovementController.Move(horizontal);
+            yield return null;
             MovementController.Move(0);
         }
     }

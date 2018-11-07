@@ -103,14 +103,16 @@ namespace Code.Scripts.SceneController
             }
         }
 
-        protected void MovePlayersToSpeakPosition(Transform point1, Transform point2)
+        protected IEnumerator MovePlayersToSpeakPosition(Transform point1, Transform point2)
         {
             Transform leftPoint = FindLeft(point1, point2);
             Transform rightPoint = FindRight(point1, point2);
             Transform leftPlayer = FindLeft(PlayerList[0].transform, PlayerList[1].transform);
             Transform rightPlayer = FindRight(PlayerList[0].transform, PlayerList[1].transform);
-            leftPlayer.GetComponent<Player>().GoTo(leftPoint.position);
-            rightPlayer.GetComponent<Player>().GoTo(rightPoint.position);
+            yield return leftPlayer.GetComponent<Player>().GoTo(leftPoint.position);
+            yield return rightPlayer.GetComponent<Player>().GoTo(rightPoint.position);
+            yield return PlayerList[0].TurnTo(PlayerList[1].transform.position);
+            yield return PlayerList[1].TurnTo(PlayerList[0].transform.position);
         }
 
         protected IEnumerator PlayOpeningCutscene(int time, int times)

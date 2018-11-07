@@ -68,7 +68,7 @@ namespace Code.Scripts.SceneController
         private IEnumerator TalkingCutScene()
         {
             ChangeMusic();
-            MovePlayersToSpeakPosition(WalkTarget1, WalkTarget2);
+            yield return MovePlayersToSpeakPosition(WalkTarget1, WalkTarget2);
             yield return Talk();
             BeamPlayersTo(EndbossSpawnPoint);
             EnablePlayerMovement();
