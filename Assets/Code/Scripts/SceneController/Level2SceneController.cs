@@ -10,6 +10,8 @@ namespace Code.Scripts.SceneController
         public AudioSource AudioSource;
         public AudioClip BalletMusic;
         public Transform EndbossSpawnPoint;
+        public Transform WalkTarget1;
+        public Transform WalkTarget2;
 
         private bool endTriggerActivated;
 
@@ -26,6 +28,12 @@ namespace Code.Scripts.SceneController
         {
             base.Start();
             StartCoroutine(PlayOpeningCutscene(5, 2));
+        }
+
+        private void ChangeMusic()
+        {
+            AudioSource.Stop();
+            PlayBalletMusic();
         }
 
         private void PlayBalletMusic()
@@ -45,23 +53,24 @@ namespace Code.Scripts.SceneController
             }
         }
 
-        private IEnumerator TalkingCutScene()
+        private IEnumerator Talk()
         {
             SpeechBubble munisBubble = SpeechBubbles[Character.Muni];
             SpeechBubble pollinsBubble = SpeechBubbles[Character.Pollin];
             munisBubble.ShowSpeechBubble();
-            AudioSource.Stop();
-            PlayBalletMusic();
             yield return munisBubble.ShowNextBubbleText();
             pollinsBubble.ShowSpeechBubble();
             yield return pollinsBubble.ShowNextBubbleText();
             munisBubble.HideSpeechBubble();
             pollinsBubble.HideSpeechBubble();
-            foreach (Player player in Characters.Values)
-            {
-                player.transform.position = EndbossSpawnPoint.position;
-            }
+        }
 
+        private IEnumerator TalkingCutScene()
+        {
+            ChangeMusic();
+            MovePlayersToSpeakPosition(WalkTarget1, WalkTarget2);
+            yield return Talk();
+            BeamPlayersTo(EndbossSpawnPoint);
             EnablePlayerMovement();
         }
     }

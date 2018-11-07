@@ -11,18 +11,18 @@ namespace Code.Scripts.Entity
     {
         public Animator Animator;
         protected ICombatController CombatController;
+        protected bool Invincible;
         protected IMovementController MovementController;
         protected float WalkingSpeed = 5;
-        protected bool Invincible;
 
         public virtual void Die()
         {
             Destroy(gameObject);
         }
 
-        public void GoTo(Vector3 target, float tolerance)
+        public void GoTo(Vector3 target)
         {
-            StartCoroutine(MoveToTarget(target, tolerance));
+            StartCoroutine(MoveToTarget(target));
         }
 
         public virtual void HitByProjectile(GameObject projectile)
@@ -48,17 +48,21 @@ namespace Code.Scripts.Entity
             }
         }
 
-        private IEnumerator MoveToTarget(Vector3 target, float tolerance)
+        private IEnumerator MoveToTarget(Vector3 target)
         {
-            int horizontal = (target.x < transform.position.x) ? -1 : 1;
-            Vector3 currentPosition = transform.position;
-            while (Vector3.Distance(currentPosition, target) > tolerance)
+            int horizontal = target.x < transform.position.x ? -1 : 1;
+            bool targetReached = false;
+            while (!targetReached)
             {
                 MovementController.Move(horizontal);
-                currentPosition = transform.position;
+                if (horizontal == 1)
+                    targetReached = transform.position.x > target.x;
+                else
+                    targetReached = transform.position.x < target.x;
                 yield return null;
             }
 
+            Debug.Log(gameObject.name + "Target reached");
             MovementController.Move(0);
         }
     }

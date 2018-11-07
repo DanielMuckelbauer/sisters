@@ -23,7 +23,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator GoToDiaperChanger()
         {
-            Characters[Character.Pollin].GoTo(WalkTarget.position, 1.2f);
+            Characters[Character.Pollin].GoTo(WalkTarget.position);
             yield return new WaitForSeconds(2);
         }
 

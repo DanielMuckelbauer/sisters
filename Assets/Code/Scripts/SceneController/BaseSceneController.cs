@@ -35,6 +35,14 @@ namespace Code.Scripts.SceneController
 
         public abstract void SceneTriggerEntered();
 
+        protected void BeamPlayersTo(Transform target)
+        {
+            foreach (Player player in Characters.Values)
+            {
+                player.transform.position = target.position;
+            }
+        }
+
         protected void DisableFollowingCamera()
         {
             MainCamera.GetComponent<FollowingCamera>().Following = false;
@@ -95,6 +103,16 @@ namespace Code.Scripts.SceneController
             }
         }
 
+        protected void MovePlayersToSpeakPosition(Transform point1, Transform point2)
+        {
+            Transform leftPoint = FindLeft(point1, point2);
+            Transform rightPoint = FindRight(point1, point2);
+            Transform leftPlayer = FindLeft(PlayerList[0].transform, PlayerList[1].transform);
+            Transform rightPlayer = FindRight(PlayerList[0].transform, PlayerList[1].transform);
+            leftPlayer.GetComponent<Player>().GoTo(leftPoint.position);
+            rightPlayer.GetComponent<Player>().GoTo(rightPoint.position);
+        }
+
         protected IEnumerator PlayOpeningCutscene(int time, int times)
         {
             yield return ShowNextTextSection(time, times);
@@ -124,6 +142,16 @@ namespace Code.Scripts.SceneController
             InitializeCutsceneStrings();
             InitializePlayerDictionary();
             InitializeBubbles();
+        }
+
+        private static Transform FindLeft(Transform point1, Transform point2)
+        {
+            return point1.position.x < point2.position.x ? point1 : point2;
+        }
+
+        private static Transform FindRight(Transform point1, Transform point2)
+        {
+            return point1.position.x > point2.position.x ? point1 : point2;
         }
 
         private static void ResetScene()
