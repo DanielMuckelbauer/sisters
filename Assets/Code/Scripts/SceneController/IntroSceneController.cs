@@ -74,7 +74,7 @@ namespace Code.Scripts.SceneController
         private IEnumerator PlayCutScene()
         {
             EnableNextScene();
-            yield return ShowNextTextSection(5, 2);
+            yield return ShowNextTextSection(2, 2);
             yield return HospitalCutscene();
             AudioPlayer.Stop();
             ReactivateText();

@@ -401,6 +401,11 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212504633163192004, guid: da938d5fb19d15c43b282ee9239d3735,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da938d5fb19d15c43b282ee9239d3735, type: 2}
   m_IsPrefabAsset: 0
@@ -475,13 +480,13 @@ MonoBehaviour:
   CanvasText: {fileID: 333715254}
   GameElements: {fileID: 35516094}
   MainCamera: {fileID: 2101569435}
-  UiCanvas: {fileID: 966603429}
-  RespawnPointParent: {fileID: 0}
-  PressAnyKeySprite: {fileID: 333715253}
-  TextAsset: {fileID: 4900000, guid: 82e8ea1c0c1d6424cae3743502192791, type: 3}
-  PlayerList: []
   Npcs:
   - {fileID: 1053103039}
+  PlayerList: []
+  PressAnyKeySprite: {fileID: 333715253}
+  RespawnPointParent: {fileID: 0}
+  TextAsset: {fileID: 4900000, guid: 82e8ea1c0c1d6424cae3743502192791, type: 3}
+  TextCanvas: {fileID: 966603429}
   AudioClips:
   - {fileID: 8300000, guid: 138822b149a88a647b07df478cabe0c7, type: 3}
   AudioPlayer: {fileID: 2101569439}
