@@ -5,12 +5,12 @@ namespace Code.Scripts
 {
     public class SingleTargetProximityShooter : MonoBehaviour
     {
+        public AudioSource AudioSource;
         public GameObject Projectile;
         public Transform SpawnPoint;
-        public AudioSource AudioSource;
-
         private GameObject player;
         private Coroutine shooting;
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.gameObject.tag.Contains("Player") || shooting != null)

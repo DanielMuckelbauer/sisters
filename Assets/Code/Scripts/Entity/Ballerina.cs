@@ -57,9 +57,9 @@ namespace Code.Scripts.Entity
             {
                 pair.Value.ForEach(v =>
                 {
-                    BaseProjectile baseProjectile = Instantiate(Shoe, pair.Key).GetComponent<BaseProjectile>();
-                    baseProjectile.Shoot(v * 10);
-                    Debug.Log("Shoes");
+                    BaseProjectile baseProjectile = Instantiate(Shoe, pair.Key.position, new Quaternion())
+                        .GetComponent<BaseProjectile>();
+                    baseProjectile.Shoot(v * 5);
                 });
             }
         }
