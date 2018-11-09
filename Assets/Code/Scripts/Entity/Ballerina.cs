@@ -12,7 +12,6 @@ namespace Code.Scripts.Entity
         public Transform RightShoeSource;
         public GameObject Shoe;
 
-        private const float ShootForce = 5;
         private Dictionary<Transform, List<Vector3>> directions;
 
         public void StartFighting()
@@ -35,9 +34,9 @@ namespace Code.Scripts.Entity
         {
             directions = new Dictionary<Transform, List<Vector3>>();
             List<Vector3> leftDirections =
-                new List<Vector3> {Vector3.left, Vector3.left + Vector3.down, Vector3.left + Vector3.up};
+                new List<Vector3> {Vector3.left, Vector3.left + Vector3.down * 5, Vector3.left + Vector3.up * 3};
             List<Vector3> rightDirections =
-                new List<Vector3> {Vector3.right, Vector3.right + Vector3.down, Vector3.right + Vector3.up};
+                new List<Vector3> {Vector3.right, Vector3.right + Vector3.down * 5, Vector3.right + Vector3.up * 3};
             directions.Add(LeftShoeSource, leftDirections);
             directions.Add(RightShoeSource, rightDirections);
         }
@@ -50,7 +49,7 @@ namespace Code.Scripts.Entity
                 ShootShoes();
             }
         }
-
+        8
         private void ShootShoes()
         {
             foreach (KeyValuePair<Transform, List<Vector3>> pair in directions)
