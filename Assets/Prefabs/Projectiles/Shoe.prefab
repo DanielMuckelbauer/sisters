@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212765260707371014}
   - component: {fileID: 60216141562224136}
   - component: {fileID: 50847545267928964}
-  - component: {fileID: 114147331188759504}
+  - component: {fileID: 114226933186837530}
   m_Layer: 15
   m_Name: Shoe
   m_TagString: Enemy
@@ -150,7 +150,7 @@ PolygonCollider2D:
       - {x: -1.03, y: -1.52}
       - {x: -0.78999996, y: -1.48}
       - {x: -0.59, y: -1.4399999}
---- !u!114 &114147331188759504
+--- !u!114 &114226933186837530
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1424597797114310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bbec639dde1483c94d79cfa49b177a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2faed9f6e0aa4a3fbe3cf328760d1c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShootForce: 2
