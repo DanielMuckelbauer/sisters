@@ -50,10 +50,8 @@ namespace Code.Scripts.SceneController
                 MainCamera.transform.position.z);
             StartCoroutine(MoveCamera(targetPosition));
             yield return new WaitForSeconds(6);
-            SpeechBubbles[Character.Dani].ShowSpeechBubble();
             yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
             yield return GoToDiaperChanger();
-            SpeechBubbles[Character.Dani].HideSpeechBubble();
             yield return JumpUpToDiaperChanger();
             FadeSceneOut();
             yield return new WaitForSeconds(10);

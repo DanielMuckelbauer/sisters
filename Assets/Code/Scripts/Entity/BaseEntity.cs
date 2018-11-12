@@ -34,7 +34,7 @@ namespace Code.Scripts.Entity
                 yield return null;
             }
 
-            MovementController.Move(0);
+            MovementController.Move(0); 
         }
 
         public virtual void HitByProjectile(GameObject projectile)
@@ -57,6 +57,11 @@ namespace Code.Scripts.Entity
             Invincible = false;
         }
 
+        private static float NextBlinkOpacity(int i)
+        {
+            return i % 2 == 0 ? 0.5f : 1;
+        }
+
         /// <summary>
         /// Use even number
         /// </summary>
@@ -71,11 +76,6 @@ namespace Code.Scripts.Entity
                 allRenderers.ForEach(r => r.color = new Color(1f, 1f, 1f, opacity));
                 yield return new WaitForSeconds(0.1f);
             }
-        }
-
-        private static float NextBlinkOpacity(int i)
-        {
-            return i % 2 == 0 ? 0.5f : 1;
         }
     }
 }

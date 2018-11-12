@@ -1,8 +1,7 @@
-﻿using System.Collections;
+﻿using Code.Classes;
+using System.Collections;
 using System.Collections.Generic;
-using Code.Classes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Code.Scripts.SceneController
 {
@@ -28,7 +27,6 @@ namespace Code.Scripts.SceneController
 
         public override void SceneTriggerEntered()
         {
-           
         }
 
         protected override void Start()
@@ -38,6 +36,7 @@ namespace Code.Scripts.SceneController
             StartCoroutine(PlayCutScene());
             birthedObjects = new List<GameObject>();
         }
+
         private IEnumerator ActivateBackground()
         {
             TextCanvas.SetActive(false);
@@ -81,7 +80,6 @@ namespace Code.Scripts.SceneController
             yield return ShowNextTextSection(5);
             PlayIntroMusic();
             yield return SwordRoomCutscene();
-            SpeechBubbles[Character.Dani].ShowSpeechBubble();
             yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
             DaniAnimator.SetTrigger("GiveSword");
             yield return new WaitForSeconds(5);

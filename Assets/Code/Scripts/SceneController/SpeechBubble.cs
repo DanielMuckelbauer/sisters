@@ -26,20 +26,25 @@ namespace Code.Scripts.SceneController
 
         public IEnumerator ShowNextBubbleText(int times = 1)
         {
+            EnableBubbleIfNecessary();
             for (int i = 0; i < times; i++)
             {
+                BubbleText.text = string.Empty;
                 yield return FillSpeechbubble();
                 yield return new WaitForSeconds(2);
-                BubbleText.text = string.Empty;
             }
+
+            yield return new WaitForSeconds(2);
+            HideSpeechBubble();
         }
 
-        public void ShowSpeechBubble()
+        private void EnableBubbleIfNecessary()
         {
-            GetComponent<SpriteRenderer>().enabled = true;
+            if (!GetComponent<SpriteRenderer>().enabled)
+                GetComponent<SpriteRenderer>().enabled = true;
         }
 
-        public void HideSpeechBubble()
+        private void HideSpeechBubble()
         {
             GetComponent<SpriteRenderer>().enabled = false;
             BubbleText.text = string.Empty;

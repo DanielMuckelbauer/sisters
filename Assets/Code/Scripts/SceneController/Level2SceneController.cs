@@ -57,12 +57,8 @@ namespace Code.Scripts.SceneController
         {
             SpeechBubble munisBubble = SpeechBubbles[Character.Muni];
             SpeechBubble pollinsBubble = SpeechBubbles[Character.Pollin];
-            munisBubble.ShowSpeechBubble();
             yield return munisBubble.ShowNextBubbleText();
-            pollinsBubble.ShowSpeechBubble();
             yield return pollinsBubble.ShowNextBubbleText();
-            munisBubble.HideSpeechBubble();
-            pollinsBubble.HideSpeechBubble();
         }
 
         private IEnumerator TalkingCutScene()
