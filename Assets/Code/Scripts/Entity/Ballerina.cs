@@ -11,8 +11,10 @@ namespace Code.Scripts.Entity
         public Transform LeftShoeSource;
         public Transform RightShoeSource;
         public GameObject Shoe;
+        public List<Transform> LeftTargets;
+        public List<Transform> RightTargets;
 
-        private Dictionary<Transform, List<Vector3>> directions;
+        private Dictionary<Transform, List<Transform>> directions;
 
         public void StartFighting()
         {
@@ -32,33 +34,32 @@ namespace Code.Scripts.Entity
 
         private void InitializeShootDirections()
         {
-            directions = new Dictionary<Transform, List<Vector3>>();
-            List<Vector3> leftDirections =
-                new List<Vector3> {Vector3.left, Vector3.left + Vector3.down * 5, Vector3.left + Vector3.up * 3};
-            List<Vector3> rightDirections =
-                new List<Vector3> {Vector3.right, Vector3.right + Vector3.down * 5, Vector3.right + Vector3.up * 3};
-            directions.Add(LeftShoeSource, leftDirections);
-            directions.Add(RightShoeSource, rightDirections);
+            directions =
+                new Dictionary<Transform, List<Transform>>
+                {
+                    {LeftShoeSource, LeftTargets},
+                    {RightShoeSource, RightTargets}
+                };
         }
 
         private IEnumerator ShootLoop()
         {
             while (true)
             {
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(4);
                 ShootShoes();
             }
         }
-        8
+       
         private void ShootShoes()
         {
-            foreach (KeyValuePair<Transform, List<Vector3>> pair in directions)
+            foreach (KeyValuePair<Transform, List<Transform>> pair in directions)
             {
-                pair.Value.ForEach(v =>
+                pair.Value.ForEach(t =>
                 {
                     BaseProjectile baseProjectile = Instantiate(Shoe, pair.Key.position, new Quaternion())
                         .GetComponent<BaseProjectile>();
-                    baseProjectile.Shoot(v * 5);
+                    baseProjectile.Shoot(t.position);
                 });
             }
         }

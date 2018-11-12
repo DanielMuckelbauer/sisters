@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bbec639dde1483c94d79cfa49b177a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootForce: 2
-  RotationForce: 5
+  ShootForce: 1
+  RotationForce: 3
 --- !u!212 &212765260707371014
 SpriteRenderer:
   m_ObjectHideFlags: 1
