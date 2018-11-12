@@ -36,5 +36,10 @@ namespace Code.Scripts
             yield return new WaitForSeconds(7);
             Destroy(gameObject);
         }
+
+        public virtual void HitByWeapon()
+        {
+            Destroy(gameObject);
+        }
     }
 }

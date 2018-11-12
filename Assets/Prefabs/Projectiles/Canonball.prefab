@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114708544772944352}
   - component: {fileID: 50632887662306882}
   - component: {fileID: 58087623294480264}
-  m_Layer: 11
+  m_Layer: 15
   m_Name: Canonball
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bbec639dde1483c94d79cfa49b177a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShootForce: 2
+  RotationForce: 10
 --- !u!212 &212740889626604270
 SpriteRenderer:
   m_ObjectHideFlags: 1

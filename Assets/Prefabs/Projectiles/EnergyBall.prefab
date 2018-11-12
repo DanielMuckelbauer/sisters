@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50033750788399774}
   - component: {fileID: 58006620061105808}
   - component: {fileID: 114291016471259542}
-  m_Layer: 11
+  m_Layer: 15
   m_Name: EnergyBall
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2faed9f6e0aa4a3fbe3cf328760d1c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShootForce: 2
+  RotationForce: 10
 --- !u!212 &212899560213715860
 SpriteRenderer:
   m_ObjectHideFlags: 1
