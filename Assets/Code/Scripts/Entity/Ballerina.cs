@@ -27,7 +27,6 @@ namespace Code.Scripts.Entity
         {
             base.Start();
             InitializeShootDirections();
-            WalkingSpeed = 5;
             CombatController = new EnemyCombatController(gameObject, 5);
             StartFighting();
         }
