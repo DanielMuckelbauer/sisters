@@ -45,7 +45,6 @@ namespace Code.Scripts.Entity
 
         protected virtual void Start()
         {
-            WalkingSpeed = 2;
             MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
             if (Patrolling)
                 StartPatrolling();
@@ -58,6 +57,7 @@ namespace Code.Scripts.Entity
             StartCoroutine(BrieflyTurnInvincibleAndBlink());
             CombatController.ReceiveHit();
         }
+
         private bool NotHitable(GameObject otherGameObject)
         {
             return !otherGameObject.tag.Contains("Weapon") || Invincible;

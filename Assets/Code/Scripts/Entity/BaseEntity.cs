@@ -13,6 +13,7 @@ namespace Code.Scripts.Entity
         protected ICombatController CombatController;
         protected bool Invincible;
         protected IMovementController MovementController;
+        [SerializeField]
         protected float WalkingSpeed = 5;
 
         public virtual void Die()
