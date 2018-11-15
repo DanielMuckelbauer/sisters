@@ -28,7 +28,7 @@ namespace Code.Scripts.Entity
             Strike
         }
 
-        public static void ResetOnDie()
+        public static void ResetOnDieEvent()
         {
             OnDie = null;
         }

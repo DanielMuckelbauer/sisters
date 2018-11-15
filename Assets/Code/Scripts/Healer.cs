@@ -16,7 +16,7 @@ namespace Code.Scripts
 
         public static event HealingEventHandler OnHealingConsumed;
 
-        public static void ResetOnHealingConsumed()
+        public static void ResetOnHealingConsumedEvent()
         {
             OnHealingConsumed = null;
         }

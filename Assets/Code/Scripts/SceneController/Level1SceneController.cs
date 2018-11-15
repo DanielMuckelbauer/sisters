@@ -10,8 +10,9 @@ namespace Code.Scripts.SceneController
         public Transform JumpTarget;
         public Transform WalkTarget;
 
-        public override void SceneTriggerEntered()
+        protected override void HandleTrigger()
         {
+            IgnoreTrigger = true;
             StartCoroutine(PlayEndingCutscene());
         }
 
@@ -49,12 +50,12 @@ namespace Code.Scripts.SceneController
             Vector3 targetPosition = new Vector3(CameraTarget.position.x, CameraTarget.position.y,
                 MainCamera.transform.position.z);
             StartCoroutine(MoveCamera(targetPosition));
-            yield return new WaitForSeconds(6);
+            yield return new WaitForSeconds(2);
             yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
             yield return GoToDiaperChanger();
             yield return JumpUpToDiaperChanger();
             FadeSceneOut();
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(4);
             EnableNextScene();
         }
     }

@@ -16,6 +16,7 @@ namespace Code.Scripts.SceneController
         public static List<string> CutsceneStrings;
         [SerializeField] protected Dictionary<Character, Player> Characters;
         [SerializeField] protected GameObject GameElements;
+        protected bool IgnoreTrigger;
         [SerializeField] protected GameObject MainCamera;
         [SerializeField] protected Dictionary<Character, SpeechBubble> SpeechBubbles;
         [SerializeField] protected GameObject TextCanvas;
@@ -27,13 +28,17 @@ namespace Code.Scripts.SceneController
         private List<Transform> respawnPoints;
         [SerializeField] private TextAsset textAsset;
         public static event Action OnRespawn;
-
         public static void InvokeRespawnBoth()
         {
             OnRespawn?.Invoke();
         }
 
-        public abstract void SceneTriggerEntered();
+        public void SceneTriggerEntered()
+        {
+            if (IgnoreTrigger)
+                return;
+            HandleTrigger();
+        }
 
         protected void BeamPlayersTo(Vector3 target)
         {
@@ -88,6 +93,10 @@ namespace Code.Scripts.SceneController
                 .ForEach(s => { StartCoroutine(Fade(s, 1, 0)); });
         }
 
+        protected virtual void HandleTrigger()
+        {
+            
+        }
         protected IEnumerator MoveCamera(Vector3 targetPosition)
         {
             Transform cameraTransform = MainCamera.transform;
@@ -121,7 +130,7 @@ namespace Code.Scripts.SceneController
             GameElements.SetActive(true);
         }
 
-        protected void SetNextCutSceneString()
+        protected void SetCanvasTextToNextString()
         {
             canvasText.text = CutsceneStrings[CutsceneStringCounter++];
         }
@@ -130,7 +139,7 @@ namespace Code.Scripts.SceneController
         {
             for (int i = 0; i < times; i++)
             {
-                SetNextCutSceneString();
+                SetCanvasTextToNextString();
                 yield return new WaitForSeconds(time);
             }
         }
@@ -163,8 +172,8 @@ namespace Code.Scripts.SceneController
 
         private static void UnsubscribeAllDelegatesFromStaticEvents()
         {
-            Player.ResetOnDie();
-            Healer.ResetOnHealingConsumed();
+            Player.ResetOnDieEvent();
+            Healer.ResetOnHealingConsumedEvent();
             OnRespawn = null;
         }
 

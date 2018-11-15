@@ -25,10 +25,6 @@ namespace Code.Scripts.SceneController
         private Animator cameraAnimator;
         private bool moveSword;
 
-        public override void SceneTriggerEntered()
-        {
-        }
-
         protected override void Start()
         {
             base.Start();

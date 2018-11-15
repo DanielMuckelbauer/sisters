@@ -12,13 +12,9 @@ namespace Code.Scripts.SceneController
         [SerializeField] private Transform walkTarget1;
         [SerializeField] private Transform walkTarget2;
 
-        private bool endTriggerActivated;
-
-        public override void SceneTriggerEntered()
+        protected override void HandleTrigger()
         {
-            if (endTriggerActivated)
-                return;
-            endTriggerActivated = true;
+            IgnoreTrigger = true;
             DisablePlayerMovement();
             StartCoroutine(TalkingCutScene());
         }

@@ -30,7 +30,9 @@ namespace Code.Scripts
             foreach (char c in charArray)
             {
                 bubbleText.text += c;
-                yield return new WaitForSeconds(0.06f);
+                //TODO Change in prod
+                //yield return new WaitForSeconds(0.06f);
+                yield return new WaitForSeconds(0.01f);
             }
         }
 
