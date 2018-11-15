@@ -1,5 +1,4 @@
 ﻿using Code.Classes;
-using Code.Scripts.Entity;
 using System.Collections;
 using UnityEngine;
 
@@ -7,11 +6,11 @@ namespace Code.Scripts.SceneController
 {
     public class Level2SceneController : BaseSceneController
     {
-        public AudioSource AudioSource;
-        public AudioClip BalletMusic;
-        public Transform EndbossSpawnPoint;
-        public Transform WalkTarget1;
-        public Transform WalkTarget2;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip balletMusic;
+        [SerializeField] private Transform endbossSpawnPoint;
+        [SerializeField] private Transform walkTarget1;
+        [SerializeField] private Transform walkTarget2;
 
         private bool endTriggerActivated;
 
@@ -32,24 +31,24 @@ namespace Code.Scripts.SceneController
 
         private void ChangeMusic()
         {
-            AudioSource.Stop();
+            audioSource.Stop();
             PlayBalletMusic();
         }
-       
+
         private void PlayBalletMusic()
         {
-            AudioSource.clip = BalletMusic;
-            AudioSource.volume = 0f;
-            AudioSource.Play();
+            audioSource.clip = balletMusic;
+            audioSource.volume = 0f;
+            audioSource.Play();
             StartCoroutine(SlowlyIncreaseVolume());
         }
 
         private IEnumerator SlowlyIncreaseVolume()
         {
-            while (AudioSource.volume < 0.4)
+            while (audioSource.volume < 0.4)
             {
                 yield return new WaitForSeconds(2);
-                AudioSource.volume += 0.01f;
+                audioSource.volume += 0.01f;
             }
         }
 
@@ -64,9 +63,9 @@ namespace Code.Scripts.SceneController
         private IEnumerator TalkingCutScene()
         {
             ChangeMusic();
-            yield return MovePlayersToSpeakPosition(WalkTarget1, WalkTarget2);
+            yield return MovePlayersToSpeakPosition(walkTarget1, walkTarget2);
             yield return Talk();
-            BeamPlayersTo(EndbossSpawnPoint.position);
+            BeamPlayersTo(endbossSpawnPoint.position);
             EnablePlayerMovement();
         }
     }

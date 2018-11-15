@@ -14,18 +14,18 @@ namespace Code.Scripts.SceneController
     {
         public static int CutsceneStringCounter;
         public static List<string> CutsceneStrings;
-        public TMP_Text CanvasText;
-        public GameObject GameElements;
-        public GameObject MainCamera;
-        public List<GameObject> Npcs;
-        public List<Player> PlayerList;
-        public SpriteRenderer PressAnyKeySprite;    
-        public GameObject RespawnPointParent;
-        public TextAsset TextAsset;
-        public GameObject TextCanvas;
-        protected Dictionary<Character, Player> Characters;
-        protected Dictionary<Character, SpeechBubble> SpeechBubbles;
+        [SerializeField] protected Dictionary<Character, Player> Characters;
+        [SerializeField] protected GameObject GameElements;
+        [SerializeField] protected GameObject MainCamera;
+        [SerializeField] protected Dictionary<Character, SpeechBubble> SpeechBubbles;
+        [SerializeField] protected GameObject TextCanvas;
+        [SerializeField] private TMP_Text canvasText;
+        [SerializeField] private List<GameObject> npcs;
+        [SerializeField] private List<Player> playerList;
+        [SerializeField] private SpriteRenderer pressAnyKeySprite;
+        [SerializeField] private GameObject respawnPointParent;
         private List<Transform> respawnPoints;
+        [SerializeField] private TextAsset textAsset;
         public static event Action OnRespawn;
 
         public static void InvokeRespawnBoth()
@@ -37,8 +37,8 @@ namespace Code.Scripts.SceneController
 
         protected void BeamPlayersTo(Vector3 target)
         {
-            BeamPlayerTo(target, PlayerList[0].transform, -0.5f);
-            BeamPlayerTo(target, PlayerList[1].transform, 0.5f);
+            BeamPlayerTo(target, playerList[0].transform, -0.5f);
+            BeamPlayerTo(target, playerList[1].transform, 0.5f);
         }
 
         protected void DisableFollowingCamera()
@@ -55,9 +55,9 @@ namespace Code.Scripts.SceneController
         protected void EnableNextScene()
         {
             StartCoroutine(LoadNextSceneOnInput());
-            CanvasText.text = string.Empty;
+            canvasText.text = string.Empty;
             TextCanvas.SetActive(true);
-            PressAnyKeySprite.enabled = true;
+            pressAnyKeySprite.enabled = true;
         }
 
         protected void EnablePlayerMovement()
@@ -103,15 +103,15 @@ namespace Code.Scripts.SceneController
 
         protected IEnumerator MovePlayersToSpeakPosition(Transform point1, Transform point2)
         {
-            PlayerList.ForEach(p => MoveObjectToTargetIfToFarAway(p.transform, point1.position));
+            playerList.ForEach(p => MoveObjectToTargetIfToFarAway(p.transform, point1.position));
             Transform leftPoint = FindLeft(point1, point2);
             Transform rightPoint = FindRight(point1, point2);
-            Transform leftPlayer = FindLeft(PlayerList[0].transform, PlayerList[1].transform);
-            Transform rightPlayer = FindRight(PlayerList[0].transform, PlayerList[1].transform);
+            Transform leftPlayer = FindLeft(playerList[0].transform, playerList[1].transform);
+            Transform rightPlayer = FindRight(playerList[0].transform, playerList[1].transform);
             yield return leftPlayer.GetComponent<Player>().GoTo(leftPoint.position);
             yield return rightPlayer.GetComponent<Player>().GoTo(rightPoint.position);
-            yield return PlayerList[0].TurnTo(PlayerList[1].transform.position);
-            yield return PlayerList[1].TurnTo(PlayerList[0].transform.position);
+            yield return playerList[0].TurnTo(playerList[1].transform.position);
+            yield return playerList[1].TurnTo(playerList[0].transform.position);
         }
 
         protected IEnumerator PlayOpeningCutscene(int time, int times)
@@ -123,7 +123,7 @@ namespace Code.Scripts.SceneController
 
         protected void SetNextCutSceneString()
         {
-            CanvasText.text = CutsceneStrings[CutsceneStringCounter++];
+            canvasText.text = CutsceneStrings[CutsceneStringCounter++];
         }
 
         protected IEnumerator ShowNextTextSection(int time, int times = 1)
@@ -209,14 +209,14 @@ namespace Code.Scripts.SceneController
 
         private void InitializeCutsceneStrings()
         {
-            string completeString = TextAsset.text;
+            string completeString = textAsset.text;
             CutsceneStrings = completeString.Split('\n').ToList();
             CutsceneStringCounter = 0;
         }
 
         private void InitializeNpcBubbles()
         {
-            GameObject dani = Npcs.FirstOrDefault(npc => npc.name.Contains("Dani"));
+            GameObject dani = npcs.FirstOrDefault(npc => npc.name.Contains("Dani"));
             if (dani != null)
                 SpeechBubbles.Add(Character.Dani, dani.GetComponentInChildren<SpeechBubble>());
         }
@@ -232,17 +232,17 @@ namespace Code.Scripts.SceneController
         private void InitializePlayerDictionary()
         {
             Characters = new Dictionary<Character, Player>();
-            if (PlayerList == null || PlayerList.Count == 0)
+            if (playerList == null || playerList.Count == 0)
                 return;
-            Player muni = PlayerList.First(p => p.gameObject.name.Contains("Muni"));
+            Player muni = playerList.First(p => p.gameObject.name.Contains("Muni"));
             Characters.Add(Character.Muni, muni);
-            Player pollin = PlayerList.First(p => p.gameObject.name.Contains("Pollin"));
+            Player pollin = playerList.First(p => p.gameObject.name.Contains("Pollin"));
             Characters.Add(Character.Pollin, pollin);
         }
 
         private List<Transform> InitializeRespawnPoints()
         {
-            return RespawnPointParent != null ? RespawnPointParent.GetComponentsInChildren<Transform>().ToList() : null;
+            return respawnPointParent != null ? respawnPointParent.GetComponentsInChildren<Transform>().ToList() : null;
         }
 
         private IEnumerator LoadNextSceneOnInput()
@@ -272,8 +272,8 @@ namespace Code.Scripts.SceneController
         {
             FadeSceneOut();
             yield return new WaitForSeconds(3);
-            CanvasText.color = Color.red;
-            CanvasText.text = "You Died";
+            canvasText.color = Color.red;
+            canvasText.text = "You Died";
             TextCanvas.SetActive(true);
             yield return new WaitForSeconds(5);
             ResetScene();

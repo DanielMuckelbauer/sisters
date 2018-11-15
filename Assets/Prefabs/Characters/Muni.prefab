@@ -259,7 +259,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1061069945433942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 86.61, y: -4.15, z: 1.1562067}
+  m_LocalPosition: {x: 46.56, y: -0.74, z: 1.1562067}
   m_LocalScale: {x: 0.03904758, y: 0.03904758, z: 0.03904758}
   m_Children:
   - {fileID: 4161248427409692}
@@ -304,8 +304,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503644429324120}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.4, y: 32, z: -2304.8804}
-  m_LocalScale: {x: 6.499506, y: 6.499506, z: 0.9286105}
+  m_LocalPosition: {x: 26.7, y: 33.1, z: 0}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children:
   - {fileID: 224215712708134236}
   m_Father: {fileID: 4497239621999768}
@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95488669997492982}
+  WalkingSpeed: 5
   AudioSource: {fileID: 82370614910397214}
   GroundCheck: {fileID: 4853369820929170}
   Hearts:
@@ -714,7 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89248f0fd9080214b8fe7e5e5f142f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BubbleText: {fileID: 114926714580945158}
+  bubbleText: {fileID: 114926714580945158}
 --- !u!114 &114926714580945158
 MonoBehaviour:
   m_ObjectHideFlags: 1
