@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89248f0fd9080214b8fe7e5e5f142f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BubbleText: {fileID: 114200585446722812}
+  bubbleText: {fileID: 114200585446722812}
 --- !u!114 &114200585446722812
 MonoBehaviour:
   m_ObjectHideFlags: 1
