@@ -6,9 +6,10 @@ namespace Code.Scripts
 {
     public abstract class BaseProjectile : MonoBehaviour
     {
-        public float ShootForce = 2f;
-
-        public float RotationForce = 10;
+        //public float ShootForce = 2f;
+        //public float RotationForce = 10;
+        [SerializeField] private float shootForce = 2f;
+        [SerializeField] private float rotationForce = 10;
         private Rigidbody2D rigidBody;
 
         protected virtual void Awake()
@@ -19,9 +20,9 @@ namespace Code.Scripts
 
         public void Shoot(Vector3 target)
         {
-            Vector2 force = (target - gameObject.transform.position).normalized * ShootForce;
+            Vector2 force = (target - gameObject.transform.position).normalized * shootForce;
             rigidBody.AddForce(force);
-            rigidBody.AddTorque(RotationForce, ForceMode2D.Impulse);
+            rigidBody.AddTorque(rotationForce, ForceMode2D.Impulse);
         }
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)
