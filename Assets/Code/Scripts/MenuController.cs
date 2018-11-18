@@ -8,6 +8,7 @@ namespace Code.Scripts
 {
     public class MenuController : MonoBehaviour
     {
+        [SerializeField] private Button quitButton;
         [SerializeField] private List<Button> levelButtons;
         private Dictionary<Button, int> levelDictionary;
 
@@ -15,14 +16,13 @@ namespace Code.Scripts
         {
             for (int i = 0; i < levelButtons.Count; i++)
             {
-                levelDictionary.Add(levelButtons[i], i);
+                levelDictionary.Add(levelButtons[i], i + 1);
             }
         }
 
         private void OnButtonClick(Button pressedButton)
         {
-            Debug.Log("Button pressed: " + levelDictionary[pressedButton]);
-            //SceneManager.LoadScene(levelDictionary[pressedButton]);
+            SceneManager.LoadScene(levelDictionary[pressedButton]);
         }
 
         private void Start()
@@ -30,6 +30,7 @@ namespace Code.Scripts
             levelDictionary = new Dictionary<Button, int>();
             InitializeDictionary();
             levelButtons.ForEach(b => b.onClick.AddListener(() => OnButtonClick(b)));
+            quitButton.onClick.AddListener(Application.Quit);
         }
     }
 }
