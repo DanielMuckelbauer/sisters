@@ -72,9 +72,9 @@ namespace Code.Scripts.SceneController
             yield return ShowNextTextSection(2, 2);
             yield return HospitalCutscene();
             AudioPlayer.Stop();
+            PlayIntroMusic();
             ReactivateText();
             yield return ShowNextTextSection(5);
-            PlayIntroMusic();
             yield return SwordRoomCutscene();
             yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
             DaniAnimator.SetTrigger("GiveSword");
