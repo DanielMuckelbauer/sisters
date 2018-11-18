@@ -3,7 +3,9 @@ using Code.Scripts.Entity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,6 +30,7 @@ namespace Code.Scripts.SceneController
         private List<Transform> respawnPoints;
         [SerializeField] private TextAsset textAsset;
         public static event Action OnRespawn;
+
         public static void InvokeRespawnBoth()
         {
             OnRespawn?.Invoke();
@@ -95,8 +98,8 @@ namespace Code.Scripts.SceneController
 
         protected virtual void HandleTrigger()
         {
-            
         }
+
         protected IEnumerator MoveCamera(Vector3 targetPosition)
         {
             Transform cameraTransform = MainCamera.transform;
@@ -168,6 +171,19 @@ namespace Code.Scripts.SceneController
         {
             UnsubscribeAllDelegatesFromStaticEvents();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private static void SaveGame()
+        {
+            Directory.CreateDirectory("Savegame");
+            const string path = "Savegame/save.xml";
+            File.Delete(path);
+            string level = (SceneManager.GetActiveScene().buildIndex + 1).ToString();
+            XmlWriter xmlWriter = XmlWriter.Create(path);
+            xmlWriter.WriteStartDocument();
+            xmlWriter.WriteStartElement("Level");
+            xmlWriter.WriteString(level);
+            xmlWriter.Close();
         }
 
         private static void UnsubscribeAllDelegatesFromStaticEvents()
@@ -262,9 +278,9 @@ namespace Code.Scripts.SceneController
             }
 
             UnsubscribeAllDelegatesFromStaticEvents();
+            SaveGame();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-
         private void MoveObjectToTargetIfToFarAway(Transform obj, Vector3 target, float maxDistance = 20f)
         {
             if (Vector3.Distance(obj.position, target) > maxDistance)
