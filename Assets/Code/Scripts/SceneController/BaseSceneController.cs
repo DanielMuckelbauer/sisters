@@ -176,7 +176,7 @@ namespace Code.Scripts.SceneController
         private static void SaveGame()
         {
             Directory.CreateDirectory("Savegame");
-            const string path = "Savegame/save.xml";
+            string path = MenuController.SaveGamePath;
             File.Delete(path);
             string level = (SceneManager.GetActiveScene().buildIndex + 1).ToString();
             XmlWriter xmlWriter = XmlWriter.Create(path);

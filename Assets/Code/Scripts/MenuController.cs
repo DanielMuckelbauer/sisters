@@ -1,16 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Xml;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Code.Scripts
 {
+    [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
     public class MenuController : MonoBehaviour
     {
-        [SerializeField] private Button quitButton;
+        public static string SaveGamePath = "Savegame/save.xml";
+        private int latestLevel;
         [SerializeField] private List<Button> levelButtons;
         private Dictionary<Button, int> levelDictionary;
+        [SerializeField] private Button quitButton;
+
+        private void EnableButtons()
+        {
+            for (int i = 0; i <= latestLevel; i++)
+            {
+                levelButtons[i]?.gameObject.SetActive(true);
+            }
+        }
 
         private void InitializeDictionary()
         {
@@ -25,12 +38,31 @@ namespace Code.Scripts
             SceneManager.LoadScene(levelDictionary[pressedButton]);
         }
 
+        private void ReadSaveFile()
+        {
+            if (!File.Exists(SaveGamePath))
+                latestLevel = 1;
+            else
+            {
+                using (XmlReader reader = XmlReader.Create(new StreamReader(SaveGamePath)))
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.Name.Equals("Level"))
+                            latestLevel = int.Parse(reader.ReadString());
+                    }
+                }
+            }
+        }
+
         private void Start()
         {
             levelDictionary = new Dictionary<Button, int>();
             InitializeDictionary();
             levelButtons.ForEach(b => b.onClick.AddListener(() => OnButtonClick(b)));
             quitButton.onClick.AddListener(Application.Quit);
+            ReadSaveFile();
+            EnableButtons();
         }
     }
 }
