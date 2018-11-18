@@ -4,16 +4,14 @@ using UnityEngine;
 
 namespace Code.Scripts
 {
-    public abstract class BaseMovingPlatform : MonoBehaviour
+    public abstract class BaseMovingElement : MonoBehaviour
     {
-        public float Delay;
-        public float MoveTime;
-        public float Pause;
-        public float Step;
-
         protected Vector3 Direction;
-
+        [SerializeField] private float delay;
         private Dictionary<GameObject, GameObject> entitiesStandingOnPlatformAndTheirParent;
+        [SerializeField] private float moveTime;
+        [SerializeField] private float pause;
+        [SerializeField] private float step;
 
         protected abstract void CalculateDirection();
 
@@ -30,11 +28,11 @@ namespace Code.Scripts
 
         private IEnumerator DirectionChangeLoop()
         {
-            yield return new WaitForSeconds(Delay);
+            yield return new WaitForSeconds(delay);
             while (true)
             {
-                yield return new WaitForSeconds(MoveTime);
-                yield return new WaitForSeconds(Pause);
+                yield return new WaitForSeconds(moveTime);
+                yield return new WaitForSeconds(pause);
                 CalculateDirection();
             }
         }
@@ -49,7 +47,7 @@ namespace Code.Scripts
 
         private void Move()
         {
-            transform.position += Direction * Step * Time.deltaTime;
+            transform.position += Direction * step * Time.deltaTime;
         }
 
         private void OnTriggerExit2D(Collider2D col)

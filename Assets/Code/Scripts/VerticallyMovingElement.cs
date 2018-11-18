@@ -2,7 +2,7 @@
 
 namespace Code.Scripts
 {
-    public class VerticallyMovingPlatform : BaseMovingPlatform
+    public class VerticallyMovingElement : BaseMovingElement
     {
         protected override void CalculateDirection()
         {

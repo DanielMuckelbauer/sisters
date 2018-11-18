@@ -2,7 +2,7 @@
 
 namespace Code.Scripts
 {
-    public class HorizontallyMovingPlatform : BaseMovingPlatform
+    public class HorizontallyMovingElement : BaseMovingElement
     {
         protected override void Start()
         {
