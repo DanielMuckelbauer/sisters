@@ -2,7 +2,7 @@
 
 namespace Code.Scripts
 {
-    public class ReflectableProjectile : BaseProjectile
+    public class UnBouncyReflectableProjectile : BaseProjectile
     {
         public override void HitByWeapon()
         {
@@ -12,6 +12,14 @@ namespace Code.Scripts
             rigidBody.velocity = Vector3.Reflect(rigidBody.velocity, Vector3.right);
             tag = "Weapon";
             gameObject.layer = LayerMask.NameToLayer("ReflectedProjectile");
+        }
+
+        protected override void OnCollisionEnter2D(Collision2D collision)
+        {
+            int groundLayer = LayerMask.NameToLayer("Ground");
+            if (groundLayer == collision.gameObject.layer)
+                Destroy(gameObject);
+            base.OnCollisionEnter2D(collision);
         }
     }
 }

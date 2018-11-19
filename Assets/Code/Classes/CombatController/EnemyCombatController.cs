@@ -17,7 +17,7 @@ namespace Code.Classes.CombatController
         private void BrieflyJumpUp()
         {
             Rigidbody2D rigidBody = GameObject.GetComponent<Rigidbody2D>();
-            rigidBody.AddForce(Vector2.up * rigidBody.mass * 100);
+            rigidBody.AddForce(Vector2.up * rigidBody.mass * 170);
         }
     }
 }
