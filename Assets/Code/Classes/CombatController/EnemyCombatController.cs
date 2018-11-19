@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Code.Classes.CombatController
 {
@@ -9,6 +6,18 @@ namespace Code.Classes.CombatController
     {
         public EnemyCombatController(GameObject go, int currentLife) : base(go, currentLife)
         {
+        }
+
+        public override void ReceiveHit()
+        {
+            base.ReceiveHit();
+            BrieflyJumpUp();
+        }
+
+        private void BrieflyJumpUp()
+        {
+            Rigidbody2D rigidBody = GameObject.GetComponent<Rigidbody2D>();
+            rigidBody.AddForce(Vector2.up * rigidBody.mass * 100);
         }
     }
 }
