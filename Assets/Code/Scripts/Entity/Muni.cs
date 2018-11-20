@@ -4,9 +4,9 @@ namespace Code.Scripts.Entity
 {
     public class Muni : Player
     {
-        protected override void Start()
+        protected override void Awake()
         {
-            base.Start();
+            base.Awake();
             InitializeControls();
         }
 

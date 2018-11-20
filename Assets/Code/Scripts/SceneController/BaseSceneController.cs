@@ -54,6 +54,11 @@ namespace Code.Scripts.SceneController
             MainCamera.GetComponent<FollowingCamera>().Following = false;
         }
 
+        protected void EnableFollowingCamera()
+        {
+            MainCamera.GetComponent<FollowingCamera>().Following = true;
+        }
+
         protected void DisablePlayerMovement()
         {
             foreach (Player player in Characters.Values)

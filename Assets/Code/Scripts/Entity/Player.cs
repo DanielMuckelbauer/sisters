@@ -45,7 +45,7 @@ namespace Code.Scripts.Entity
             movementDisabled = !allowed;
         }
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             WalkingSpeed = 4;
             MovementController = new PlayerMovementController(gameObject, WalkingSpeed, GroundCheck);
