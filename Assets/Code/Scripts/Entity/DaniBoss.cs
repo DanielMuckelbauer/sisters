@@ -10,26 +10,29 @@ namespace Code.Scripts.Entity
         [SerializeField] private GameObject Muni;
         [SerializeField] private GameObject Pollin;
         [SerializeField] private Transform LeftSource;
-
-        public void ShootLeft()
-        {
-            Debug.Log("Shot Left");
-        }
+        private GameObject currentTarget;
 
         protected override void Start()
         {
             base.Start();
+            currentTarget = Muni;
             StartCoroutine(StartAttackLoop());
         }
 
         private IEnumerator StartAttackLoop()
         {
-            GameObject currentTarget = Muni;
             while (true)
             {
+                Debug.Log("Shoot");
                 currentTarget = currentTarget == Muni ? Pollin : Muni;
-                InstantiateAndShootProjectile(EnergyBall, LeftSource, currentTarget.transform);
+                Animator.SetTrigger("ShootLeft");
+                yield return new WaitForSeconds(5);
             }
+        }
+
+        public void ShootLeft()
+        {
+            InstantiateAndShootProjectile(EnergyBall, LeftSource, currentTarget.transform);
         }
     }
 }
