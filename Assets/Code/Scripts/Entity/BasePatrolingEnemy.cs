@@ -62,5 +62,12 @@ namespace Code.Scripts.Entity
         {
             return !otherGameObject.tag.Contains("Weapon") || Invincible;
         }
+
+        protected void InstantiateAndShootProjectile(GameObject projectile, Transform source, Transform target)
+        {
+            BaseProjectile baseProjectile = Instantiate(projectile, target.position, new Quaternion())
+                .GetComponent<BaseProjectile>();
+            baseProjectile.Shoot(source.position);
+        }
     }
 }

@@ -233,6 +233,11 @@ MonoBehaviour:
   respawnPointParent: {fileID: 1609891968}
   textAsset: {fileID: 4900000, guid: e2ed91539fd67ee45abb8bc6f3cd9601, type: 3}
   dani: {fileID: 1436249496}
+--- !u!1 &574678965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1061069945433942, guid: be956fa908d6bd7479a94f994585409e,
+    type: 2}
+  m_PrefabInternal: {fileID: 823134488}
 --- !u!1001 &772832270
 Prefab:
   m_ObjectHideFlags: 0
@@ -643,6 +648,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114783970896293224, guid: 43acb1288a7b2f747bd4365ad702a2e2,
+        type: 2}
+      propertyPath: Muni
+      value: 
+      objectReference: {fileID: 574678965}
+    - target: {fileID: 114783970896293224, guid: 43acb1288a7b2f747bd4365ad702a2e2,
+        type: 2}
+      propertyPath: Pollin
+      value: 
+      objectReference: {fileID: 2006451758}
     - target: {fileID: 33713184075251588, guid: 43acb1288a7b2f747bd4365ad702a2e2,
         type: 2}
       propertyPath: m_Mesh
@@ -661,22 +676,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1005959327238224, guid: 43acb1288a7b2f747bd4365ad702a2e2, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562068147061032, guid: 43acb1288a7b2f747bd4365ad702a2e2, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1005959327238224, guid: 43acb1288a7b2f747bd4365ad702a2e2, type: 2}
-      propertyPath: m_Name
-      value: LeftLaser
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562068147061032, guid: 43acb1288a7b2f747bd4365ad702a2e2, type: 2}
-      propertyPath: m_Name
-      value: RightLaser
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43acb1288a7b2f747bd4365ad702a2e2, type: 2}
@@ -1098,3 +1097,8 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1966021468}
   m_Script: {fileID: 11500000, guid: b77fc821a5f04aed95faca9d858e533c, type: 3}
+--- !u!1 &2006451758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1041184827798590, guid: 40f0c278916650549a4b753816fe6fda,
+    type: 2}
+  m_PrefabInternal: {fileID: 1966021468}

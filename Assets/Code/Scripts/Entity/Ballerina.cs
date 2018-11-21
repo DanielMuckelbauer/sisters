@@ -54,11 +54,9 @@ namespace Code.Scripts.Entity
         {
             foreach (KeyValuePair<Transform, List<Transform>> pair in directions)
             {
-                pair.Value.ForEach(t =>
+                pair.Value.ForEach(target =>
                 {
-                    BaseProjectile baseProjectile = Instantiate(Shoe, pair.Key.position, new Quaternion())
-                        .GetComponent<BaseProjectile>();
-                    baseProjectile.Shoot(t.position);
+                    InstantiateAndShootProjectile(Shoe, target, pair.Key);
                 });
             }
         }

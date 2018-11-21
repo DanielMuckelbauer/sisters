@@ -22,12 +22,12 @@ GameObject:
   - component: {fileID: 212802583359934288}
   - component: {fileID: 82855903107641080}
   m_Layer: 0
-  m_Name: Laser
+  m_Name: LeftLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1013343548490338
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +104,21 @@ GameObject:
   - component: {fileID: 212211836641725042}
   m_Layer: 0
   m_Name: Sword2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1392464218495932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4915173674827684}
+  m_Layer: 0
+  m_Name: LeftSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,12 +201,12 @@ GameObject:
   - component: {fileID: 4828347248019494}
   - component: {fileID: 212238246127143272}
   m_Layer: 0
-  m_Name: Laser
+  m_Name: RightLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1611560054039876
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +217,7 @@ GameObject:
   - component: {fileID: 4069798014124208}
   - component: {fileID: 212837513294066254}
   - component: {fileID: 95249325520570344}
+  - component: {fileID: 114783970896293224}
   m_Layer: 0
   m_Name: DaniBoss
   m_TagString: Untagged
@@ -240,6 +256,7 @@ Transform:
   - {fileID: 4685170778311976}
   - {fileID: 4699016392823494}
   - {fileID: 4828347248019494}
+  - {fileID: 4915173674827684}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -379,6 +396,19 @@ Transform:
   - {fileID: 4726638480397408}
   m_Father: {fileID: 4069798014124208}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4915173674827684
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392464218495932}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.62, y: 7.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4069798014124208}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4983532941703938
 Transform:
@@ -590,6 +620,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleText: {fileID: 114796685803681868}
+--- !u!114 &114783970896293224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611560054039876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5868d6d8efef45978a56abeedf61ff7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 95249325520570344}
+  WalkingSpeed: 5
+  Patrolling: 0
+  EnergyBall: {fileID: 1714547732501980, guid: 6fabfbaf6436f4f4a8ab28b1ff9d0df5, type: 2}
+  Muni: {fileID: 0}
+  Pollin: {fileID: 0}
+  LeftSource: {fileID: 1392464218495932}
 --- !u!114 &114796685803681868
 MonoBehaviour:
   m_ObjectHideFlags: 1
