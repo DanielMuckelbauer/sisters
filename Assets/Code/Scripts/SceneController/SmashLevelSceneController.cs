@@ -39,5 +39,10 @@ namespace Code.Scripts.SceneController
             EnablePlayerMovement();
             EnableFollowingCamera();
         }
+
+        protected override Vector3 FindClosestSpawnPoint()
+        {
+            return FindTransformNearestToCharacters(RespawnPoints);
+        }
     }
 }

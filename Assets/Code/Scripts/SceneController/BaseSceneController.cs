@@ -20,6 +20,7 @@ namespace Code.Scripts.SceneController
         [SerializeField] protected GameObject GameElements;
         protected bool IgnoreTrigger;
         [SerializeField] protected GameObject MainCamera;
+        protected List<Transform> RespawnPoints;
         [SerializeField] protected Dictionary<Character, SpeechBubble> SpeechBubbles;
         [SerializeField] protected GameObject TextCanvas;
         [SerializeField] private TMP_Text canvasText;
@@ -27,7 +28,6 @@ namespace Code.Scripts.SceneController
         [SerializeField] private List<Player> playerList;
         [SerializeField] private SpriteRenderer pressAnyKeySprite;
         [SerializeField] private GameObject respawnPointParent;
-        private List<Transform> respawnPoints;
         [SerializeField] private TextAsset textAsset;
         public static event Action OnRespawn;
 
@@ -54,17 +54,16 @@ namespace Code.Scripts.SceneController
             MainCamera.GetComponent<FollowingCamera>().Following = false;
         }
 
-        protected void EnableFollowingCamera()
-        {
-            MainCamera.GetComponent<FollowingCamera>().Following = true;
-        }
-
         protected void DisablePlayerMovement()
         {
             foreach (Player player in Characters.Values)
                 player.SetMovement(false);
         }
 
+        protected void EnableFollowingCamera()
+        {
+            MainCamera.GetComponent<FollowingCamera>().Following = true;
+        }
         protected void EnableNextScene()
         {
             StartCoroutine(LoadNextSceneOnInput());
@@ -99,6 +98,31 @@ namespace Code.Scripts.SceneController
         {
             GameElements.GetComponentsInChildren<SpriteRenderer>().ToList()
                 .ForEach(s => { StartCoroutine(Fade(s, 1, 0)); });
+        }
+
+        //TODO Change for two players
+        protected virtual Vector3 FindClosestSpawnPoint()
+        {
+            List<Transform> leftRespawnPoints = RespawnPoints
+                .FindAll(rp => rp.position.x <= Characters[Character.Pollin].transform.position.x);
+            Vector3 closest = FindTransformNearestToCharacters(leftRespawnPoints);
+            return closest;
+        }
+
+        protected Vector3 FindTransformNearestToCharacters(List<Transform> transforms)
+        {
+            //Vector3 middlePoint =
+            //    (Players[Character.Pollin].transform.position + Players[Character.Muni].transform.position) / 2;
+            //float minDistance = RespawnPoints.Min(rp => Vector3.Distance(middlePoint, rp.position));
+            //Vector3 closest = RespawnPoints.First(rp => Vector3.Distance(middlePoint, rp.position) == minDistance)
+            //    .position;
+            //return closest;
+            float minDistance = transforms.Min(rp =>
+                            Vector3.Distance(Characters[Character.Pollin].transform.position, rp.position));
+            Vector3 closest = transforms.First(rp =>
+                    Vector3.Distance(Characters[Character.Pollin].transform.position, rp.position) == minDistance)
+                .position;
+            return closest;
         }
 
         protected virtual void HandleTrigger()
@@ -154,7 +178,7 @@ namespace Code.Scripts.SceneController
 
         protected virtual void Start()
         {
-            respawnPoints = InitializeRespawnPoints();
+            RespawnPoints = InitializeRespawnPoints();
             OnRespawn += RespawnBoth;
             Player.OnDie += GameOverScreen;
             InitializeCutsceneStrings();
@@ -203,26 +227,6 @@ namespace Code.Scripts.SceneController
             Vector3 offset = new Vector3(xOffset, 0, 0);
             obj.transform.position = target + offset;
         }
-
-        //TODO Change for two players
-        private Vector3 FindClosestSpawnPoint()
-        {
-            List<Transform> leftRespawnPoints = respawnPoints
-                .FindAll(rp => rp.position.x <= Characters[Character.Pollin].transform.position.x);
-            //Vector3 middlePoint =
-            //    (Players[Character.Pollin].transform.position + Players[Character.Muni].transform.position) / 2;
-            //float minDistance = respawnPoints.Min(rp => Vector3.Distance(middlePoint, rp.position));
-            //Vector3 closest = respawnPoints.First(rp => Vector3.Distance(middlePoint, rp.position) == minDistance)
-            //    .position;
-            //return closest;
-            float minDistance = leftRespawnPoints.Min(rp =>
-                Vector3.Distance(Characters[Character.Pollin].transform.position, rp.position));
-            Vector3 closest = leftRespawnPoints.First(rp =>
-                    Vector3.Distance(Characters[Character.Pollin].transform.position, rp.position) == minDistance)
-                .position;
-            return closest;
-        }
-
         private void GameOverScreen()
         {
             DisableFollowingCamera();

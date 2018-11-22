@@ -10,10 +10,13 @@ namespace Code.Scripts.Entity
         [SerializeField] private Transform leftSource;
         [SerializeField] private GameObject muni;
         [SerializeField] private GameObject pollin;
+        [SerializeField] private Transform rightSource;
         private bool targetIsLeft;
+
         public void Shoot()
         {
-            InstantiateAndShootProjectile(energyBall, leftSource, currentTarget.transform);
+            var source = targetIsLeft ? leftSource : rightSource;
+            InstantiateAndShootProjectile(energyBall, source, currentTarget.transform);
         }
 
         protected override void Start()
