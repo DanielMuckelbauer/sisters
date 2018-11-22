@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2faed9f6e0aa4a3fbe3cf328760d1c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootForce: 2
-  RotationForce: 10
+  shootForce: 2
+  rotationForce: 5
 --- !u!212 &212899560213715860
 SpriteRenderer:
   m_ObjectHideFlags: 1

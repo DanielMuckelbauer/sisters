@@ -1,38 +1,43 @@
 ﻿using System.Collections;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 namespace Code.Scripts.Entity
 {
     public class DaniBoss : BasePatrolingEnemy
     {
-        [SerializeField] private GameObject EnergyBall;
-        [SerializeField] private GameObject Muni;
-        [SerializeField] private GameObject Pollin;
-        [SerializeField] private Transform LeftSource;
         private GameObject currentTarget;
+        [SerializeField] private GameObject energyBall;
+        [SerializeField] private Transform leftSource;
+        [SerializeField] private GameObject muni;
+        [SerializeField] private GameObject pollin;
+        private bool targetIsLeft;
+        public void Shoot()
+        {
+            InstantiateAndShootProjectile(energyBall, leftSource, currentTarget.transform);
+        }
 
         protected override void Start()
         {
             base.Start();
-            currentTarget = Muni;
+            currentTarget = muni;
             StartCoroutine(StartAttackLoop());
+        }
+
+        private void SetTargetLeft()
+        {
+            targetIsLeft = currentTarget.transform.position.x < transform.position.x;
+            Animator.SetBool("TargetIsLeft", targetIsLeft);
         }
 
         private IEnumerator StartAttackLoop()
         {
             while (true)
             {
-                Debug.Log("Shoot");
-                currentTarget = currentTarget == Muni ? Pollin : Muni;
-                Animator.SetTrigger("ShootLeft");
+                currentTarget = currentTarget == muni ? pollin : muni;
+                SetTargetLeft();
+                Animator.SetTrigger("Shoot");
                 yield return new WaitForSeconds(5);
             }
-        }
-
-        public void ShootLeft()
-        {
-            InstantiateAndShootProjectile(EnergyBall, LeftSource, currentTarget.transform);
         }
     }
 }

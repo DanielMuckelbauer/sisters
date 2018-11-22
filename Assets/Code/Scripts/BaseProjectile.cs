@@ -6,8 +6,6 @@ namespace Code.Scripts
 {
     public abstract class BaseProjectile : MonoBehaviour
     {
-        //public float ShootForce = 2f;
-        //public float RotationForce = 10;
         [SerializeField] private float shootForce = 2f;
         [SerializeField] private float rotationForce = 10;
         private Rigidbody2D rigidBody;

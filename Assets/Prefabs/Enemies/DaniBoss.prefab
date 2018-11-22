@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4699016392823494}
   - component: {fileID: 212802583359934288}
   - component: {fileID: 82855903107641080}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LeftLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4875075944454592}
   - component: {fileID: 212946829438255382}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Right Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4685170778311976}
   - component: {fileID: 212549813985992946}
   - component: {fileID: 114152263198163242}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpeechBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4983532941703938}
   - component: {fileID: 70023241716214050}
-  m_Layer: 15
+  m_Layer: 11
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4726638480397408}
   - component: {fileID: 212946977294401160}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4653939589100764}
   - component: {fileID: 212211836641725042}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sword2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4915173674827684}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LeftSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4658390906433264}
   - component: {fileID: 212921884901104674}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Left Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 23386731929123572}
   - component: {fileID: 222323956115107220}
   - component: {fileID: 114796685803681868}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TextMeshPro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4462319824104542}
   - component: {fileID: 212382432474730180}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4691152423493898}
   - component: {fileID: 70673741106721662}
-  m_Layer: 15
+  m_Layer: 11
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4828347248019494}
   - component: {fileID: 212238246127143272}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RightLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 212837513294066254}
   - component: {fileID: 95249325520570344}
   - component: {fileID: 114783970896293224}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DaniBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4568891908415134}
   - component: {fileID: 212310247877923512}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sword1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,10 +634,10 @@ MonoBehaviour:
   Animator: {fileID: 95249325520570344}
   WalkingSpeed: 5
   Patrolling: 0
-  EnergyBall: {fileID: 1714547732501980, guid: 6fabfbaf6436f4f4a8ab28b1ff9d0df5, type: 2}
-  Muni: {fileID: 0}
-  Pollin: {fileID: 0}
-  LeftSource: {fileID: 1392464218495932}
+  energyBall: {fileID: 1714547732501980, guid: 6fabfbaf6436f4f4a8ab28b1ff9d0df5, type: 2}
+  muni: {fileID: 0}
+  pollin: {fileID: 0}
+  leftSource: {fileID: 4915173674827684}
 --- !u!114 &114796685803681868
 MonoBehaviour:
   m_ObjectHideFlags: 1

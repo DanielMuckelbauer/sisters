@@ -65,9 +65,9 @@ namespace Code.Scripts.Entity
 
         protected void InstantiateAndShootProjectile(GameObject projectile, Transform source, Transform target)
         {
-            BaseProjectile baseProjectile = Instantiate(projectile, target.position, new Quaternion())
+            BaseProjectile baseProjectile = Instantiate(projectile, source.position, new Quaternion())
                 .GetComponent<BaseProjectile>();
-            baseProjectile.Shoot(source.position);
+            baseProjectile.Shoot(target.position);
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Code.Scripts.Entity
             {
                 pair.Value.ForEach(target =>
                 {
-                    InstantiateAndShootProjectile(Shoe, target, pair.Key);
+                    InstantiateAndShootProjectile(Shoe, pair.Key, target);
                 });
             }
         }
