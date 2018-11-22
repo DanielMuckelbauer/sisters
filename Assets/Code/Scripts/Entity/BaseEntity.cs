@@ -12,6 +12,7 @@ namespace Code.Scripts.Entity
         public Animator Animator;
         protected ICombatController CombatController;
         protected bool Invincible;
+        [SerializeField] protected int MaxLife = 1;
         protected IMovementController MovementController;
         [SerializeField] protected float WalkingSpeed = 5;
 

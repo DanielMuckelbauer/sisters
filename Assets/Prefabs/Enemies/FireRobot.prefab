@@ -448,6 +448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95876851198972914}
+  MaxLife: 3
+  WalkingSpeed: 5
   Patrolling: 0
   AudioSource: {fileID: 82609877886459890}
 --- !u!212 &212266311075896752

@@ -19,7 +19,6 @@ namespace Code.Scripts.Entity
 
         protected override void Start()
         {
-            CombatController = new EnemyCombatController(gameObject, 6);
             MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
         }
     }

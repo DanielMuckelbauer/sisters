@@ -26,7 +26,7 @@ namespace Code.Scripts.Entity
             StartCoroutine(StartAttackLoop());
         }
 
-        private void SetTargetLeft()
+        private void SetTargetPosition()
         {
             targetIsLeft = currentTarget.transform.position.x < transform.position.x;
             Animator.SetBool("TargetIsLeft", targetIsLeft);
@@ -37,7 +37,7 @@ namespace Code.Scripts.Entity
             while (true)
             {
                 currentTarget = currentTarget == muni ? pollin : muni;
-                SetTargetLeft();
+                SetTargetPosition();
                 Animator.SetTrigger("Shoot");
                 yield return new WaitForSeconds(5);
             }

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using Code.Classes.CombatController;
 using UnityEngine;
 
 namespace Code.Scripts.Entity
@@ -9,11 +7,10 @@ namespace Code.Scripts.Entity
     public class Ballerina : BasePatrolingEnemy
     {
         public Transform LeftShoeSource;
-        public Transform RightShoeSource;
-        public GameObject Shoe;
         public List<Transform> LeftTargets;
+        public Transform RightShoeSource;
         public List<Transform> RightTargets;
-
+        public GameObject Shoe;
         private Dictionary<Transform, List<Transform>> directions;
 
         public void StartFighting()
@@ -27,7 +24,6 @@ namespace Code.Scripts.Entity
         {
             base.Start();
             InitializeShootDirections();
-            CombatController = new EnemyCombatController(gameObject, 5);
             StartFighting();
         }
 
@@ -49,7 +45,7 @@ namespace Code.Scripts.Entity
                 ShootShoes();
             }
         }
-       
+
         private void ShootShoes()
         {
             foreach (KeyValuePair<Transform, List<Transform>> pair in directions)

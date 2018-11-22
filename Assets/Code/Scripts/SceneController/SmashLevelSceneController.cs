@@ -10,6 +10,11 @@ namespace Code.Scripts.SceneController
         [SerializeField] private GameObject dani;
         private Vector3 daniCameraPosition;
 
+        protected override Vector3 FindClosestSpawnPoint()
+        {
+            return FindTransformNearestToCharacters(RespawnPoints);
+        }
+
         protected override void Start()
         {
             base.Start();
@@ -27,22 +32,17 @@ namespace Code.Scripts.SceneController
             DisablePlayerMovement();
         }
 
-        private IEnumerator PlayOpeningDialog()
-        {
-            yield return new WaitForSeconds(5);
-            yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
-            EnableCameraAndMovement();
-        }
-
         private void EnableCameraAndMovement()
         {
             EnablePlayerMovement();
             EnableFollowingCamera();
         }
 
-        protected override Vector3 FindClosestSpawnPoint()
+        private IEnumerator PlayOpeningDialog()
         {
-            return FindTransformNearestToCharacters(RespawnPoints);
+            yield return new WaitForSeconds(5);
+            yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
+            EnableCameraAndMovement();
         }
     }
 }

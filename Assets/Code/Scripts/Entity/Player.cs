@@ -15,8 +15,6 @@ namespace Code.Scripts.Entity
         public AudioClip ReceiveHit;
         public AudioClip Swing;
         protected Dictionary<Control, string> Controls;
-
-        private const int Life = 5;
         private bool movementDisabled;
 
         public static event Action OnDie;
@@ -49,7 +47,7 @@ namespace Code.Scripts.Entity
         {
             WalkingSpeed = 4;
             MovementController = new PlayerMovementController(gameObject, WalkingSpeed, GroundCheck);
-            CombatController = new PlayerCombatController(gameObject, Life);
+            CombatController = new PlayerCombatController(gameObject, MaxLife);
         }
 
         private void CheckGroundedForJumpAnimation()

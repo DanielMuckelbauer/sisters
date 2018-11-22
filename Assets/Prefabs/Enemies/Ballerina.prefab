@@ -351,19 +351,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 0}
+  MaxLife: 6
   WalkingSpeed: 3
   Patrolling: 1
   LeftShoeSource: {fileID: 4553919857663720}
-  RightShoeSource: {fileID: 4350094308281630}
-  Shoe: {fileID: 1424597797114310, guid: b946f22e5731bc24faa9cf011459f3f0, type: 2}
   LeftTargets:
   - {fileID: 4350982951293096}
   - {fileID: 4044246818617128}
   - {fileID: 4114766855443176}
+  RightShoeSource: {fileID: 4350094308281630}
   RightTargets:
   - {fileID: 4819398049716962}
   - {fileID: 4544756707104560}
   - {fileID: 4490184697842856}
+  Shoe: {fileID: 1424597797114310, guid: b946f22e5731bc24faa9cf011459f3f0, type: 2}
 --- !u!212 &212303800978243668
 SpriteRenderer:
   m_ObjectHideFlags: 1

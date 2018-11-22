@@ -11,7 +11,6 @@ namespace Code.Scripts.Entity
         protected override void Start()
         {
             base.Start();
-            CombatController = new EnemyCombatController(gameObject, 4);
             StartCoroutine(ShootPeriodically());
         }
 

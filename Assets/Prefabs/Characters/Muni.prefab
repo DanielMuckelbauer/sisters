@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95488669997492982}
+  MaxLife: 5
   WalkingSpeed: 5
   AudioSource: {fileID: 82370614910397214}
   GroundCheck: {fileID: 4853369820929170}

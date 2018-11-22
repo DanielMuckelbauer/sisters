@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Code.Classes.CombatController;
 using Code.Classes.MovementController;
 using UnityEngine;
 
@@ -46,6 +47,7 @@ namespace Code.Scripts.Entity
         protected virtual void Start()
         {
             MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
+            CombatController = new EnemyCombatController(gameObject, MaxLife);
             if (Patrolling)
                 StartPatrolling();
         }

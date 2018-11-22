@@ -661,6 +661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95249325520570344}
+  MaxLife: 5
   WalkingSpeed: 5
   Patrolling: 0
   energyBall: {fileID: 1714547732501980, guid: 6fabfbaf6436f4f4a8ab28b1ff9d0df5, type: 2}
