@@ -14,7 +14,7 @@ namespace Code.Classes.MovementController
             RigidBody.AddForce(Vector2.up * JumpForce);
         }
 
-        public override void Move(float horizontal)
+        public override void Move(float horizontal)                  
         {
             Vector2 currentVelocity = Vector2.zero;
             currentVelocity.x = horizontal * Speed;
