@@ -30,6 +30,18 @@ namespace Code.Scripts.SceneController
         [SerializeField] private GameObject respawnPointParent;
         [SerializeField] private TextAsset textAsset;
 
+        public void RespawnBoth()
+        {
+            Vector3 closest = FindClosestSpawnPoint();
+            BeamPlayersTo(closest);
+        }
+
+        public void RespawnOne(GameObject player)
+        {
+            Vector3 closest = FindClosestSpawnPoint();
+            BeamPlayerTo(closest, player.transform);
+        }
+
         public void SceneTriggerEntered()
         {
             if (IgnoreTrigger)
@@ -155,13 +167,6 @@ namespace Code.Scripts.SceneController
             TextCanvas.SetActive(false);
             GameElements.SetActive(true);
         }
-
-        public void RespawnBoth()
-        {
-            Vector3 closest = FindClosestSpawnPoint();
-            BeamPlayersTo(closest);
-        }
-
         protected void SetCanvasTextToNextString()
         {
             canvasText.text = CutsceneStrings[CutsceneStringCounter++];
@@ -302,11 +307,6 @@ namespace Code.Scripts.SceneController
             TextCanvas.SetActive(true);
             yield return new WaitForSeconds(5);
             ResetScene();
-        }
-
-        public void RespawnOne(GameObject otherGameObject)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -383,12 +383,12 @@ Prefab:
     - target: {fileID: 61783496520608480, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
         type: 2}
       propertyPath: m_Size.x
-      value: 41.570236
+      value: 60.19184
       objectReference: {fileID: 0}
     - target: {fileID: 61783496520608480, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
         type: 2}
       propertyPath: m_Offset.x
-      value: 8.256111
+      value: 4.7581215
       objectReference: {fileID: 0}
     - target: {fileID: 114710672674918686, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
         type: 2}
