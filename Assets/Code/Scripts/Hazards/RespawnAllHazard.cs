@@ -1,16 +1,14 @@
-﻿using Code.Scripts.SceneController;
+﻿using Code.Scripts.Hazards;
 using UnityEngine;
 
 namespace Code.Scripts
 {
-    public class Hazard : MonoBehaviour
+    public class RespawnAllHazard : BaseHazard
     {
-        [SerializeField] private BaseSceneController sceneController;
-
         private void OnCollisionStay2D(Collision2D other)
         {
             if (other.gameObject.tag.Contains("Player"))
-                sceneController.Respawn();
+                SceneController.RespawnBoth();
         }
     }
 }

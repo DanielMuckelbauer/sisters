@@ -156,7 +156,7 @@ namespace Code.Scripts.SceneController
             GameElements.SetActive(true);
         }
 
-        public void Respawn()
+        public void RespawnBoth()
         {
             Vector3 closest = FindClosestSpawnPoint();
             BeamPlayersTo(closest);
@@ -302,6 +302,11 @@ namespace Code.Scripts.SceneController
             TextCanvas.SetActive(true);
             yield return new WaitForSeconds(5);
             ResetScene();
+        }
+
+        public void RespawnOne(GameObject otherGameObject)
+        {
+            throw new NotImplementedException();
         }
     }
 }
