@@ -32,13 +32,7 @@ namespace Code.Scripts.SceneController
         {
             Transform pollin = Characters[Character.Pollin].transform;
             pollin.GetComponent<Rigidbody2D>().isKinematic = true;
-            while (pollin.position != JumpTarget.position)
-            {
-                float step = 3f * Time.deltaTime;
-                pollin.position = Vector3.MoveTowards(pollin.position, JumpTarget.position, step);
-                yield return null;
-            }
-
+            yield return MoveTo(pollin, JumpTarget);
             pollin.transform.Rotate(0, 0, 90);
         }
 

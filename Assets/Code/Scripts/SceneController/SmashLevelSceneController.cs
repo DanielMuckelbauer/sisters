@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Code.Classes;
 using System.Collections;
-using Code.Classes;
+using Code.Scripts.Entity;
 using UnityEngine;
 
 namespace Code.Scripts.SceneController
 {
     public class SmashLevelSceneController : BaseSceneController
     {
-        [SerializeField] private GameObject dani;
+        [SerializeField] private DaniBoss dani;
+        [SerializeField] private Transform flyTarget;
         private Vector3 daniCameraPosition;
 
         protected override Vector3 FindClosestSpawnPoint()
@@ -19,7 +20,7 @@ namespace Code.Scripts.SceneController
         {
             base.Start();
             DisableCameraAndMovement();
-            daniCameraPosition = new Vector3(dani.transform.position.x, dani.transform.position.y,
+            daniCameraPosition = new Vector3(dani.transform.position.x, dani.transform.position.y + 2,
                 MainCamera.transform.position.z);
             MainCamera.transform.position = daniCameraPosition;
             StartCoroutine(PlayOpeningCutscene(1, 2));
@@ -42,6 +43,9 @@ namespace Code.Scripts.SceneController
         {
             yield return new WaitForSeconds(5);
             yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
+            dani.StartFight();
+            yield return MoveTo(dani.transform, flyTarget, 1f);
+            yield return new WaitForSeconds(10);
             EnableCameraAndMovement();
         }
     }

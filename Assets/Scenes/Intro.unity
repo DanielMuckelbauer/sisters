@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 35516095}
   - component: {fileID: 35516097}
   m_Layer: 0
-  m_Name: GameElements
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -691,11 +691,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4932642893239514, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.11
+      value: -0.359
       objectReference: {fileID: 0}
     - target: {fileID: 4932642893239514, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.91
+      value: -0.927
       objectReference: {fileID: 0}
     - target: {fileID: 4932642893239514, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
       propertyPath: m_LocalPosition.z
@@ -720,6 +720,32 @@ Prefab:
     - target: {fileID: 4932642893239514, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212775027095368476, guid: d46158ea0ff711448b022b47d5cd3175,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608555318784508, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33917029892266822, guid: d46158ea0ff711448b022b47d5cd3175,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932642893239514, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.32024324
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932642893239514, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.32024324
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932642893239514, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.32024324
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46158ea0ff711448b022b47d5cd3175, type: 2}

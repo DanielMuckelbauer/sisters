@@ -19,10 +19,20 @@ namespace Code.Scripts.Entity
             InstantiateAndShootProjectile(energyBall, source, currentTarget.transform);
         }
 
+        public void StartFight()
+        {
+            StartCoroutine(FlyUpAndStartFighting());
+        }
+
         protected override void Start()
         {
             base.Start();
             currentTarget = muni;
+        }
+        private IEnumerator FlyUpAndStartFighting()
+        {
+            Animator.SetTrigger("FlyUp");
+            yield return new WaitForSeconds(4);
             StartCoroutine(StartAttackLoop());
         }
 

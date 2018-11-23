@@ -1,7 +1,6 @@
-﻿using Code.Scripts.Hazards;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Code.Scripts
+namespace Code.Scripts.Hazards
 {
     public class RespawnAllHazard : BaseHazard
     {

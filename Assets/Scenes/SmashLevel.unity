@@ -138,7 +138,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 61.895187, y: 15.775403, z: -1.7877289}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 641019778}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -165,12 +166,41 @@ MonoBehaviour:
   pressAnyKeySprite: {fileID: 1100177360}
   respawnPointParent: {fileID: 1609891968}
   textAsset: {fileID: 4900000, guid: e2ed91539fd67ee45abb8bc6f3cd9601, type: 3}
-  dani: {fileID: 1436249496}
+  dani: {fileID: 1158730543}
+  flyTarget: {fileID: 641019778}
 --- !u!1 &574678965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1061069945433942, guid: be956fa908d6bd7479a94f994585409e,
     type: 2}
   m_PrefabInternal: {fileID: 823134488}
+--- !u!1 &641019777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 641019778}
+  m_Layer: 0
+  m_Name: FlyTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &641019778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 641019777}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.544815, y: 0.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 332494188}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &772832270
 Prefab:
   m_ObjectHideFlags: 0
@@ -713,6 +743,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43acb1288a7b2f747bd4365ad702a2e2, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1158730543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114783970896293224, guid: 43acb1288a7b2f747bd4365ad702a2e2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1158730542}
+  m_Script: {fileID: 11500000, guid: 5868d6d8efef45978a56abeedf61ff7f, type: 3}
 --- !u!1 &1313685989
 GameObject:
   m_ObjectHideFlags: 0

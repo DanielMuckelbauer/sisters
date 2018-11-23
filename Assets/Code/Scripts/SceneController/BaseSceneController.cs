@@ -161,6 +161,16 @@ namespace Code.Scripts.SceneController
             yield return playerList[1].TurnTo(playerList[0].transform.position);
         }
 
+        protected IEnumerator MoveTo(Transform obj, Transform target, float stepSize = 3f)
+        {
+            while (obj.position != target.position)
+            {
+                float step = stepSize * Time.deltaTime;
+                obj.position = Vector3.MoveTowards(obj.position, target.position, step);
+                yield return null;
+            }
+        }
+
         protected IEnumerator PlayOpeningCutscene(int time, int times)
         {
             yield return ShowNextTextSection(time, times);
@@ -218,7 +228,6 @@ namespace Code.Scripts.SceneController
             xmlWriter.WriteString(level);
             xmlWriter.Close();
         }
-
         private static void UnsubscribeAllDelegatesFromStaticEvents()
         {
             Player.ResetOnDieEvent();
@@ -293,11 +302,13 @@ namespace Code.Scripts.SceneController
             SaveGame();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
         private void MoveObjectToTargetIfToFarAway(Transform obj, Vector3 target, float maxDistance = 20f)
         {
             if (Vector3.Distance(obj.position, target) > maxDistance)
                 BeamPlayerTo(target, obj, -3f);
         }
+
         private IEnumerator ShowDied()
         {
             FadeSceneOut();
