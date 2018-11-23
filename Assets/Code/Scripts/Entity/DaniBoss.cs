@@ -34,6 +34,7 @@ namespace Code.Scripts.Entity
             Animator.SetTrigger("FlyUp");
             yield return new WaitForSeconds(4);
             StartCoroutine(StartAttackLoop());
+            StartPatrolling();
         }
 
         private void SetTargetPosition()

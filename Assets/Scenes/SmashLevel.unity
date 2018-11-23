@@ -711,6 +711,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 33713184075251588, guid: 43acb1288a7b2f747bd4365ad702a2e2,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 114783970896293224, guid: 43acb1288a7b2f747bd4365ad702a2e2,
         type: 2}
       propertyPath: muni
@@ -721,11 +726,6 @@ Prefab:
       propertyPath: pollin
       value: 
       objectReference: {fileID: 2006451758}
-    - target: {fileID: 33713184075251588, guid: 43acb1288a7b2f747bd4365ad702a2e2,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1611560054039876, guid: 43acb1288a7b2f747bd4365ad702a2e2, type: 2}
       propertyPath: m_Name
       value: Dani
