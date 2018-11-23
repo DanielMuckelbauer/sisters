@@ -162,6 +162,11 @@ Prefab:
       propertyPath: m_Size.y
       value: 1.1015053
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -232,6 +237,11 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -307,6 +317,11 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -716,6 +731,11 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -1057,6 +1077,11 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -1467,6 +1492,11 @@ Prefab:
       propertyPath: m_Size.y
       value: 2.543663
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -1668,6 +1698,11 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -2140,6 +2175,11 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -2809,6 +2849,11 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -2920,6 +2965,11 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -45328,6 +45378,11 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 2004843164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0

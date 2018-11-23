@@ -29,12 +29,6 @@ namespace Code.Scripts.SceneController
         [SerializeField] private SpriteRenderer pressAnyKeySprite;
         [SerializeField] private GameObject respawnPointParent;
         [SerializeField] private TextAsset textAsset;
-        public static event Action OnRespawn;
-
-        public static void InvokeRespawnBoth()
-        {
-            OnRespawn?.Invoke();
-        }
 
         public void SceneTriggerEntered()
         {
@@ -162,6 +156,12 @@ namespace Code.Scripts.SceneController
             GameElements.SetActive(true);
         }
 
+        public void Respawn()
+        {
+            Vector3 closest = FindClosestSpawnPoint();
+            BeamPlayersTo(closest);
+        }
+
         protected void SetCanvasTextToNextString()
         {
             canvasText.text = CutsceneStrings[CutsceneStringCounter++];
@@ -179,7 +179,6 @@ namespace Code.Scripts.SceneController
         protected virtual void Start()
         {
             RespawnPoints = InitializeRespawnPoints();
-            OnRespawn += RespawnBoth;
             Player.OnDie += GameOverScreen;
             InitializeCutsceneStrings();
             InitializePlayerDictionary();
@@ -219,7 +218,6 @@ namespace Code.Scripts.SceneController
         {
             Player.ResetOnDieEvent();
             Healer.ResetOnHealingConsumedEvent();
-            OnRespawn = null;
         }
 
         private void BeamPlayerTo(Vector3 target, Transform obj, float xOffset = 0.0f)
@@ -295,13 +293,6 @@ namespace Code.Scripts.SceneController
             if (Vector3.Distance(obj.position, target) > maxDistance)
                 BeamPlayerTo(target, obj, -3f);
         }
-
-        private void RespawnBoth()
-        {
-            Vector3 closest = FindClosestSpawnPoint();
-            BeamPlayersTo(closest);
-        }
-
         private IEnumerator ShowDied()
         {
             FadeSceneOut();

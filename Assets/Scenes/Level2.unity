@@ -13379,6 +13379,11 @@ Prefab:
       propertyPath: m_Size.x
       value: 169.03943
       objectReference: {fileID: 0}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 1706514908}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
