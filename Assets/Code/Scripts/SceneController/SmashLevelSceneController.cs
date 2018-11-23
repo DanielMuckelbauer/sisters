@@ -45,7 +45,7 @@ namespace Code.Scripts.SceneController
             yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
             dani.StartFight();
             yield return MoveTo(dani.transform, flyTarget, 1f);
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(15);
             EnableCameraAndMovement();
         }
     }
