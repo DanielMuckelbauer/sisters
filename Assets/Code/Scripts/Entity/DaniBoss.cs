@@ -15,7 +15,7 @@ namespace Code.Scripts.Entity
 
         public void Shoot()
         {
-            var source = targetIsLeft ? leftSource : rightSource;
+            Transform source = targetIsLeft ? leftSource : rightSource;
             InstantiateAndShootProjectile(energyBall, source, currentTarget.transform);
         }
 
