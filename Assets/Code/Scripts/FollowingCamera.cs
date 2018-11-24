@@ -10,7 +10,7 @@ namespace Code.Scripts
 
         private PlayerCameraController playerCameraController;
         public bool Following { get; set; }
-        private void Start()
+        private void Awake()
         {
             Following = true;
             playerCameraController = new PlayerCameraController(gameObject.transform);
