@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Code.Scripts.Entity
@@ -13,6 +14,8 @@ namespace Code.Scripts.Entity
         [SerializeField] private Transform rightSource;
         private bool targetIsLeft;
 
+        public event Action EndFirstStage;
+
         public void Shoot()
         {
             Transform source = targetIsLeft ? leftSource : rightSource;
@@ -22,6 +25,27 @@ namespace Code.Scripts.Entity
         public void StartFight()
         {
             StartCoroutine(FlyUpAndStartFighting());
+        }
+
+        protected override IEnumerator Patrol(int interval = 1)
+        {
+            Vector3 startPos = transform.position;
+            float xScale = 2;
+            float yScale = 1;
+            while (true)
+            {
+                transform.position =
+                    startPos + (Vector3.right * Mathf.Sin(Time.timeSinceLevelLoad / 2 * WalkingSpeed) * xScale -
+                                Vector3.up * Mathf.Sin(Time.timeSinceLevelLoad * WalkingSpeed) * yScale);
+                yield return null;
+            }
+        }
+
+        protected override void DealWithCollision(GameObject other)
+        {
+            base.DealWithCollision(other);
+            if (CombatController.CurrentLife <= 10)
+                EndFirstStage?.Invoke();
         }
 
         protected override void Start()
@@ -52,20 +76,6 @@ namespace Code.Scripts.Entity
                 SetTargetPosition();
                 Animator.SetTrigger("Shoot");
                 yield return new WaitForSeconds(5);
-            }
-        }
-
-        protected override IEnumerator Patrol(int interval = 1)
-        {
-            Vector3 startPos = transform.position;
-            float xScale = 2;
-            float yScale = 1;
-            while (true)
-            {
-                transform.position =
-                    startPos + (Vector3.right * Mathf.Sin(Time.timeSinceLevelLoad / 2 * WalkingSpeed) * xScale -
-                                Vector3.up * Mathf.Sin(Time.timeSinceLevelLoad * WalkingSpeed) * yScale);
-                yield return null;
             }
         }
     }

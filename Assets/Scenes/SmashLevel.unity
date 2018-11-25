@@ -139,6 +139,8 @@ Transform:
   m_LocalPosition: {x: 61.895187, y: 15.775403, z: -1.7877289}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2099549632}
+  - {fileID: 551922144}
   - {fileID: 641019778}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -168,6 +170,37 @@ MonoBehaviour:
   textAsset: {fileID: 4900000, guid: e2ed91539fd67ee45abb8bc6f3cd9601, type: 3}
   dani: {fileID: 1158730543}
   flyTarget: {fileID: 641019778}
+  addSpawnPositions:
+  - {fileID: 2099549632}
+  - {fileID: 551922144}
+--- !u!1 &551922143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 551922144}
+  m_Layer: 0
+  m_Name: addSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &551922144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 551922143}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 13.13, y: -0.08737087, z: -0.15367734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 332494188}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &574678965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1061069945433942, guid: be956fa908d6bd7479a94f994585409e,
@@ -199,7 +232,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 332494188}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &772832270
 Prefab:
@@ -1230,3 +1263,31 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1041184827798590, guid: 40f0c278916650549a4b753816fe6fda,
     type: 2}
   m_PrefabInternal: {fileID: 1966021468}
+--- !u!1 &2099549631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2099549632}
+  m_Layer: 0
+  m_Name: addSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2099549632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2099549631}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.74, y: -0.08737087, z: -0.15367734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 332494188}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

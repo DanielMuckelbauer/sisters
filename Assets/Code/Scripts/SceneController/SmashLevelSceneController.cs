@@ -1,5 +1,7 @@
-﻿using Code.Classes;
+﻿using System;
+using Code.Classes;
 using System.Collections;
+using System.Collections.Generic;
 using Code.Scripts.Entity;
 using UnityEngine;
 
@@ -7,10 +9,10 @@ namespace Code.Scripts.SceneController
 {
     public class SmashLevelSceneController : BaseSceneController
     {
+        [SerializeField] private List<Transform> addSpawnPositions;
         [SerializeField] private DaniBoss dani;
-        [SerializeField] private Transform flyTarget;
         private Vector3 daniCameraPosition;
-
+        [SerializeField] private Transform flyTarget;
         protected override Vector3 FindClosestSpawnPoint()
         {
             return FindTransformNearestToCharacters(RespawnPoints);
@@ -20,11 +22,10 @@ namespace Code.Scripts.SceneController
         {
             base.Start();
             DisableCameraAndMovement();
-            daniCameraPosition = new Vector3(dani.transform.position.x, dani.transform.position.y + 2,
-                MainCamera.transform.position.z);
-            MainCamera.transform.position = daniCameraPosition;
+            MoveCameraToDani();
             StartCoroutine(PlayOpeningCutscene(1, 2));
             StartCoroutine(PlayOpeningDialog());
+            dani.EndFirstStage += EndFirstStage;
         }
 
         private void DisableCameraAndMovement()
@@ -39,6 +40,19 @@ namespace Code.Scripts.SceneController
             EnableFollowingCamera();
         }
 
+        private void EndFirstStage()
+        {
+            DisableCameraAndMovement();
+            Vector3 cameraTarget = new Vector3(flyTarget.position.x, flyTarget.position.y, MainCamera.transform.position.z);
+            StartCoroutine(MoveCameraSmoothly(cameraTarget));
+        }
+
+        private void MoveCameraToDani()
+        {
+            daniCameraPosition = new Vector3(dani.transform.position.x, dani.transform.position.y + 2,
+                            MainCamera.transform.position.z);
+            MainCamera.transform.position = daniCameraPosition;
+        }
         private IEnumerator PlayOpeningDialog()
         {
             yield return new WaitForSeconds(1);

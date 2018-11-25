@@ -52,7 +52,7 @@ namespace Code.Scripts.Entity
                 StartPatrolling();
         }
 
-        private void DealWithCollision(GameObject otherGameObject)
+        protected virtual void DealWithCollision(GameObject otherGameObject)
         {
             if (NotHitable(otherGameObject))
                 return;

@@ -7,13 +7,14 @@ namespace Code.Classes.CombatController
     {
         protected readonly GameObject GameObject;
         protected int MaxLife;
-        protected int CurrentLife;
 
         protected BaseCombatController(GameObject go, int maxLife)
         {
             GameObject = go;
             CurrentLife = MaxLife = maxLife;
         }
+
+        public int CurrentLife { get; set; }
 
         public virtual void ReceiveHit()
         {

@@ -43,7 +43,7 @@ namespace Code.Scripts.SceneController
             DisableFollowingCamera();
             Vector3 targetPosition = new Vector3(CameraTarget.position.x, CameraTarget.position.y,
                 MainCamera.transform.position.z);
-            StartCoroutine(MoveCamera(targetPosition));
+            StartCoroutine(MoveCameraSmoothly(targetPosition));
             yield return new WaitForSeconds(2);
             yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
             yield return GoToDiaperChanger();
