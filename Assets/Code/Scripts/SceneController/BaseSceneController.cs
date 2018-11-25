@@ -1,12 +1,11 @@
 ﻿using Code.Classes;
 using Code.Scripts.Entity;
-using System;
+using Code.Scripts.Scene;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
-using Code.Scripts.Scene;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,39 +20,18 @@ namespace Code.Scripts.SceneController
         [SerializeField] protected GameObject GameElements;
         protected bool IgnoreTrigger;
         [SerializeField] protected GameObject MainCamera;
-        protected List<Transform> RespawnPoints;
         [SerializeField] protected Dictionary<Character, SpeechBubble> SpeechBubbles;
         [SerializeField] protected GameObject TextCanvas;
         [SerializeField] private TMP_Text canvasText;
         [SerializeField] private List<GameObject> npcs;
         [SerializeField] private List<Player> playerList;
         [SerializeField] private SpriteRenderer pressAnyKeySprite;
-        [SerializeField] private GameObject respawnPointParent;
         [SerializeField] private TextAsset textAsset;
-
-        public void RespawnBoth()
-        {
-            Vector3 closest = FindClosestSpawnPoint();
-            BeamPlayersTo(closest);
-        }
-
-        public void RespawnOne(GameObject player)
-        {
-            Vector3 closest = FindClosestSpawnPoint();
-            BeamPlayerTo(closest, player.transform);
-        }
-
         public void SceneTriggerEntered()
         {
             if (IgnoreTrigger)
                 return;
             HandleTrigger();
-        }
-
-        protected void BeamPlayersTo(Vector3 target)
-        {
-            BeamPlayerTo(target, playerList[0].transform, -0.5f);
-            BeamPlayerTo(target, playerList[1].transform, 0.5f);
         }
 
         protected void DisableFollowingCamera()
@@ -71,6 +49,7 @@ namespace Code.Scripts.SceneController
         {
             MainCamera.GetComponent<FollowingCamera>().Following = true;
         }
+
         protected void EnableNextScene()
         {
             StartCoroutine(LoadNextSceneOnInput());
@@ -107,30 +86,6 @@ namespace Code.Scripts.SceneController
                 .ForEach(s => { StartCoroutine(Fade(s, 1, 0)); });
         }
 
-        //TODO Change for two players
-        protected virtual Vector3 FindClosestSpawnPoint()
-        {
-            List<Transform> leftRespawnPoints = RespawnPoints
-                .FindAll(rp => rp.position.x <= Characters[Character.Pollin].transform.position.x);
-            Vector3 closest = FindTransformNearestToCharacters(leftRespawnPoints);
-            return closest;
-        }
-
-        protected Vector3 FindTransformNearestToCharacters(List<Transform> transforms)
-        {
-            //Vector3 middlePoint =
-            //    (Players[Character.Pollin].transform.position + Players[Character.Muni].transform.position) / 2;
-            //float minDistance = RespawnPoints.Min(rp => Vector3.Distance(middlePoint, rp.position));
-            //Vector3 closest = RespawnPoints.First(rp => Vector3.Distance(middlePoint, rp.position) == minDistance)
-            //    .position;
-            //return closest;
-            float minDistance = transforms.Min(rp =>
-                            Vector3.Distance(Characters[Character.Pollin].transform.position, rp.position));
-            Vector3 closest = transforms.First(rp =>
-                    Vector3.Distance(Characters[Character.Pollin].transform.position, rp.position) == minDistance)
-                .position;
-            return closest;
-        }
 
         protected virtual void HandleTrigger()
         {
@@ -178,6 +133,7 @@ namespace Code.Scripts.SceneController
             TextCanvas.SetActive(false);
             GameElements.SetActive(true);
         }
+
         protected void SetCanvasTextToNextString()
         {
             canvasText.text = CutsceneStrings[CutsceneStringCounter++];
@@ -194,7 +150,6 @@ namespace Code.Scripts.SceneController
 
         protected virtual void Start()
         {
-            RespawnPoints = InitializeRespawnPoints();
             Player.OnDie += GameOverScreen;
             InitializeCutsceneStrings();
             InitializePlayerDictionary();
@@ -229,17 +184,13 @@ namespace Code.Scripts.SceneController
             xmlWriter.WriteString(level);
             xmlWriter.Close();
         }
+
         private static void UnsubscribeAllDelegatesFromStaticEvents()
         {
             Player.ResetOnDieEvent();
             Healer.ResetOnHealingConsumedEvent();
         }
 
-        private void BeamPlayerTo(Vector3 target, Transform obj, float xOffset = 0.0f)
-        {
-            Vector3 offset = new Vector3(xOffset, 0, 0);
-            obj.transform.position = target + offset;
-        }
         private void GameOverScreen()
         {
             DisableFollowingCamera();
@@ -287,11 +238,6 @@ namespace Code.Scripts.SceneController
             Characters.Add(Character.Pollin, pollin);
         }
 
-        private List<Transform> InitializeRespawnPoints()
-        {
-            return respawnPointParent != null ? respawnPointParent.GetComponentsInChildren<Transform>().ToList() : null;
-        }
-
         private IEnumerator LoadNextSceneOnInput()
         {
             while (!Input.anyKeyDown)
@@ -307,7 +253,7 @@ namespace Code.Scripts.SceneController
         private void MoveObjectToTargetIfToFarAway(Transform obj, Vector3 target, float maxDistance = 20f)
         {
             if (Vector3.Distance(obj.position, target) > maxDistance)
-                BeamPlayerTo(target, obj, -3f);
+                obj.transform.position = target;
         }
 
         private IEnumerator ShowDied()

@@ -15,11 +15,6 @@ namespace Code.Scripts.SceneController
         [SerializeField] private Transform flyTarget;
         private Stack<Action> phaseChangeMethods; 
 
-        protected override Vector3 FindClosestSpawnPoint()
-        {
-            return FindTransformNearestToCharacters(RespawnPoints);
-        }
-
         protected override void Start()
         {
             base.Start();
