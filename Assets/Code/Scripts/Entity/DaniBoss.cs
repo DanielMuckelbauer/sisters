@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Code.Scripts.Entity
@@ -8,13 +9,13 @@ namespace Code.Scripts.Entity
     {
         private GameObject currentTarget;
         [SerializeField] private GameObject energyBall;
+        [SerializeField] private Stack<int> healthBorders;
         [SerializeField] private Transform leftSource;
         [SerializeField] private GameObject muni;
         [SerializeField] private GameObject pollin;
         [SerializeField] private Transform rightSource;
         private bool targetIsLeft;
-
-        public event Action EndFirstStage;
+        public event Action OnNextPhase;
 
         public void Shoot()
         {
@@ -25,6 +26,12 @@ namespace Code.Scripts.Entity
         public void StartFight()
         {
             StartCoroutine(FlyUpAndStartFighting());
+        }
+
+        protected override void DealWithCollision(GameObject other)
+        {
+            base.DealWithCollision(other);
+            StartNextPhaseIfNecessary();
         }
 
         protected override IEnumerator Patrol(int interval = 1)
@@ -41,17 +48,11 @@ namespace Code.Scripts.Entity
             }
         }
 
-        protected override void DealWithCollision(GameObject other)
-        {
-            base.DealWithCollision(other);
-            if (CombatController.CurrentLife <= 10)
-                EndFirstStage?.Invoke();
-        }
-
         protected override void Start()
         {
             base.Start();
             currentTarget = muni;
+            InitializeHealthStack();
         }
 
         private IEnumerator FlyUpAndStartFighting()
@@ -62,7 +63,15 @@ namespace Code.Scripts.Entity
             StartPatrolling();
         }
 
-        private void SetTargetPosition()
+        private void InitializeHealthStack()
+        {
+            healthBorders = new Stack<int>();
+            healthBorders.Push(5);
+            healthBorders.Push(10);
+            healthBorders.Push(15);
+        }
+
+        private void SetTargetDirection()
         {
             targetIsLeft = currentTarget.transform.position.x < transform.position.x;
             Animator.SetBool("TargetIsLeft", targetIsLeft);
@@ -73,10 +82,18 @@ namespace Code.Scripts.Entity
             while (true)
             {
                 currentTarget = currentTarget == muni ? pollin : muni;
-                SetTargetPosition();
+                SetTargetDirection();
                 Animator.SetTrigger("Shoot");
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(4);
             }
+        }
+
+        private void StartNextPhaseIfNecessary()
+        {
+            if (CombatController.CurrentLife > healthBorders.Peek())
+                return;
+            healthBorders.Pop();
+            OnNextPhase?.Invoke();
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
 using Code.Classes;
+using Code.Scripts.Entity;
 using System.Collections;
 using System.Collections.Generic;
-using Code.Scripts.Entity;
 using UnityEngine;
 
 namespace Code.Scripts.SceneController
@@ -13,6 +13,8 @@ namespace Code.Scripts.SceneController
         [SerializeField] private DaniBoss dani;
         private Vector3 daniCameraPosition;
         [SerializeField] private Transform flyTarget;
+        private Stack<Action> phaseChangeMethods; 
+
         protected override Vector3 FindClosestSpawnPoint()
         {
             return FindTransformNearestToCharacters(RespawnPoints);
@@ -25,7 +27,32 @@ namespace Code.Scripts.SceneController
             MoveCameraToDani();
             StartCoroutine(PlayOpeningCutscene(1, 2));
             StartCoroutine(PlayOpeningDialog());
-            dani.EndFirstStage += EndFirstStage;
+            InitializePhaseChangeMethods();
+            dani.OnNextPhase += ChangeFightPhase;
+        }
+
+        private void AfterFirstPhase()
+        {
+            DisableCameraAndMovement();
+            Vector3 cameraTarget =
+                new Vector3(flyTarget.position.x, flyTarget.position.y, MainCamera.transform.position.z);
+            StartCoroutine(MoveCameraSmoothly(cameraTarget));
+        }
+
+        private void AfterSecondPhase()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AfterThirdPhase()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ChangeFightPhase()
+        {
+            Action nextPhaseMethod = phaseChangeMethods.Pop();
+            nextPhaseMethod.Invoke();
         }
 
         private void DisableCameraAndMovement()
@@ -40,17 +67,18 @@ namespace Code.Scripts.SceneController
             EnableFollowingCamera();
         }
 
-        private void EndFirstStage()
+        private void InitializePhaseChangeMethods()
         {
-            DisableCameraAndMovement();
-            Vector3 cameraTarget = new Vector3(flyTarget.position.x, flyTarget.position.y, MainCamera.transform.position.z);
-            StartCoroutine(MoveCameraSmoothly(cameraTarget));
+            phaseChangeMethods = new Stack<Action>();
+            phaseChangeMethods.Push(AfterThirdPhase);
+            phaseChangeMethods.Push(AfterSecondPhase);
+            phaseChangeMethods.Push(AfterFirstPhase);
         }
-
         private void MoveCameraToDani()
         {
-            daniCameraPosition = new Vector3(dani.transform.position.x, dani.transform.position.y + 2,
-                            MainCamera.transform.position.z);
+            const int offset = 2;
+            daniCameraPosition = new Vector3(dani.transform.position.x, dani.transform.position.y + offset,
+                MainCamera.transform.position.z);
             MainCamera.transform.position = daniCameraPosition;
         }
         private IEnumerator PlayOpeningDialog()

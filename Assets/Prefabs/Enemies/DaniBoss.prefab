@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 114783970896293224}
   - component: {fileID: 50701269541695530}
   - component: {fileID: 61748177476639182}
+  - component: {fileID: 61524246010116036}
   m_Layer: 11
   m_Name: DaniBoss
   m_TagString: Enemy
@@ -516,6 +517,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &61524246010116036
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611560054039876}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.8790154, y: 5.4093895}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 29.17, y: 31.48}
+    newSize: {x: 29.17, y: 31.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.0275507, y: 18.49749}
+  m_EdgeRadius: 0
 --- !u!61 &61748177476639182
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -708,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95249325520570344}
-  MaxLife: 15
+  MaxLife: 20
   WalkingSpeed: 1
   Patrolling: 0
   energyBall: {fileID: 1714547732501980, guid: 6fabfbaf6436f4f4a8ab28b1ff9d0df5, type: 2}
@@ -716,6 +742,7 @@ MonoBehaviour:
   muni: {fileID: 0}
   pollin: {fileID: 0}
   rightSource: {fileID: 4915173674827684}
+  healthBorders: 0f0000000a00000005000000
 --- !u!114 &114796685803681868
 MonoBehaviour:
   m_ObjectHideFlags: 1
