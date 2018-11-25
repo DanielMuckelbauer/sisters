@@ -1,8 +1,8 @@
-﻿using Code.Scripts.Entity;
-using System.Collections;
+﻿using System.Collections;
+using Code.Scripts.Entity;
 using UnityEngine;
 
-namespace Code.Scripts
+namespace Code.Scripts.Scene
 {
     public abstract class BaseProjectile : MonoBehaviour
     {

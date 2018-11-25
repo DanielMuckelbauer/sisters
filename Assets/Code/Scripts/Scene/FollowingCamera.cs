@@ -1,7 +1,7 @@
 ﻿using Code.Classes;
 using UnityEngine;
 
-namespace Code.Scripts
+namespace Code.Scripts.Scene
 {
     public class FollowingCamera : MonoBehaviour
     {

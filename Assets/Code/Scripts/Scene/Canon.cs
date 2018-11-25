@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Scripts
+namespace Code.Scripts.Scene
 {
     public abstract class BaseCanon : MonoBehaviour
     {

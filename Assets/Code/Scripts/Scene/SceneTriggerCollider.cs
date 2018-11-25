@@ -1,7 +1,7 @@
 ﻿using Code.Scripts.SceneController;
 using UnityEngine;
 
-namespace Code.Scripts
+namespace Code.Scripts.Scene
 {
     public class SceneTriggerCollider : MonoBehaviour
     {

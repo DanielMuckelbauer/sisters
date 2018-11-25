@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Code.Classes.CombatController;
 using Code.Classes.MovementController;
+using Code.Scripts.Scene;
 using UnityEngine;
 
 namespace Code.Scripts.Entity
