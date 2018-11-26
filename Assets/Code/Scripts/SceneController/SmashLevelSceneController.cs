@@ -79,9 +79,9 @@ namespace Code.Scripts.SceneController
         private IEnumerator PlayOpeningDialog()
         {
             yield return new WaitForSeconds(1);
-            yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
+            yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 2);
             dani.StartFight();
-            yield return MoveTo(dani.transform, flyTarget, 1f);
+            yield return PlayerRepositioningController.MoveTo(dani.transform, flyTarget, 1f);
             yield return new WaitForSeconds(1);
             EnableCameraAndMovement();
         }

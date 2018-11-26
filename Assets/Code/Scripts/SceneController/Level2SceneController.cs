@@ -1,4 +1,5 @@
 ﻿using Code.Classes;
+using Code.Scripts.Scene;
 using System.Collections;
 using UnityEngine;
 
@@ -50,18 +51,16 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator Talk()
         {
-            SpeechBubble munisBubble = SpeechBubbles[Character.Muni];
-            SpeechBubble pollinsBubble = SpeechBubbles[Character.Pollin];
-            yield return munisBubble.ShowNextBubbleText();
-            yield return pollinsBubble.ShowNextBubbleText();
+            yield return TextController.ShowCharactersNextBubbleText(Character.Muni);
+            yield return TextController.ShowCharactersNextBubbleText(Character.Pollin);
         }
 
         private IEnumerator TalkingCutScene()
         {
             ChangeMusic();
-            yield return MovePlayersToSpeakPosition(walkTarget1, walkTarget2);
+            yield return PlayerRepositioningController.MovePlayersToSpeakPosition(walkTarget1, walkTarget2);
             yield return Talk();
-            BeamPlayersTo(endbossSpawnPoint.position);
+            PlayerRepositioningController.BeamPlayersTo(endbossSpawnPoint.position);
             EnablePlayerMovement();
         }
     }

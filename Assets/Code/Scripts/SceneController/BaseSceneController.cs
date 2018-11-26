@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,19 +13,14 @@ namespace Code.Scripts.SceneController
 {
     public abstract class BaseSceneController : MonoBehaviour
     {
-        public static int CutsceneStringCounter;
-        public static List<string> CutsceneStrings;
         [SerializeField] protected Dictionary<Character, Player> Characters;
         [SerializeField] protected GameObject GameElements;
         protected bool IgnoreTrigger;
         [SerializeField] protected GameObject MainCamera;
-        [SerializeField] protected Dictionary<Character, SpeechBubble> SpeechBubbles;
-        [SerializeField] protected GameObject TextCanvas;
-        [SerializeField] private TMP_Text canvasText;
-        [SerializeField] private List<GameObject> npcs;
+        [SerializeField] protected PlayerRepositioningController PlayerRepositioningController;
         [SerializeField] private List<Player> playerList;
-        [SerializeField] private SpriteRenderer pressAnyKeySprite;
-        [SerializeField] private TextAsset textAsset;
+        [SerializeField] protected TextController TextController;
+
         public void SceneTriggerEntered()
         {
             if (IgnoreTrigger)
@@ -53,9 +47,7 @@ namespace Code.Scripts.SceneController
         protected void EnableNextScene()
         {
             StartCoroutine(LoadNextSceneOnInput());
-            canvasText.text = string.Empty;
-            TextCanvas.SetActive(true);
-            pressAnyKeySprite.enabled = true;
+            TextController.ShowPressAnyKey();
         }
 
         protected void EnablePlayerMovement()
@@ -86,7 +78,6 @@ namespace Code.Scripts.SceneController
                 .ForEach(s => { StartCoroutine(Fade(s, 1, 0)); });
         }
 
-
         protected virtual void HandleTrigger()
         {
         }
@@ -104,46 +95,18 @@ namespace Code.Scripts.SceneController
             }
         }
 
-        protected IEnumerator MovePlayersToSpeakPosition(Transform point1, Transform point2)
-        {
-            playerList.ForEach(p => MoveObjectToTargetIfToFarAway(p.transform, point1.position));
-            Transform leftPoint = FindLeft(point1, point2);
-            Transform rightPoint = FindRight(point1, point2);
-            Transform leftPlayer = FindLeft(playerList[0].transform, playerList[1].transform);
-            Transform rightPlayer = FindRight(playerList[0].transform, playerList[1].transform);
-            yield return leftPlayer.GetComponent<Player>().GoTo(leftPoint.position);
-            yield return rightPlayer.GetComponent<Player>().GoTo(rightPoint.position);
-            yield return playerList[0].TurnTo(playerList[1].transform.position);
-            yield return playerList[1].TurnTo(playerList[0].transform.position);
-        }
-
-        protected IEnumerator MoveTo(Transform obj, Transform target, float stepSize = 3f)
-        {
-            while (obj.position != target.position)
-            {
-                float step = stepSize * Time.deltaTime;
-                obj.position = Vector3.MoveTowards(obj.position, target.position, step);
-                yield return null;
-            }
-        }
-
         protected IEnumerator PlayOpeningCutscene(int time, int times)
         {
             yield return ShowNextTextSection(time, times);
-            TextCanvas.SetActive(false);
+            TextController.ActivateCanvas(true);
             GameElements.SetActive(true);
-        }
-
-        protected void SetCanvasTextToNextString()
-        {
-            canvasText.text = CutsceneStrings[CutsceneStringCounter++];
         }
 
         protected IEnumerator ShowNextTextSection(int time, int times = 1)
         {
             for (int i = 0; i < times; i++)
             {
-                SetCanvasTextToNextString();
+                TextController.SetCanvasTextToNextString();
                 yield return new WaitForSeconds(time);
             }
         }
@@ -151,19 +114,7 @@ namespace Code.Scripts.SceneController
         protected virtual void Start()
         {
             Player.OnDie += GameOverScreen;
-            InitializeCutsceneStrings();
             InitializePlayerDictionary();
-            InitializeBubbles();
-        }
-
-        private static Transform FindLeft(Transform point1, Transform point2)
-        {
-            return point1.position.x < point2.position.x ? point1 : point2;
-        }
-
-        private static Transform FindRight(Transform point1, Transform point2)
-        {
-            return point1.position.x > point2.position.x ? point1 : point2;
         }
 
         private static void ResetScene()
@@ -198,35 +149,6 @@ namespace Code.Scripts.SceneController
             StartCoroutine(ShowDied());
         }
 
-        private void InitializeBubbles()
-        {
-            SpeechBubbles = new Dictionary<Character, SpeechBubble>();
-            InitializePlayerBubbles();
-            InitializeNpcBubbles();
-        }
-
-        private void InitializeCutsceneStrings()
-        {
-            string completeString = textAsset.text;
-            CutsceneStrings = completeString.Split('\n').ToList();
-            CutsceneStringCounter = 0;
-        }
-
-        private void InitializeNpcBubbles()
-        {
-            GameObject dani = npcs.FirstOrDefault(npc => npc.name.Contains("Dani"));
-            if (dani != null)
-                SpeechBubbles.Add(Character.Dani, dani.GetComponentInChildren<SpeechBubble>());
-        }
-
-        private void InitializePlayerBubbles()
-        {
-            foreach (KeyValuePair<Character, Player> player in Characters)
-            {
-                SpeechBubbles.Add(player.Key, player.Value.GetComponentInChildren<SpeechBubble>());
-            }
-        }
-
         private void InitializePlayerDictionary()
         {
             Characters = new Dictionary<Character, Player>();
@@ -250,19 +172,11 @@ namespace Code.Scripts.SceneController
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-        private void MoveObjectToTargetIfToFarAway(Transform obj, Vector3 target, float maxDistance = 20f)
-        {
-            if (Vector3.Distance(obj.position, target) > maxDistance)
-                obj.transform.position = target;
-        }
-
         private IEnumerator ShowDied()
         {
             FadeSceneOut();
             yield return new WaitForSeconds(3);
-            canvasText.color = Color.red;
-            canvasText.text = "You Died";
-            TextCanvas.SetActive(true);
+            TextController.ShowDiedText();
             yield return new WaitForSeconds(5);
             ResetScene();
         }

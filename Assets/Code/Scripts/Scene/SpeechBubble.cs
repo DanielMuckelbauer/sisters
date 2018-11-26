@@ -3,7 +3,7 @@ using Code.Scripts.SceneController;
 using TMPro;
 using UnityEngine;
 
-namespace Code.Scripts
+namespace Code.Scripts.Scene
 {
     public class SpeechBubble : MonoBehaviour
     {
@@ -25,7 +25,7 @@ namespace Code.Scripts
         private IEnumerator FillSpeechbubble()
         {
             bubbleText.text = string.Empty;
-            string nextBubbleText = BaseSceneController.CutsceneStrings[BaseSceneController.CutsceneStringCounter++];
+            string nextBubbleText = TextController.CutsceneStrings[TextController.CutsceneStringCounter++];
             char[] charArray = nextBubbleText.ToCharArray();
             foreach (char c in charArray)
             {

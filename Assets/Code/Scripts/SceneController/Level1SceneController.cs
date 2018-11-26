@@ -32,7 +32,7 @@ namespace Code.Scripts.SceneController
         {
             Transform pollin = Characters[Character.Pollin].transform;
             pollin.GetComponent<Rigidbody2D>().isKinematic = true;
-            yield return MoveTo(pollin, JumpTarget);
+            yield return PlayerRepositioningController.MoveTo(pollin, JumpTarget);
             pollin.transform.Rotate(0, 0, 90);
         }
 
@@ -45,7 +45,7 @@ namespace Code.Scripts.SceneController
                 MainCamera.transform.position.z);
             StartCoroutine(MoveCameraSmoothly(targetPosition));
             yield return new WaitForSeconds(2);
-            yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
+            yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 2);
             yield return GoToDiaperChanger();
             yield return JumpUpToDiaperChanger();
             FadeSceneOut();

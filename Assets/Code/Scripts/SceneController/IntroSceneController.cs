@@ -35,7 +35,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator ActivateBackground()
         {
-            TextCanvas.SetActive(false);
+            TextController.ActivateCanvas(false);
             yield return new WaitForSeconds(1);
             GameElements.GetComponent<SpriteRenderer>().enabled = true;
         }
@@ -76,7 +76,7 @@ namespace Code.Scripts.SceneController
             ReactivateText();
             yield return ShowNextTextSection(5);
             yield return SwordRoomCutscene();
-            yield return SpeechBubbles[Character.Dani].ShowNextBubbleText(2);
+            yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 2);
             DaniAnimator.SetTrigger("GiveSword");
             yield return new WaitForSeconds(5);
             cameraAnimator.SetTrigger("MoveCameraUp");
@@ -97,7 +97,7 @@ namespace Code.Scripts.SceneController
         {
             birthedObjects.ForEach(Destroy);
             GameElements.GetComponent<SpriteRenderer>().enabled = false;
-            TextCanvas.SetActive(true);
+            TextController.ActivateCanvas(true);
         }
 
         private IEnumerator SwordRoomCutscene()

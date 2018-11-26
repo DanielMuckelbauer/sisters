@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Code.Scripts.Scene;
 using Code.Scripts.SceneController;
 using TMPro;
 using UnityEngine;
@@ -25,7 +26,7 @@ namespace Code.Scripts.Level
         private IEnumerator FillSpeechbubble()
         {
             bubbleText.text = string.Empty;
-            string nextBubbleText = BaseSceneController.CutsceneStrings[BaseSceneController.CutsceneStringCounter++];
+            string nextBubbleText = TextController.CutsceneStrings[TextController.CutsceneStringCounter++];
             char[] charArray = nextBubbleText.ToCharArray();
             foreach (char c in charArray)
             {
