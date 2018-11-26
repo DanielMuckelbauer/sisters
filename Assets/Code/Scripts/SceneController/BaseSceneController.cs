@@ -18,8 +18,8 @@ namespace Code.Scripts.SceneController
         protected bool IgnoreTrigger;
         [SerializeField] protected GameObject MainCamera;
         [SerializeField] protected PlayerRepositioningController PlayerRepositioningController;
-        [SerializeField] private List<Player> playerList;
         [SerializeField] protected TextController TextController;
+        [SerializeField] private List<Player> playerList;
 
         public void SceneTriggerEntered()
         {
@@ -98,7 +98,7 @@ namespace Code.Scripts.SceneController
         protected IEnumerator PlayOpeningCutscene(int time, int times)
         {
             yield return ShowNextTextSection(time, times);
-            TextController.ActivateCanvas(true);
+            TextController.ActivateCanvas(false);
             GameElements.SetActive(true);
         }
 

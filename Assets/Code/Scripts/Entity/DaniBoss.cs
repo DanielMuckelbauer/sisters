@@ -7,6 +7,7 @@ namespace Code.Scripts.Entity
 {
     public class DaniBoss : BasePatrolingEnemy
     {
+        private Coroutine attackLoop;
         private GameObject currentTarget;
         [SerializeField] private GameObject energyBall;
         [SerializeField] private Stack<int> healthBorders;
@@ -59,16 +60,20 @@ namespace Code.Scripts.Entity
         {
             Animator.SetTrigger("FlyUp");
             yield return new WaitForSeconds(4);
-            StartCoroutine(StartAttackLoop());
+            attackLoop = StartCoroutine(StartAttackLoop());
             StartPatrolling();
         }
 
         private void InitializeHealthStack()
         {
             healthBorders = new Stack<int>();
-            healthBorders.Push(5);
-            healthBorders.Push(10);
-            healthBorders.Push(15);
+            //TODO Change in Prod
+            //healthBorders.Push(5);
+            //healthBorders.Push(10);
+            //healthBorders.Push(15);
+            healthBorders.Push(17);
+            healthBorders.Push(18);
+            healthBorders.Push(19);
         }
 
         private void SetTargetDirection()
@@ -92,8 +97,14 @@ namespace Code.Scripts.Entity
         {
             if (CombatController.CurrentLife > healthBorders.Peek())
                 return;
+            StopAttackLoop();
             healthBorders.Pop();
             OnNextPhase?.Invoke();
+        }
+
+        private void StopAttackLoop()
+        {
+            StopCoroutine(attackLoop);
         }
     }
 }

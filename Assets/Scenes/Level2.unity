@@ -12942,10 +12942,10 @@ MonoBehaviour:
   GameElements: {fileID: 1770195468}
   MainCamera: {fileID: 380056169}
   PlayerRepositioningController: {fileID: 812746828}
+  TextController: {fileID: 84634400}
   playerList:
   - {fileID: 478700853}
   - {fileID: 843769141}
-  TextController: {fileID: 84634400}
   audioSource: {fileID: 250322463}
   balletMusic: {fileID: 8300000, guid: 8b75a0cfe261ba44d965b3ff29da7471, type: 3}
   endbossSpawnPoint: {fileID: 2071869462}
@@ -13497,6 +13497,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 1706514908}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 812746828}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0

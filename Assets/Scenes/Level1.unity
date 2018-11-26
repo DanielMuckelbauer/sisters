@@ -172,6 +172,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -252,6 +257,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -337,6 +347,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -789,6 +804,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -1167,6 +1187,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -1662,6 +1687,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -1874,6 +1904,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -2362,6 +2397,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -3126,6 +3166,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -3301,6 +3346,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -45618,10 +45668,10 @@ MonoBehaviour:
   GameElements: {fileID: 1478660781}
   MainCamera: {fileID: 519420028}
   PlayerRepositioningController: {fileID: 2082918858}
+  TextController: {fileID: 558493090}
   playerList:
   - {fileID: 934492183}
   - {fileID: 325396908}
-  TextController: {fileID: 558493090}
   CameraTarget: {fileID: 1850352708}
   JumpTarget: {fileID: 647259375}
   WalkTarget: {fileID: 1309495320}
@@ -45822,6 +45872,11 @@ Prefab:
       propertyPath: SceneController
       value: 
       objectReference: {fileID: 2004843164}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 2082918858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
