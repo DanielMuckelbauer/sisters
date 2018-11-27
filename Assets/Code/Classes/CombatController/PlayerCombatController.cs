@@ -20,15 +20,15 @@ namespace Code.Classes.CombatController
 
         public override void ReceiveHit()
         {
-            PushBackward();
+            PushUp();
             RemoveHeart();
             base.ReceiveHit();
         }
 
-        private void PushBackward()
+        private void PushUp()
         {
-            const int magnitude = 1000;
-            GameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * magnitude);
+            const int magnitude = 100;
+            GameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * magnitude);
         }
 
         private void RefillHearts()
