@@ -87,9 +87,9 @@ namespace Code.Scripts.Entity
         {
             healthBorders = new Stack<int>();
             //TODO Change in Prod
-            //healthBorders.Push(5);
-            //healthBorders.Push(10);
-            //healthBorders.Push(15);
+            //healthBorders.Push(1);
+            //healthBorders.Push(7);
+            //healthBorders.Push(13);
             healthBorders.Push(17);
             healthBorders.Push(18);
             healthBorders.Push(19);
