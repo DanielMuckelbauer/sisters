@@ -58,6 +58,18 @@ namespace Code.Scripts.Scene
         public void Start()
         {
             respawnPoints = InitializeRespawnPoints();
+            InitializeCharacterDictionary();
+        }
+
+        private void InitializeCharacterDictionary()
+        {
+            characters = new Dictionary<Character, Player>();
+            if (playerList == null || playerList.Count == 0)
+                return;
+            Player muni = playerList.First(p => p.gameObject.name.Contains("Muni"));
+            characters.Add(Character.Muni, muni);
+            Player pollin = playerList.First(p => p.gameObject.name.Contains("Pollin"));
+            characters.Add(Character.Pollin, pollin);
         }
 
         private static Transform FindLeft(Transform point1, Transform point2)
