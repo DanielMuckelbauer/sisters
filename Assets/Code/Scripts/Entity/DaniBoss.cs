@@ -29,6 +29,11 @@ namespace Code.Scripts.Entity
             StartCoroutine(FlyUpAndStartFighting());
         }
 
+        public void StartShooting()
+        {
+            attackLoop = StartCoroutine(StartAttackLoop());
+        }
+
         protected override void DealWithCollision(GameObject other)
         {
             base.DealWithCollision(other);
@@ -60,10 +65,9 @@ namespace Code.Scripts.Entity
         {
             Animator.SetTrigger("FlyUp");
             yield return new WaitForSeconds(4);
-            attackLoop = StartCoroutine(StartAttackLoop());
+            StartShooting();
             StartPatrolling();
         }
-
         private void InitializeHealthStack()
         {
             healthBorders = new Stack<int>();
@@ -97,12 +101,12 @@ namespace Code.Scripts.Entity
         {
             if (CombatController.CurrentLife > healthBorders.Peek())
                 return;
-            StopAttackLoop();
+            StopShooting();
             healthBorders.Pop();
             OnNextPhase?.Invoke();
         }
 
-        private void StopAttackLoop()
+        private void StopShooting()
         {
             StopCoroutine(attackLoop);
         }

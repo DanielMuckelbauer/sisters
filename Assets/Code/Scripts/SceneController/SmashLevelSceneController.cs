@@ -4,6 +4,7 @@ using Code.Scripts.Entity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Code.Scripts.SceneController
 {
@@ -12,10 +13,10 @@ namespace Code.Scripts.SceneController
         private Coroutine addSpawning;
         [SerializeField] private List<Transform> addSpawnPositions;
         [SerializeField] private DaniBoss dani;
-        [SerializeField] private GameObject portal;
         private Vector3 daniCameraPosition;
         [SerializeField] private Transform flyTarget;
         private Stack<Action> phaseChangeMethods;
+        [SerializeField] private GameObject portal;
         [SerializeField] private GameObject spider;
 
         protected override void Start()
@@ -94,10 +95,11 @@ namespace Code.Scripts.SceneController
             while (true)
             {
                 yield return new WaitForSeconds(2);
+                Vector3 offset = new Vector3(Random.value * 3, 0, 0);
                 List<GameObject> portals = new List<GameObject>();
-                addSpawnPositions.ForEach(tr => portals.Add(Instantiate(portal, tr.position, new Quaternion())));
+                addSpawnPositions.ForEach(tr => portals.Add(Instantiate(portal, tr.position + offset, new Quaternion())));
                 yield return new WaitForSeconds(2);
-                addSpawnPositions.ForEach(tr => Instantiate(spider, tr.position, new Quaternion()));
+                addSpawnPositions.ForEach(tr => Instantiate(spider, tr.position + offset, new Quaternion()));
                 yield return new WaitForSeconds(2);
                 portals.ForEach(Destroy);
                 yield return new WaitForSeconds(5);
@@ -107,6 +109,7 @@ namespace Code.Scripts.SceneController
         private void StartSecondPhase()
         {
             addSpawning = StartCoroutine(SpawnAddsPeriodically());
+            dani.StartShooting();
         }
     }
 }

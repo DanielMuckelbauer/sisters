@@ -31,10 +31,11 @@ namespace Code.Scripts.Scene
         {
             while (true)
             {
+                Vector3 offset = new Vector3(Random.value * 3, 0 , 0);
                 yield return new WaitForSeconds(2);
                 AudioSource.Play();
                 BaseProjectile projectile =
-                    Instantiate(Projectile, SpawnPoint.position, new Quaternion()).GetComponent<BaseProjectile>();
+                    Instantiate(Projectile, SpawnPoint.position + offset, new Quaternion()).GetComponent<BaseProjectile>();
                 if (player != null)
                     projectile.Shoot(player.transform.position);
                 yield return new WaitForSeconds(2);
