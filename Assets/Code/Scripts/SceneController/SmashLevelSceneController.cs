@@ -32,13 +32,13 @@ namespace Code.Scripts.SceneController
 
         private void AfterFirstPhase()
         {
-            DisableCameraAndMovement();
             StartCoroutine(FirstPhaseCutScene());
         }
 
         private void AfterSecondPhase()
         {
-            throw new NotImplementedException();
+            StopCoroutine(addSpawning);
+            StartCoroutine(SecondPhaseCutScene());
         }
 
         private void AfterThirdPhase()
@@ -52,12 +52,18 @@ namespace Code.Scripts.SceneController
             nextPhaseMethod.Invoke();
         }
 
-        private IEnumerator FirstPhaseCutScene()
+        private IEnumerator DisablePlayersAndMoveCameraToBoss()
         {
+            DisableCameraAndMovement();
             Vector3 cameraTarget =
                 new Vector3(flyTarget.position.x, flyTarget.position.y, MainCamera.transform.position.z);
             StartCoroutine(MoveCameraSmoothly(cameraTarget));
             yield return new WaitForSeconds(3);
+        }
+
+        private IEnumerator FirstPhaseCutScene()
+        {
+            yield return DisablePlayersAndMoveCameraToBoss();
             yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 3);
             yield return new WaitForSeconds(1);
             EnableCameraAndMovement();
@@ -90,12 +96,21 @@ namespace Code.Scripts.SceneController
             EnableCameraAndMovement();
         }
 
+        private IEnumerator SecondPhaseCutScene()
+        {
+            yield return DisablePlayersAndMoveCameraToBoss();
+            yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 3);
+            yield return new WaitForSeconds(1);
+            EnableCameraAndMovement();
+            StartThirdPhase();
+        }
+
         private IEnumerator SpawnAddsPeriodically()
         {
             while (true)
             {
                 yield return new WaitForSeconds(2);
-                Vector3 offset = new Vector3(Random.value * 3, 0, 0);
+                Vector3 offset = new Vector3(Random.value * 5, 0, 0);
                 List<GameObject> portals = new List<GameObject>();
                 addSpawnPositions.ForEach(tr => portals.Add(Instantiate(portal, tr.position + offset, new Quaternion())));
                 yield return new WaitForSeconds(2);
@@ -110,6 +125,13 @@ namespace Code.Scripts.SceneController
         {
             addSpawning = StartCoroutine(SpawnAddsPeriodically());
             dani.StartShooting();
+        }
+
+        private void StartThirdPhase()
+        {
+            dani.StartShooting();
+            dani.StartShootingLaser();
+            addSpawning = StartCoroutine(SpawnAddsPeriodically());
         }
     }
 }

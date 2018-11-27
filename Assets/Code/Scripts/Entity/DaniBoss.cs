@@ -7,10 +7,11 @@ namespace Code.Scripts.Entity
 {
     public class DaniBoss : BasePatrolingEnemy
     {
-        private Coroutine attackLoop;
         private GameObject currentTarget;
         [SerializeField] private GameObject energyBall;
+        private Coroutine energyBallShootLoop;
         [SerializeField] private Stack<int> healthBorders;
+        private Coroutine laserShootLoop;
         [SerializeField] private Transform leftSource;
         [SerializeField] private GameObject muni;
         [SerializeField] private GameObject pollin;
@@ -31,7 +32,21 @@ namespace Code.Scripts.Entity
 
         public void StartShooting()
         {
-            attackLoop = StartCoroutine(StartAttackLoop());
+            energyBallShootLoop = StartCoroutine(StartAttackLoop());
+        }
+
+        public void StartShootingLaser()
+        {
+            laserShootLoop = StartCoroutine(StartLaserLoop());
+        }
+
+        private IEnumerator StartLaserLoop()
+        {
+            while (true)
+            {
+                Animator.SetTrigger("ShootLaser");
+                yield return new WaitForSeconds(6);
+            }
         }
 
         protected override void DealWithCollision(GameObject other)
@@ -105,10 +120,9 @@ namespace Code.Scripts.Entity
             healthBorders.Pop();
             OnNextPhase?.Invoke();
         }
-
         private void StopShooting()
         {
-            StopCoroutine(attackLoop);
+            StopCoroutine(energyBallShootLoop);
         }
     }
 }
