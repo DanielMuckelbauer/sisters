@@ -15,6 +15,21 @@ namespace Code.Scripts.Entity
             StartCoroutine(Patrol());
         }
 
+        protected virtual void DealWithCollision(GameObject otherGameObject)
+        {
+            if (NotHitable(otherGameObject))
+                return;
+            StartCoroutine(BrieflyTurnInvincibleAndBlink());
+            CombatController.ReceiveHit();
+        }
+
+        protected void InstantiateAndShootProjectile(GameObject projectile, Transform source, Transform target)
+        {
+            BaseProjectile baseProjectile = Instantiate(projectile, source.position, new Quaternion())
+                .GetComponent<BaseProjectile>();
+            baseProjectile.Shoot(target.position);
+        }
+
         protected IEnumerator JumpRandomly()
         {
             while (true)
@@ -52,25 +67,9 @@ namespace Code.Scripts.Entity
             if (Patrolling)
                 StartPatrolling();
         }
-
-        protected virtual void DealWithCollision(GameObject otherGameObject)
-        {
-            if (NotHitable(otherGameObject))
-                return;
-            StartCoroutine(BrieflyTurnInvincibleAndBlink());
-            CombatController.ReceiveHit();
-        }
-
         private bool NotHitable(GameObject otherGameObject)
         {
             return !otherGameObject.tag.Contains("Weapon") || Invincible;
-        }
-
-        protected void InstantiateAndShootProjectile(GameObject projectile, Transform source, Transform target)
-        {
-            BaseProjectile baseProjectile = Instantiate(projectile, source.position, new Quaternion())
-                .GetComponent<BaseProjectile>();
-            baseProjectile.Shoot(target.position);
         }
     }
 }

@@ -9,11 +9,14 @@ namespace Code.Scripts.SceneController
 {
     public class SmashLevelSceneController : BaseSceneController
     {
+        private Coroutine addSpawning;
         [SerializeField] private List<Transform> addSpawnPositions;
         [SerializeField] private DaniBoss dani;
+        [SerializeField] private GameObject portal;
         private Vector3 daniCameraPosition;
         [SerializeField] private Transform flyTarget;
-        private Stack<Action> phaseChangeMethods; 
+        private Stack<Action> phaseChangeMethods;
+        [SerializeField] private GameObject spider;
 
         protected override void Start()
         {
@@ -29,9 +32,7 @@ namespace Code.Scripts.SceneController
         private void AfterFirstPhase()
         {
             DisableCameraAndMovement();
-            Vector3 cameraTarget =
-                new Vector3(flyTarget.position.x, flyTarget.position.y, MainCamera.transform.position.z);
-            StartCoroutine(MoveCameraSmoothly(cameraTarget));
+            StartCoroutine(FirstPhaseCutScene());
         }
 
         private void AfterSecondPhase()
@@ -50,6 +51,18 @@ namespace Code.Scripts.SceneController
             nextPhaseMethod.Invoke();
         }
 
+        private IEnumerator FirstPhaseCutScene()
+        {
+            Vector3 cameraTarget =
+                new Vector3(flyTarget.position.x, flyTarget.position.y, MainCamera.transform.position.z);
+            StartCoroutine(MoveCameraSmoothly(cameraTarget));
+            yield return new WaitForSeconds(3);
+            yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 3);
+            yield return new WaitForSeconds(1);
+            EnableCameraAndMovement();
+            StartSecondPhase();
+        }
+
         private void InitializePhaseChangeMethods()
         {
             phaseChangeMethods = new Stack<Action>();
@@ -57,6 +70,7 @@ namespace Code.Scripts.SceneController
             phaseChangeMethods.Push(AfterSecondPhase);
             phaseChangeMethods.Push(AfterFirstPhase);
         }
+
         private void MoveCameraToDani()
         {
             const int offset = 2;
@@ -73,6 +87,26 @@ namespace Code.Scripts.SceneController
             yield return PlayerController.MoveTo(dani.transform, flyTarget, 1f);
             yield return new WaitForSeconds(1);
             EnableCameraAndMovement();
+        }
+
+        private IEnumerator SpawnAddsPeriodically()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(2);
+                List<GameObject> portals = new List<GameObject>();
+                addSpawnPositions.ForEach(tr => portals.Add(Instantiate(portal, tr.position, new Quaternion())));
+                yield return new WaitForSeconds(2);
+                addSpawnPositions.ForEach(tr => Instantiate(spider, tr.position, new Quaternion()));
+                yield return new WaitForSeconds(2);
+                portals.ForEach(Destroy);
+                yield return new WaitForSeconds(5);
+            }
+        }
+
+        private void StartSecondPhase()
+        {
+            addSpawning = StartCoroutine(SpawnAddsPeriodically());
         }
     }
 }

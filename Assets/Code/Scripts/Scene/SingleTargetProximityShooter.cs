@@ -31,12 +31,13 @@ namespace Code.Scripts.Scene
         {
             while (true)
             {
+                yield return new WaitForSeconds(2);
                 AudioSource.Play();
                 BaseProjectile projectile =
                     Instantiate(Projectile, SpawnPoint.position, new Quaternion()).GetComponent<BaseProjectile>();
                 if (player != null)
                     projectile.Shoot(player.transform.position);
-                yield return new WaitForSeconds(4);
+                yield return new WaitForSeconds(2);
             }
         }
     }

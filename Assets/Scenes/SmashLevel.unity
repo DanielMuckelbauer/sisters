@@ -163,7 +163,9 @@ MonoBehaviour:
   - {fileID: 2099549632}
   - {fileID: 551922144}
   dani: {fileID: 1158730543}
+  portal: {fileID: 1822820362740006, guid: 3399dce956fefc844a933adfb701b987, type: 2}
   flyTarget: {fileID: 641019778}
+  spider: {fileID: 1062200720564140, guid: 1fa61d6d5e25cb34e99cd03253e524ba, type: 2}
 --- !u!1 &551922143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,12 +1005,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990d4acda47c96042a82a93a387022ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasText: {fileID: 1100177361}
-  pressAnyKeySprite: {fileID: 1100177360}
   allSpeechBubbles:
   - {fileID: 1158730544}
   - {fileID: 1966021471}
   - {fileID: 823134491}
+  canvasText: {fileID: 1100177361}
+  pressAnyKeySprite: {fileID: 1100177360}
   textAsset: {fileID: 4900000, guid: e2ed91539fd67ee45abb8bc6f3cd9601, type: 3}
   textCanvas: {fileID: 1100177359}
 --- !u!1 &1644627854
