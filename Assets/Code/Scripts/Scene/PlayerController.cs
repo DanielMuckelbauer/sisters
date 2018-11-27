@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Code.Scripts.Scene
 {
-    public class PlayerRepositioningController : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         [SerializeField] private Dictionary<Character, Player> characters;
         [SerializeField] private List<Player> playerList;
@@ -18,6 +18,11 @@ namespace Code.Scripts.Scene
         {
             BeamPlayerTo(target, playerList[0].transform, -0.5f);
             BeamPlayerTo(target, playerList[1].transform, 0.5f);
+        }
+
+        public Player GetCharacter(Character character)
+        {
+            return characters[character];
         }
 
         public IEnumerator MovePlayersToSpeakPosition(Transform point1, Transform point2)
@@ -55,21 +60,10 @@ namespace Code.Scripts.Scene
             BeamPlayerTo(closest, player.transform);
         }
 
-        public void Start()
+        public void Awake()
         {
             respawnPoints = InitializeRespawnPoints();
             InitializeCharacterDictionary();
-        }
-
-        private void InitializeCharacterDictionary()
-        {
-            characters = new Dictionary<Character, Player>();
-            if (playerList == null || playerList.Count == 0)
-                return;
-            Player muni = playerList.First(p => p.gameObject.name.Contains("Muni"));
-            characters.Add(Character.Muni, muni);
-            Player pollin = playerList.First(p => p.gameObject.name.Contains("Pollin"));
-            characters.Add(Character.Pollin, pollin);
         }
 
         private static Transform FindLeft(Transform point1, Transform point2)
@@ -88,7 +82,6 @@ namespace Code.Scripts.Scene
             obj.transform.position = target + offset;
         }
 
-        //TODO Change for two players
         private Vector3 FindClosestLeftSpawnPoint()
         {
             List<Transform> leftRespawnPoints = respawnPoints
@@ -97,6 +90,7 @@ namespace Code.Scripts.Scene
             return closest;
         }
 
+        //TODO Change for two players
         private Vector3 FindClosestRespawnPoint(List<Transform> transforms)
         {
             //Vector3 middlePoint =
@@ -112,6 +106,18 @@ namespace Code.Scripts.Scene
                 .position;
             return closest;
         }
+
+        private void InitializeCharacterDictionary()
+        {
+            characters = new Dictionary<Character, Player>();
+            if (playerList == null || playerList.Count == 0)
+                return;
+            Player muni = playerList.First(p => p.gameObject.name.Contains("Muni"));
+            characters.Add(Character.Muni, muni);
+            Player pollin = playerList.First(p => p.gameObject.name.Contains("Pollin"));
+            characters.Add(Character.Pollin, pollin);
+        }
+
         private List<Transform> InitializeRespawnPoints()
         {
             return respawnPointParent != null ? respawnPointParent.GetComponentsInChildren<Transform>().ToList() : null;
@@ -123,5 +129,16 @@ namespace Code.Scripts.Scene
                 obj.transform.position = target;
         }
 
+        public void EnablePlayerMovement()
+        {
+            foreach (Player player in characters.Values)
+                player.SetMovement(true);
+        }
+
+        public void DisablePlayerMovement()
+        {
+            foreach (Player player in characters.Values)
+                player.SetMovement(false);
+        }
     }
 }

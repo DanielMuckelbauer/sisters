@@ -24,22 +24,22 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator GoToDiaperChanger()
         {
-            yield return Characters[Character.Pollin].GoTo(WalkTarget.position);
+            yield return PlayerController.GetCharacter(Character.Pollin).GoTo(WalkTarget.position);
             yield return new WaitForSeconds(1);
         }
 
         private IEnumerator JumpUpToDiaperChanger()
         {
-            Transform pollin = Characters[Character.Pollin].transform;
+            Transform pollin = PlayerController.GetCharacter(Character.Pollin).transform;
             pollin.GetComponent<Rigidbody2D>().isKinematic = true;
-            yield return PlayerRepositioningController.MoveTo(pollin, JumpTarget);
+            yield return PlayerController.MoveTo(pollin, JumpTarget);
             pollin.transform.Rotate(0, 0, 90);
         }
 
         private IEnumerator PlayEndingCutscene()
         {
-            DisablePlayerMovement();
-            DisablePlayerMovement();
+            PlayerController.DisablePlayerMovement();
+            PlayerController.DisablePlayerMovement();
             DisableFollowingCamera();
             Vector3 targetPosition = new Vector3(CameraTarget.position.x, CameraTarget.position.y,
                 MainCamera.transform.position.z);

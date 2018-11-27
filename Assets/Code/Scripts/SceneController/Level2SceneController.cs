@@ -16,7 +16,7 @@ namespace Code.Scripts.SceneController
         protected override void HandleTrigger()
         {
             IgnoreTrigger = true;
-            DisablePlayerMovement();
+            PlayerController.DisablePlayerMovement();
             StartCoroutine(TalkingCutScene());
         }
 
@@ -58,10 +58,10 @@ namespace Code.Scripts.SceneController
         private IEnumerator TalkingCutScene()
         {
             ChangeMusic();
-            yield return PlayerRepositioningController.MovePlayersToSpeakPosition(walkTarget1, walkTarget2);
+            yield return PlayerController.MovePlayersToSpeakPosition(walkTarget1, walkTarget2);
             yield return Talk();
-            PlayerRepositioningController.BeamPlayersTo(endbossSpawnPoint.position);
-            EnablePlayerMovement();
+            PlayerController.BeamPlayersTo(endbossSpawnPoint.position);
+            PlayerController.EnablePlayerMovement();
         }
     }
 }

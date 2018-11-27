@@ -556,8 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameElements: {fileID: 35516094}
   MainCamera: {fileID: 2101569435}
-  PlayerRepositioningController: {fileID: 1085307875}
-  playerList: []
+  PlayerController: {fileID: 1085307875}
   TextController: {fileID: 678123776}
   AudioClips:
   - {fileID: 8300000, guid: 26ea5cc30bb6f7b41a7e7c9b7b9376b1, type: 3}
@@ -764,7 +763,7 @@ GameObject:
   - component: {fileID: 1085307874}
   - component: {fileID: 1085307875}
   m_Layer: 0
-  m_Name: PlayerRepositioningController
+  m_Name: PlayerController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

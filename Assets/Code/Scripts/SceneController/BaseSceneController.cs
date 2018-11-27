@@ -1,8 +1,6 @@
-﻿using Code.Classes;
-using Code.Scripts.Entity;
+﻿using Code.Scripts.Entity;
 using Code.Scripts.Scene;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -13,13 +11,11 @@ namespace Code.Scripts.SceneController
 {
     public abstract class BaseSceneController : MonoBehaviour
     {
-        [SerializeField] protected Dictionary<Character, Player> Characters;
         [SerializeField] protected GameObject GameElements;
         protected bool IgnoreTrigger;
         [SerializeField] protected GameObject MainCamera;
-        [SerializeField] protected PlayerRepositioningController PlayerRepositioningController;
+        [SerializeField] protected PlayerController PlayerController;
         [SerializeField] protected TextController TextController;
-        [SerializeField] private List<Player> playerList;
 
         public void SceneTriggerEntered()
         {
@@ -28,15 +24,21 @@ namespace Code.Scripts.SceneController
             HandleTrigger();
         }
 
+        protected void DisableCameraAndMovement()
+        {
+            DisableFollowingCamera();
+            PlayerController.DisablePlayerMovement();
+        }
+
         protected void DisableFollowingCamera()
         {
             MainCamera.GetComponent<FollowingCamera>().Following = false;
         }
 
-        protected void DisablePlayerMovement()
+        protected void EnableCameraAndMovement()
         {
-            foreach (Player player in Characters.Values)
-                player.SetMovement(false);
+            PlayerController.EnablePlayerMovement();
+            EnableFollowingCamera();
         }
 
         protected void EnableFollowingCamera()
@@ -48,12 +50,6 @@ namespace Code.Scripts.SceneController
         {
             StartCoroutine(LoadNextSceneOnInput());
             TextController.ShowPressAnyKey();
-        }
-
-        protected void EnablePlayerMovement()
-        {
-            foreach (Player player in Characters.Values)
-                player.SetMovement(true);
         }
 
         protected IEnumerator Fade(SpriteRenderer sprite, int from, int to, float duration = 5)
@@ -114,7 +110,6 @@ namespace Code.Scripts.SceneController
         protected virtual void Start()
         {
             Player.OnDie += GameOverScreen;
-            InitializePlayerDictionary();
         }
 
         private static void ResetScene()
@@ -145,19 +140,8 @@ namespace Code.Scripts.SceneController
         private void GameOverScreen()
         {
             DisableFollowingCamera();
-            DisablePlayerMovement();
+            PlayerController.DisablePlayerMovement();
             StartCoroutine(ShowDied());
-        }
-
-        private void InitializePlayerDictionary()
-        {
-            Characters = new Dictionary<Character, Player>();
-            if (playerList == null || playerList.Count == 0)
-                return;
-            Player muni = playerList.First(p => p.gameObject.name.Contains("Muni"));
-            Characters.Add(Character.Muni, muni);
-            Player pollin = playerList.First(p => p.gameObject.name.Contains("Pollin"));
-            Characters.Add(Character.Pollin, pollin);
         }
 
         private IEnumerator LoadNextSceneOnInput()

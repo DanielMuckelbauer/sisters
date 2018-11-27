@@ -12,12 +12,13 @@ namespace Code.Scripts.Scene
     {   
         public static int CutsceneStringCounter;
         public static List<string> CutsceneStrings;
+        [SerializeField] private List<SpeechBubble> allSpeechBubbles;
         [SerializeField] private TMP_Text canvasText;
         [SerializeField] private SpriteRenderer pressAnyKeySprite;
         private Dictionary<Character, SpeechBubble> speechBubbleDict;
-        [SerializeField] private List<SpeechBubble> allSpeechBubbles;
         [SerializeField] private TextAsset textAsset;
         [SerializeField] private GameObject textCanvas;
+
         public void ActivateCanvas(bool activate)
         {
             textCanvas.SetActive(activate);
@@ -47,7 +48,7 @@ namespace Code.Scripts.Scene
             pressAnyKeySprite.enabled = true;
         }
 
-        public void Start()
+        public void Awake()
         {
             InitializeCutsceneStrings();
             InitializeBubbles();

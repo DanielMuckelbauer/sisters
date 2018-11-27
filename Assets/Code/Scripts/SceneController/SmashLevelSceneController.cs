@@ -50,18 +50,6 @@ namespace Code.Scripts.SceneController
             nextPhaseMethod.Invoke();
         }
 
-        private void DisableCameraAndMovement()
-        {
-            DisableFollowingCamera();
-            DisablePlayerMovement();
-        }
-
-        private void EnableCameraAndMovement()
-        {
-            EnablePlayerMovement();
-            EnableFollowingCamera();
-        }
-
         private void InitializePhaseChangeMethods()
         {
             phaseChangeMethods = new Stack<Action>();
@@ -76,12 +64,13 @@ namespace Code.Scripts.SceneController
                 MainCamera.transform.position.z);
             MainCamera.transform.position = daniCameraPosition;
         }
+
         private IEnumerator PlayOpeningDialog()
         {
             yield return new WaitForSeconds(1);
             yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 2);
             dani.StartFight();
-            yield return PlayerRepositioningController.MoveTo(dani.transform, flyTarget, 1f);
+            yield return PlayerController.MoveTo(dani.transform, flyTarget, 1f);
             yield return new WaitForSeconds(1);
             EnableCameraAndMovement();
         }

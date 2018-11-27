@@ -157,11 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameElements: {fileID: 1313685989}
   MainCamera: {fileID: 772832272}
-  PlayerRepositioningController: {fileID: 1045421089}
+  PlayerController: {fileID: 1045421089}
   TextController: {fileID: 1627140009}
-  playerList:
-  - {fileID: 1966021470}
-  - {fileID: 823134490}
   addSpawnPositions:
   - {fileID: 2099549632}
   - {fileID: 551922144}
@@ -494,6 +491,11 @@ Prefab:
       propertyPath: PlayerRepositioningController
       value: 
       objectReference: {fileID: 1045421089}
+    - target: {fileID: 114710672674918686, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
+        type: 2}
+      propertyPath: PlayerController
+      value: 
+      objectReference: {fileID: 1045421089}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fadf2aaf5cd40194e804ff6a215bf4a8, type: 2}
   m_IsPrefabAsset: 0
@@ -587,7 +589,7 @@ GameObject:
   - component: {fileID: 1045421088}
   - component: {fileID: 1045421089}
   m_Layer: 0
-  m_Name: PlayerRepositionController
+  m_Name: PlayerController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

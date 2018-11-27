@@ -11417,7 +11417,7 @@ GameObject:
   - component: {fileID: 812746829}
   - component: {fileID: 812746828}
   m_Layer: 0
-  m_Name: PlayerRepositioningController
+  m_Name: PlayerController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12941,11 +12941,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameElements: {fileID: 1770195468}
   MainCamera: {fileID: 380056169}
-  PlayerRepositioningController: {fileID: 812746828}
+  PlayerController: {fileID: 812746828}
   TextController: {fileID: 84634400}
-  playerList:
-  - {fileID: 478700853}
-  - {fileID: 843769141}
   audioSource: {fileID: 250322463}
   balletMusic: {fileID: 8300000, guid: 8b75a0cfe261ba44d965b3ff29da7471, type: 3}
   endbossSpawnPoint: {fileID: 2071869462}
@@ -13500,6 +13497,11 @@ Prefab:
     - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
         type: 2}
       propertyPath: PlayerRepositioningController
+      value: 
+      objectReference: {fileID: 812746828}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: PlayerController
       value: 
       objectReference: {fileID: 812746828}
     m_RemovedComponents: []
