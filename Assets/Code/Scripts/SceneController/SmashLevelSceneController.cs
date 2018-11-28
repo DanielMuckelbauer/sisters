@@ -17,9 +17,9 @@ namespace Code.Scripts.SceneController
         [SerializeField] private Transform flyTarget;
         private Stack<Action> phaseChangeMethods;
         [SerializeField] private GameObject portal;
+        private List<GameObject> portals;
         private List<GameObject> spawnedSpiders;
         [SerializeField] private GameObject spider;
-        private List<GameObject> portals;
 
         protected override void Start()
         {
@@ -47,7 +47,7 @@ namespace Code.Scripts.SceneController
 
         private void AfterThirdPhase()
         {
-            throw new NotImplementedException();
+            StartCoroutine(ThirdPhaseCutscene());
         }
 
         private void ChangeFightPhase()
@@ -58,10 +58,15 @@ namespace Code.Scripts.SceneController
 
         private void DestroyAllSpidersAndPortals()
         {
-            spawnedSpiders.ForEach(spider =>
+            spawnedSpiders.ForEach(s =>
             {
-                if (spider != null)
-                    Destroy(spider);
+                if (s != null)
+                    Destroy(s);
+            });
+            portals.ForEach(p =>
+            {
+                if (p != null)
+                    Destroy(p);
             });
         }
 
@@ -124,7 +129,7 @@ namespace Code.Scripts.SceneController
             {
                 yield return new WaitForSeconds(2);
                 Vector3 offset = new Vector3(Random.value * 5, 0, 0);
-               portals = new List<GameObject>();
+                portals = new List<GameObject>();
                 addSpawnPositions.ForEach(
                     tr => portals.Add(Instantiate(portal, tr.position + offset, new Quaternion())));
                 yield return new WaitForSeconds(2);
@@ -147,6 +152,13 @@ namespace Code.Scripts.SceneController
             dani.StartShooting();
             dani.StartShootingLaser();
             addSpawning = StartCoroutine(SpawnAddsPeriodically());
+        }
+
+        private IEnumerator ThirdPhaseCutscene()
+        {
+            yield return DisablePlayersAndMoveCameraToBoss();
+            yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 3);
+            yield return new WaitForSeconds(1);
         }
     }
 }
