@@ -63,13 +63,10 @@ namespace Code.Scripts.Entity
             return i % 2 == 0 ? 0.5f : 1;
         }
 
-        /// <summary>
-        /// Use even number
-        /// </summary>
-        /// <param name="times"></param>
-        /// <returns></returns>
         private IEnumerator Blink(int times)
         {
+            if (times % 2 != 0)
+                times += 1;
             List<SpriteRenderer> allRenderers = GetComponentsInChildren<SpriteRenderer>().ToList();
             for (int i = 0; i < times; i++)
             {
