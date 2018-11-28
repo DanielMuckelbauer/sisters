@@ -78,8 +78,9 @@ namespace Code.Scripts.Entity
 
         private void DealWithCollision(GameObject otherGameObject)
         {
-            if (!otherGameObject.tag.Contains("Enemy"))
+            if (NotHitable(otherGameObject))
                 return;
+            StartCoroutine(BrieflyTurnInvincibleAndBlink());
             PlaySound(ReceiveHit);
             CombatController.ReceiveHit();
         }
@@ -90,6 +91,12 @@ namespace Code.Scripts.Entity
                 return;
             CheckMove();
         }
+
+        private bool NotHitable(GameObject otherGameObject)
+        {
+            return !otherGameObject.tag.Contains("Enemy") || Invincible;
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             DealWithCollision(collision.gameObject);
