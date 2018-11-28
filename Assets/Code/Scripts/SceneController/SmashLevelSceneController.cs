@@ -17,16 +17,19 @@ namespace Code.Scripts.SceneController
         [SerializeField] private Transform flyTarget;
         private Stack<Action> phaseChangeMethods;
         [SerializeField] private GameObject portal;
+        private List<GameObject> spawnedSpiders;
         [SerializeField] private GameObject spider;
+        private List<GameObject> portals;
 
         protected override void Start()
         {
             base.Start();
+            spawnedSpiders = new List<GameObject>();
             DisableCameraAndMovement();
             MoveCameraToDani();
+            InitializePhaseChangeMethods();
             StartCoroutine(PlayOpeningCutscene(1, 2));
             StartCoroutine(PlayOpeningDialog());
-            InitializePhaseChangeMethods();
             dani.OnNextPhase += ChangeFightPhase;
         }
 
@@ -37,6 +40,7 @@ namespace Code.Scripts.SceneController
 
         private void AfterSecondPhase()
         {
+            DestroyAllSpidersAndPortals();
             StopCoroutine(addSpawning);
             StartCoroutine(SecondPhaseCutScene());
         }
@@ -50,6 +54,15 @@ namespace Code.Scripts.SceneController
         {
             Action nextPhaseMethod = phaseChangeMethods.Pop();
             nextPhaseMethod.Invoke();
+        }
+
+        private void DestroyAllSpidersAndPortals()
+        {
+            spawnedSpiders.ForEach(spider =>
+            {
+                if (spider != null)
+                    Destroy(spider);
+            });
         }
 
         private IEnumerator DisablePlayersAndMoveCameraToBoss()
@@ -111,10 +124,12 @@ namespace Code.Scripts.SceneController
             {
                 yield return new WaitForSeconds(2);
                 Vector3 offset = new Vector3(Random.value * 5, 0, 0);
-                List<GameObject> portals = new List<GameObject>();
-                addSpawnPositions.ForEach(tr => portals.Add(Instantiate(portal, tr.position + offset, new Quaternion())));
+               portals = new List<GameObject>();
+                addSpawnPositions.ForEach(
+                    tr => portals.Add(Instantiate(portal, tr.position + offset, new Quaternion())));
                 yield return new WaitForSeconds(2);
-                addSpawnPositions.ForEach(tr => Instantiate(spider, tr.position + offset, new Quaternion()));
+                addSpawnPositions.ForEach(tr =>
+                    spawnedSpiders.Add(Instantiate(spider, tr.position + offset, new Quaternion())));
                 yield return new WaitForSeconds(2);
                 portals.ForEach(Destroy);
                 yield return new WaitForSeconds(5);

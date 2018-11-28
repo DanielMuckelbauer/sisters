@@ -67,6 +67,7 @@ namespace Code.Scripts.Entity
             if (Patrolling)
                 StartPatrolling();
         }
+
         private bool NotHitable(GameObject otherGameObject)
         {
             return !otherGameObject.tag.Contains("Weapon") || Invincible;
