@@ -20,6 +20,7 @@ namespace Code.Scripts.SceneController
         private List<GameObject> portals;
         private List<GameObject> spawnedSpiders;
         [SerializeField] private GameObject spider;
+        [SerializeField] private Transform arm;
 
         protected override void Start()
         {
@@ -31,6 +32,7 @@ namespace Code.Scripts.SceneController
             StartCoroutine(PlayOpeningCutscene(1, 2));
             StartCoroutine(PlayOpeningDialog());
             dani.OnNextPhase += ChangeFightPhase;
+            StartCoroutine(FlyAway());
         }
 
         private void AfterFirstPhase()
@@ -154,7 +156,7 @@ namespace Code.Scripts.SceneController
             addSpawning = StartCoroutine(SpawnAddsPeriodically());
         }
 
-        private IEnumerator ThirdPhaseCutscene()    
+        private IEnumerator ThirdPhaseCutscene()
         {
             StopCoroutine(addSpawning);
             DestroyAllSpidersAndPortals();
@@ -165,7 +167,19 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator FlyAway()
         {
-            
+            yield return RotateArmUp();
+        }
+
+        private IEnumerator RotateArmUp()
+        {
+            const float speed = 50f;
+            Quaternion targetRotation = Quaternion.Euler(0, 0, -180);
+            while (arm.transform.rotation.z > -180)
+            {
+                arm.transform.rotation =
+                    Quaternion.Slerp(arm.transform.rotation, targetRotation, speed * Time.deltaTime);
+                    yield return null;
+            }
         }
     }
 }

@@ -123,6 +123,7 @@ namespace Code.Scripts.Entity
         private void StopShooting()
         {
             StopCoroutine(energyBallShootLoop);
+            StopCoroutine(laserShootLoop);
         }
     }
 }
