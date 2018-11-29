@@ -154,11 +154,18 @@ namespace Code.Scripts.SceneController
             addSpawning = StartCoroutine(SpawnAddsPeriodically());
         }
 
-        private IEnumerator ThirdPhaseCutscene()
+        private IEnumerator ThirdPhaseCutscene()    
         {
+            StopCoroutine(addSpawning);
+            DestroyAllSpidersAndPortals();
             yield return DisablePlayersAndMoveCameraToBoss();
-            yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 3);
-            yield return new WaitForSeconds(1);
+            yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 6);
+            StartCoroutine(FlyAway());
+        }
+
+        private IEnumerator FlyAway()
+        {
+            
         }
     }
 }
