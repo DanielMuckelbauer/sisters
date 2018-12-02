@@ -14,7 +14,7 @@ namespace Code.Scripts.SceneController
         [SerializeField] protected GameObject GameElements;
         protected bool IgnoreTrigger;
         [SerializeField] protected GameObject MainCamera;
-        [SerializeField] protected PlayerController PlayerController;
+        [SerializeField] protected EntityController EntityController;
         [SerializeField] protected TextController TextController;
 
         public void SceneTriggerEntered()
@@ -27,7 +27,7 @@ namespace Code.Scripts.SceneController
         protected void DisableCameraAndMovement()
         {
             DisableFollowingCamera();
-            PlayerController.DisablePlayerMovement();
+            EntityController.DisablePlayerMovement();
         }
 
         protected void DisableFollowingCamera()
@@ -37,7 +37,7 @@ namespace Code.Scripts.SceneController
 
         protected void EnableCameraAndMovement()
         {
-            PlayerController.EnablePlayerMovement();
+            EntityController.EnablePlayerMovement();
             EnableFollowingCamera();
         }
 
@@ -140,7 +140,7 @@ namespace Code.Scripts.SceneController
         private void GameOverScreen()
         {
             DisableFollowingCamera();
-            PlayerController.DisablePlayerMovement();
+            EntityController.DisablePlayerMovement();
             StartCoroutine(ShowDied());
         }
 

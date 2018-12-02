@@ -367,8 +367,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1005959327238224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.19, y: 13.07, z: 0}
-  m_LocalScale: {x: 2.933, y: 2.933, z: 2.933}
+  m_LocalPosition: {x: -4.204985, y: 12.630999, z: 0}
+  m_LocalScale: {x: 3.9715106, y: 7.9548297, z: 3.9360862}
   m_Children:
   - {fileID: 4983532941703938}
   m_Father: {fileID: 4069798014124208}
@@ -408,8 +408,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1562068147061032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 13.070005, z: 0}
-  m_LocalScale: {x: -2.933, y: 2.9329996, z: 2.9329996}
+  m_LocalPosition: {x: 0.71, y: 12.62, z: 0}
+  m_LocalScale: {x: -3.9863076, y: 7.984466, z: 3.9507506}
   m_Children:
   - {fileID: 4691152423493898}
   m_Father: {fileID: 4069798014124208}
@@ -576,7 +576,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000022424736, y: -4.4079385}
@@ -591,7 +591,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000022424736, y: -4.4079385}
@@ -742,7 +742,6 @@ MonoBehaviour:
   muni: {fileID: 0}
   pollin: {fileID: 0}
   rightSource: {fileID: 4915173674827684}
-  healthBorders: 0f0000000a00000005000000
 --- !u!114 &114796685803681868
 MonoBehaviour:
   m_ObjectHideFlags: 1

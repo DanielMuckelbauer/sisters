@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Code.Scripts.Scene
 {
-    public class PlayerController : MonoBehaviour
+    public class EntityController : MonoBehaviour
     {
         [SerializeField] private Dictionary<Character, Player> characters;
         [SerializeField] private List<Player> playerList;

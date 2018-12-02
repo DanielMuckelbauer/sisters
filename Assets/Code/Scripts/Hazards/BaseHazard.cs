@@ -5,6 +5,6 @@ namespace Code.Scripts.Hazards
 {
     public class BaseHazard : MonoBehaviour
     {
-        [SerializeField] protected PlayerController PlayerController;
+        [SerializeField] protected EntityController EntityController;
     }
 }

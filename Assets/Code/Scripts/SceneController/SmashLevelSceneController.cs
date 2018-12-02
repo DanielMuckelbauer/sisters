@@ -21,6 +21,7 @@ namespace Code.Scripts.SceneController
         private List<GameObject> spawnedSpiders;
         [SerializeField] private GameObject spider;
         [SerializeField] private Transform arm;
+        [SerializeField] private List<Transform> flyAwayTargets;
 
         protected override void Start()
         {
@@ -111,7 +112,7 @@ namespace Code.Scripts.SceneController
             yield return new WaitForSeconds(1);
             yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 2);
             dani.StartFight();
-            yield return PlayerController.MoveTo(dani.transform, flyTarget, 1f);
+            yield return EntityController.MoveTo(dani.transform, flyTarget, 1f);
             yield return new WaitForSeconds(1);
             EnableCameraAndMovement();
         }
@@ -168,18 +169,17 @@ namespace Code.Scripts.SceneController
         private IEnumerator FlyAway()
         {
             yield return RotateArmUp();
+            yield return FlyToFlyAwayTargets();
+        }
+
+        private IEnumerator FlyToFlyAwayTargets()
+        {
+            
         }
 
         private IEnumerator RotateArmUp()
         {
-            const float speed = 50f;
-            Quaternion targetRotation = Quaternion.Euler(0, 0, -180);
-            while (arm.transform.rotation.z > -180)
-            {
-                arm.transform.rotation =
-                    Quaternion.Slerp(arm.transform.rotation, targetRotation, speed * Time.deltaTime);
-                    yield return null;
-            }
+            yield return null;
         }
     }
 }

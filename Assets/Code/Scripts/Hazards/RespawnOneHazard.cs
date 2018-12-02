@@ -7,7 +7,7 @@ namespace Code.Scripts.Hazards
         private void OnCollisionStay2D(Collision2D other)
         {
             if (other.gameObject.tag.Contains("Player"))
-                PlayerController.RespawnOne(other.gameObject);
+                EntityController.RespawnOne(other.gameObject);
         }
     }
 }
