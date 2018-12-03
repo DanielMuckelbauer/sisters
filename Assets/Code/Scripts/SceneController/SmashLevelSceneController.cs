@@ -20,7 +20,6 @@ namespace Code.Scripts.SceneController
         private List<GameObject> portals;
         private List<GameObject> spawnedSpiders;
         [SerializeField] private GameObject spider;
-        [SerializeField] private Transform arm;
         [SerializeField] private List<Transform> flyAwayTargets;
 
         protected override void Start()
@@ -174,24 +173,31 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator FlyToFlyAwayTargets()
         {
-          yield return null;
+            foreach (Transform target in flyAwayTargets)
+            {
+                yield return RotateTowardsTarget();
+                yield return EntityController.MoveTo(dani.transform, target, 2);
+            }
+
+            yield return null;
+        }
+
+        private IEnumerator RotateTowardsTarget()
+        {
+            yield return null;
         }
 
         private IEnumerator RotateArmUp()
         {
-            const float speed = 100000;
-            Quaternion targetRotation = Quaternion.Euler(0, 0, -180);
-            while (arm.transform.rotation.z > -180)
-            {
-                Debug.Log(arm.transform.rotation);
-                arm.transform.rotation =
-                    Quaternion.RotateTowards(arm.transform.rotation, targetRotation, speed * Time.deltaTime);
-                yield return null;
-                Debug.Log("Flytarget: " + flyTarget.rotation);
-                flyTarget.rotation =
-                    Quaternion.RotateTowards(flyTarget.rotation, targetRotation, speed * Time.deltaTime);
-                yield return null;
-            }
+            //const float speed = 1;
+            //while (arm.rotation.eulerAngles.z > -180)
+            //{
+            //    Debug.Log(arm.rotation);
+            //    arm.rotation =
+            //        Quaternion.RotateTowards(arm.rotation, targetRotation.rotation, speed * Time.deltaTime);
+            //    yield return null;
+            //}
+            yield return null;
         }
     }
 }
