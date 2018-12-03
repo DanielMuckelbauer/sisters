@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Scripts.Entity
 {
-    public class FireRobot : BasePatrolingEnemy
+    public class FireRobot : BasePatrollingEnemy
     {
         public AudioSource AudioSource;
 

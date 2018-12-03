@@ -1,6 +1,6 @@
 ﻿namespace Code.Scripts.Entity
 {
-    public class Spider : BasePatrolingEnemy
+    public class Spider : BasePatrollingEnemy
     {
         protected override void Start()
         {

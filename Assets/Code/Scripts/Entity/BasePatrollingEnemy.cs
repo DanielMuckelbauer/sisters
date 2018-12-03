@@ -6,13 +6,19 @@ using UnityEngine;
 
 namespace Code.Scripts.Entity
 {
-    public abstract class BasePatrolingEnemy : BaseEntity
+    public abstract class BasePatrollingEnemy : BaseEntity
     {
         public bool Patrolling;
-
+        private Coroutine patrol;
+        
         public void StartPatrolling()
         {
-            StartCoroutine(Patrol());
+            patrol = StartCoroutine(Patrol());
+        }
+
+        public void StopPatrolling()
+        {
+            StopCoroutine(patrol);
         }
 
         protected virtual void DealWithCollision(GameObject otherGameObject)

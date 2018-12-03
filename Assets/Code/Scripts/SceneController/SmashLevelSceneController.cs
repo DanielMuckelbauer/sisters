@@ -29,10 +29,9 @@ namespace Code.Scripts.SceneController
             DisableCameraAndMovement();
             MoveCameraToDani();
             InitializePhaseChangeMethods();
-            //StartCoroutine(PlayOpeningCutscene(1, 2));
-            //StartCoroutine(PlayOpeningDialog());
-            //dani.OnNextPhase += ChangeFightPhase;
-            StartCoroutine(FlyAway());
+            StartCoroutine(PlayOpeningCutscene(1, 2));
+            StartCoroutine(PlayOpeningDialog());
+            dani.OnNextPhase += ChangeFightPhase;
         }
 
         private void AfterFirstPhase()
@@ -65,7 +64,7 @@ namespace Code.Scripts.SceneController
                 if (s != null)
                     Destroy(s);
             });
-            portals.ForEach(p =>
+            portals?.ForEach(p =>
             {
                 if (p != null)
                     Destroy(p);
@@ -160,6 +159,7 @@ namespace Code.Scripts.SceneController
         {
             StopCoroutine(addSpawning);
             DestroyAllSpidersAndPortals();
+            dani.StopPatrolling();
             yield return DisablePlayersAndMoveCameraToBoss();
             yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 6);
             StartCoroutine(FlyAway());
@@ -173,8 +173,11 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator FlyToFlyAwayTargets()
         {
-            foreach (Transform target in flyAwayTargets)
+            for (var i = 0; i < flyAwayTargets.Count; i++)
             {
+                if (i == 1)
+                    StartCoroutine(TextController.ShowCharactersNextBubbleText(Character.Dani));
+                Transform target = flyAwayTargets[i];
                 yield return RotateTowardsTarget(target);
                 yield return EntityController.MoveTo(dani.transform, target, 1);
             }

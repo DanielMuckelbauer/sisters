@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Scripts.Entity
 {
-    public class DaniBoss : BasePatrolingEnemy
+    public class DaniBoss : BasePatrollingEnemy
     {
         private GameObject currentTarget;
         [SerializeField] private GameObject energyBall;
@@ -83,6 +83,7 @@ namespace Code.Scripts.Entity
             StartShooting();
             StartPatrolling();
         }
+
         private void InitializeHealthStack()
         {
             healthBorders = new Stack<int>();
@@ -114,16 +115,18 @@ namespace Code.Scripts.Entity
 
         private void StartNextPhaseIfNecessary()
         {
-            if (CombatController.CurrentLife > healthBorders.Peek())
+            if (healthBorders.Count < 1 || CombatController.CurrentLife > healthBorders.Peek())
                 return;
             StopShooting();
             healthBorders.Pop();
             OnNextPhase?.Invoke();
         }
+
         private void StopShooting()
         {
             StopCoroutine(energyBallShootLoop);
-            StopCoroutine(laserShootLoop);
+            if (laserShootLoop != null)
+                StopCoroutine(laserShootLoop);
         }
     }
 }

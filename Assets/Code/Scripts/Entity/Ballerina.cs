@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Scripts.Entity
 {
-    public class Ballerina : BasePatrolingEnemy
+    public class Ballerina : BasePatrollingEnemy
     {
         public Transform LeftShoeSource;
         public List<Transform> LeftTargets;
