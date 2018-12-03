@@ -29,9 +29,9 @@ namespace Code.Scripts.SceneController
             DisableCameraAndMovement();
             MoveCameraToDani();
             InitializePhaseChangeMethods();
-            StartCoroutine(PlayOpeningCutscene(1, 2));
-            StartCoroutine(PlayOpeningDialog());
-            dani.OnNextPhase += ChangeFightPhase;
+            //StartCoroutine(PlayOpeningCutscene(1, 2));
+            //StartCoroutine(PlayOpeningDialog());
+            //dani.OnNextPhase += ChangeFightPhase;
             StartCoroutine(FlyAway());
         }
 
@@ -175,15 +175,20 @@ namespace Code.Scripts.SceneController
         {
             foreach (Transform target in flyAwayTargets)
             {
-                yield return RotateTowardsTarget();
-                yield return EntityController.MoveTo(dani.transform, target, 2);
+                yield return RotateTowardsTarget(target);
+                yield return EntityController.MoveTo(dani.transform, target, 1);
             }
 
             yield return null;
         }
 
-        private IEnumerator RotateTowardsTarget()
+        private IEnumerator RotateTowardsTarget(Transform target)
         {
+            Vector3 direction = target.position - dani.transform.position;
+            dani.transform.rotation = Quaternion.LookRotation(
+                Vector3.forward,
+                direction
+            );
             yield return null;
         }
 
