@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameElements: {fileID: 1313685989}
   MainCamera: {fileID: 772832272}
-  PlayerController: {fileID: 1045421089}
+  EntityController: {fileID: 1045421089}
   TextController: {fileID: 1627140009}
   addSpawnPositions:
   - {fileID: 2099549632}

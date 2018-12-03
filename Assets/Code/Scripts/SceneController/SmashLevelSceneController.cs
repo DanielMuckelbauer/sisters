@@ -174,12 +174,24 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator FlyToFlyAwayTargets()
         {
-            
+          yield return null;
         }
 
         private IEnumerator RotateArmUp()
         {
-            yield return null;
+            const float speed = 100000;
+            Quaternion targetRotation = Quaternion.Euler(0, 0, -180);
+            while (arm.transform.rotation.z > -180)
+            {
+                Debug.Log(arm.transform.rotation);
+                arm.transform.rotation =
+                    Quaternion.RotateTowards(arm.transform.rotation, targetRotation, speed * Time.deltaTime);
+                yield return null;
+                Debug.Log("Flytarget: " + flyTarget.rotation);
+                flyTarget.rotation =
+                    Quaternion.RotateTowards(flyTarget.rotation, targetRotation, speed * Time.deltaTime);
+                yield return null;
+            }
         }
     }
 }
