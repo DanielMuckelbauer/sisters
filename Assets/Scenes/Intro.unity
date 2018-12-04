@@ -521,10 +521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990d4acda47c96042a82a93a387022ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasText: {fileID: 333715254}
-  pressAnyKeySprite: {fileID: 333715253}
   allSpeechBubbles:
   - {fileID: 1356816524}
+  canvasText: {fileID: 333715254}
+  pressAnyKeySprite: {fileID: 333715253}
   textAsset: {fileID: 4900000, guid: 82e8ea1c0c1d6424cae3743502192791, type: 3}
   textCanvas: {fileID: 966603429}
 --- !u!1 &853476156
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameElements: {fileID: 35516094}
   MainCamera: {fileID: 2101569435}
-  PlayerController: {fileID: 1085307875}
+  EntityController: {fileID: 1085307875}
   TextController: {fileID: 678123776}
   AudioClips:
   - {fileID: 8300000, guid: 26ea5cc30bb6f7b41a7e7c9b7b9376b1, type: 3}
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 1085307874}
   - component: {fileID: 1085307875}
   m_Layer: 0
-  m_Name: PlayerController
+  m_Name: EntityController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

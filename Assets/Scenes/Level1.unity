@@ -1259,12 +1259,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990d4acda47c96042a82a93a387022ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasText: {fileID: 579961739}
-  pressAnyKeySprite: {fileID: 1703233994}
   allSpeechBubbles:
   - {fileID: 780471215}
   - {fileID: 325396909}
   - {fileID: 934492184}
+  canvasText: {fileID: 579961739}
+  pressAnyKeySprite: {fileID: 1703233994}
   textAsset: {fileID: 4900000, guid: 0d40720350b5895428dc047baccd4e74, type: 3}
   textCanvas: {fileID: 2047405984}
 --- !u!114 &579961739 stripped
@@ -45420,7 +45420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameElements: {fileID: 1478660781}
   MainCamera: {fileID: 519420028}
-  PlayerController: {fileID: 2082918858}
+  EntityController: {fileID: 2082918858}
   TextController: {fileID: 558493090}
   CameraTarget: {fileID: 1850352708}
   JumpTarget: {fileID: 647259375}
