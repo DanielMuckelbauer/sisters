@@ -12,25 +12,22 @@ namespace Code.Scripts.SceneController
     {
         private Coroutine addSpawning;
         [SerializeField] private List<Transform> addSpawnPositions;
+        [SerializeField] private AudioSource audioSource;
         [SerializeField] private DaniBoss dani;
         private Vector3 daniCameraPosition;
+        [SerializeField] private List<Transform> flyAwayTargets;
         [SerializeField] private Transform flyTarget;
+        [SerializeField] private AudioClip hook;
         private Stack<Action> phaseChangeMethods;
         [SerializeField] private GameObject portal;
         private List<GameObject> portals;
         private List<GameObject> spawnedSpiders;
         [SerializeField] private GameObject spider;
-        [SerializeField] private List<Transform> flyAwayTargets;
-
         protected override void Start()
         {
             base.Start();
             spawnedSpiders = new List<GameObject>();
-            DisableCameraAndMovement();
-            MoveCameraToDani();
-            InitializePhaseChangeMethods();
-            StartCoroutine(PlayOpeningCutscene(1, 2));
-            StartCoroutine(PlayOpeningDialog());
+            PlayOpeningCutScene();
             dani.OnNextPhase += ChangeFightPhase;
         }
 
@@ -75,7 +72,7 @@ namespace Code.Scripts.SceneController
         {
             DisableCameraAndMovement();
             Vector3 cameraTarget =
-                new Vector3(flyTarget.position.x, flyTarget.position.y, MainCamera.transform.position.z);
+                new Vector3(flyTarget.position.x, flyTarget.position.y + 2, MainCamera.transform.position.z);
             StartCoroutine(MoveCameraSmoothly(cameraTarget));
             yield return new WaitForSeconds(3);
         }
@@ -87,6 +84,26 @@ namespace Code.Scripts.SceneController
             yield return new WaitForSeconds(1);
             EnableCameraAndMovement();
             StartSecondPhase();
+        }
+
+        private IEnumerator FlyAway()
+        {
+            yield return RotateArmUp();
+            yield return FlyToFlyAwayTargets();
+        }
+
+        private IEnumerator FlyToFlyAwayTargets()
+        {
+            for (var i = 0; i < flyAwayTargets.Count; i++)
+            {
+                if (i == 1)
+                    StartCoroutine(TextController.ShowCharactersNextBubbleText(Character.Dani));
+                Transform target = flyAwayTargets[i];
+                yield return RotateTowardsTarget(target);
+                yield return EntityController.MoveTo(dani.transform, target, 1.5f);
+            }
+
+            yield return null;
         }
 
         private void InitializePhaseChangeMethods()
@@ -105,6 +122,21 @@ namespace Code.Scripts.SceneController
             MainCamera.transform.position = daniCameraPosition;
         }
 
+        private void PlayHookMusic()
+        {
+            audioSource.Stop();
+            audioSource.clip = hook;
+            audioSource.Play();
+        }
+
+        private void PlayOpeningCutScene()
+        {
+            DisableCameraAndMovement();
+            MoveCameraToDani();
+            InitializePhaseChangeMethods();
+            StartCoroutine(PlayOpeningCutscene(1, 2));
+            StartCoroutine(PlayOpeningDialog());
+        }
         private IEnumerator PlayOpeningDialog()
         {
             yield return new WaitForSeconds(1);
@@ -113,6 +145,29 @@ namespace Code.Scripts.SceneController
             yield return EntityController.MoveTo(dani.transform, flyTarget, 1f);
             yield return new WaitForSeconds(1);
             EnableCameraAndMovement();
+        }
+
+        private IEnumerator RotateArmUp()
+        {
+            //const float speed = 1;
+            //while (arm.rotation.eulerAngles.z > -180)
+            //{
+            //    Debug.Log(arm.rotation);
+            //    arm.rotation =
+            //        Quaternion.RotateTowards(arm.rotation, targetRotation.rotation, speed * Time.deltaTime);
+            //    yield return null;
+            //}
+            yield return null;
+        }
+
+        private IEnumerator RotateTowardsTarget(Transform target)
+        {
+            Vector3 direction = target.position - dani.transform.position;
+            dani.transform.rotation = Quaternion.LookRotation(
+                Vector3.forward,
+                direction
+            );
+            yield return null;
         }
 
         private IEnumerator SecondPhaseCutScene()
@@ -157,55 +212,17 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator ThirdPhaseCutscene()
         {
-            StopCoroutine(addSpawning);
+            if (addSpawning != null)
+                StopCoroutine(addSpawning);
             DestroyAllSpidersAndPortals();
             dani.StopPatrolling();
             yield return DisablePlayersAndMoveCameraToBoss();
             yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 6);
+            PlayHookMusic();
+            yield return new WaitForSeconds(5);
+            dani.Animator.SetTrigger("FlyAway");
+            yield return new WaitForSeconds(2);
             StartCoroutine(FlyAway());
-        }
-
-        private IEnumerator FlyAway()
-        {
-            yield return RotateArmUp();
-            yield return FlyToFlyAwayTargets();
-        }
-
-        private IEnumerator FlyToFlyAwayTargets()
-        {
-            for (var i = 0; i < flyAwayTargets.Count; i++)
-            {
-                if (i == 1)
-                    StartCoroutine(TextController.ShowCharactersNextBubbleText(Character.Dani));
-                Transform target = flyAwayTargets[i];
-                yield return RotateTowardsTarget(target);
-                yield return EntityController.MoveTo(dani.transform, target, 1);
-            }
-
-            yield return null;
-        }
-
-        private IEnumerator RotateTowardsTarget(Transform target)
-        {
-            Vector3 direction = target.position - dani.transform.position;
-            dani.transform.rotation = Quaternion.LookRotation(
-                Vector3.forward,
-                direction
-            );
-            yield return null;
-        }
-
-        private IEnumerator RotateArmUp()
-        {
-            //const float speed = 1;
-            //while (arm.rotation.eulerAngles.z > -180)
-            //{
-            //    Debug.Log(arm.rotation);
-            //    arm.rotation =
-            //        Quaternion.RotateTowards(arm.rotation, targetRotation.rotation, speed * Time.deltaTime);
-            //    yield return null;
-            //}
-            yield return null;
         }
     }
 }
