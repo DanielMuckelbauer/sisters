@@ -294,11 +294,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990d4acda47c96042a82a93a387022ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasText: {fileID: 1975329927}
-  pressAnyKeySprite: {fileID: 1975329926}
   allSpeechBubbles:
   - {fileID: 2052875851}
   - {fileID: 907079340}
+  canvasText: {fileID: 1975329927}
+  pressAnyKeySprite: {fileID: 1975329926}
   textAsset: {fileID: 4900000, guid: eae317a2138d9894ca266b7b6d96fd31, type: 3}
   textCanvas: {fileID: 1975329928}
 --- !u!4 &84634401
@@ -11417,7 +11417,7 @@ GameObject:
   - component: {fileID: 812746829}
   - component: {fileID: 812746828}
   m_Layer: 0
-  m_Name: PlayerController
+  m_Name: EntityController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12941,7 +12941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameElements: {fileID: 1770195468}
   MainCamera: {fileID: 380056169}
-  PlayerController: {fileID: 812746828}
+  EntityController: {fileID: 812746828}
   TextController: {fileID: 84634400}
   audioSource: {fileID: 250322463}
   balletMusic: {fileID: 8300000, guid: 8b75a0cfe261ba44d965b3ff29da7471, type: 3}

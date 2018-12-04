@@ -23,6 +23,7 @@ namespace Code.Scripts.SceneController
         private List<GameObject> portals;
         private List<GameObject> spawnedSpiders;
         [SerializeField] private GameObject spider;
+
         protected override void Start()
         {
             base.Start();
@@ -88,7 +89,6 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator FlyAway()
         {
-            yield return RotateArmUp();
             yield return FlyToFlyAwayTargets();
         }
 
@@ -100,7 +100,7 @@ namespace Code.Scripts.SceneController
                     StartCoroutine(TextController.ShowCharactersNextBubbleText(Character.Dani));
                 Transform target = flyAwayTargets[i];
                 yield return RotateTowardsTarget(target);
-                yield return EntityController.MoveTo(dani.transform, target, 1.5f);
+                yield return EntityController.MoveTo(dani.transform, target, 1f);
             }
 
             yield return null;
@@ -145,19 +145,6 @@ namespace Code.Scripts.SceneController
             yield return EntityController.MoveTo(dani.transform, flyTarget, 1f);
             yield return new WaitForSeconds(1);
             EnableCameraAndMovement();
-        }
-
-        private IEnumerator RotateArmUp()
-        {
-            //const float speed = 1;
-            //while (arm.rotation.eulerAngles.z > -180)
-            //{
-            //    Debug.Log(arm.rotation);
-            //    arm.rotation =
-            //        Quaternion.RotateTowards(arm.rotation, targetRotation.rotation, speed * Time.deltaTime);
-            //    yield return null;
-            //}
-            yield return null;
         }
 
         private IEnumerator RotateTowardsTarget(Transform target)
@@ -221,7 +208,7 @@ namespace Code.Scripts.SceneController
             PlayHookMusic();
             yield return new WaitForSeconds(5);
             dani.Animator.SetTrigger("FlyAway");
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             StartCoroutine(FlyAway());
         }
     }

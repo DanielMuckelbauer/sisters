@@ -52,7 +52,7 @@ namespace Code.Scripts.SceneController
             TextController.ShowPressAnyKey();
         }
 
-        protected IEnumerator Fade(SpriteRenderer sprite, int from, int to, float duration = 5)
+        protected IEnumerator Fade(SpriteRenderer sprite, int from = 1, int to = 0, float duration = 5)
         {
             float t = 0;
             float startTime = Time.time;
