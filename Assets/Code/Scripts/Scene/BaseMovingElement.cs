@@ -10,9 +10,9 @@ namespace Code.Scripts.Scene
         [SerializeField] private float delay;
         private Dictionary<GameObject, GameObject> entitiesStandingOnPlatformAndTheirParent;
         [SerializeField] private float moveTime;
+        private bool movingEnabled;
         [SerializeField] private float pause;
         [SerializeField] private float step;
-
         protected abstract void CalculateDirection();
 
         protected Vector3 ChangeBetweenTwoDirections(Vector3 first, Vector3 second)
@@ -22,17 +22,25 @@ namespace Code.Scripts.Scene
 
         protected virtual void Start()
         {
-            StartCoroutine(DirectionChangeLoop());
+            StartCoroutine(EnableMovingAfterDelay());
             entitiesStandingOnPlatformAndTheirParent = new Dictionary<GameObject, GameObject>();
+        }
+
+        private IEnumerator EnableMovingAfterDelay()
+        {
+            yield return new WaitForSeconds(delay);
+            StartCoroutine(DirectionChangeLoop());
+            movingEnabled = true;
         }
 
         private IEnumerator DirectionChangeLoop()
         {
-            yield return new WaitForSeconds(delay);
             while (true)
             {
                 yield return new WaitForSeconds(moveTime);
+                movingEnabled = false;
                 yield return new WaitForSeconds(pause);
+                movingEnabled = true;
                 CalculateDirection();
             }
         }
@@ -47,7 +55,8 @@ namespace Code.Scripts.Scene
 
         private void Move()
         {
-            transform.position += Direction * step * Time.deltaTime;
+            if (movingEnabled)
+                transform.position += Direction * step * Time.deltaTime;
         }
 
         private void OnTriggerExit2D(Collider2D col)
