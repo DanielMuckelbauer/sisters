@@ -1942,6 +1942,56 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1348317166039586, guid: 7a41169db5b9a47de92d0f444681886c,
     type: 2}
   m_PrefabInternal: {fileID: 1669135943}
+--- !u!1001 &1287412538
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4669995100546126, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 83.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669995100546126, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669995100546126, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669995100546126, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669995100546126, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669995100546126, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669995100546126, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669995100546126, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1919185708707984, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_Name
+      value: BigLaserCannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1854825144338698, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_Name
+      value: UpperLaser
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1317499619 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1188116015080020, guid: 7a41169db5b9a47de92d0f444681886c,
