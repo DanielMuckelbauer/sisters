@@ -1,5 +1,4 @@
 ﻿using Code.Classes;
-using Code.Scripts.Scene;
 using System.Collections;
 using UnityEngine;
 
@@ -58,7 +57,7 @@ namespace Code.Scripts.SceneController
         private IEnumerator TalkingCutScene()
         {
             ChangeMusic();
-            yield return EntityController.MovePlayersToSpeakPosition(walkTarget1, walkTarget2);
+            yield return EntityController.MovePlayersToOppositePositions(walkTarget1, walkTarget2);
             yield return Talk();
             EntityController.BeamPlayersTo(endbossSpawnPoint.position);
             EntityController.EnablePlayerMovement();

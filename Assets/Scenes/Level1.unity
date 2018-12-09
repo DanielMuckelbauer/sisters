@@ -45691,7 +45691,7 @@ GameObject:
   - component: {fileID: 2082918857}
   - component: {fileID: 2082918858}
   m_Layer: 0
-  m_Name: PlayerController
+  m_Name: EntityController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45721,10 +45721,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937979de6d1612f4483af9847e916cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerList:
+  respawnPointParent: {fileID: 693643190}
+  PlayerList:
   - {fileID: 325396908}
   - {fileID: 934492183}
-  respawnPointParent: {fileID: 693643190}
 --- !u!1 &2088519341
 GameObject:
   m_ObjectHideFlags: 0

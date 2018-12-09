@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using Code.Classes;
+using Code.Scripts.Entity;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Code.Classes;
-using Code.Scripts.Entity;
 using UnityEngine;
 
 namespace Code.Scripts.Scene
@@ -10,14 +10,32 @@ namespace Code.Scripts.Scene
     public class EntityController : MonoBehaviour
     {
         [SerializeField] private Dictionary<Character, Player> characters;
-        [SerializeField] private List<Player> playerList;
         [SerializeField] private GameObject respawnPointParent;
         private List<Transform> respawnPoints;
+        public List<Player> PlayerList;
+
+        public void Awake()
+        {
+            respawnPoints = InitializeRespawnPoints();
+            InitializeCharacterDictionary();
+        }
 
         public void BeamPlayersTo(Vector3 target)
         {
-            BeamPlayerTo(target, playerList[0].transform, -0.5f);
-            BeamPlayerTo(target, playerList[1].transform, 0.5f);
+            BeamPlayerTo(target, PlayerList[0].transform, -0.5f);
+            BeamPlayerTo(target, PlayerList[1].transform, 0.5f);
+        }
+
+        public void DisablePlayerMovement()
+        {
+            foreach (Player player in characters.Values)
+                player.SetMovement(false);
+        }
+
+        public void EnablePlayerMovement()
+        {
+            foreach (Player player in characters.Values)
+                player.SetMovement(true);
         }
 
         public Player GetCharacter(Character character)
@@ -25,17 +43,17 @@ namespace Code.Scripts.Scene
             return characters[character];
         }
 
-        public IEnumerator MovePlayersToSpeakPosition(Transform point1, Transform point2)
+        public IEnumerator MovePlayersToOppositePositions(Transform point1, Transform point2)
         {
-            playerList.ForEach(p => MoveObjectToTargetIfToFarAway(p.transform, point1.position));
+            PlayerList.ForEach(p => MoveObjectToTargetIfToFarAway(p.transform, point1.position));
             Transform leftPoint = FindLeft(point1, point2);
             Transform rightPoint = FindRight(point1, point2);
-            Transform leftPlayer = FindLeft(playerList[0].transform, playerList[1].transform);
-            Transform rightPlayer = FindRight(playerList[0].transform, playerList[1].transform);
+            Transform leftPlayer = FindLeft(PlayerList[0].transform, PlayerList[1].transform);
+            Transform rightPlayer = FindRight(PlayerList[0].transform, PlayerList[1].transform);
             yield return leftPlayer.GetComponent<Player>().GoTo(leftPoint.position);
             yield return rightPlayer.GetComponent<Player>().GoTo(rightPoint.position);
-            yield return playerList[0].TurnTo(playerList[1].transform.position);
-            yield return playerList[1].TurnTo(playerList[0].transform.position);
+            yield return PlayerList[0].TurnTo(PlayerList[1].transform.position);
+            yield return PlayerList[1].TurnTo(PlayerList[0].transform.position);
         }
 
         public IEnumerator MoveTo(Transform obj, Transform target, float stepSize = 3f)
@@ -58,12 +76,6 @@ namespace Code.Scripts.Scene
         {
             Vector3 closest = FindClosestRespawnPoint(respawnPoints);
             BeamPlayerTo(closest, player.transform);
-        }
-
-        public void Awake()
-        {
-            respawnPoints = InitializeRespawnPoints();
-            InitializeCharacterDictionary();
         }
 
         private static Transform FindLeft(Transform point1, Transform point2)
@@ -110,11 +122,11 @@ namespace Code.Scripts.Scene
         private void InitializeCharacterDictionary()
         {
             characters = new Dictionary<Character, Player>();
-            if (playerList == null || playerList.Count == 0)
+            if (PlayerList == null || PlayerList.Count == 0)
                 return;
-            Player muni = playerList.First(p => p.gameObject.name.Contains("Muni"));
+            Player muni = PlayerList.First(p => p.gameObject.name.Contains("Muni"));
             characters.Add(Character.Muni, muni);
-            Player pollin = playerList.First(p => p.gameObject.name.Contains("Pollin"));
+            Player pollin = PlayerList.First(p => p.gameObject.name.Contains("Pollin"));
             characters.Add(Character.Pollin, pollin);
         }
 
@@ -127,18 +139,6 @@ namespace Code.Scripts.Scene
         {
             if (Vector3.Distance(obj.position, target) > maxDistance)
                 obj.transform.position = target;
-        }
-
-        public void EnablePlayerMovement()
-        {
-            foreach (Player player in characters.Values)
-                player.SetMovement(true);
-        }
-
-        public void DisablePlayerMovement()
-        {
-            foreach (Player player in characters.Values)
-                player.SetMovement(false);
         }
     }
 }

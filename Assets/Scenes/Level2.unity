@@ -11434,10 +11434,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937979de6d1612f4483af9847e916cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerList:
-  - {fileID: 843769141}
-  - {fileID: 478700853}
   respawnPointParent: {fileID: 285385419}
+  PlayerList:
+  - {fileID: 478700853}
+  - {fileID: 843769141}
 --- !u!4 &812746829
 Transform:
   m_ObjectHideFlags: 0

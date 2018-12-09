@@ -71,7 +71,7 @@ namespace Code.Scripts.SceneController
         protected void FadeSceneOut()
         {
             GameElements.GetComponentsInChildren<SpriteRenderer>().ToList()
-                .ForEach(s => { StartCoroutine(Fade(s, 1, 0)); });
+                .ForEach(s => { StartCoroutine(Fade(s)); });
         }
 
         protected virtual void HandleTrigger()
