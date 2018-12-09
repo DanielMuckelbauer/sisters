@@ -137,6 +137,7 @@ namespace Code.Scripts.SceneController
             StartCoroutine(PlayOpeningCutscene(1, 2));
             StartCoroutine(PlayOpeningDialog());
         }
+
         private IEnumerator PlayOpeningDialog()
         {
             yield return new WaitForSeconds(1);
