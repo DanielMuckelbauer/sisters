@@ -11460,7 +11460,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 82.34
+      value: 82.09
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.y
@@ -12944,7 +12944,7 @@ MonoBehaviour:
   EntityController: {fileID: 812746828}
   TextController: {fileID: 84634400}
   audioSource: {fileID: 250322463}
-  balletMusic: {fileID: 8300000, guid: 8b75a0cfe261ba44d965b3ff29da7471, type: 3}
+  balletMusic: {fileID: 8300000, guid: cb8b2fce9d6a8c347a5f6a9481066f3e, type: 3}
   endbossSpawnPoint: {fileID: 2071869462}
   walkTarget1: {fileID: 416264130}
   walkTarget2: {fileID: 1300162194}
@@ -13792,7 +13792,7 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: cb8b2fce9d6a8c347a5f6a9481066f3e, type: 3}
+      objectReference: {fileID: 8300000, guid: 3db0f773c1057044f9fd117a581ef512, type: 3}
     - target: {fileID: 114765909991052350, guid: de5f7ff9395841040ab83a002ce562e9,
         type: 2}
       propertyPath: Player2
