@@ -8,6 +8,8 @@ namespace Code.Scripts.Scene
     {
         [SerializeField] private float shootForce = 2f;
         [SerializeField] private float rotationForce = 10;
+        [SerializeField] private float destroyAfter = 7;
+
         private Rigidbody2D rigidBody;
 
         protected virtual void Awake()
@@ -32,7 +34,7 @@ namespace Code.Scripts.Scene
 
         private IEnumerator DelayedDestroy()
         {
-            yield return new WaitForSeconds(7);
+            yield return new WaitForSeconds(destroyAfter);
             Destroy(gameObject);
         }
 

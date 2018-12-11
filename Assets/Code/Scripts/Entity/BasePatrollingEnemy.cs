@@ -49,7 +49,7 @@ namespace Code.Scripts.Entity
         {
             DealWithCollision(collision.gameObject);
         }
-
+        
         protected void OnTriggerEnter2D(Collider2D other)
         {
             DealWithCollision(other.gameObject);

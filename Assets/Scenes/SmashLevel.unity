@@ -452,12 +452,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e,
     type: 2}
   m_PrefabInternal: {fileID: 823134488}
---- !u!114 &823134490 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114013279623752596, guid: be956fa908d6bd7479a94f994585409e,
-    type: 2}
-  m_PrefabInternal: {fileID: 823134488}
-  m_Script: {fileID: 11500000, guid: a26dec5e8dad46ee95bdc07316952aee, type: 3}
 --- !u!114 &823134491 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114547490595688076, guid: be956fa908d6bd7479a94f994585409e,
@@ -661,10 +655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937979de6d1612f4483af9847e916cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerList:
-  - {fileID: 1966021470}
-  - {fileID: 823134490}
   respawnPointParent: {fileID: 1609891968}
+  PlayerList: []
 --- !u!1001 &1100177358
 Prefab:
   m_ObjectHideFlags: 0
@@ -1542,12 +1534,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda,
     type: 2}
   m_PrefabInternal: {fileID: 1966021468}
---- !u!114 &1966021470 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
-    type: 2}
-  m_PrefabInternal: {fileID: 1966021468}
-  m_Script: {fileID: 11500000, guid: b77fc821a5f04aed95faca9d858e533c, type: 3}
 --- !u!114 &1966021471 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114102252723192846, guid: 40f0c278916650549a4b753816fe6fda,
