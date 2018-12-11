@@ -90,16 +90,16 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 193998af0590b1748910ff34e326cec0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.173
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 129
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootForce: 6
   rotationForce: 0
-  destroyAfter: 0.5
+  destroyAfter: 1
 --- !u!212 &212787829931348326
 SpriteRenderer:
   m_ObjectHideFlags: 1
