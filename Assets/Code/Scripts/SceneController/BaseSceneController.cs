@@ -78,10 +78,9 @@ namespace Code.Scripts.SceneController
         {
         }
 
-        protected IEnumerator MoveCameraSmoothly(Vector3 targetPosition)
+        protected IEnumerator MoveCameraSmoothly(Vector3 targetPosition, float smoothTime = 2)
         {
             Transform cameraTransform = MainCamera.transform;
-            const float smoothTime = 2;
             Vector3 velocity = Vector3.zero;
             while (cameraTransform.position != targetPosition)
             {

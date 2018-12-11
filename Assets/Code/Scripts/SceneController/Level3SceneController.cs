@@ -30,9 +30,17 @@ namespace Code.Scripts.SceneController
             yield return EntityController.MovePlayersToOppositePositions(innerWalkTarget1, innerWalkTarget2);
             yield return new WaitForSeconds(2);
             EntityController.PlayerList.ForEach(player => player.gameObject.SetActive(false));
+            StartAndShowFireWorks();
+            yield return new WaitForSeconds(5);
+            EnableNextScene();
+        }
+
+        private void StartAndShowFireWorks()
+        {
             Vector3 targetPosition = new Vector3(cameraTarget.position.x, cameraTarget.position.y,
                 MainCamera.transform.position.z);
-            StartCoroutine(MoveCameraSmoothly(targetPosition));
+            StartCoroutine(MoveCameraSmoothly(targetPosition, 4));
+            cameraTarget.GetComponent<AudioSource>().Play();
         }
 
         private IEnumerator Talk()
