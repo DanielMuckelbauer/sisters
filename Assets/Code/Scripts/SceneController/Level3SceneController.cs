@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Scripts.SceneController
 {
-    public class Level3SceneController : BaseSceneController
+    public class Level3SceneControllder : BaseSceneController
     {
         [SerializeField] private Transform innerWalkTarget1;
         [SerializeField] private Transform innerWalkTarget2;
