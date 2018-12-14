@@ -30,7 +30,15 @@ namespace Code.Scripts.SceneController
             Vector3 targetPosition = new Vector3(clownCameraTarget.position.x, clownCameraTarget.position.y,
                 MainCamera.transform.position.z);
             yield return MoveCameraSmoothly(targetPosition);
+            yield return Dance();
+
+        }
+
+        private IEnumerator Dance()
+        {
             clownAnimator.SetBool("Dance", true);
+            yield return new WaitForSeconds(1);
+            clownAnimator.SetBool("Dance", false);
         }
 
         private IEnumerator Talk()
