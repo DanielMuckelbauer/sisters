@@ -741,9 +741,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0969fb683f4c0643bd83e757a757299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioSource: {fileID: 0}
   Projectile: {fileID: 1714547732501980, guid: 6fabfbaf6436f4f4a8ab28b1ff9d0df5, type: 2}
   SpawnPoint: {fileID: 4849763003599388}
-  AudioSource: {fileID: 0}
 --- !u!114 &114782345292172670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -756,6 +756,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95878339632607970}
+  MaxLife: 7
+  WalkingSpeed: 5
   Patrolling: 0
 --- !u!212 &212076261987313922
 SpriteRenderer:
