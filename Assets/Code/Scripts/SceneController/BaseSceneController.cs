@@ -78,14 +78,18 @@ namespace Code.Scripts.SceneController
         {
         }
 
-        protected IEnumerator MoveCameraSmoothly(Vector3 targetPosition, float smoothTime = 2)
+        protected IEnumerator MoveCameraSmoothly(Vector3 targetPosition, float tolerance = 0.2f, float smoothTime = 2)
         {
             Transform cameraTransform = MainCamera.transform;
+            targetPosition = new Vector3(targetPosition.x, targetPosition.y,
+                cameraTransform.position.z);
             Vector3 velocity = Vector3.zero;
-            while (cameraTransform.position != targetPosition)
+            float distance = Vector3.Distance(cameraTransform.position, targetPosition);
+            while (distance > tolerance)
             {
                 cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, targetPosition,
                     ref velocity, smoothTime);
+                distance = Vector3.Distance(cameraTransform.position, targetPosition);
                 yield return null;
             }
         }

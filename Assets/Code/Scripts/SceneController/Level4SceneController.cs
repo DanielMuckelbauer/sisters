@@ -31,7 +31,6 @@ namespace Code.Scripts.SceneController
                 MainCamera.transform.position.z);
             yield return MoveCameraSmoothly(targetPosition);
             clownAnimator.SetBool("Dance", true);
-            Debug.Log("Dance");
         }
 
         private IEnumerator Talk()

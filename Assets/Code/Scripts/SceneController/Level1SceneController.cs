@@ -39,9 +39,7 @@ namespace Code.Scripts.SceneController
         private IEnumerator PlayEndingCutscene()
         {
             DisableCameraAndMovement();
-            Vector3 targetPosition = new Vector3(CameraTarget.position.x, CameraTarget.position.y,
-                MainCamera.transform.position.z);
-            StartCoroutine(MoveCameraSmoothly(targetPosition));
+            StartCoroutine(MoveCameraSmoothly(CameraTarget.position));
             yield return new WaitForSeconds(2);
             yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 2);
             yield return GoToDiaperChanger();
