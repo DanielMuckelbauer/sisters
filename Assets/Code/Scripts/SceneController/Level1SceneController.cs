@@ -38,9 +38,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator PlayEndingCutscene()
         {
-            EntityController.DisablePlayerMovement();
-            EntityController.DisablePlayerMovement();
-            DisableFollowingCamera();
+            DisableCameraAndMovement();
             Vector3 targetPosition = new Vector3(CameraTarget.position.x, CameraTarget.position.y,
                 MainCamera.transform.position.z);
             StartCoroutine(MoveCameraSmoothly(targetPosition));
