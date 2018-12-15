@@ -44,8 +44,8 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator Talk()
         {
-            yield return TextController.ShowCharactersNextBubbleText(Character.Pollin);
-            yield return TextController.ShowCharactersNextBubbleText(Character.Muni);
+            yield return TextController.ShowCharactersNextBubbleText(Character.Pollin, 2);
+            yield return TextController.ShowCharactersNextBubbleText(Character.Muni, 2);
         }
     }
 }
