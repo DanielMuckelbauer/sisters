@@ -37,7 +37,7 @@ namespace Code.Scripts.SceneController
         private IEnumerator Dance()
         {
             clownAnimator.SetBool("Dance", true);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(5);
             clownAnimator.SetBool("Dance", false);
             EnableCameraAndMovement();
         }

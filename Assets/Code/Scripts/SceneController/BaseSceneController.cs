@@ -78,7 +78,7 @@ namespace Code.Scripts.SceneController
         {
         }
 
-        protected IEnumerator MoveCameraSmoothly(Vector3 targetPosition, float tolerance = 0.2f, float smoothTime = 2)
+        protected IEnumerator MoveCameraSmoothly(Vector3 targetPosition, float smoothTime = 2, float tolerance = 0.2f)
         {
             Transform cameraTransform = MainCamera.transform;
             targetPosition = new Vector3(targetPosition.x, targetPosition.y,

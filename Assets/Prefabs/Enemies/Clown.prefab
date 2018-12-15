@@ -838,7 +838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 82765854687328454}
-  Projectile: {fileID: 1714547732501980, guid: 6fabfbaf6436f4f4a8ab28b1ff9d0df5, type: 2}
+  Projectile: {fileID: 1714547732501980, guid: 73f51b23842d1eb4a91e3e91f6d902cb, type: 2}
   SpawnPoint: {fileID: 4849763003599388}
 --- !u!114 &114782345292172670
 MonoBehaviour:

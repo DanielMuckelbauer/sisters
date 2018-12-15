@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Scripts.SceneController
 {
-    public class Level3SceneControllder : BaseSceneController
+    public class Level3SceneController : BaseSceneController
     {
         [SerializeField] private Transform innerWalkTarget1;
         [SerializeField] private Transform innerWalkTarget2;
@@ -31,7 +31,7 @@ namespace Code.Scripts.SceneController
             yield return new WaitForSeconds(2);
             EntityController.PlayerList.ForEach(player => player.gameObject.SetActive(false));
             StartAndShowFireWorks();
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(9);
             EnableNextScene();
         }
 
@@ -39,7 +39,7 @@ namespace Code.Scripts.SceneController
         {
             Vector3 targetPosition = new Vector3(cameraTarget.position.x, cameraTarget.position.y,
                 MainCamera.transform.position.z);
-            StartCoroutine(MoveCameraSmoothly(targetPosition, 4));
+            StartCoroutine(MoveCameraSmoothly(targetPosition, 6));
             cameraTarget.GetComponent<AudioSource>().Play();
         }
 
