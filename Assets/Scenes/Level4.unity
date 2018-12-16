@@ -3192,6 +3192,8 @@ MonoBehaviour:
   TextController: {fileID: 1833616851}
   clown: {fileID: 518968808}
   clownCameraTarget: {fileID: 1036354326}
+  baepsaeClip: {fileID: 8300000, guid: 024d222fd220bc54f9c787411d3751a9, type: 3}
+  mainSource: {fileID: 1974939571}
 --- !u!4 &624318618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4058157291086638, guid: 8baf77b7ea7a5cc42afaa3bc3f50efb7,
@@ -5280,6 +5282,11 @@ Camera:
 --- !u!1 &1974939570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1102126084470950, guid: de5f7ff9395841040ab83a002ce562e9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1974939568}
+--- !u!82 &1974939571 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 82020333564612880, guid: de5f7ff9395841040ab83a002ce562e9,
     type: 2}
   m_PrefabInternal: {fileID: 1974939568}
 --- !u!1001 &1978558066

@@ -9,6 +9,8 @@ namespace Code.Scripts.SceneController
         [SerializeField] private GameObject clown;
         private Animator clownAnimator;
         [SerializeField] private Transform clownCameraTarget;
+        [SerializeField] private AudioClip baepsaeClip;
+        [SerializeField] private AudioSource mainSource;
 
         protected override void HandleTrigger()
         {
@@ -29,15 +31,21 @@ namespace Code.Scripts.SceneController
             yield return Talk();
             Vector3 targetPosition = new Vector3(clownCameraTarget.position.x, clownCameraTarget.position.y,
                 MainCamera.transform.position.z);
+            ChangeMusic();
             yield return MoveCameraSmoothly(targetPosition);
             yield return Dance();
+        }
 
+        private void ChangeMusic()
+        {
+            mainSource.clip = baepsaeClip;
+            mainSource.Play();
         }
 
         private IEnumerator Dance()
         {
             clownAnimator.SetBool("Dance", true);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(7);
             clownAnimator.SetBool("Dance", false);
             EnableCameraAndMovement();
         }
