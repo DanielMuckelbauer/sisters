@@ -72,9 +72,7 @@ namespace Code.Scripts.SceneController
         private IEnumerator DisablePlayersAndMoveCameraToBoss()
         {
             DisableCameraAndMovement();
-            Vector3 cameraTarget =
-                new Vector3(flyTarget.position.x, flyTarget.position.y + 2, MainCamera.transform.position.z);
-            StartCoroutine(MoveCameraSmoothly(cameraTarget));
+            StartCoroutine(MoveCameraSmoothly(flyTarget.position));
             yield return new WaitForSeconds(3);
         }
 
@@ -143,7 +141,7 @@ namespace Code.Scripts.SceneController
             yield return new WaitForSeconds(1);
             yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 2);
             dani.StartFight();
-            yield return EntityController.MoveTo(dani.transform, flyTarget, 1f);
+            yield return EntityController.MoveTo(dani.transform, flyTarget, 1.5f);
             yield return new WaitForSeconds(1);
             EnableCameraAndMovement();
         }

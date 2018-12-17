@@ -40,15 +40,6 @@ namespace Code.Scripts.Entity
             laserShootLoop = StartCoroutine(StartLaserLoop());
         }
 
-        private IEnumerator StartLaserLoop()
-        {
-            while (true)
-            {
-                Animator.SetTrigger("ShootLaser");
-                yield return new WaitForSeconds(6);
-            }
-        }
-
         protected override void DealWithCollision(GameObject other)
         {
             base.DealWithCollision(other);
@@ -113,6 +104,14 @@ namespace Code.Scripts.Entity
             }
         }
 
+        private IEnumerator StartLaserLoop()
+        {
+            while (true)
+            {
+                Animator.SetTrigger("ShootLaser");
+                yield return new WaitForSeconds(6);
+            }
+        }
         private void StartNextPhaseIfNecessary()
         {
             if (healthBorders.Count < 1 || CombatController.CurrentLife > healthBorders.Peek())

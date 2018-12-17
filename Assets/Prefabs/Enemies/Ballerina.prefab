@@ -354,6 +354,7 @@ MonoBehaviour:
   MaxLife: 6
   WalkingSpeed: 3
   Patrolling: 1
+  gettingHitSource: {fileID: 0}
   LeftShoeSource: {fileID: 4553919857663720}
   LeftTargets:
   - {fileID: 4350982951293096}
