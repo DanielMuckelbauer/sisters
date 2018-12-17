@@ -1,25 +1,37 @@
-﻿using Code.Classes.CombatController;
-using Code.Classes.MovementController;
+﻿using System;
 using System.Collections;
+using Code.Classes.MovementController;
 using UnityEngine;
 
 namespace Code.Scripts.Entity
 {
-    public class Clown : BossEnemy
+    public class Clown : BasePatrollingEnemy
     {
+        public event Action OnDestroyed;
+
         public override void HitByProjectile(GameObject projectile)
         {
             base.HitByProjectile(projectile);
             CombatController.ReceiveHit();
         }
 
-        public override void StartBossFight()
+        private void OnDestroy()
         {
+            OnDestroyed?.Invoke();
         }
 
-        protected override void Start()
+        public void StartPunching()
         {
-            MovementController = new PatrollingEnemyMovementController(gameObject, WalkingSpeed);
+            StartCoroutine(PunchingLoop());
+        }
+
+        private IEnumerator PunchingLoop()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(7);
+                GetComponent<Animator>().SetTrigger("Punch");
+            }
         }
     }
 }

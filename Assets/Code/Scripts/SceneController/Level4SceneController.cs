@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using Code.Classes;
+using Code.Scripts.Entity;
 using UnityEngine;
 
 namespace Code.Scripts.SceneController
 {
     public class Level4SceneController : BaseSceneController
     {
-        [SerializeField] private GameObject clown;
+        [SerializeField] private Clown clown;
         private Animator clownAnimator;
         [SerializeField] private Transform clownCameraTarget;
         [SerializeField] private AudioClip baepsaeClip;
         [SerializeField] private AudioSource mainSource;
+        [SerializeField] private Transform walkTarget1;
+        [SerializeField] private Transform walkTarget2;
+        [SerializeField] private Transform endingTarget;
 
         protected override void HandleTrigger()
         {
@@ -24,26 +28,34 @@ namespace Code.Scripts.SceneController
             base.Start();
             StartCoroutine(PlayOpeningCutscene(1, 3));
             clownAnimator = clown.GetComponent<Animator>();
+            clown.OnDestroyed += EndingCutscene;
+        }
+
+        private void EndingCutscene()
+        {
+            DisableCameraAndMovement();
+            StartCoroutine(MoveCameraSmoothly(clownCameraTarget.position));
+            StartCoroutine(EntityController.MovePlayersToOppositePositions(walkTarget1, walkTarget2));
+            StartCoroutine(TalkAfterBoss());
+        }
+
+        private IEnumerator TalkAfterBoss()
+        {
+            yield return TextController.ShowCharactersNextBubbleText(Character.Muni);
+            yield return TextController.ShowCharactersNextBubbleText(Character.Pollin);
+            yield return new WaitForSeconds(3);
+            yield return MoveCameraSmoothly(endingTarget.position);
+            FadeSceneOut();
+            EnableNextScene();
         }
 
         private IEnumerator ClownCutscene()
         {
             yield return Talk();
-            Vector3 targetPosition = new Vector3(clownCameraTarget.position.x, clownCameraTarget.position.y,
-                MainCamera.transform.position.z);
             ChangeMusic();
-            yield return MoveCameraSmoothly(targetPosition);
+            yield return MoveCameraSmoothly(clownCameraTarget.position);
             yield return Dance();
-            StartCoroutine(StartPunching());
-        }
-
-        private IEnumerator StartPunching()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(7);
-                clownAnimator.SetTrigger("Punch");
-            }
+            clown.StartPunching();
         }
 
         private void ChangeMusic()

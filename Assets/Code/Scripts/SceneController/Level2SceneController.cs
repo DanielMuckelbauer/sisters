@@ -14,6 +14,7 @@ namespace Code.Scripts.SceneController
         [SerializeField] private Transform walkTarget2;
         [SerializeField] private Transform innerWalkTarget1;
         [SerializeField] private Transform innerWalkTarget2;
+        [SerializeField] private Transform endingCameraTarget;
         [SerializeField] private Ballerina ballerina;
 
         protected override void HandleTrigger()
@@ -33,6 +34,7 @@ namespace Code.Scripts.SceneController
         private void PlayEndingCutscene()
         {
             DisableCameraAndMovement();
+            StartCoroutine(MoveCameraSmoothly(endingCameraTarget.position));
             StartCoroutine(EntityController.MovePlayersToOppositePositions(innerWalkTarget1, innerWalkTarget2));
             StartCoroutine(TalkAfterBoss());
         }

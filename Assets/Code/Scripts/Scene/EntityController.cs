@@ -11,7 +11,7 @@ namespace Code.Scripts.Scene
     {
         [SerializeField] private Dictionary<Character, Player> characters;
         [SerializeField] private GameObject respawnPointParent;
-        private List<Transform> respawnPoints;
+        private List<Transform> respawnPoints;  
         public List<Player> PlayerList;
 
         public void Awake()

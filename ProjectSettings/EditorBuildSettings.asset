@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level3.unity
     guid: 9e534cd13319dc8489821e7edb4a8311
   - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 74a266b1dac7a034582633a091ab0007
+  - enabled: 1
     path: Assets/Scenes/SmashLevel.unity
     guid: e9d0986aef601f440903ecf0bf2be128
   m_configObjects: {}
