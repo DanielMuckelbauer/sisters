@@ -34,6 +34,16 @@ namespace Code.Scripts.SceneController
             ChangeMusic();
             yield return MoveCameraSmoothly(targetPosition);
             yield return Dance();
+            StartCoroutine(StartPunching());
+        }
+
+        private IEnumerator StartPunching()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(7);
+                clownAnimator.SetTrigger("Punch");
+            }
         }
 
         private void ChangeMusic()
