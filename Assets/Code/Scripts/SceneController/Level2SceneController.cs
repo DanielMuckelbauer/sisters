@@ -1,5 +1,6 @@
 ﻿using Code.Classes;
 using System.Collections;
+using Code.Scripts.Entity;
 using UnityEngine;
 
 namespace Code.Scripts.SceneController
@@ -11,6 +12,9 @@ namespace Code.Scripts.SceneController
         [SerializeField] private Transform endbossSpawnPoint;
         [SerializeField] private Transform walkTarget1;
         [SerializeField] private Transform walkTarget2;
+        [SerializeField] private Transform innerWalkTarget1;
+        [SerializeField] private Transform innerWalkTarget2;
+        [SerializeField] private Ballerina ballerina;
 
         protected override void HandleTrigger()
         {
@@ -23,6 +27,23 @@ namespace Code.Scripts.SceneController
         {
             base.Start();
             StartCoroutine(PlayOpeningCutscene(5, 2));
+            ballerina.OnDestroyed += PlayEndingCutscene;
+        }
+
+        private void PlayEndingCutscene()
+        {
+            DisableCameraAndMovement();
+            StartCoroutine(EntityController.MovePlayersToOppositePositions(innerWalkTarget1, innerWalkTarget2));
+            StartCoroutine(TalkAfterBoss());
+        }
+
+        private IEnumerator TalkAfterBoss()
+        {
+            yield return TextController.ShowCharactersNextBubbleText(Character.Muni);
+            yield return TextController.ShowCharactersNextBubbleText(Character.Pollin);
+            FadeSceneOut();
+            yield return new WaitForSeconds(5);
+            EnableNextScene();
         }
 
         private void ChangeMusic()
@@ -34,18 +55,7 @@ namespace Code.Scripts.SceneController
         private void PlayBalletMusic()
         {
             audioSource.clip = balletMusic;
-            audioSource.volume = 0f;
             audioSource.Play();
-            StartCoroutine(SlowlyIncreaseVolume());
-        }
-
-        private IEnumerator SlowlyIncreaseVolume()
-        {
-            while (audioSource.volume < 0.4)
-            {
-                yield return new WaitForSeconds(2);
-                audioSource.volume += 0.01f;
-            }
         }
 
         private IEnumerator Talk()

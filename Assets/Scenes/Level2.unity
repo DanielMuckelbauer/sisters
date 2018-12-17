@@ -10746,6 +10746,34 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &156830872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 156830873}
+  m_Layer: 0
+  m_Name: InnerWalkpoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &156830873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 156830872}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 48.44, y: 3.3040009, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1706514907}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &208275422
 Prefab:
   m_ObjectHideFlags: 0
@@ -11188,6 +11216,11 @@ Prefab:
     - target: {fileID: 4942177223429454, guid: 21839f045b3b1ce44b58e1db022deeb8, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269315879896588, guid: 21839f045b3b1ce44b58e1db022deeb8,
+        type: 2}
+      propertyPath: MaxLife
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21839f045b3b1ce44b58e1db022deeb8, type: 2}
@@ -12243,6 +12276,12 @@ Transform:
   m_Father: {fileID: 285385420}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1267529996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114269315879896588, guid: 21839f045b3b1ce44b58e1db022deeb8,
+    type: 2}
+  m_PrefabInternal: {fileID: 531327983}
+  m_Script: {fileID: 11500000, guid: bd7358ed97964438ab761b9146ac7806, type: 3}
 --- !u!1 &1289128183 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1034326603263260, guid: 7a41169db5b9a47de92d0f444681886c,
@@ -12925,6 +12964,8 @@ Transform:
   - {fileID: 2071869462}
   - {fileID: 416264130}
   - {fileID: 1300162194}
+  - {fileID: 1773722772}
+  - {fileID: 156830873}
   m_Father: {fileID: 1700018993}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12948,6 +12989,9 @@ MonoBehaviour:
   endbossSpawnPoint: {fileID: 2071869462}
   walkTarget1: {fileID: 416264130}
   walkTarget2: {fileID: 1300162194}
+  innerWalkTarget1: {fileID: 1773722772}
+  innerWalkTarget2: {fileID: 156830873}
+  ballerina: {fileID: 1267529996}
 --- !u!61 &1706514909
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13043,6 +13087,34 @@ Transform:
   - {fileID: 1297573741}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1773722771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1773722772}
+  m_Layer: 0
+  m_Name: InnerWalkPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1773722772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1773722771}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 44.34, y: 3.3040009, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1706514907}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1774390682 stripped
 Camera:

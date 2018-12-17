@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ namespace Code.Scripts.Entity
         public List<Transform> RightTargets;
         public GameObject Shoe;
         private Dictionary<Transform, List<Transform>> directions;
+
+        public event Action OnDestroyed;
 
         public void StartFighting()
         {
@@ -50,11 +53,13 @@ namespace Code.Scripts.Entity
         {
             foreach (KeyValuePair<Transform, List<Transform>> pair in directions)
             {
-                pair.Value.ForEach(target =>
-                {
-                    InstantiateAndShootProjectile(Shoe, pair.Key, target);
-                });
+                pair.Value.ForEach(target => { InstantiateAndShootProjectile(Shoe, pair.Key, target); });
             }
+        }
+
+        private void OnDestroy()
+        {
+            OnDestroyed?.Invoke();
         }
     }
 }
