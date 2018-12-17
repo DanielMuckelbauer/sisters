@@ -27,7 +27,7 @@ namespace Code.Scripts.Entity
                 return;
             StartCoroutine(BrieflyTurnInvincibleAndBlink());
             CombatController.ReceiveHit();
-        }
+        }   
 
         protected void InstantiateAndShootProjectile(GameObject projectile, Transform source, Transform target)
         {
