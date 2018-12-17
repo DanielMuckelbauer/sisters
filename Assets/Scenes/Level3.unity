@@ -2364,7 +2364,7 @@ Prefab:
     - target: {fileID: 114513021277704082, guid: 40f0c278916650549a4b753816fe6fda,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
         type: 2}
@@ -2391,6 +2391,21 @@ Prefab:
       propertyPath: Hearts.Array.data[4]
       value: 
       objectReference: {fileID: 1353583922}
+    - target: {fileID: 212916006040389672, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212094515541984904, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513021277704082, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_margin.x
+      value: 8.453327
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
   m_IsPrefabAsset: 0

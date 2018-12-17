@@ -234,6 +234,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1061069945433942, guid: be956fa908d6bd7479a94f994585409e,
     type: 2}
   m_PrefabInternal: {fileID: 823134488}
+--- !u!114 &574678969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114013279623752596, guid: be956fa908d6bd7479a94f994585409e,
+    type: 2}
+  m_PrefabInternal: {fileID: 823134488}
+  m_Script: {fileID: 11500000, guid: a26dec5e8dad46ee95bdc07316952aee, type: 3}
 --- !u!1 &641019777
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +631,7 @@ GameObject:
   - component: {fileID: 1045421088}
   - component: {fileID: 1045421089}
   m_Layer: 0
-  m_Name: PlayerController
+  m_Name: EntityController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -656,7 +662,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPointParent: {fileID: 1609891968}
-  PlayerList: []
+  PlayerList:
+  - {fileID: 2006451762}
+  - {fileID: 574678969}
 --- !u!1001 &1100177358
 Prefab:
   m_ObjectHideFlags: 0
@@ -1545,6 +1553,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1041184827798590, guid: 40f0c278916650549a4b753816fe6fda,
     type: 2}
   m_PrefabInternal: {fileID: 1966021468}
+--- !u!114 &2006451762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
+    type: 2}
+  m_PrefabInternal: {fileID: 1966021468}
+  m_Script: {fileID: 11500000, guid: b77fc821a5f04aed95faca9d858e533c, type: 3}
 --- !u!1 &2099549631
 GameObject:
   m_ObjectHideFlags: 0
