@@ -50,12 +50,6 @@ namespace Code.Scripts.SceneController
 
         private void ChangeMusic()
         {
-            audioSource.Stop();
-            PlayBalletMusic();
-        }
-
-        private void PlayBalletMusic()
-        {
             audioSource.clip = balletMusic;
             audioSource.Play();
         }
