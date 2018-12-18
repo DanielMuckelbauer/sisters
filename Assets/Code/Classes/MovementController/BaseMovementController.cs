@@ -30,5 +30,13 @@ namespace Code.Classes.MovementController
         public abstract void Jump();
 
         public abstract void Move(float horizontal);
+
+        public void SlowJump()
+        {
+            if (!(Vector2.Dot(RigidBody.velocity, Vector2.up) > 0))
+                return;
+            const int counterForce = 150;
+            RigidBody.AddForce(Vector2.down * counterForce);
+        }
     }
 }

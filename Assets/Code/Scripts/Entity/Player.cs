@@ -14,10 +14,10 @@ namespace Code.Scripts.Entity
         public AudioClip Jump;
         public AudioClip ReceiveHit;
         protected Dictionary<Control, string> Controls;
-        private bool movementDisabled;
         private float lastSwing;
-
+        private bool movementDisabled;
         public static event Action OnDie;
+        private bool jumpButtonUp;
 
         protected enum Control
         {
@@ -89,6 +89,8 @@ namespace Code.Scripts.Entity
             if (movementDisabled)
                 return;
             CheckMove();
+            if (jumpButtonUp)
+                MovementController.SlowJump();
         }
 
         private bool NotHitable(GameObject otherGameObject)
@@ -119,6 +121,7 @@ namespace Code.Scripts.Entity
             CheckJump();
             CheckStrike();
             CheckGroundedForJumpAnimation();
+            jumpButtonUp = Input.GetButtonUp(Controls[Control.Jump]);
         }
     }
 }
