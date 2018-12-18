@@ -11,10 +11,10 @@ namespace Code.Scripts.SceneController
 {
     public abstract class BaseSceneController : MonoBehaviour
     {
+        [SerializeField] protected EntityController EntityController;
         [SerializeField] protected GameObject GameElements;
         protected bool IgnoreTrigger;
         [SerializeField] protected GameObject MainCamera;
-        [SerializeField] protected EntityController EntityController;
         [SerializeField] protected TextController TextController;
 
         public void SceneTriggerEntered()
@@ -156,7 +156,14 @@ namespace Code.Scripts.SceneController
 
             UnsubscribeAllDelegatesFromStaticEvents();
             SaveGame();
-            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
+            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) %
+                                   SceneManager.sceneCountInBuildSettings);
+        }
+
+        private void QuitOnEscape()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                Application.Quit();
         }
 
         private IEnumerator ShowDied()
@@ -166,6 +173,11 @@ namespace Code.Scripts.SceneController
             TextController.ShowDiedText();
             yield return new WaitForSeconds(5);
             ResetScene();
+        }
+
+        private void Update()
+        {
+            QuitOnEscape();
         }
     }
 }
