@@ -2229,6 +2229,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 33369113527873652, guid: be956fa908d6bd7479a94f994585409e,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 114013279623752596, guid: be956fa908d6bd7479a94f994585409e,
         type: 2}
       propertyPath: Hearts.Array.data[0]
@@ -2254,10 +2259,15 @@ Prefab:
       propertyPath: Hearts.Array.data[4]
       value: 
       objectReference: {fileID: 164868386}
-    - target: {fileID: 33369113527873652, guid: be956fa908d6bd7479a94f994585409e,
+    - target: {fileID: 114926714580945158, guid: be956fa908d6bd7479a94f994585409e,
         type: 2}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114926714580945158, guid: be956fa908d6bd7479a94f994585409e,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be956fa908d6bd7479a94f994585409e, type: 2}
