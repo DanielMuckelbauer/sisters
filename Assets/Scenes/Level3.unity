@@ -2504,7 +2504,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.5
+      value: -101.3
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3202,7 +3202,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 127.5
+      value: -103
       objectReference: {fileID: 0}
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3464,9 +3464,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558293c6f00b426e8bd03c3b705c4695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityController: {fileID: 84580969}
   GameElements: {fileID: 1514997687}
   MainCamera: {fileID: 529121926}
-  EntityController: {fileID: 84580969}
   TextController: {fileID: 1648193973}
   innerWalkTarget1: {fileID: 1873821387}
   innerWalkTarget2: {fileID: 2009291788}

@@ -11526,7 +11526,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 82.09
+      value: -79.1
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.y
@@ -11659,7 +11659,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 45.21
+      value: -81.9
       objectReference: {fileID: 0}
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -12932,6 +12932,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114441974258189448, guid: 8baf77b7ea7a5cc42afaa3bc3f50efb7,
+        type: 2}
+      propertyPath: moveTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8baf77b7ea7a5cc42afaa3bc3f50efb7, type: 2}
   m_IsPrefabAsset: 0
@@ -13014,9 +13019,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f2529e2d954b7b9da1ea16e30542fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityController: {fileID: 812746828}
   GameElements: {fileID: 1770195468}
   MainCamera: {fileID: 380056169}
-  EntityController: {fileID: 812746828}
   TextController: {fileID: 84634400}
   audioSource: {fileID: 250322463}
   balletMusic: {fileID: 8300000, guid: cb8b2fce9d6a8c347a5f6a9481066f3e, type: 3}
@@ -13609,6 +13614,11 @@ Prefab:
     - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
         type: 2}
       propertyPath: PlayerController
+      value: 
+      objectReference: {fileID: 812746828}
+    - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: EntityController
       value: 
       objectReference: {fileID: 812746828}
     m_RemovedComponents: []

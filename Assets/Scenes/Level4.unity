@@ -3184,9 +3184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31748777d4ee7754ea3b64fbe2d98650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityController: {fileID: 315268794}
   GameElements: {fileID: 1204416036}
   MainCamera: {fileID: 1974939570}
-  EntityController: {fileID: 315268794}
   TextController: {fileID: 1833616851}
   clown: {fileID: 518968809}
   clownCameraTarget: {fileID: 1036354326}
@@ -3751,11 +3751,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -80.16
+      value: -254.6
       objectReference: {fileID: 0}
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 86.6
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3962,11 +3962,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -88.29
+      value: -256.63
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 19.99
+      value: 2.0899944
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.z
