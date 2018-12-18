@@ -41,7 +41,7 @@ namespace Code.Scripts
         private void ReadSaveFile()
         {
             if (!File.Exists(SaveGamePath))
-                latestLevel = 1;
+                latestLevel = 0;
             else
             {
                 using (XmlReader reader = XmlReader.Create(new StreamReader(SaveGamePath)))

@@ -9,6 +9,9 @@ namespace Code.Scripts.Hazards
         {
             if (other.gameObject.tag.Contains("Player"))
                 EntityController.RespawnBoth();
+            if (other.gameObject.tag.Contains("Enemy"))
+                Destroy(other.gameObject);
+
         }
     }
 }

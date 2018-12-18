@@ -68,7 +68,6 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator PlayCutScene()
         {
-            EnableNextScene();
             yield return ShowNextTextSection(2, 2);
             yield return HospitalCutscene();
             AudioPlayer.Stop();
@@ -78,9 +77,9 @@ namespace Code.Scripts.SceneController
             yield return SwordRoomCutscene();
             yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 2);
             DaniAnimator.SetTrigger("GiveSword");
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(7);
             cameraAnimator.SetTrigger("MoveCameraUp");
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(6.3f);
             StartCoroutine(Fade(Title, 0, 1));
             moveSword = true;
             yield return new WaitForSeconds(6);

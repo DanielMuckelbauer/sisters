@@ -554,12 +554,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab754c3ed3a75946ac065fda55b552a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityController: {fileID: 1085307875}
   GameElements: {fileID: 35516094}
   MainCamera: {fileID: 2101569435}
-  EntityController: {fileID: 1085307875}
   TextController: {fileID: 678123776}
   AudioClips:
-  - {fileID: 8300000, guid: 26ea5cc30bb6f7b41a7e7c9b7b9376b1, type: 3}
+  - {fileID: 8300000, guid: da0410c9399ef8f4691f141be5def1d3, type: 3}
   AudioPlayer: {fileID: 2101569439}
   BirthPosition: {x: 6.7, y: 1.3, z: 0}
   Chicken: {fileID: 1913611555060396, guid: 01fdb8c400458934fbde75db13ab1bfd, type: 2}
@@ -793,8 +793,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937979de6d1612f4483af9847e916cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerList: []
   respawnPointParent: {fileID: 0}
+  PlayerList: []
 --- !u!1001 &1356816523
 Prefab:
   m_ObjectHideFlags: 0
