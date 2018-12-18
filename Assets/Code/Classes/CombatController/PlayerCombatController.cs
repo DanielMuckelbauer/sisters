@@ -22,7 +22,6 @@ namespace Code.Classes.CombatController
         {
             PushUp();
             RemoveHeart();
-
             base.ReceiveHit();
         }
 

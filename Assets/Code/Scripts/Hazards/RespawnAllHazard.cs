@@ -11,7 +11,6 @@ namespace Code.Scripts.Hazards
                 EntityController.RespawnBoth();
             if (other.gameObject.tag.Contains("Enemy"))
                 Destroy(other.gameObject);
-
         }
     }
 }

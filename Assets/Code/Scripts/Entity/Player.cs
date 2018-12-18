@@ -13,9 +13,9 @@ namespace Code.Scripts.Entity
         public List<GameObject> Hearts;
         public AudioClip Jump;
         public AudioClip ReceiveHit;
-        public AudioClip Swing;
         protected Dictionary<Control, string> Controls;
         private bool movementDisabled;
+        private float lastSwing;
 
         public static event Action OnDie;
 
@@ -73,7 +73,6 @@ namespace Code.Scripts.Entity
             if (!Input.GetButtonDown(Controls[Control.Strike]))
                 return;
             Animator.SetTrigger("OnAttackDown");
-            PlaySound(Swing);
         }
 
         private void DealWithCollision(GameObject otherGameObject)
