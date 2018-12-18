@@ -13,6 +13,7 @@ namespace Code.Scripts.Scene
         private bool movingEnabled;
         [SerializeField] private float pause;
         [SerializeField] private float step;
+
         protected abstract void CalculateDirection();
 
         protected Vector3 ChangeBetweenTwoDirections(Vector3 first, Vector3 second)

@@ -1,16 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Code.Classes.CombatController;
 using Code.Classes.MovementController;
 using Code.Scripts.Scene;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Code.Scripts.Entity
 {
     public abstract class BasePatrollingEnemy : BaseEntity
     {
         public bool Patrolling;
+        public static event Action PlayHitSound;
         private Coroutine patrol;
-        
+
         public void StartPatrolling()
         {
             patrol = StartCoroutine(Patrol());
@@ -27,7 +30,8 @@ namespace Code.Scripts.Entity
                 return;
             StartCoroutine(BrieflyTurnInvincibleAndBlink());
             CombatController.ReceiveHit();
-        }   
+            PlayHitSound?.Invoke();
+        }
 
         protected void InstantiateAndShootProjectile(GameObject projectile, Transform source, Transform target)
         {
@@ -49,7 +53,7 @@ namespace Code.Scripts.Entity
         {
             DealWithCollision(collision.gameObject);
         }
-        
+
         protected void OnTriggerEnter2D(Collider2D other)
         {
             DealWithCollision(other.gameObject);

@@ -5519,15 +5519,6 @@ Prefab:
       propertyPath: Player2
       value: 
       objectReference: {fileID: 1077400875}
-    - target: {fileID: 82020333564612880, guid: de5f7ff9395841040ab83a002ce562e9,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6e8d1c15a33f8894b82f2309904caa11, type: 3}
-    - target: {fileID: 1102126084470950, guid: de5f7ff9395841040ab83a002ce562e9, type: 2}
-      propertyPath: m_Name
-      value: Camera
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de5f7ff9395841040ab83a002ce562e9, type: 2}
   m_IsPrefabAsset: 0
