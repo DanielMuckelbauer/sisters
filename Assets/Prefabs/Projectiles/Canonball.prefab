@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4256919920368314}
   - component: {fileID: 212740889626604270}
-  - component: {fileID: 114708544772944352}
   - component: {fileID: 50632887662306882}
   - component: {fileID: 58087623294480264}
+  - component: {fileID: 114525472827670544}
   m_Layer: 15
   m_Name: Canonball
   m_TagString: Enemy
@@ -78,7 +78,7 @@ CircleCollider2D:
   m_Offset: {x: 0.031380266, y: 0}
   serializedVersion: 2
   m_Radius: 1.00185
---- !u!114 &114708544772944352
+--- !u!114 &114525472827670544
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,11 +86,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586494951206932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bbec639dde1483c94d79cfa49b177a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2faed9f6e0aa4a3fbe3cf328760d1c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootForce: 2
-  RotationForce: 10
+  shootForce: 2
+  rotationForce: 10
+  destroyAfter: 7
 --- !u!212 &212740889626604270
 SpriteRenderer:
   m_ObjectHideFlags: 1

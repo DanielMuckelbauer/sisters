@@ -156,7 +156,7 @@ namespace Code.Scripts.SceneController
 
             UnsubscribeAllDelegatesFromStaticEvents();
             SaveGame();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
         }
 
         private IEnumerator ShowDied()

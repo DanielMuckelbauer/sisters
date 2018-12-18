@@ -23,6 +23,9 @@ namespace Code.Scripts.SceneController
         private List<GameObject> portals;
         private List<GameObject> spawnedSpiders;
         [SerializeField] private GameObject spider;
+        [SerializeField] private List<Sprite> creditSprites;
+        [SerializeField] private SpriteRenderer creditRenderer;
+        [SerializeField] private Transform flyAwayCameraTarget;
 
         protected override void Start()
         {
@@ -87,21 +90,38 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator FlyAway()
         {
+            StartCoroutine(MoveCameraSmoothly(flyAwayCameraTarget.position, 5));
             yield return FlyToFlyAwayTargets();
+            yield return new WaitForSeconds(3);
+            yield return ShowCredits();
+        }
+
+        private IEnumerator ShowCredits()
+        {
+            FadeSceneOut();
+            MainCamera.transform.position = new Vector3(creditRenderer.transform.position.x,
+                creditRenderer.transform.position.y, MainCamera.transform.position.z + 5);
+            foreach (Sprite sprite in creditSprites)
+            {
+                creditRenderer.sprite = sprite;
+                TextController.ActivateCanvas(true);
+                yield return ShowNextTextSection(4);
+                TextController.ActivateCanvas(false);
+                yield return Fade(creditRenderer, 0, 1, 3);
+                yield return new WaitForSeconds(4);
+                yield return Fade(creditRenderer, 1, 0, 3);
+            }
+            EnableNextScene();
         }
 
         private IEnumerator FlyToFlyAwayTargets()
         {
-            for (var i = 0; i < flyAwayTargets.Count; i++)
+            StartCoroutine(TextController.ShowCharactersNextBubbleText(Character.Dani));
+            foreach (Transform target in flyAwayTargets)
             {
-                if (i == 1)
-                    StartCoroutine(TextController.ShowCharactersNextBubbleText(Character.Dani));
-                Transform target = flyAwayTargets[i];
                 yield return RotateTowardsTarget(target);
                 yield return EntityController.MoveTo(dani.transform, target, 1f);
             }
-
-            yield return null;
         }
 
         private void InitializePhaseChangeMethods()
