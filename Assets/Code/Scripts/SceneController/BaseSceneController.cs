@@ -126,7 +126,7 @@ namespace Code.Scripts.SceneController
             Directory.CreateDirectory("Savegame");
             string path = MenuController.SaveGamePath;
             File.Delete(path);
-            string level = (SceneManager.GetActiveScene().buildIndex + 1).ToString();
+            string level = SceneManager.GetActiveScene().buildIndex.ToString();
             XmlWriter xmlWriter = XmlWriter.Create(path);
             xmlWriter.WriteStartDocument();
             xmlWriter.WriteStartElement("Level");
