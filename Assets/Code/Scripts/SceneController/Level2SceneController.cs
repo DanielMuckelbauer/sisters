@@ -51,6 +51,7 @@ namespace Code.Scripts.SceneController
         private void ChangeMusic()
         {
             audioSource.clip = balletMusic;
+            audioSource.volume *= 2f;
             audioSource.Play();
         }
 

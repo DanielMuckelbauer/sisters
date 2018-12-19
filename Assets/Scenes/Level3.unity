@@ -416,8 +416,17 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
+      time: 0.968916
+      value: 0.98472214
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
-      value: 0.888116
+      value: 0
       inSlope: Infinity
       outSlope: Infinity
       tangentMode: 0
@@ -2504,11 +2513,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -101.3
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -16.84
+      value: -16.6
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3082,6 +3091,15 @@ Prefab:
     - target: {fileID: 1919185708707984, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
       propertyPath: m_Name
       value: BigLaserCannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171288112127604, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 82572458252452650, guid: 061f49eef11c5450a9d7b316f3befe7e,
+        type: 2}
+      propertyPath: MaxDistance
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 061f49eef11c5450a9d7b316f3befe7e, type: 2}

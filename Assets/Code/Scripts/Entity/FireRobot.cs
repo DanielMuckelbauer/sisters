@@ -17,7 +17,7 @@ namespace Code.Scripts.Entity
         {
             while (true)
             {
-                yield return new WaitForSeconds(7);
+                yield return new WaitForSeconds(5);
                 AudioSource.Play();
                 Animator.SetTrigger("Shoot");
             }
