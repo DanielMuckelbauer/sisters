@@ -12,9 +12,14 @@ namespace Code.Scripts.Entity
     {
         public bool Patrolling;
 
-        public static event Action PlayHitSound;
-
         private Coroutine patrol;
+        private Coroutine blinkingCoroutine;
+
+        public static event Action PlayHitSound;
+        public static void ResetOnHitSound()
+        {
+            PlayHitSound = null;
+        }
 
         public void StartPatrolling()
         {
@@ -28,7 +33,7 @@ namespace Code.Scripts.Entity
 
         protected virtual void DealWithCollision(GameObject otherGameObject)
         {
-            if (NotHitable(otherGameObject))
+            if (NotHitable(otherGameObject) || Invincible)
                 return;
             StartCoroutine(BrieflyTurnInvincibleAndBlink());
             CombatController.ReceiveHit();

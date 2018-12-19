@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 namespace Code.Scripts
 {
-    [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
     public class MenuController : MonoBehaviour
     {
         public static string SaveGamePath = "Savegame/save.xml";
@@ -19,7 +18,7 @@ namespace Code.Scripts
 
         private void EnableButtons()
         {
-            for (int i = 0; i <= latestLevel; i++)
+            for (int i = 0; i < latestLevel; i++)
             {
                 levelButtons[i]?.gameObject.SetActive(true);
             }

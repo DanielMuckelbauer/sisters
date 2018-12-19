@@ -74,7 +74,8 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator DisablePlayersAndMoveCameraToBoss()
         {
-            DisableCameraAndMovement();
+            DisableFollowingCamera();
+            dani.Invincible = true;
             StartCoroutine(MoveCameraSmoothly(flyTarget.position));
             yield return new WaitForSeconds(3);
         }
@@ -205,12 +206,14 @@ namespace Code.Scripts.SceneController
 
         private void StartSecondPhase()
         {
+            dani.Invincible = false;
             addSpawning = StartCoroutine(SpawnAddsPeriodically());
             dani.StartShooting();
         }
 
         private void StartThirdPhase()
         {
+            dani.Invincible = false;
             dani.StartShooting();
             dani.StartShootingLaser();
             addSpawning = StartCoroutine(SpawnAddsPeriodically());

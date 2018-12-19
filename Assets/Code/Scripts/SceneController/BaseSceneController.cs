@@ -138,6 +138,7 @@ namespace Code.Scripts.SceneController
         {
             Player.ResetOnDieEvent();
             Healer.ResetOnHealingConsumedEvent();
+            BasePatrollingEnemy.ResetOnHitSound();
         }
 
         private void GameOverScreen()
