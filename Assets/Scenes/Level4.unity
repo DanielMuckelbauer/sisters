@@ -2883,7 +2883,7 @@ Prefab:
     - target: {fileID: 114782345292172670, guid: 90513ca2206db5c4086e59330f1e6fd9,
         type: 2}
       propertyPath: MaxLife
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 70248973964448906, guid: 90513ca2206db5c4086e59330f1e6fd9,
         type: 2}
