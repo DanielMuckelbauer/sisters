@@ -3220,6 +3220,8 @@ MonoBehaviour:
   walkTarget1: {fileID: 441449398}
   walkTarget2: {fileID: 1621115328}
   endingTarget: {fileID: 567609826}
+  walkTargetBeforeBoss1: {fileID: 881049281}
+  walkTargetBeforeBoss2: {fileID: 367712627}
 --- !u!4 &624318618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4058157291086638, guid: 8baf77b7ea7a5cc42afaa3bc3f50efb7,
@@ -4015,11 +4017,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -79.23
+      value: -265
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 87.69
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.z
