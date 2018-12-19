@@ -19,7 +19,7 @@ namespace Code.Scripts.SceneController
         protected override void Start()
         {
             base.Start();
-            StartCoroutine(PlayOpeningCutscene(1, 4));
+            StartCoroutine(PlayOpeningCutscene(1, 3));
         }
 
         private IEnumerator GoToDiaperChanger()

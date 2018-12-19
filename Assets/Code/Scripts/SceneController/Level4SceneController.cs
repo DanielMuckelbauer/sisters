@@ -15,6 +15,9 @@ namespace Code.Scripts.SceneController
         [SerializeField] private Transform walkTarget1;
         [SerializeField] private Transform walkTarget2;
         [SerializeField] private Transform endingTarget;
+        [SerializeField] private Transform walkTargetBeforeBoss1;
+        [SerializeField] private Transform walkTargetBeforeBoss2;
+
 
         protected override void HandleTrigger()
         {
@@ -51,6 +54,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator ClownCutscene()
         {
+            yield return EntityController.MovePlayersToOppositePositions(walkTargetBeforeBoss1, walkTargetBeforeBoss2);
             yield return Talk();
             ChangeMusic();
             yield return MoveCameraSmoothly(clownCameraTarget.position);
