@@ -156,15 +156,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745551a78492498fb7b207e8e510502d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityController: {fileID: 1045421089}
   GameElements: {fileID: 1313685989}
   MainCamera: {fileID: 772832272}
-  EntityController: {fileID: 1045421089}
   TextController: {fileID: 1627140009}
   addSpawnPositions:
   - {fileID: 2099549632}
   - {fileID: 551922144}
   audioSource: {fileID: 772832273}
+  creditRenderer: {fileID: 369529174}
+  creditSprites:
+  - {fileID: 21300000, guid: c27b1f9a31512fb41999264f8a369d15, type: 3}
+  - {fileID: 21300000, guid: 2c66852579c048e4bb8425c0e2244e4b, type: 3}
+  - {fileID: 21300000, guid: 0b2348e5f3041a34884fa8fafafb4808, type: 3}
+  - {fileID: 21300000, guid: 8d8b1f0e6107ade4eafbced57425699c, type: 3}
+  - {fileID: 21300000, guid: f665b7099363962488cd4a8140467f19, type: 3}
   dani: {fileID: 1158730543}
+  flyAwayCameraTarget: {fileID: 1338266056}
   flyAwayTargets:
   - {fileID: 1108173439}
   - {fileID: 1371007374}
@@ -174,14 +182,6 @@ MonoBehaviour:
   hook: {fileID: 8300000, guid: 360fe6efc303bea4faa4d9934fcbf0c7, type: 3}
   portal: {fileID: 1822820362740006, guid: 3399dce956fefc844a933adfb701b987, type: 2}
   spider: {fileID: 1062200720564140, guid: 1fa61d6d5e25cb34e99cd03253e524ba, type: 2}
-  creditSprites:
-  - {fileID: 21300000, guid: c27b1f9a31512fb41999264f8a369d15, type: 3}
-  - {fileID: 21300000, guid: 2c66852579c048e4bb8425c0e2244e4b, type: 3}
-  - {fileID: 21300000, guid: 0b2348e5f3041a34884fa8fafafb4808, type: 3}
-  - {fileID: 21300000, guid: 8d8b1f0e6107ade4eafbced57425699c, type: 3}
-  - {fileID: 21300000, guid: f665b7099363962488cd4a8140467f19, type: 3}
-  creditRenderer: {fileID: 369529174}
-  flyAwayCameraTarget: {fileID: 1338266056}
 --- !u!1 &368319833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,12 +1538,12 @@ Prefab:
     - target: {fileID: 224190190649837840, guid: 7a41169db5b9a47de92d0f444681886c,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 23
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 224848988390109092, guid: 7a41169db5b9a47de92d0f444681886c,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 23
+      value: 105
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a41169db5b9a47de92d0f444681886c, type: 2}
