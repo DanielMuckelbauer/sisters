@@ -11,7 +11,6 @@ namespace Code.Scripts.Entity
         [SerializeField] private Transform target2;
         [SerializeField] private GameObject bullet;
 
-
         protected override void Start()
         {
             base.Start();

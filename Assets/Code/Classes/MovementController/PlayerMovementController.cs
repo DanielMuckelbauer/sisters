@@ -9,8 +9,6 @@ namespace Code.Classes.MovementController
         private readonly Transform groundCheck;
         private readonly AudioClip jump;
 
-
-
         public PlayerMovementController(GameObject gameObject, float speed, Transform groundCheck) : base(gameObject)
         {
             this.groundCheck = groundCheck;
@@ -36,7 +34,7 @@ namespace Code.Classes.MovementController
         public override void Move(float horizontal)
         {
             ApplyMovement(horizontal);
-            Animator.SetInteger("Walking", (int) horizontal);
+            Animator.SetInteger("Walking", (int)horizontal);
             TryFlip(horizontal);
         }
 

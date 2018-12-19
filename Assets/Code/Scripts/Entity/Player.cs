@@ -16,7 +16,9 @@ namespace Code.Scripts.Entity
         protected Dictionary<Control, string> Controls;
         private float lastSwing;
         private bool movementDisabled;
+
         public static event Action OnDie;
+
         private bool jumpButtonUp;
 
         protected enum Control

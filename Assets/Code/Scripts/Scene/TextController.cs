@@ -1,15 +1,14 @@
-﻿using System.Collections;
+﻿using Code.Classes;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Code.Classes;
-using Code.Scripts.Entity;
 using TMPro;
 using UnityEngine;
 
 namespace Code.Scripts.Scene
 {
     public class TextController : MonoBehaviour
-    {   
+    {
         public static int CutsceneStringCounter;
         public static List<string> CutsceneStrings;
         [SerializeField] private List<SpeechBubble> allSpeechBubbles;
@@ -61,12 +60,15 @@ namespace Code.Scripts.Scene
                 case "Dani":
                     speechBubbleDict.Add(Character.Dani, bubble);
                     break;
+
                 case "Muni":
                     speechBubbleDict.Add(Character.Muni, bubble);
                     break;
+
                 case "Pollin":
                     speechBubbleDict.Add(Character.Pollin, bubble);
                     break;
+
                 default:
                     break;
             }

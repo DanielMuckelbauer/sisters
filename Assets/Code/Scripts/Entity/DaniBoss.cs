@@ -17,6 +17,7 @@ namespace Code.Scripts.Entity
         [SerializeField] private GameObject pollin;
         [SerializeField] private Transform rightSource;
         private bool targetIsLeft;
+
         public event Action OnNextPhase;
 
         public void Shoot()
@@ -112,6 +113,7 @@ namespace Code.Scripts.Entity
                 yield return new WaitForSeconds(6);
             }
         }
+
         private void StartNextPhaseIfNecessary()
         {
             if (healthBorders.Count < 1 || CombatController.CurrentLife > healthBorders.Peek())

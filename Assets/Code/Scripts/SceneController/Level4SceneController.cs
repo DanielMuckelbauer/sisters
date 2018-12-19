@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using Code.Classes;
+﻿using Code.Classes;
 using Code.Scripts.Entity;
+using System.Collections;
 using UnityEngine;
 
 namespace Code.Scripts.SceneController

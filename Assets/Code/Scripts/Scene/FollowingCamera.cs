@@ -10,6 +10,7 @@ namespace Code.Scripts.Scene
 
         private PlayerCameraController playerCameraController;
         public bool Following { get; set; }
+
         private void Awake()
         {
             Following = true;

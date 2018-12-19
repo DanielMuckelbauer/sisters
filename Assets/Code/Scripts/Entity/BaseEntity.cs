@@ -35,7 +35,7 @@ namespace Code.Scripts.Entity
                 yield return null;
             }
 
-            MovementController.Move(0); 
+            MovementController.Move(0);
         }
 
         public virtual void HitByProjectile(GameObject projectile)

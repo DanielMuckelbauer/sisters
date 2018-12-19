@@ -9,6 +9,7 @@
         void Jump();
 
         void Move(float horizontal);
+
         void SlowJump();
     }
 }

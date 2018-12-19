@@ -1,6 +1,6 @@
-﻿using System;
-using Code.Classes;
+﻿using Code.Classes;
 using Code.Scripts.Entity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +13,11 @@ namespace Code.Scripts.SceneController
         private Coroutine addSpawning;
         [SerializeField] private List<Transform> addSpawnPositions;
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private SpriteRenderer creditRenderer;
+        [SerializeField] private List<Sprite> creditSprites;
         [SerializeField] private DaniBoss dani;
         private Vector3 daniCameraPosition;
+        [SerializeField] private Transform flyAwayCameraTarget;
         [SerializeField] private List<Transform> flyAwayTargets;
         [SerializeField] private Transform flyTarget;
         [SerializeField] private AudioClip hook;
@@ -23,9 +26,6 @@ namespace Code.Scripts.SceneController
         private List<GameObject> portals;
         private List<GameObject> spawnedSpiders;
         [SerializeField] private GameObject spider;
-        [SerializeField] private List<Sprite> creditSprites;
-        [SerializeField] private SpriteRenderer creditRenderer;
-        [SerializeField] private Transform flyAwayCameraTarget;
 
         protected override void Start()
         {
@@ -94,24 +94,6 @@ namespace Code.Scripts.SceneController
             yield return FlyToFlyAwayTargets();
             yield return new WaitForSeconds(3);
             yield return ShowCredits();
-        }
-
-        private IEnumerator ShowCredits()
-        {
-            FadeSceneOut();
-            MainCamera.transform.position = new Vector3(creditRenderer.transform.position.x,
-                creditRenderer.transform.position.y, MainCamera.transform.position.z + 5);
-            foreach (Sprite sprite in creditSprites)
-            {
-                creditRenderer.sprite = sprite;
-                TextController.ActivateCanvas(true);
-                yield return ShowNextTextSection(4);
-                TextController.ActivateCanvas(false);
-                yield return Fade(creditRenderer, 0, 1, 3);
-                yield return new WaitForSeconds(4);
-                yield return Fade(creditRenderer, 1, 0, 3);
-            }
-            EnableNextScene();
         }
 
         private IEnumerator FlyToFlyAwayTargets()
@@ -183,6 +165,24 @@ namespace Code.Scripts.SceneController
             yield return new WaitForSeconds(1);
             EnableCameraAndMovement();
             StartThirdPhase();
+        }
+
+        private IEnumerator ShowCredits()
+        {
+            FadeSceneOut();
+            MainCamera.transform.position = new Vector3(creditRenderer.transform.position.x,
+                creditRenderer.transform.position.y, MainCamera.transform.position.z + 5);
+            foreach (Sprite sprite in creditSprites)
+            {
+                creditRenderer.sprite = sprite;
+                TextController.ActivateCanvas(true);
+                yield return ShowNextTextSection(4);
+                TextController.ActivateCanvas(false);
+                yield return Fade(creditRenderer, 0, 1, 3);
+                yield return new WaitForSeconds(4);
+                yield return Fade(creditRenderer, 1, 0, 3);
+            }
+            EnableNextScene();
         }
 
         private IEnumerator SpawnAddsPeriodically()

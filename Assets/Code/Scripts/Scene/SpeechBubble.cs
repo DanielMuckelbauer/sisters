@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Code.Scripts.SceneController;
 using TMPro;
 using UnityEngine;
 

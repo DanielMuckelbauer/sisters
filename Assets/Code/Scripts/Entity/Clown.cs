@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using Code.Classes.MovementController;
 using UnityEngine;
 
 namespace Code.Scripts.Entity

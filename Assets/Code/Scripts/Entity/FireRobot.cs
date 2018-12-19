@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Code.Classes.CombatController;
 using UnityEngine;
 
 namespace Code.Scripts.Entity
