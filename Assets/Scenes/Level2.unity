@@ -11644,7 +11644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 235891873}
   m_Layer: 0
-  m_Name: CameraTarget
+  m_Name: CameraTargetInDanceStudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13306,6 +13306,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4637960756957512, guid: 94d0bfdaca8b63949bfdd1b1b5e35992,
     type: 2}
   m_PrefabInternal: {fileID: 104132919}
+--- !u!1 &1432224371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432224372}
+  m_Layer: 0
+  m_Name: CameraTargetOutsideDanceStudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1432224372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1432224371}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 27.11, y: 8.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1706514907}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1485567328
 Prefab:
   m_ObjectHideFlags: 0
@@ -13834,6 +13862,7 @@ Transform:
   - {fileID: 1773722772}
   - {fileID: 156830873}
   - {fileID: 235891873}
+  - {fileID: 1432224372}
   m_Father: {fileID: 1700018993}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13853,14 +13882,15 @@ MonoBehaviour:
   MainCamera: {fileID: 380056169}
   TextController: {fileID: 84634400}
   audioSource: {fileID: 250322463}
+  ballerina: {fileID: 1267529996}
   balletMusic: {fileID: 8300000, guid: cb8b2fce9d6a8c347a5f6a9481066f3e, type: 3}
+  cameraTargetOutside: {fileID: 1432224372}
   endbossSpawnPoint: {fileID: 2071869462}
-  walkTarget1: {fileID: 416264130}
-  walkTarget2: {fileID: 1300162194}
+  endingCameraTarget: {fileID: 235891873}
   innerWalkTarget1: {fileID: 1773722772}
   innerWalkTarget2: {fileID: 156830873}
-  endingCameraTarget: {fileID: 235891873}
-  ballerina: {fileID: 1267529996}
+  walkTarget1: {fileID: 416264130}
+  walkTarget2: {fileID: 1300162194}
 --- !u!61 &1706514909
 BoxCollider2D:
   m_ObjectHideFlags: 0

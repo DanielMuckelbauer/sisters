@@ -2925,6 +2925,11 @@ Prefab:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 114782345292172670, guid: 90513ca2206db5c4086e59330f1e6fd9,
+        type: 2}
+      propertyPath: MaxLife
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90513ca2206db5c4086e59330f1e6fd9, type: 2}
   m_IsPrefabAsset: 0
@@ -3846,11 +3851,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -99.39
+      value: -81
       objectReference: {fileID: 0}
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.199997
+      value: 88.6
       objectReference: {fileID: 0}
     - target: {fileID: 4497239621999768, guid: be956fa908d6bd7479a94f994585409e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3889,7 +3894,7 @@ Prefab:
     - target: {fileID: 114926714580945158, guid: be956fa908d6bd7479a94f994585409e,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114013279623752596, guid: be956fa908d6bd7479a94f994585409e,
         type: 2}
@@ -3916,6 +3921,29 @@ Prefab:
       propertyPath: Hearts.Array.data[4]
       value: 
       objectReference: {fileID: 399833649}
+    - target: {fileID: 212821143231939758, guid: be956fa908d6bd7479a94f994585409e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730155357583424, guid: be956fa908d6bd7479a94f994585409e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 42.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730155357583424, guid: be956fa908d6bd7479a94f994585409e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 43.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114926714580945158, guid: be956fa908d6bd7479a94f994585409e,
+        type: 2}
+      propertyPath: m_margin.x
+      value: 8.569582
+      objectReference: {fileID: 0}
+    - target: {fileID: 114926714580945158, guid: be956fa908d6bd7479a94f994585409e,
+        type: 2}
+      propertyPath: m_margin.z
+      value: 8.166564
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be956fa908d6bd7479a94f994585409e, type: 2}
   m_IsPrefabAsset: 0
@@ -4121,11 +4149,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -98.59
+      value: -80.2
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.7
+      value: 91.100006
       objectReference: {fileID: 0}
     - target: {fileID: 4274150424694688, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4164,7 +4192,7 @@ Prefab:
     - target: {fileID: 114513021277704082, guid: 40f0c278916650549a4b753816fe6fda,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114713349725674584, guid: 40f0c278916650549a4b753816fe6fda,
         type: 2}
@@ -4191,6 +4219,21 @@ Prefab:
       propertyPath: Hearts.Array.data[4]
       value: 
       objectReference: {fileID: 399833644}
+    - target: {fileID: 212916006040389672, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513021277704082, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_margin.z
+      value: 7.9391403
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513021277704082, guid: 40f0c278916650549a4b753816fe6fda,
+        type: 2}
+      propertyPath: m_margin.x
+      value: 8.636993
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40f0c278916650549a4b753816fe6fda, type: 2}
   m_IsPrefabAsset: 0

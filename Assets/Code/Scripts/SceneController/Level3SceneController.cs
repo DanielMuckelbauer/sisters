@@ -22,7 +22,15 @@ namespace Code.Scripts.SceneController
         protected override void Start()
         {
             base.Start();
+            DisableCameraAndMovement();
             StartCoroutine(PlayOpeningCutscene(1, 3));
+            StartCoroutine(EnableCameraAndMovementAfterDelay());
+        }
+
+        private IEnumerator EnableCameraAndMovementAfterDelay()
+        {
+            yield return new WaitForSeconds(4);
+            EnableCameraAndMovement();
         }
 
         private IEnumerator GoIntoDoor()
