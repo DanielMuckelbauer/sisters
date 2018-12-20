@@ -180,7 +180,7 @@ namespace Code.Scripts.SceneController
                 yield return ShowNextTextSection(4);
                 TextController.ActivateCanvas(false);
                 yield return Fade(creditRenderer, 0, 1, 3);
-                yield return new WaitForSeconds(4);
+                yield return new WaitForSeconds(2.5f);
                 yield return Fade(creditRenderer, 1, 0, 3);
             }
             EnableNextScene();
@@ -191,7 +191,7 @@ namespace Code.Scripts.SceneController
             while (true)
             {
                 yield return new WaitForSeconds(2);
-                Vector3 offset = new Vector3(Random.value * 5, 0, 0);
+                Vector3 offset = new Vector3(Random.value * 2, 0, 0);
                 portals = new List<GameObject>();
                 addSpawnPositions.ForEach(
                     tr => portals.Add(Instantiate(portal, tr.position + offset, new Quaternion())));
@@ -200,7 +200,7 @@ namespace Code.Scripts.SceneController
                     spawnedSpiders.Add(Instantiate(spider, tr.position + offset, new Quaternion())));
                 yield return new WaitForSeconds(2);
                 portals.ForEach(Destroy);
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(3);
             }
         }
 

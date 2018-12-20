@@ -8,7 +8,7 @@ namespace Code.Scripts.Scene
     {
         protected Vector3 Direction;
         [SerializeField] private float delay;
-        private Dictionary<GameObject, GameObject> entitiesStandingOnPlatformAndTheirParent;
+        private List<GameObject> gameobjectsStandingOnPlatform;
         [SerializeField] private float moveTime;
         private bool movingEnabled;
         [SerializeField] private float pause;
@@ -24,7 +24,7 @@ namespace Code.Scripts.Scene
         protected virtual void Start()
         {
             StartCoroutine(EnableMovingAfterDelay());
-            entitiesStandingOnPlatformAndTheirParent = new Dictionary<GameObject, GameObject>();
+            gameobjectsStandingOnPlatform = new List<GameObject>();
         }
 
         private IEnumerator EnableMovingAfterDelay()
@@ -50,7 +50,7 @@ namespace Code.Scripts.Scene
         {
             if (col.transform.parent == null)
                 return;
-            entitiesStandingOnPlatformAndTheirParent.Add(col.gameObject, col.transform.parent.gameObject);
+            gameobjectsStandingOnPlatform.Add(col.gameObject);
             col.gameObject.transform.parent = transform;
         }
 
@@ -62,22 +62,22 @@ namespace Code.Scripts.Scene
 
         private void OnTriggerExit2D(Collider2D col)
         {
-            if (!entitiesStandingOnPlatformAndTheirParent.ContainsKey(col.gameObject))
+            if (!gameobjectsStandingOnPlatform.Contains(col.gameObject))
                 return;
             ReturnToOriginalParent(col);
         }
 
         private void OnTriggerStay2D(Collider2D col)
         {
-            if (entitiesStandingOnPlatformAndTheirParent.ContainsKey(col.gameObject))
+            if (gameobjectsStandingOnPlatform.Contains(col.gameObject))
                 return;
             MakePlatformParentOf(col);
         }
 
         private void ReturnToOriginalParent(Collider2D col)
         {
-            col.gameObject.transform.parent = entitiesStandingOnPlatformAndTheirParent[col.gameObject].transform;
-            entitiesStandingOnPlatformAndTheirParent.Remove(col.gameObject);
+            col.gameObject.transform.parent = transform.parent;
+            gameobjectsStandingOnPlatform.Remove(col.gameObject);
         }
 
         private void Update()

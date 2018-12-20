@@ -80,12 +80,12 @@ namespace Code.Scripts.Entity
         {
             healthBorders = new Stack<int>();
             //TODO Change in Prod
-            //healthBorders.Push(1);
-            //healthBorders.Push(12);
-            //healthBorders.Push(18);
-            healthBorders.Push(23);
-            healthBorders.Push(24);
-            healthBorders.Push(25);
+            healthBorders.Push(1);
+            healthBorders.Push(12);
+            healthBorders.Push(18);
+            //healthBorders.Push(23);
+            //healthBorders.Push(24);
+            //healthBorders.Push(25);
         }
 
         private void SetTargetDirection()
@@ -110,7 +110,7 @@ namespace Code.Scripts.Entity
             while (true)
             {
                 Animator.SetTrigger("ShootLaser");
-                yield return new WaitForSeconds(6);
+                yield return new WaitForSeconds(4);
             }
         }
 
