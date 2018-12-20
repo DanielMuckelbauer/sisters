@@ -115,6 +115,12 @@ namespace Code.Scripts.SceneController
             Player.OnDie += GameOverScreen;
         }
 
+        private static void QuitOnEscape()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                SceneManager.LoadScene(0);
+        }
+
         private static void ResetScene()
         {
             UnsubscribeAllDelegatesFromStaticEvents();
@@ -159,12 +165,6 @@ namespace Code.Scripts.SceneController
             SaveGame();
             SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) %
                                    SceneManager.sceneCountInBuildSettings);
-        }
-
-        private void QuitOnEscape()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-                Application.Quit();
         }
 
         private IEnumerator ShowDied()

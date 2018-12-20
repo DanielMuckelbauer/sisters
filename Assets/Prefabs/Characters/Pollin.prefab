@@ -293,7 +293,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1041184827798590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40, y: 1.88, z: 1.1562067}
+  m_LocalPosition: {x: 169.36, y: 2.5, z: 1.1562067}
   m_LocalScale: {x: 0.036255725, y: 0.036255725, z: 0.036255725}
   m_Children:
   - {fileID: 4266354394515548}
@@ -381,8 +381,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155236595702248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.7, y: 33.1, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_LocalPosition: {x: 41.21, y: 41.16, z: 0}
+  m_LocalScale: {x: 12, y: 12, z: 1.69}
   m_Children:
   - {fileID: 224089615954956748}
   m_Father: {fileID: 4274150424694688}
@@ -1149,7 +1149,6 @@ MonoBehaviour:
   - {fileID: 0}
   Jump: {fileID: 8300000, guid: c90ade3fe2456064abf7cfe687f06862, type: 3}
   ReceiveHit: {fileID: 8300000, guid: 02b0103463e878c4baba1149a890d258, type: 3}
-  Swing: {fileID: 8300000, guid: da73651db96e31d4194a4ca83ce5e3f6, type: 3}
 --- !u!212 &212094515541984904
 SpriteRenderer:
   m_ObjectHideFlags: 1
