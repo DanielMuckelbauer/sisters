@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 212613817809690160}
   - component: {fileID: 60380537751564518}
   - component: {fileID: 50976507468461302}
+  - component: {fileID: 114860300442074730}
   m_Layer: 10
   m_Name: Sword
   m_TagString: Weapon
@@ -276,7 +277,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471205604842516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 75.44512, y: 26.304493, z: -34.89305}
+  m_LocalPosition: {x: 75.44512, y: 26.304493, z: 0}
   m_LocalScale: {x: 25.609781, y: 25.609781, z: 25.609781}
   m_Children: []
   m_Father: {fileID: 4497239621999768}
@@ -317,7 +318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1061069945433942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -43.421658, y: 2.2927222, z: 1.1562067}
+  m_LocalPosition: {x: -87.73001, y: -2.9900005, z: 0}
   m_LocalScale: {x: 0.03904758, y: 0.03904758, z: 0.03904758}
   m_Children:
   - {fileID: 4161248427409692}
@@ -966,6 +967,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleText: {fileID: 114926714580945158}
+--- !u!114 &114860300442074730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510971779569726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a83d8ee3d64f0b643b5db39b23523739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114926714580945158
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2faed9f6e0aa4a3fbe3cf328760d1c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootForce: 7
+  shootForce: 3
   rotationForce: 10
   destroyAfter: 7
 --- !u!212 &212740889626604270

@@ -112,6 +112,7 @@ namespace Code.Scripts.SceneController
 
         protected virtual void Start()
         {
+            Cursor.visible = false;
             Player.OnDie += GameOverScreen;
         }
 
