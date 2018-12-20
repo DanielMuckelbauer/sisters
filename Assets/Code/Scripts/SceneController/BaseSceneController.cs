@@ -32,7 +32,8 @@ namespace Code.Scripts.SceneController
 
         protected void DisableFollowingCamera()
         {
-            MainCamera.GetComponent<FollowingCamera>().Following = false;
+            if (MainCamera != null)
+                MainCamera.GetComponent<FollowingCamera>().Following = false;
         }
 
         protected void EnableCameraAndMovement()
