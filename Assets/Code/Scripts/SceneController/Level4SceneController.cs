@@ -18,7 +18,6 @@ namespace Code.Scripts.SceneController
         [SerializeField] private Transform walkTargetBeforeBoss1;
         [SerializeField] private Transform walkTargetBeforeBoss2;
 
-
         protected override void HandleTrigger()
         {
             IgnoreTrigger = true;
