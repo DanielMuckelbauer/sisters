@@ -18,7 +18,7 @@ namespace Code.Scripts
 
         private void EnableButtons()
         {
-            for (int i = 0; i < latestLevel; i++)
+            for (int i = 0; i <= latestLevel; i++)
             {
                 levelButtons[i]?.gameObject.SetActive(true);
             }
