@@ -74,8 +74,8 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator DisablePlayersAndMoveCameraToBoss()
         {
-            DisableFollowingCamera();
             dani.Invincible = true;
+            DisableFollowingCamera();
             StartCoroutine(MoveCameraSmoothly(flyTarget.position));
             yield return new WaitForSeconds(3);
         }

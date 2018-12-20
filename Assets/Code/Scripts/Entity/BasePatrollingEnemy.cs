@@ -16,6 +16,7 @@ namespace Code.Scripts.Entity
         private Coroutine blinkingCoroutine;
 
         public static event Action PlayHitSound;
+
         public static void ResetOnHitSound()
         {
             PlayHitSound = null;
@@ -33,7 +34,7 @@ namespace Code.Scripts.Entity
 
         protected virtual void DealWithCollision(GameObject otherGameObject)
         {
-            if (NotHitable(otherGameObject) || Invincible)
+            if (NotHitable(otherGameObject) || BrieflyInvincible)
                 return;
             StartCoroutine(BrieflyTurnInvincibleAndBlink());
             CombatController.ReceiveHit();
@@ -87,7 +88,7 @@ namespace Code.Scripts.Entity
 
         private bool NotHitable(GameObject otherGameObject)
         {
-            return !otherGameObject.tag.Contains("Weapon") || Invincible;
+            return !otherGameObject.tag.Contains("Weapon") || BrieflyInvincible || Invincible;
         }
     }
 }

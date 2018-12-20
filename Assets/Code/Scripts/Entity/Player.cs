@@ -97,7 +97,7 @@ namespace Code.Scripts.Entity
 
         private bool NotHitable(GameObject otherGameObject)
         {
-            return !otherGameObject.tag.Contains("Enemy") || Invincible;
+            return !otherGameObject.tag.Contains("Enemy") || BrieflyInvincible || Invincible;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

@@ -14,7 +14,8 @@ namespace Code.Scripts.Entity
         [SerializeField] protected int MaxLife = 1;
         protected IMovementController MovementController;
         [SerializeField] protected float WalkingSpeed = 5;
-        protected bool Invincible;
+        protected bool BrieflyInvincible;
+        public bool Invincible { get; set; }
 
         public virtual void Die()
         {
@@ -53,9 +54,9 @@ namespace Code.Scripts.Entity
 
         protected IEnumerator BrieflyTurnInvincibleAndBlink()
         {
-            Invincible = true;
+            BrieflyInvincible = true;
             yield return StartCoroutine(Blink(8));
-            Invincible = false;
+            BrieflyInvincible = false;
         }
 
         private static float NextBlinkOpacity(int i)
