@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4121191123527324}
   - component: {fileID: 114710672674918686}
   - component: {fileID: 61783496520608480}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RespawnOneHazard
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 4.7581215, y: -7.9561234}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -64,7 +64,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 60.19184, y: 0.97690773}
   m_EdgeRadius: 0
 --- !u!114 &114710672674918686
 MonoBehaviour:
@@ -77,4 +77,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987189f0e1034eb887a37f941a9f197e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneController: {fileID: 0}
+  EntityController: {fileID: 0}

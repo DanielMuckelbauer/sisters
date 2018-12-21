@@ -737,7 +737,7 @@ MonoBehaviour:
   MaxLife: 26
   WalkingSpeed: 1
   Patrolling: 0
-  energyBall: {fileID: 1714547732501980, guid: 6fabfbaf6436f4f4a8ab28b1ff9d0df5, type: 2}
+  energyBall: {fileID: 1714547732501980, guid: d3d7de0bad6af97429079725e576d8da, type: 2}
   leftSource: {fileID: 4754254710351684}
   muni: {fileID: 0}
   pollin: {fileID: 0}

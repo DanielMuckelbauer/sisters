@@ -667,39 +667,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 61783496520608480, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: -7.9561234
-      objectReference: {fileID: 0}
-    - target: {fileID: 61783496520608480, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.97690773
-      objectReference: {fileID: 0}
-    - target: {fileID: 61783496520608480, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 60.19184
-      objectReference: {fileID: 0}
-    - target: {fileID: 61783496520608480, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: 4.7581215
-      objectReference: {fileID: 0}
     - target: {fileID: 114710672674918686, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
         type: 2}
-      propertyPath: SceneController
-      value: 
-      objectReference: {fileID: 332494189}
-    - target: {fileID: 114710672674918686, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
-        type: 2}
-      propertyPath: PlayerRepositioningController
-      value: 
-      objectReference: {fileID: 1045421089}
-    - target: {fileID: 114710672674918686, guid: fadf2aaf5cd40194e804ff6a215bf4a8,
-        type: 2}
-      propertyPath: PlayerController
+      propertyPath: EntityController
       value: 
       objectReference: {fileID: 1045421089}
     m_RemovedComponents: []
@@ -1118,11 +1088,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114783970896293224, guid: 43acb1288a7b2f747bd4365ad702a2e2,
-        type: 2}
-      propertyPath: MaxLife
-      value: 26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43acb1288a7b2f747bd4365ad702a2e2, type: 2}

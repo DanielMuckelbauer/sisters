@@ -101,7 +101,7 @@ namespace Code.Scripts.Entity
                 currentTarget = currentTarget == muni ? pollin : muni;
                 SetTargetDirection();
                 Animator.SetTrigger("Shoot");
-                yield return new WaitForSeconds(4);
+                yield return new WaitForSeconds(2.5f);
             }
         }
 

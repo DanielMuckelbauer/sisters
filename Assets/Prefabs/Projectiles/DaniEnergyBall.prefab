@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 58006620061105808}
   - component: {fileID: 82201725367040170}
   m_Layer: 15
-  m_Name: ClownEnergyBall
+  m_Name: DaniEnergyBall
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2faed9f6e0aa4a3fbe3cf328760d1c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootForce: 5
+  shootForce: 5.3
   rotationForce: 2
   destroyAfter: 7
 --- !u!212 &212899560213715860
