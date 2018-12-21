@@ -44,7 +44,7 @@ namespace Code.Scripts.Entity
         {
             while (true)
             {
-                yield return new WaitForSeconds(4);
+                yield return new WaitForSeconds(2.7f);
                 ShootShoes();
             }
         }
