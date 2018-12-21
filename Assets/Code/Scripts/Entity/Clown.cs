@@ -17,6 +17,7 @@ namespace Code.Scripts.Entity
         private void OnDestroy()
         {
             OnDestroyed?.Invoke();
+            OnDestroyed = null;
         }
 
         public void StartPunching()
@@ -28,7 +29,7 @@ namespace Code.Scripts.Entity
         {
             while (true)
             {
-                yield return new WaitForSeconds(7);
+                yield return new WaitForSeconds(6);
                 GetComponent<Animator>().SetTrigger("Punch");
             }
         }
