@@ -123,7 +123,7 @@ namespace Code.Scripts.SceneController
                 SceneManager.LoadScene(0);
         }
 
-        private static void ResetScene()
+        protected virtual void ResetScene()
         {
             UnsubscribeAllDelegatesFromStaticEvents();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -72,5 +72,11 @@ namespace Code.Scripts.SceneController
             EntityController.BeamPlayersTo(endbossSpawnPoint.position);
             EnableCameraAndMovement();
         }
+
+        protected override void ResetScene()
+        {
+            ballerina.ResetOnDestroy();
+            base.ResetScene();
+        }
     }
 }

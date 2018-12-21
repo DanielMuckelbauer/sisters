@@ -61,5 +61,10 @@ namespace Code.Scripts.Entity
         {
             OnDestroyed?.Invoke();
         }
+
+        public void ResetOnDestroy()
+        {
+            OnDestroyed = null;
+        }
     }
 }

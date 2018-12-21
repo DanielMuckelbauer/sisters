@@ -80,5 +80,11 @@ namespace Code.Scripts.SceneController
             yield return TextController.ShowCharactersNextBubbleText(Character.Pollin, 2);
             yield return TextController.ShowCharactersNextBubbleText(Character.Muni, 2);
         }
+
+        protected override void ResetScene()
+        {
+            clown.ResetOnDestroy();
+            base.ResetScene();
+        }
     }
 }

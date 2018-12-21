@@ -33,5 +33,10 @@ namespace Code.Scripts.Entity
                 GetComponent<Animator>().SetTrigger("Punch");
             }
         }
+
+        public void ResetOnDestroy()
+        {
+            OnDestroyed = null;
+        }
     }
 }
