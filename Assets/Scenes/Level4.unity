@@ -808,13 +808,18 @@ Prefab:
     - target: {fileID: 61643342599887906, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
         type: 2}
       propertyPath: m_Size.x
-      value: 25.100735
+      value: 35.27132
       objectReference: {fileID: 0}
     - target: {fileID: 114800972276623218, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
         type: 2}
       propertyPath: EntityController
       value: 
       objectReference: {fileID: 315268794}
+    - target: {fileID: 61643342599887906, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -4.413206
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151b6ebdfda4d5742a7fb4e5f0b1d7ae, type: 2}
   m_IsPrefabAsset: 0
@@ -2881,21 +2886,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1974939569}
-    - target: {fileID: 224190190649837840, guid: 7a41169db5b9a47de92d0f444681886c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 364.00006
-      objectReference: {fileID: 0}
-    - target: {fileID: 224848988390109092, guid: 7a41169db5b9a47de92d0f444681886c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -261
-      objectReference: {fileID: 0}
-    - target: {fileID: 224190190649837840, guid: 7a41169db5b9a47de92d0f444681886c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -261
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a41169db5b9a47de92d0f444681886c, type: 2}
   m_IsPrefabAsset: 0

@@ -61,6 +61,7 @@ namespace Code.Scripts
             quitButton.onClick.AddListener(Application.Quit);
             ReadSaveFile();
             EnableButtons();
+            Cursor.visible = true;
         }
     }
 }
