@@ -105,18 +105,18 @@ namespace Code.Scripts.Scene
         //TODO Change for two players
         private Vector3 FindClosestRespawnPoint(List<Transform> transforms)
         {
-            //Vector3 middlePoint =
-            //    (Players[Character.Pollin].transform.position + Players[Character.Muni].transform.position) / 2;
-            //float minDistance = RespawnPoints.Min(rp => Vector3.Distance(middlePoint, rp.position));
-            //Vector3 closest = RespawnPoints.First(rp => Vector3.Distance(middlePoint, rp.position) == minDistance)
-            //    .position;
-            //return closest;
-            float minDistance = transforms.Min(rp =>
-                Vector3.Distance(characters[Character.Pollin].transform.position, rp.position));
-            Vector3 closest = transforms.First(rp =>
-                    Vector3.Distance(characters[Character.Pollin].transform.position, rp.position) == minDistance)
+            Vector3 middlePoint =
+                (characters[Character.Pollin].transform.position + characters[Character.Muni].transform.position) / 2;
+            float minDistance = transforms.Min(rp => Vector3.Distance(middlePoint, rp.position));
+            Vector3 closest = transforms.First(rp => Vector3.Distance(middlePoint, rp.position) == minDistance)
                 .position;
             return closest;
+            //float minDistance = transforms.Min(rp =>
+            //    Vector3.Distance(characters[Character.Pollin].transform.position, rp.position));
+            //Vector3 closest = transforms.First(rp =>
+            //        Vector3.Distance(characters[Character.Pollin].transform.position, rp.position) == minDistance)
+            //    .position;
+            //return closest;
         }
 
         private void InitializeCharacterDictionary()
