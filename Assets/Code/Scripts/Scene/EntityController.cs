@@ -116,14 +116,8 @@ namespace Code.Scripts.Scene
             catch (Exception e)
             {
                 Debug.Log(e);
-                Transform leftest = respawnPoints[0];
-                foreach (Transform respawnPoint in respawnPoints)
-                {
-                    if (respawnPoint.position.x < leftest.position.x)
-                        leftest = respawnPoint;
-                }
-
-                return leftest.position;
+                Vector3 leftest = respawnPoints.Aggregate((t1, t2) => t1.position.x < t2.position.x ? t1 : t2).position;
+                return leftest;
             }
         }
 
