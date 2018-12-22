@@ -227,6 +227,7 @@ namespace Code.Scripts.SceneController
                 StopCoroutine(addSpawning);
             DestroyAllSpidersAndPortals();
             dani.StopPatrolling();
+            EntityController.DisablePlayerMovement();
             yield return DisablePlayersAndMoveCameraToBoss();
             yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 6);
             PlayHookMusic();

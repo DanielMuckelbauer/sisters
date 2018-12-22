@@ -31,6 +31,7 @@ namespace Code.Scripts.Scene
         {
             foreach (Player player in characters.Values)
                 player.SetMovement(false);
+                StartCoroutine(StopPlayerMovementAfterDelay());
         }
 
         public void EnablePlayerMovement()
@@ -55,6 +56,12 @@ namespace Code.Scripts.Scene
             yield return rightPlayer.GetComponent<Player>().GoTo(rightPoint.position);
             yield return PlayerList[0].TurnTo(PlayerList[1].transform.position);
             yield return PlayerList[1].TurnTo(PlayerList[0].transform.position);
+            yield return StopPlayerMovementAfterDelay();
+
+        }
+
+        private IEnumerator StopPlayerMovementAfterDelay()
+        {
             yield return new WaitForSeconds(0.3f);
             PlayerList.ForEach(player => player.GetComponent<Rigidbody2D>().velocity = Vector2.zero);
         }

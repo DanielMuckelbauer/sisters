@@ -113,8 +113,8 @@ namespace Code.Scripts.Entity
         {
             while (true)
             {
-                Animator.SetTrigger("ShootLaser");
                 yield return new WaitForSeconds(4);
+                Animator.SetTrigger("ShootLaser");
             }
         }
 
