@@ -31,7 +31,7 @@ namespace Code.Scripts.SceneController
 
         private IEnumerator EnableCameraAndMovementAfterDelay()
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(17);
             EnableCameraAndMovement();
         }
 
