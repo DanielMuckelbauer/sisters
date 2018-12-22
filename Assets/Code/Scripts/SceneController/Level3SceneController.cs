@@ -22,14 +22,16 @@ namespace Code.Scripts.SceneController
         protected override void Start()
         {
             base.Start();
+            GameElements.SetActive(true);
             DisableCameraAndMovement();
-            StartCoroutine(PlayOpeningCutscene(1, 3));
+            GameElements.SetActive(false);
+            StartCoroutine(PlayOpeningCutscene(4, 3));
             StartCoroutine(EnableCameraAndMovementAfterDelay());
         }
 
         private IEnumerator EnableCameraAndMovementAfterDelay()
         {
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(10);
             EnableCameraAndMovement();
         }
 

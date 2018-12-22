@@ -28,7 +28,7 @@ namespace Code.Scripts.SceneController
         protected override void Start()
         {
             base.Start();
-            StartCoroutine(PlayOpeningCutscene(1, 3));
+            StartCoroutine(PlayOpeningCutscene(4, 3));
             clownAnimator = clown.GetComponent<Animator>();
             clown.OnDestroyed += EndingCutscene;
         }
