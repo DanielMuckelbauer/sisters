@@ -18,13 +18,19 @@ namespace Code.Scripts.Entity
 
         public void StartFighting()
         {
-            StartCoroutine(Patrol(2));
+            StartCoroutine(Patrol());
             StartCoroutine(JumpRandomly());
             StartCoroutine(ShootLoop());
         }
 
         protected override void Start()
         {
+            StartCoroutine(StartFightAfterDelay());
+        }
+
+        private IEnumerator StartFightAfterDelay()
+        {
+            yield return new WaitForSeconds(2);
             base.Start();
             InitializeShootDirections();
             StartFighting();

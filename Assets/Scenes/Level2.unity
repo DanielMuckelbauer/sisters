@@ -37491,34 +37491,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1512111007863672, guid: 7a41169db5b9a47de92d0f444681886c,
     type: 2}
   m_PrefabInternal: {fileID: 21809379}
---- !u!1 &335052549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 335052550}
-  m_Layer: 0
-  m_Name: RespawnPoints
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &335052550
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 335052549}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1770195469}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &374942248 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1195343299150404, guid: 7a41169db5b9a47de92d0f444681886c,
@@ -37733,11 +37705,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4942177223429454, guid: 21839f045b3b1ce44b58e1db022deeb8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 134.92
+      value: 134.19
       objectReference: {fileID: 0}
     - target: {fileID: 4942177223429454, guid: 21839f045b3b1ce44b58e1db022deeb8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.05
+      value: -2.96
       objectReference: {fileID: 0}
     - target: {fileID: 4942177223429454, guid: 21839f045b3b1ce44b58e1db022deeb8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -37761,12 +37733,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4942177223429454, guid: 21839f045b3b1ce44b58e1db022deeb8, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114269315879896588, guid: 21839f045b3b1ce44b58e1db022deeb8,
         type: 2}
       propertyPath: MaxLife
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1764559444537374, guid: 21839f045b3b1ce44b58e1db022deeb8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269315879896588, guid: 21839f045b3b1ce44b58e1db022deeb8,
+        type: 2}
+      propertyPath: WalkingSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21839f045b3b1ce44b58e1db022deeb8, type: 2}
@@ -37798,7 +37779,7 @@ Transform:
   m_Children:
   - {fileID: 1956183662}
   m_Father: {fileID: 1770195469}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &636542269
 Prefab:
@@ -38930,7 +38911,7 @@ Transform:
   m_LocalScale: {x: 0.22186571, y: 0.22186571, z: 0.2218656}
   m_Children: []
   m_Father: {fileID: 1770195469}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &1297573742
 MonoBehaviour:
@@ -39669,7 +39650,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1745055349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -158.3, y: -4.44, z: 0}
+  m_LocalPosition: {x: -168.98, y: -4.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 285385420}
@@ -39689,7 +39670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1770195469
 Transform:
   m_ObjectHideFlags: 0
@@ -39710,7 +39691,6 @@ Transform:
   - {fileID: 15394793}
   - {fileID: 1496884689}
   - {fileID: 1813304416}
-  - {fileID: 335052550}
   - {fileID: 1992201305}
   - {fileID: 2020063608}
   - {fileID: 565449265}
@@ -40328,7 +40308,7 @@ Transform:
   - {fileID: 2080952162}
   - {fileID: 653095650}
   m_Father: {fileID: 1770195469}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2032816132
 Prefab:

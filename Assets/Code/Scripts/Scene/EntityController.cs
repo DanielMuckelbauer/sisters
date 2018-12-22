@@ -1,4 +1,5 @@
-﻿using Code.Classes;
+﻿using System;
+using Code.Classes;
 using Code.Scripts.Entity;
 using System.Collections;
 using System.Collections.Generic;
@@ -96,10 +97,25 @@ namespace Code.Scripts.Scene
 
         private Vector3 FindClosestLeftSpawnPoint()
         {
-            List<Transform> leftRespawnPoints = respawnPoints
-                .FindAll(rp => rp.position.x <= characters[Character.Pollin].transform.position.x);
-            Vector3 closest = FindClosestRespawnPoint(leftRespawnPoints);
-            return closest;
+            try
+            {
+                List<Transform> leftRespawnPoints = respawnPoints
+                    .FindAll(rp => rp.position.x <= characters[Character.Pollin].transform.position.x);
+                Vector3 closest = FindClosestRespawnPoint(leftRespawnPoints);
+                return closest;
+            }
+            catch (Exception e)
+            {
+                Transform leftest = respawnPoints[0];
+                foreach (Transform respawnPoint in respawnPoints)
+                {
+                    if (respawnPoint.position.x < leftest.position.x)
+                        leftest = respawnPoint;
+                }
+
+                Debug.Log(e);
+                return leftest.position;
+            }
         }
 
         //TODO Change for two players

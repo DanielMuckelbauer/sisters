@@ -70,6 +70,7 @@ namespace Code.Scripts.SceneController
             yield return EntityController.MovePlayersToOppositePositions(walkTarget1, walkTarget2);
             yield return Talk();
             EntityController.BeamPlayersTo(endbossSpawnPoint.position);
+            ballerina.gameObject.SetActive(true);
             EnableCameraAndMovement();
         }
 
