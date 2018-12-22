@@ -10,17 +10,18 @@ namespace Code.Scripts
     public class MenuController : MonoBehaviour
     {
         public static string SaveGamePath = "Savegame/save.xml";
-        private int nextAvailableLevel;
+        private const int LastLevel = 5;
         [SerializeField] private List<Button> levelButtons;
         private Dictionary<Button, int> levelDictionary;
+        private int nextAvailableLevel;
         [SerializeField] private Button quitButton;
 
         private void EnableButtons()
         {
+            if (nextAvailableLevel > LastLevel)
+                nextAvailableLevel = LastLevel;
             for (int i = 0; i <= nextAvailableLevel; i++)
             {
-                if (i == 6)
-                    return;
                 levelButtons[i]?.gameObject.SetActive(true);
             }
         }
