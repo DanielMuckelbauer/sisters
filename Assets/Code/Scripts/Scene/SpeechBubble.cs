@@ -29,8 +29,6 @@ namespace Code.Scripts.Scene
             foreach (char c in charArray)
             {
                 bubbleText.text += c;
-                //TODO Change in prod
-                //yield return new WaitForSeconds(0.06f);
                 yield return new WaitForSeconds(0.01f);
             }
         }
