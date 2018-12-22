@@ -36,7 +36,7 @@ namespace Code.Scripts.SceneController
         private IEnumerator ActivateBackground()
         {
             TextController.ActivateCanvas(false);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSecondsRealtime(1);
             GameElements.GetComponent<SpriteRenderer>().enabled = true;
         }
 
@@ -44,14 +44,14 @@ namespace Code.Scripts.SceneController
         {
             yield return ThrowObject(Fetus);
             yield return ThrowObject(Chicken);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSecondsRealtime(5);
         }
 
         private IEnumerator HospitalCutscene()
         {
             yield return ActivateBackground();
             AudioPlayer.Play();
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSecondsRealtime(3);
             yield return GiveBirth();
         }
 
@@ -77,12 +77,12 @@ namespace Code.Scripts.SceneController
             yield return SwordRoomCutscene();
             yield return TextController.ShowCharactersNextBubbleText(Character.Dani, 2);
             DaniAnimator.SetTrigger("GiveSword");
-            yield return new WaitForSeconds(7);
+            yield return new WaitForSecondsRealtime(7);
             cameraAnimator.SetTrigger("MoveCameraUp");
-            yield return new WaitForSeconds(6.3f);
+            yield return new WaitForSecondsRealtime(6.3f);
             StartCoroutine(Fade(Title, 0, 1));
             moveSword = true;
-            yield return new WaitForSeconds(6);
+            yield return new WaitForSecondsRealtime(6);
             EnableNextScene();
         }
 
@@ -106,7 +106,7 @@ namespace Code.Scripts.SceneController
             Stars.enabled = true;
             Dani.SetActive(true);
             Girls.SetActive(true);
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSecondsRealtime(2.8f);
         }
 
         private IEnumerator ThrowObject(GameObject objectToThrow)
@@ -116,7 +116,7 @@ namespace Code.Scripts.SceneController
             Rigidbody2D rigidBody = spawnedObject.GetComponent<Rigidbody2D>();
             rigidBody.AddForce((Vector2.up + Vector2.left) * BirthForce);
             rigidBody.AddTorque(2, ForceMode2D.Impulse);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSecondsRealtime(1.5f);
         }
 
         private void Update()
