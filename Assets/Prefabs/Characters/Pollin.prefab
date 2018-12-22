@@ -293,7 +293,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1041184827798590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -86.8, y: -1.3, z: 0}
+  m_LocalPosition: {x: -98.56, y: -16.6, z: 0}
   m_LocalScale: {x: 0.036255725, y: 0.036255725, z: 0.036255725}
   m_Children:
   - {fileID: 4266354394515548}
@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 8.204535, y: 1.3468306, z: 7.5459995, w: 1.4946513}
+  m_margin: {x: 8.453327, y: 1.3468306, z: 7.5459995, w: 1.4946513}
   m_textInfo:
     textComponent: {fileID: 114513021277704082}
     characterCount: 0
@@ -1107,7 +1107,7 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
