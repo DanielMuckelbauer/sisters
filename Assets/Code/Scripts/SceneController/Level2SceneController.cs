@@ -64,6 +64,12 @@ namespace Code.Scripts.SceneController
             EnableNextScene();
         }
 
+        protected override void UnsubscribeAllDelegatesFromStaticEvents()
+        {
+            ballerina.ResetOnDestroy();
+            base.UnsubscribeAllDelegatesFromStaticEvents();
+        }
+
         private IEnumerator TalkingCutScene()
         {
             ChangeMusic();
@@ -72,12 +78,6 @@ namespace Code.Scripts.SceneController
             EntityController.BeamPlayersTo(endbossSpawnPoint.position);
             ballerina.gameObject.SetActive(true);
             EnableCameraAndMovement();
-        }
-
-        protected override void ResetScene()
-        {
-            ballerina.ResetOnDestroy();
-            base.ResetScene();
         }
     }
 }

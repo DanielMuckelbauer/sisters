@@ -117,13 +117,19 @@ namespace Code.Scripts.SceneController
             Player.OnDie += GameOverScreen;
         }
 
-        private static void QuitOnEscape()
+        private void QuitOnEscape()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                SceneManager.LoadScene(0);
+                BackToMenu();
         }
 
-        protected virtual void ResetScene()
+        protected virtual void BackToMenu()
+        {
+            SceneManager.LoadScene(0);
+            UnsubscribeAllDelegatesFromStaticEvents();
+        }
+
+        private void ResetScene()
         {
             UnsubscribeAllDelegatesFromStaticEvents();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -142,7 +148,7 @@ namespace Code.Scripts.SceneController
             xmlWriter.Close();
         }
 
-        private static void UnsubscribeAllDelegatesFromStaticEvents()
+        protected virtual void UnsubscribeAllDelegatesFromStaticEvents()
         {
             Player.ResetOnDieEvent();
             Healer.ResetOnHealingConsumedEvent();

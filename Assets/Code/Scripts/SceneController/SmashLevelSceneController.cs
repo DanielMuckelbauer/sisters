@@ -34,7 +34,7 @@ namespace Code.Scripts.SceneController
             DisableCameraAndMovement();
             GameElements.SetActive(false);
             spawnedSpiders = new List<GameObject>();
-            PlayOpeningCutScene();
+            StartCoroutine(PlayOpeningCutScene());
             dani.OnNextPhase += ChangeFightPhase;
         }
 
@@ -133,11 +133,11 @@ namespace Code.Scripts.SceneController
             audioSource.Play();
         }
 
-        private void PlayOpeningCutScene()
+        private IEnumerator PlayOpeningCutScene()
         {
-            MoveCameraToDani();
             InitializePhaseChangeMethods();
-            StartCoroutine(PlayOpeningCutscene(4, 2));
+            yield return PlayOpeningCutscene(4, 2);
+            MoveCameraToDani();
             StartCoroutine(PlayOpeningDialog());
         }
 

@@ -46,12 +46,11 @@ namespace Code.Scripts.Scene
 
         public IEnumerator MovePlayersToOppositePositions(Transform point1, Transform point2)
         {
-            Vector3 rightPlayerPosition = FindRight(PlayerList[0].transform, PlayerList[1].transform).position;
-            PlayerList.ForEach(p => MoveObjectToTargetIfToFarAway(p.transform, rightPlayerPosition));
             Transform leftPoint = FindLeft(point1, point2);
             Transform rightPoint = FindRight(point1, point2);
             Transform leftPlayer = FindLeft(PlayerList[0].transform, PlayerList[1].transform);
             Transform rightPlayer = FindRight(PlayerList[0].transform, PlayerList[1].transform);
+            PlayerList.ForEach(p => MoveObjectToTargetIfToFarAway(leftPlayer, rightPlayer.position));
             yield return leftPlayer.GetComponent<Player>().GoTo(leftPoint.position);
             yield return rightPlayer.GetComponent<Player>().GoTo(rightPoint.position);
             yield return PlayerList[0].TurnTo(PlayerList[1].transform.position);
@@ -109,6 +108,7 @@ namespace Code.Scripts.Scene
             }
             catch (Exception e)
             {
+                Debug.Log(e);
                 Transform leftest = respawnPoints[0];
                 foreach (Transform respawnPoint in respawnPoints)
                 {

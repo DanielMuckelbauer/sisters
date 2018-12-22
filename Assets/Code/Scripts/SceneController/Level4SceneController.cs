@@ -81,10 +81,10 @@ namespace Code.Scripts.SceneController
             yield return TextController.ShowCharactersNextBubbleText(Character.Muni, 2);
         }
 
-        protected override void ResetScene()
+        protected override void UnsubscribeAllDelegatesFromStaticEvents()
         {
             clown.ResetOnDestroy();
-            base.ResetScene();
+            base.UnsubscribeAllDelegatesFromStaticEvents();
         }
     }
 }

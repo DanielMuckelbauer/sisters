@@ -40,6 +40,8 @@ namespace Code.Classes.MovementController
 
         private void ApplyMovement(float horizontal)
         {
+            if (RigidBody == null)
+                return;
             Vector2 currentVelocity = RigidBody.velocity;
             currentVelocity.x = horizontal * Speed;
             RigidBody.velocity = currentVelocity;

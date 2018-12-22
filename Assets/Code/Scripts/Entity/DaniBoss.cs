@@ -22,6 +22,8 @@ namespace Code.Scripts.Entity
 
         public void Shoot()
         {
+            if (currentTarget == null)
+                return;
             Transform source = targetIsLeft ? leftSource : rightSource;
             InstantiateAndShootProjectile(energyBall, source, currentTarget.transform);
         }
@@ -80,16 +82,18 @@ namespace Code.Scripts.Entity
         {
             healthBorders = new Stack<int>();
             //TODO Change in Prod
-            healthBorders.Push(1);
-            healthBorders.Push(12);
-            healthBorders.Push(18);
-            //healthBorders.Push(23);
-            //healthBorders.Push(24);
-            //healthBorders.Push(25);
+            //healthBorders.Push(1);
+            //healthBorders.Push(12);
+            //healthBorders.Push(18);
+            healthBorders.Push(23);
+            healthBorders.Push(24);
+            healthBorders.Push(25);
         }
 
         private void SetTargetDirection()
         {
+            if (currentTarget == null)
+                return;
             targetIsLeft = currentTarget.transform.position.x < transform.position.x;
             Animator.SetBool("TargetIsLeft", targetIsLeft);
         }
