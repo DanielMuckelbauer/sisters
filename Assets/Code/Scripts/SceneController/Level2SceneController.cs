@@ -22,6 +22,7 @@ namespace Code.Scripts.SceneController
         {
             IgnoreTrigger = true;
             DisableCameraAndMovement();
+            StartCoroutine(MoveCameraSmoothly(cameraTargetOutside.position));
             StartCoroutine(TalkingCutScene());
         }
 
@@ -51,8 +52,7 @@ namespace Code.Scripts.SceneController
         {
             yield return TextController.ShowCharactersNextBubbleText(Character.Muni);
             yield return TextController.ShowCharactersNextBubbleText(Character.Pollin);
-            DisableFollowingCamera();
-            yield return MoveCameraSmoothly(cameraTargetOutside.position);
+            yield return new WaitForSeconds(2);
         }
 
         private IEnumerator TalkAfterBoss()

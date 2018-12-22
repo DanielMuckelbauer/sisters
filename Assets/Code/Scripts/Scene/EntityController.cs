@@ -46,7 +46,8 @@ namespace Code.Scripts.Scene
 
         public IEnumerator MovePlayersToOppositePositions(Transform point1, Transform point2)
         {
-            PlayerList.ForEach(p => MoveObjectToTargetIfToFarAway(p.transform, point1.position));
+            Vector3 rightPlayerPosition = FindRight(PlayerList[0].transform, PlayerList[1].transform).position;
+            PlayerList.ForEach(p => MoveObjectToTargetIfToFarAway(p.transform, rightPlayerPosition));
             Transform leftPoint = FindLeft(point1, point2);
             Transform rightPoint = FindRight(point1, point2);
             Transform leftPlayer = FindLeft(PlayerList[0].transform, PlayerList[1].transform);
@@ -55,6 +56,8 @@ namespace Code.Scripts.Scene
             yield return rightPlayer.GetComponent<Player>().GoTo(rightPoint.position);
             yield return PlayerList[0].TurnTo(PlayerList[1].transform.position);
             yield return PlayerList[1].TurnTo(PlayerList[0].transform.position);
+            yield return new WaitForSeconds(0.3f);
+            PlayerList.ForEach(player => player.GetComponent<Rigidbody2D>().velocity = Vector2.zero);
         }
 
         public IEnumerator MoveTo(Transform obj, Transform target, float stepSize = 3f)
@@ -113,7 +116,6 @@ namespace Code.Scripts.Scene
                         leftest = respawnPoint;
                 }
 
-                Debug.Log(e);
                 return leftest.position;
             }
         }
@@ -151,10 +153,10 @@ namespace Code.Scripts.Scene
             return respawnPointParent != null ? respawnPointParent.GetComponentsInChildren<Transform>().ToList() : null;
         }
 
-        private void MoveObjectToTargetIfToFarAway(Transform obj, Vector3 target, float maxDistance = 20f)
+        private void MoveObjectToTargetIfToFarAway(Transform obj, Vector3 target, float maxDistance = 3f)
         {
             if (Vector3.Distance(obj.position, target) > maxDistance)
-                obj.transform.position = target;
+                obj.transform.position = target - new Vector3(1, 0, 0);
         }
     }
 }
