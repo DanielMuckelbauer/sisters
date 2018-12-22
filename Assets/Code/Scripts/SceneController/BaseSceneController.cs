@@ -137,7 +137,7 @@ namespace Code.Scripts.SceneController
             string level = SceneManager.GetActiveScene().buildIndex.ToString();
             XmlWriter xmlWriter = XmlWriter.Create(path);
             xmlWriter.WriteStartDocument();
-            xmlWriter.WriteStartElement("Level");
+            xmlWriter.WriteStartElement("LastBeatenLevel");
             xmlWriter.WriteString(level);
             xmlWriter.Close();
         }

@@ -10,14 +10,14 @@ namespace Code.Scripts
     public class MenuController : MonoBehaviour
     {
         public static string SaveGamePath = "Savegame/save.xml";
-        private int latestLevel;
+        private int lastBeatenLevel;
         [SerializeField] private List<Button> levelButtons;
         private Dictionary<Button, int> levelDictionary;
         [SerializeField] private Button quitButton;
 
         private void EnableButtons()
         {
-            for (int i = 0; i <= latestLevel; i++)
+            for (int i = 0; i <= lastBeatenLevel; i++)
             {
                 levelButtons[i]?.gameObject.SetActive(true);
             }
@@ -39,15 +39,15 @@ namespace Code.Scripts
         private void ReadSaveFile()
         {
             if (!File.Exists(SaveGamePath))
-                latestLevel = 0;
+                lastBeatenLevel = 0;
             else
             {
                 using (XmlReader reader = XmlReader.Create(new StreamReader(SaveGamePath)))
                 {
                     while (reader.Read())
                     {
-                        if (reader.Name.Equals("Level"))
-                            latestLevel = int.Parse(reader.ReadString());
+                        if (reader.Name.Equals("LastBeatenLevel"))
+                            lastBeatenLevel = int.Parse(reader.ReadString());
                     }
                 }
             }
