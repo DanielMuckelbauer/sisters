@@ -135,8 +135,6 @@ namespace Code.Scripts.SceneController
             string path = MenuController.SaveGamePath;
             File.Delete(path);
             string level = SceneManager.GetActiveScene().buildIndex.ToString();
-            if (level.Equals("6"))
-                level = "5";
             XmlWriter xmlWriter = XmlWriter.Create(path);
             xmlWriter.WriteStartDocument();
             xmlWriter.WriteStartElement("NextAvailableLevel");

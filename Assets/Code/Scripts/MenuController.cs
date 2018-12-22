@@ -19,6 +19,8 @@ namespace Code.Scripts
         {
             for (int i = 0; i <= nextAvailableLevel; i++)
             {
+                if (i == 6)
+                    return;
                 levelButtons[i]?.gameObject.SetActive(true);
             }
         }
