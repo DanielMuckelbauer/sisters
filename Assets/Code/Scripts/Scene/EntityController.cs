@@ -23,15 +23,17 @@ namespace Code.Scripts.Scene
 
         public void BeamPlayersTo(Vector3 target)
         {
-            BeamPlayerTo(target, PlayerList[0].transform, -0.5f);
-            BeamPlayerTo(target, PlayerList[1].transform, 0.5f);
+            if (PlayerList[0] != null)
+                BeamPlayerTo(target, PlayerList[0].transform, -0.5f);
+            if (PlayerList[1] != null)
+                BeamPlayerTo(target, PlayerList[1].transform, 0.5f);
         }
 
         public void DisablePlayerMovement()
         {
             foreach (Player player in characters.Values)
                 player.SetMovement(false);
-                StartCoroutine(StopPlayerMovementAfterDelay());
+            StartCoroutine(StopPlayerMovementAfterDelay());
         }
 
         public void EnablePlayerMovement()
@@ -57,13 +59,16 @@ namespace Code.Scripts.Scene
             yield return PlayerList[0].TurnTo(PlayerList[1].transform.position);
             yield return PlayerList[1].TurnTo(PlayerList[0].transform.position);
             yield return StopPlayerMovementAfterDelay();
-
         }
 
         private IEnumerator StopPlayerMovementAfterDelay()
         {
             yield return new WaitForSeconds(0.3f);
-            PlayerList.ForEach(player => player.GetComponent<Rigidbody2D>().velocity = Vector2.zero);
+            PlayerList.ForEach(player =>
+            {
+                if (player != null)
+                    player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            });
         }
 
         public IEnumerator MoveTo(Transform obj, Transform target, float stepSize = 3f)
