@@ -83,6 +83,8 @@ namespace Code.Scripts.Scene
 
         public void RespawnBoth()
         {
+            if (characters[Character.Pollin] == null || characters[Character.Muni] == null)
+                return;
             Vector3 closest = FindClosestLeftSpawnPoint();
             BeamPlayersTo(closest);
         }

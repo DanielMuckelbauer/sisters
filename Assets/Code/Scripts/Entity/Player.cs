@@ -79,7 +79,7 @@ namespace Code.Scripts.Entity
 
         private void DealWithCollision(GameObject otherGameObject)
         {
-            if (NotHitable(otherGameObject))
+            if (NotHitable(otherGameObject) || gameObject == null)
                 return;
             StartCoroutine(BrieflyTurnInvincibleAndBlink());
             PlaySound(ReceiveHit);
