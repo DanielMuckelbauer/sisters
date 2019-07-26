@@ -33,7 +33,7 @@ namespace Code.Classes.CombatController
         private void RefillHearts()
         {
             CurrentLife = MaxLife;
-            heartIndex = 4;
+            heartIndex = hearts.Count - 1;
             hearts.ForEach(h => h.GetComponent<SpriteRenderer>().enabled = true);
         }
 
